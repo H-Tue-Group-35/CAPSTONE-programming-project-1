@@ -3,20 +3,16 @@ orbs:
   gcp-gcr: circleci/gcp-gcr@0.6.1
   cloudrun: circleci/gcp-cloud-run@1.0.0
 jobs:
-  build_test:
+  test:
     docker:
       - image: circleci/python:3.7.4
     steps:
       - checkout
       - run:
-          name: Install Python Dependencies
-          command: |
-            echo "python test 1"
-      - run:
           name: Run Tests
           command: |
-            echo "python test 1"
-  build_push_image_cloud_run_mangaged:
+            echo "TEST"
+  deploy:
     docker:
       - image: google/cloud-sdk
     steps:
@@ -28,24 +24,11 @@ jobs:
           command: |
           
           echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
 
-      - gcp-gcr/gcr-auth:
-          gcloud-service-key: GOOGLE_CLOUD_KEYS
-          google-project-id: GOOGLE_PROJECT_ID
-          google-compute-zone: GOOGLE_COMPUTE_ZONE
-      - gcp-gcr/push-image:
-          google-project-id: GOOGLE_PROJECT_ID
-          registry-url: "us.gcr.io"
-          image: $IMAGE_NAME
-      - cloudrun/deploy:
-          platform: "managed"
-          image: "us.gcr.io/$GOOGLE_PROJECT_ID/$IMAGE_NAME"
-          service-name: "orb-gcp-cloud-run"
-          region: $GOOGLE_COMPUTE_ZONE
-          unauthenticated: true
 workflows:
   build_test_deploy:
     jobs:
-      - build_test
+      - test
+      - deploy:
+          requires:
+            - build_test
