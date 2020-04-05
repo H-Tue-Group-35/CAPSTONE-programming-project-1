@@ -32,9 +32,18 @@ jobs:
             
             echo "setting permissions"
             echo | pwd
+            cd ..
+            echo | pwd
+            echo | ls
+            
+            find project/ -type f -exec chmod 664 {} \;
+            find project/ -type d -exec chmod 775 {} \;
+            
+            cd project
+
             
             chmod -R 777 bootstrap/cache/
-
+    
             gcloud app deploy
 
 workflows:
