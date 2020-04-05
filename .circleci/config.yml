@@ -30,4 +30,4 @@ workflows:
       - test
       - deploy:
           requires:
-            - build_test
+            - test
