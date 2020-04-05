@@ -29,6 +29,24 @@ jobs:
             gcloud auth activate-service-account --key-file="$HOME/gcloud-service-key.json"
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            
+            echo "setting permissions"
+            echo | whoami
+            echo | pwd
+            cd ..
+            echo | pwd
+            echo | ls
+            
+            chown -R root:www-data project/
+            
+            find project/ -type f -exec chmod 664 {} \;
+            find project/ -type d -exec chmod 775 {} \;
+            
+            cd project
+            
+            chgrp -R www-data storage bootstrap/cache
+            chmod -R ug+rwx storage bootstrap/cache
+    
             gcloud app deploy
 
 workflows:
