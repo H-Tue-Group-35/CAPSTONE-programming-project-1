@@ -1,24 +1,40 @@
- version: 2
- jobs: # we now have TWO jobs, so that a workflow can coordinate them!
-   one: # This is our first job.
-     docker: # it uses the docker executor
-       - image: circleci/ruby:2.4.1 # specifically, a docker image with ruby 2.4.1
-     # Steps are a list of commands to run inside the docker container above.
-     steps:
-       - checkout # this pulls pulls code down from GitHub
-       - run: echo "A first hello" # This prints "A first hello" to stdout.
-       - run: sleep 25 # a command telling the job to "sleep" for 25 seconds.
-   two: # This is our second job.
-     docker: # it runs inside a docker image, the same as above.
-       - image: circleci/ruby:2.4.1
-     steps:
-       - checkout
-       - run: echo "A more familiar hi" # We run a similar echo command to above.
-       - run: sleep 15 # and then sleep for 15 seconds.
- # Under the workflows: map, we can coordinate our two jobs, defined above.
- workflows:
-   version: 2
-   one_and_two: # this is the name of our workflow
-     jobs: # and here we list the jobs we are going to run.
-       - one
-       - two
+version: 2.1
+orbs:
+  gcp-gcr: circleci/gcp-gcr@0.6.1
+  cloudrun: circleci/gcp-cloud-run@1.0.0
+jobs:
+  test:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - run:
+          name: Run Tests
+          command: |
+            echo "TEST"
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+      - run:
+          name: Prepare gcloud
+          command: |
+            echo "Preparing gcloud"
+            echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV
+            echo ${GCLOUD_JSON} > $HOME/gcloud-service-key.json
+            
+            gcloud auth activate-service-account --key-file="$HOME/gcloud-service-key.json"
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            gcloud app deploy
+
+workflows:
+  gcloud_test_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
