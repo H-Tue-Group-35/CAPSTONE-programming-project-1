@@ -22,8 +22,7 @@ jobs:
       - run:
           name: Build app binary and Docker image
           command: |
-          
-          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            echo "TEST2"
 
 workflows:
   build_test_deploy:
