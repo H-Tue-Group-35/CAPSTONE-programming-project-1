@@ -5,7 +5,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: circleci/python:3.7.4
+      - image: google/cloud-sdk
     steps:
       - checkout
       - run:
@@ -20,11 +20,15 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: false
       - run:
-          name: Build app binary and Docker image
+          name: Prepare gcloud
           command: |
-            echo "TEST2"
+            echo "Preparing gcloud"
             echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV
             echo ${GCP_PROJECT_KEY} | base64 --decode --ignore-garbage > $HOME/gcloud-service-key.json
+            
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
 
 workflows:
   build_test_deploy:
