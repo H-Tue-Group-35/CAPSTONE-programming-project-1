@@ -6,3 +6,9 @@ env_variables:
   APP_STORAGE: /tmp
   VIEW_COMPILED_PATH: /tmp
   SESSION_DRIVER: cookie
+  
+  # Google App engine only allows writing to tmp
+    APP_SERVICES_CACHE: /tmp/services.php
+    APP_PACKAGES_CACHE: /tmp/packages.php
+    APP_CONFIG_CACHE: /tmp/config.php
+    APP_ROUTES_CACHE: /tmp/routes.php
