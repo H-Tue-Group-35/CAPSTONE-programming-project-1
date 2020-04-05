@@ -31,6 +31,14 @@ jobs:
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             
             chmod -R 777 bootstrap/cache/
+            
+            php artisan cache:clear
+            php artisan route:clear
+            php artisan config:clear
+            php artisan view:clear
+            
+            set PYTHONIOENCODING=UTF-8
+            
             gcloud app deploy
 
 workflows:
