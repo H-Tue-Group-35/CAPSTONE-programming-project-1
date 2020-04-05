@@ -37,8 +37,6 @@ jobs:
             php artisan config:clear
             php artisan view:clear
             
-            set PYTHONIOENCODING=UTF-8
-            
             gcloud app deploy
 
 workflows:
