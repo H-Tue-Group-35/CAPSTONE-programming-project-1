@@ -1,15 +1,10 @@
 version: 2
 jobs:
-    one:
-        docker:
-        - image: google/cloud-sdk
-         # Steps are a list of commands to run inside the docker container above.
-         steps:
-           - checkout # this pulls pulls code down from GitHub
-           - run: echo "Testing gcloud deploy"
-# Under the workflows: map, we can coordinate our jobs, defined above.
-workflows:
-    version: 2
-    gcloud deploy: # this is the name of our workflow
-        jobs: # and here we list the jobs we are going to run.
-        - one
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - run: |
+          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
