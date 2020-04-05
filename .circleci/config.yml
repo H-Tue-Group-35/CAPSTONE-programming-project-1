@@ -1,17 +1,15 @@
 version: 2
 jobs:
     one:
-      deploy:
         docker:
-          - image: google/cloud-sdk
-     # Steps are a list of commands to run inside the docker container above.
-     steps:
-       - checkout # this pulls pulls code down from GitHub
-       - run: echo "Deploying project"
-       - run: gcloud app deploy
- # Under the workflows: map, we can coordinate our two jobs, defined above.
- workflows:
-   version: 2
-   gcloud deploy: # this is the name of our workflow
-     jobs: # and here we list the jobs we are going to run.
-       - one
+        - image: google/cloud-sdk
+         # Steps are a list of commands to run inside the docker container above.
+         steps:
+           - checkout # this pulls pulls code down from GitHub
+           - run: echo "Testing gcloud deploy"
+# Under the workflows: map, we can coordinate our jobs, defined above.
+workflows:
+    version: 2
+    gcloud deploy: # this is the name of our workflow
+        jobs: # and here we list the jobs we are going to run.
+        - one
