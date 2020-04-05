@@ -23,6 +23,8 @@ jobs:
           name: Build app binary and Docker image
           command: |
             echo "TEST2"
+            echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV
+            echo ${GCP_PROJECT_KEY} | base64 --decode --ignore-garbage > $HOME/gcloud-service-key.json
 
 workflows:
   build_test_deploy:
