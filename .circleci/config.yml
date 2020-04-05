@@ -1,0 +1,58 @@
+version: 2.1
+orbs:
+  gcp-gcr: circleci/gcp-gcr@0.6.1
+  cloudrun: circleci/gcp-cloud-run@1.0.0
+jobs:
+  test:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - run:
+          name: Run Tests
+          command: |
+            echo "TEST"
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+      - run:
+          name: Prepare gcloud
+          command: |
+            echo "Preparing gcloud"
+            echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV
+            echo ${GCLOUD_JSON} > $HOME/gcloud-service-key.json
+            
+            gcloud auth activate-service-account --key-file="$HOME/gcloud-service-key.json"
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            
+            echo "setting permissions"
+            echo | whoami
+            echo | pwd
+            cd ..
+            echo | pwd
+            echo | ls
+            
+            chown -R root:www-data project/
+            
+            find project/ -type f -exec chmod 664 {} \;
+            find project/ -type d -exec chmod 775 {} \;
+            
+            cd project
+            
+            chgrp -R www-data storage bootstrap/cache
+            chmod -R ug+rwx storage bootstrap/cache
+    
+            gcloud app deploy
+
+workflows:
+  gcloud_test_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
