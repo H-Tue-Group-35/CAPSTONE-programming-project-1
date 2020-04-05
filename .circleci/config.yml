@@ -43,9 +43,9 @@ jobs:
             find project/ -type d -exec chmod 775 {} \;
             
             cd project
-
             
-            chmod -R 777 bootstrap/cache/
+            chgrp -R www-data storage bootstrap/cache
+            chmod -R ug+rwx storage bootstrap/cache
     
             gcloud app deploy
 
