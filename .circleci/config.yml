@@ -37,6 +37,8 @@ jobs:
             echo | pwd
             echo | ls
             
+            chown -R root:www-data project/
+            
             find project/ -type f -exec chmod 664 {} \;
             find project/ -type d -exec chmod 775 {} \;
             
