@@ -1,7 +1,3 @@
- version: 2
- jobs: # we now have TWO jobs, so that a workflow can coordinate them!
-   one: # This is our first job.
-   
 version: 2
 jobs:
     one:
