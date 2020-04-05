@@ -30,7 +30,7 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             
-            sudo chmod -R 777 bootstrap/cache/
+            chmod -R 777 bootstrap/cache/
             gcloud app deploy
 
 workflows:
