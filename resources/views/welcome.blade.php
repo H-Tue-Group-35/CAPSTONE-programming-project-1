@@ -84,7 +84,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Car 4 ALL
+                Car-4-ALL
             </div>
 
             <div class="links">
