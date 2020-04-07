@@ -20,8 +20,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
 
 
     <link rel="stylesheet" href="css/flaticon.css">
