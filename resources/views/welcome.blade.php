@@ -84,7 +84,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Car-4-ALL
+                This is a push from the development branch
             </div>
 
             <div class="links">
