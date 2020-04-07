@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
 
