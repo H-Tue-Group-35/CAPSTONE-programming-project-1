@@ -63,10 +63,16 @@
     .m-b-md {
         margin-bottom: 30px;
     }
+
+    h1 {
+        color: pink;
+    }
     </style>
 </head>
 
 <body>
+
+    <h1>TESTINGGG</h1>
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">
