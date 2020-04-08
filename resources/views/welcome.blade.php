@@ -4,93 +4,92 @@
 <head>
     <title>Car-4-All</title>
     <meta charset="utf-8">
-<<<<<<< HEAD
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <<<<<<< HEAD <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Car-4-All</title>
+        <title>Car-4-All</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-    <!-- Styles -->
-    <style>
-    html,
-    body {
-        background-color: #fff;
-        color: #636b6f;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 200;
-        height: 100vh;
-        margin: 0;
-    }
+        <!-- Styles -->
+        <style>
+        html,
+        body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+        }
 
-    .full-height {
-        height: 100vh;
-    }
+        .full-height {
+            height: 100vh;
+        }
 
-    .flex-center {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
 
-    .position-ref {
-        position: relative;
-    }
+        .position-ref {
+            position: relative;
+        }
 
-    .top-right {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-    }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
 
-    .content {
-        text-align: center;
-    }
+        .content {
+            text-align: center;
+        }
 
-    .title {
-        font-size: 84px;
-    }
+        .title {
+            font-size: 84px;
+        }
 
-    .links>a {
-        color: #636b6f;
-        padding: 0 25px;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: .1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
+        .links>a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-    .m-b-md {
-        margin-bottom: 30px;
-    }
-    </style>
-=======
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+        </style>
+        =======
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+            rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
 
 
-    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
->>>>>>> parent of b1a651c... changed back
+        <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        >>>>>>> parent of b1a651c... changed back
 </head>
 
 <body>
@@ -653,6 +652,7 @@
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                 stroke="#F96D00" /></svg></div>
+
 
 
 
