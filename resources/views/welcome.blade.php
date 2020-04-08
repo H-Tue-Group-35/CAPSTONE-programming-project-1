@@ -29,7 +29,7 @@
                     <center>
                         <h1>CAR4ALL</h1>
                     </center>
-
+                    <br>
                     <h1>Rent a car at low prices</h1>
                 </header>
                 <div class="content">
