@@ -10,6 +10,8 @@
         rel="stylesheet">
 
     <link href="{{ asset('css/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/css/app.css') }}" rel="stylesheet" />
     <!--
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
