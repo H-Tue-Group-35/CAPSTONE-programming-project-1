@@ -20,7 +20,7 @@
     <!-- Wrapper -->
     <div id="wrapper">
 
-        <?php include("includes/menu.php"); ?>
+
 
         <!-- Banner -->
         <section id="banner" class="major">
