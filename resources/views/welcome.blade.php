@@ -26,6 +26,10 @@
         <section id="banner" class="major">
             <div class="inner">
                 <header class="major">
+                    <center>
+                        <h1>CAR4ALL</h1>
+                    </center>
+
                     <h1>Rent a car at low prices</h1>
                 </header>
                 <div class="content">
