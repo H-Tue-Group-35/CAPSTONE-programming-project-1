@@ -90,7 +90,7 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
->>>>>>> parent of b1a651c... changed back
+>>>>>>> parent of b1a651c... changed backk
 </head>
 
 <body>
