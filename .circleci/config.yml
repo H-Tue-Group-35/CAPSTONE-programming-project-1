@@ -47,12 +47,6 @@ jobs:
             chgrp -R www-data storage bootstrap/cache
             chmod -R ug+rwx storage bootstrap/cache
             
-            sudo php artisan route:clear
-            sudo php artisan view:clear
-            sudo php artisan config:clear
-            sudo php artisan cache:clear
-            sudo php artisan optimize:clear
-
     
             gcloud app deploy
 
