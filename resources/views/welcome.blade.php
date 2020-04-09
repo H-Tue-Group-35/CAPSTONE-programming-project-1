@@ -27,7 +27,7 @@
             <div class="inner">
                 <header class="major">
                     <center>
-                        <h1>CAR4ALL</h1>
+                        <h1>CAR4ALL test</h1>
                     </center>
                     <br>
                     <h1>Rent a car at low prices</h1>
