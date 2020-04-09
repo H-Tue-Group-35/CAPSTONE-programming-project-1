@@ -6,11 +6,6 @@
 -->
 
 <?php
-session_start();
-
-$oldpass = $_POST['oldpass'];
-$newpass = $_POST['newpass'];
-
 require __DIR__ . '/vendor/autoload.php';
 use Google\Cloud\Datastore\DatastoreClient;
 
