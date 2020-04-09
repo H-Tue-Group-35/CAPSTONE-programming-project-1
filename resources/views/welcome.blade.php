@@ -4,27 +4,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-
-<?php
-session_start();
-
-$oldpass = $_POST['oldpass'];
-$newpass = $_POST['newpass'];
-
-require __DIR__ . '/vendor/autoload.php';
-use Google\Cloud\Datastore\DatastoreClient;
-
-$projectId = 'car-for-all-273306';
-$datastore = new DatastoreClient([
-'projectId' => $projectId
-]);
-
-$transaction = $datastore->transaction();
-$key = $datastore->key('id', "5642368648740864");
-$entity = $transaction->lookup($key);
-
-?>
-
 <html>
 
 <head>
@@ -55,9 +34,6 @@ $entity = $transaction->lookup($key);
                 </header>
                 <div class="content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, libero!</p>
-
-					<p>Database test: <?php if (!is_null($entity)){echo $entity['name'];}?> END</p>
-					
                     <ul class="actions">
                         <li><a href="#one" class="button next scrolly">Select a Car</a></li>
                     </ul>
