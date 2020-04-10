@@ -24,8 +24,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
-    <script type="text/javascript" src="js/firebase.js"></script>
-    <script type="text/javascript" src="js/currentLocation.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+    <script type="text/javascript" src="currentLocation.js"></script>
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
