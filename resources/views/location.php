@@ -73,7 +73,7 @@ function initMap() {
                         console.log(doc.id, " => ", doc.data().location);
                         var temp = JSON.stringify(doc.data().location);
                         var obj = JSON.parse(temp);
-                        console.log(obj.Wa);
+                        console.log(doc.data().location.latitude);
                         var coordinates = {
                             lat: obj.Wa,
                             lng: obj.za
