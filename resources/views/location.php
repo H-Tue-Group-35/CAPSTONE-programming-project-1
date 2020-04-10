@@ -19,13 +19,13 @@
     </style>
   </head>
   <body>
+    testing
     <div id="map"></div>
-      testing
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
-    <script type="text/javascript" src="{{ asset('/js/location.js') }}"></script>
+    <script type="text/javascript" src="assets/js/location.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
