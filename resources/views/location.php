@@ -49,14 +49,14 @@ function initMap() {
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
-        var location_timeout = setTimeout("geolocFail()", 10000);
-
         navigator.geolocation.getCurrentPosition(function (position) {
-            clearTimeout(location_timeout);
+           console.log(position.coords.latitude);
+
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+
 
             var marker = new google.maps.Marker({position: pos, map: map});
             map.setCenter(pos);
@@ -90,14 +90,10 @@ function initMap() {
 
                     }, function () {
                         handleLocationError(true, infoWindow, map.getCenter());
-                    }, function (error) {
-                      clearTimeout(location_timeout);
-                      geolocFail();
                     });
     } else {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
-        geolocFail();
     }
 }
 
