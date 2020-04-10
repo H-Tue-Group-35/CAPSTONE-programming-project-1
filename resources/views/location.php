@@ -27,7 +27,7 @@
 
     <script>
       var firebaseConfig = {
-    apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
+        apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
     authDomain: "car-for-all-273711.firebaseapp.com",
     databaseURL: "https://car-for-all-273711.firebaseio.com",
     projectId: "car-for-all-273711",
@@ -62,7 +62,7 @@ function initMap() {
             var markers = []
             console.log(typeof(markers));
 
-            db.collection("locations")
+            db.collection("Vehicles")
                 .get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
