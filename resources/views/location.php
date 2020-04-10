@@ -25,16 +25,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <script type="text/javascript" src="firebase.js"></script>
-    <script type="text/javascript" src="currentLocation.js"></script>
-=======
-    <script type="text/javascript" src="location.js"></script>
->>>>>>> parent of ac17043... Final Fix.
-=======
     <script>
-      var firebaseConfig = {
+            var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
     authDomain: "car-for-all-273711.firebaseapp.com",
     databaseURL: "https://car-for-all-273711.firebaseio.com",
