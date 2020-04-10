@@ -19,7 +19,6 @@
     </style>
   </head>
   <body>
-    testing
     <div id="map"></div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
@@ -35,7 +34,6 @@
     messagingSenderId: "548693459929",
     appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
   };
->>>>>>> parent of 16fc6cb... Attempt Fix
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
@@ -72,12 +70,9 @@ function initMap() {
                     querySnapshot.forEach(function(doc) {
                         // doc.data() is never undefined for query doc snapshots
                         console.log(doc.id, " => ", doc.data().location);
-                        var temp = JSON.stringify(doc.data().location);
-                        var obj = JSON.parse(temp);
-                        console.log(doc.data().location.latitude);
                         var coordinates = {
-                            lat: obj.Wa,
-                            lng: obj.za
+                            lat: doc.data().location.latitude,
+                            lng: doc.data().location.longitude
                         };
 
                         markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
