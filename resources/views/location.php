@@ -24,8 +24,12 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
+<<<<<<< HEAD
     <script type="text/javascript" src="firebase.js"></script>
     <script type="text/javascript" src="currentLocation.js"></script>
+=======
+    <script type="text/javascript" src="location.js"></script>
+>>>>>>> parent of ac17043... Final Fix.
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
