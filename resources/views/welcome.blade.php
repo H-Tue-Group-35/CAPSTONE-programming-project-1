@@ -167,7 +167,7 @@
                 <div class="inner">
                     <header class="major">
                         <center>
-                            <h2>Locate Your Nearest vehicle</h2>
+                            <h2>Find Your Nearest vehicle</h2>
                         </center>
                     </header>
 
