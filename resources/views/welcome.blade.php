@@ -146,6 +146,22 @@
                 </article>
             </section>
 
+
+            <section id="two">
+                <div class="inner">
+                    <header class="major">
+                        <center>
+                            <h2>Find Your Nearest vehicle</h2>
+                        </center>
+                    </header>
+
+                    <ul class="actions">
+                        <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
+                    </ul>
+                </div>
+            </section>
+
+
             <!-- Two -->
             <section id="two">
                 <div class="inner">
@@ -163,19 +179,7 @@
                 </div>
             </section>
 
-            <section id="two">
-                <div class="inner">
-                    <header class="major">
-                        <center>
-                            <h2>Find Your Nearest vehicle</h2>
-                        </center>
-                    </header>
 
-                    <ul class="actions">
-                        <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
-                    </ul>
-                </div>
-            </section>
 
         </div>
 
