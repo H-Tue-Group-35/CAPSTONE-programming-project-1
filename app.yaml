@@ -2,7 +2,7 @@ runtime: php72
 
 env_variables:
   ## Put production environment variables here.
-  APP_KEY: base64:fygg5pSXb3OyU7RvYVxyvhIlj0Q1kdHLYOg1cpbfqEk=
+  APP_KEY: base64:zbOeQdon+MA02A0mGFuQt3D+SRlb+U7J4Rq2Z4bN9s4=
   APP_STORAGE: /tmp
   VIEW_COMPILED_PATH: /tmp
   ## Google App engine only allows writing to tmp

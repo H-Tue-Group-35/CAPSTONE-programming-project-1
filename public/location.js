@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
-
-    <script>
-            var firebaseConfig = {
-        apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
+var firebaseConfig = {
+    apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
     authDomain: "car-for-all-273711.firebaseapp.com",
     databaseURL: "https://car-for-all-273711.firebaseio.com",
     projectId: "car-for-all-273711",
@@ -49,13 +22,10 @@ function initMap() {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-           console.log(position.coords.latitude);
-
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
 
             var marker = new google.maps.Marker({position: pos, map: map});
             map.setCenter(pos);
@@ -64,15 +34,18 @@ function initMap() {
             var markers = []
             console.log(typeof(markers));
 
-            db.collection("Vehicles")
+            db.collection("locations")
                 .get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
                         // doc.data() is never undefined for query doc snapshots
                         console.log(doc.id, " => ", doc.data().location);
+                        var temp = JSON.stringify(doc.data().location);
+                        var obj = JSON.parse(temp);
+                        console.log(obj.Wa);
                         var coordinates = {
-                            lat: doc.data().location.latitude,
-                            lng: doc.data().location.longitude
+                            lat: obj.Wa,
+                            lng: obj.za
                         };
 
                         markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
@@ -101,10 +74,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(map);
 }
 
-
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
-    </script>
-  </body>
-</html>
