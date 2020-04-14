@@ -172,7 +172,7 @@
                     </header>
 
                     <ul class="actions">
-                        <li><a href="about.php" class="button next">Read more</a></li>
+                        <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
                     </ul>
                 </div>
             </section>
