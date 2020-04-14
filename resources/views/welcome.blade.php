@@ -283,32 +283,21 @@
                         <h3>Terms</h3>
 
                         <div class="box">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam quasi molestiae quo
-                                repudiandae repellat dolore impedit alias soluta, excepturi aperiam aliquid numquam
-                                dignissimos nulla exercitationem vel, fuga accusamus voluptate, ipsa quia. Possimus odit
-                                ipsam deleniti nisi soluta voluptas! Nemo aperiam dignissimos, nisi. Necessitatibus cum
-                                quos dolor incidunt! Ab voluptatum sapiente voluptas fuga in rem voluptatibus rerum
-                                ipsam eos dolorem aspernatur saepe incidunt provident nihil, quos ad perspiciatis est
-                                voluptatem commodi. Repellat dolores, ipsam facere ipsum, cumque deleniti perferendis
-                                delectus consequatur harum fuga et architecto vitae neque suscipit. Aut vero architecto
-                                non maxime molestiae autem dolores, corporis, molestias esse voluptatum nobis error
-                                minima deserunt provident consectetur. Qui, ipsa assumenda voluptatum asperiores
-                                laudantium nobis harum sint quis sed quia, officiis odit eaque a! Quos provident eos
-                                earum facilis nam consequuntur reiciendis amet sunt? Quia, quasi sunt. Aliquam labore
-                                vitae, officiis ullam itaque. Id non est earum praesentium incidunt officia quos modi at
-                                suscipit quibusdam. Id nostrum beatae ea atque, fugiat mollitia, eius, sed eos quidem
-                                itaque inventore hic reiciendis quas doloremque illum. Enim eum labore odio alias.
-                                Consectetur molestias, suscipit, animi amet enim eius, voluptates nulla sapiente earum
-                                tenetur explicabo iusto ad officiis! Praesentium minus illo saepe voluptatibus
-                                obcaecati, excepturi, sit nam quaerat ab velit deserunt tenetur magni quae temporibus!
-                                Iusto sapiente iste eos, ipsa dolores obcaecati voluptas commodi, nesciunt officiis at
-                                quis magni quos, ducimus ad. Minus dicta blanditiis voluptatum ipsa, voluptatem sequi
-                                eligendi nam est possimus libero aliquam, eos provident repellendus dolores. Distinctio
-                                corrupti ea ipsam, dolore, dolorem similique eos illo iure ad maxime, cumque doloribus
-                                iusto expedita quidem accusantium cum, voluptatibus ducimus! Neque eos cupiditate at
-                                molestias sequi enim! Amet nesciunt dolorem quisquam sunt ad quos fugit at alias
-                                distinctio nihil nostrum, itaque a repudiandae soluta dicta quasi, repellat quidem
-                                autem. Architecto, esse porro iure repellat sed. Quidem?</p>
+                            <p>This Site and all its Contents are intended solely for personal, non-commercial use.
+                                Except as expressly provided, nothing within the Site shall be construed as conferring
+                                any license under our or any third party's intellectual property rights, whether by
+                                estoppel, implication, waiver, or otherwise. Without limiting the generality of the
+                                foregoing, you acknowledge and agree that all content available through and used to
+                                operate the Site and its services is protected by copyright, trademark, patent, or other
+                                proprietary rights. You agree not to: (a) modify, alter, or deface any of the
+                                trademarks, service marks, trade dress (collectively "Trademarks") or other intellectual
+                                property made available by us in connection with the Site; (b) hold yourself out as in
+                                any way sponsored by, affiliated with, or endorsed by us, or any of our affiliates or
+                                service providers; (c) use any of the Trademarks or other content accessible through the
+                                Site for any purpose other than the purpose for which we have made it available to you;
+                                (d) defame or disparage us, our Trademarks, or any aspect of the Site; and (e) adapt,
+                                translate, modify, decompile, disassemble, or reverse engineer the Site or any software
+                                or programs used in connection with it or its products and services.</p>
                         </div>
                     </section>
                 </section>
