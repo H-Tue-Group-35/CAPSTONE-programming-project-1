@@ -20,6 +20,12 @@
     <!-- Wrapper -->
     <div id="wrapper">
 
+        <style>
+        #title {
+            font-size: 30px;
+
+        }
+        </style>
 
 
         <!-- Banner -->
@@ -27,7 +33,7 @@
             <div class="inner">
                 <header class="major">
                     <center>
-                        <h1>CAR4ALL</h1>
+                        <h1 id="title">CAR4ALL</h1>
                     </center>
                     <br>
                     <h1>Rent a car at low prices</h1>
@@ -145,6 +151,22 @@
                 <div class="inner">
                     <header class="major">
                         <h2>About us</h2>
+                    </header>
+                    <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna
+                        magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna.
+                        Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem
+                        consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus
+                        amet pharetra et feugiat tempus.</p>
+                    <ul class="actions">
+                        <li><a href="about.php" class="button next">Read more</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="two">
+                <div class="inner">
+                    <header class="major">
+                        <h2>"MAP"</h2>
                     </header>
                     <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna
                         magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna.
