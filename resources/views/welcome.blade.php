@@ -7,7 +7,7 @@
 <html>
 
 <head>
-    <title>Car Rental Website</title>
+    <title>Car4All</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -33,7 +33,7 @@
                     <h1>Rent a car at low prices</h1>
                 </header>
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, libero!</p>
+                    <p>Car4All Connecting you with the people, places, and things you love.</p>
                     <ul class="actions">
                         <li><a href="#one" class="button next scrolly">Select a Car</a></li>
                     </ul>
