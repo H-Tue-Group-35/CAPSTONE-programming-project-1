@@ -166,13 +166,11 @@
             <section id="two">
                 <div class="inner">
                     <header class="major">
-                        <h2>"MAP"</h2>
+                        <center>
+                            <h2>Locate Your Nearest vehicle</h2>
+                        </center>
                     </header>
-                    <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna
-                        magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna.
-                        Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem
-                        consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus
-                        amet pharetra et feugiat tempus.</p>
+
                     <ul class="actions">
                         <li><a href="about.php" class="button next">Read more</a></li>
                     </ul>
