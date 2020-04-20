@@ -13,88 +13,6 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
-
-    <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
-            authDomain: "car-for-all-273711.firebaseapp.com",
-            databaseURL: "https://car-for-all-273711.firebaseio.com",
-            projectId: "car-for-all-273711",
-            storageBucket: "car-for-all-273711.appspot.com",
-            messagingSenderId: "548693459929",
-            appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        var db = firebase.firestore();
-        var map, infoWindow;
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 17
-            });
-            infoWindow = new google.maps.InfoWindow;
-
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                console.log(position.coords.latitude);
-
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-
-                    var marker = new google.maps.Marker({position: pos, map: map});
-                    map.setCenter(pos);
-
-                    
-                    var markers = []
-                    console.log(typeof(markers));
-
-                    db.collection("Vehicles")
-                        .get()
-                        .then(function(querySnapshot) {
-                            querySnapshot.forEach(function(doc) {
-                                // doc.data() is never undefined for query doc snapshots
-                                console.log(doc.id, " => ", doc.data().location);
-                                var coordinates = {
-                                    lat: doc.data().location.latitude,
-                                    lng: doc.data().location.longitude
-                                };
-
-                                markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
-                                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-                                }}))
-                            });
-                        })
-                        .catch(function(error) {
-                            console.log("Error getting documents: ", error);
-                        });
-
-                            }, function () {
-                                handleLocationError(true, infoWindow, map.getCenter());
-                            });
-            } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        }
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(browserHasGeolocation ?
-                'Error: The Geolocation service failed.' :
-                'Error: Your browser doesn\'t support geolocation.');
-            infoWindow.open(map);
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap"></script>
 </head>
 
 <body class="is-preload">
@@ -248,10 +166,93 @@
             <section id="two">
                 <div class="inner">
                     <header class="major">
-                        <h2>Locate Your Nearest vehicle</h2>
-                        
+                        <center>
+                            <h2>Locate Your Nearest vehicle</h2>
+                            <div id="map"></div>
+                            <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+                            <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+
+                            <script>
+                                var firebaseConfig = {
+                                    apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
+                                    authDomain: "car-for-all-273711.firebaseapp.com",
+                                    databaseURL: "https://car-for-all-273711.firebaseio.com",
+                                    projectId: "car-for-all-273711",
+                                    storageBucket: "car-for-all-273711.appspot.com",
+                                    messagingSenderId: "548693459929",
+                                    appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
+                                };
+
+                                firebase.initializeApp(firebaseConfig);
+                                var db = firebase.firestore();
+                                var map, infoWindow;
+
+                                function initMap() {
+                                    map = new google.maps.Map(document.getElementById('map'), {
+                                        center: { lat: -34.397, lng: 150.644 },
+                                        zoom: 17
+                                    });
+                                    infoWindow = new google.maps.InfoWindow;
+
+                                    // Try HTML5 geolocation.
+                                    if (navigator.geolocation) {
+                                        navigator.geolocation.getCurrentPosition(function (position) {
+                                        console.log(position.coords.latitude);
+
+                                            var pos = {
+                                                lat: position.coords.latitude,
+                                                lng: position.coords.longitude
+                                            };
+
+
+                                            var marker = new google.maps.Marker({position: pos, map: map});
+                                            map.setCenter(pos);
+
+                                            
+                                            var markers = []
+                                            console.log(typeof(markers));
+
+                                            db.collection("Vehicles")
+                                                .get()
+                                                .then(function(querySnapshot) {
+                                                    querySnapshot.forEach(function(doc) {
+                                                        // doc.data() is never undefined for query doc snapshots
+                                                        console.log(doc.id, " => ", doc.data().location);
+                                                        var coordinates = {
+                                                            lat: doc.data().location.latitude,
+                                                            lng: doc.data().location.longitude
+                                                        };
+
+                                                        markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
+                                                            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                                        }}))
+                                                    });
+                                                })
+                                                .catch(function(error) {
+                                                    console.log("Error getting documents: ", error);
+                                                });
+
+                                                    }, function () {
+                                                        handleLocationError(true, infoWindow, map.getCenter());
+                                                    });
+                                    } else {
+                                        // Browser doesn't support Geolocation
+                                        handleLocationError(false, infoWindow, map.getCenter());
+                                    }
+                                }
+
+                                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                                    infoWindow.setPosition(pos);
+                                    infoWindow.setContent(browserHasGeolocation ?
+                                        'Error: The Geolocation service failed.' :
+                                        'Error: Your browser doesn\'t support geolocation.');
+                                    infoWindow.open(map);
+                                }
+                            </script>
+                            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap"></script>
+                        </center>
                     </header>
-                    <div id="map" style="height:800px;"></div>
+
                     <ul class="actions">
                         <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
                     </ul>
