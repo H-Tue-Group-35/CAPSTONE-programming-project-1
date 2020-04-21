@@ -34,7 +34,7 @@
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -34.397, lng: 150.644 },
+                center: { lat: -37.806, lng: 144.954 },
                 zoom: 17
             });
             infoWindow = new google.maps.InfoWindow;
@@ -53,7 +53,7 @@
                     var marker = new google.maps.Marker({position: pos, map: map});
                     map.setCenter(pos);
 
-                    
+
                     var markers = []
                     console.log(typeof(markers));
 
@@ -249,7 +249,7 @@
                 <div class="inner">
                     <header class="major">
                         <h2>Locate Your Nearest vehicle</h2>
-                        
+
                     </header>
                     <div id="map" style="height:800px;"></div>
                     <ul class="actions">
