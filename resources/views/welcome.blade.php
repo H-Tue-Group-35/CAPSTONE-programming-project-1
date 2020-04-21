@@ -45,51 +45,21 @@
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                console.log(position.coords.latitude);
+                    console.log(position.coords.latitude);
 
-<<<<<<< HEAD
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-
-
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map
-                });
-                map.setCenter(pos);
-
-
-                var markers = []
-                console.log(typeof(markers));
-
-                db.collection("Vehicles")
-                    .get()
-                    .then(function(querySnapshot) {
-                        querySnapshot.forEach(function(doc) {
-                            // doc.data() is never undefined for query doc snapshots
-                            console.log(doc.id, " => ", doc.data().location);
-                            var coordinates = {
-                                lat: doc.data().location.latitude,
-                                lng: doc.data().location.longitude
-                            };
-
-                            markers.push(new google.maps.Marker({
-                                position: coordinates,
-                                map: map,
-                                icon: {
-                                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-                                }
-                            }))
-=======
+                    <<
+                    <<
+                    << < HEAD
                     var pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
 
 
-                    var marker = new google.maps.Marker({position: pos, map: map});
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map
+                    });
                     map.setCenter(pos);
 
 
@@ -100,43 +70,85 @@
                         .get()
                         .then(function(querySnapshot) {
                             querySnapshot.forEach(function(doc) {
-                                // doc.data() is never undefined for query doc snapshots
-                                console.log(doc.id, " => ", doc.data().location);
-                                var coordinates = {
-                                    lat: doc.data().location.latitude,
-                                    lng: doc.data().location.longitude
-                                };
+                                    // doc.data() is never undefined for query doc snapshots
+                                    console.log(doc.id, " => ", doc.data().location);
+                                    var coordinates = {
+                                        lat: doc.data().location.latitude,
+                                        lng: doc.data().location.longitude
+                                    };
 
-                                markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
-                                    url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
-                                }}))
-                            });
-                        })
-                        .catch(function(error) {
-                            console.log("Error getting documents: ", error);
->>>>>>> ada21f417ebdc5e97f0058fab79d3390d06530d1
+                                    markers.push(new google.maps.Marker({
+                                            position: coordinates,
+                                            map: map,
+                                            icon: {
+                                                url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                            }
+                                        })) ===
+                                        ===
+                                        =
+                                        var pos = {
+                                            lat: position.coords.latitude,
+                                            lng: position.coords.longitude
+                                        };
+
+
+                                    var marker = new google.maps.Marker({
+                                        position: pos,
+                                        map: map
+                                    });
+                                    map.setCenter(pos);
+
+
+                                    var markers = []
+                                    console.log(typeof(markers));
+
+                                    db.collection("Vehicles")
+                                        .get()
+                                        .then(function(querySnapshot) {
+                                            querySnapshot.forEach(function(doc) {
+                                                // doc.data() is never undefined for query doc snapshots
+                                                console.log(doc.id, " => ", doc.data()
+                                                .location);
+                                                var coordinates = {
+                                                    lat: doc.data().location.latitude,
+                                                    lng: doc.data().location.longitude
+                                                };
+
+                                                markers.push(new google.maps.Marker({
+                                                    position: coordinates,
+                                                    map: map,
+                                                    icon: {
+                                                        url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
+                                                    }
+                                                }))
+                                            });
+                                        })
+                                        .catch(function(error) {
+                                            console.log("Error getting documents: ", error); >>>
+                                            >>>
+                                            > ada21f417ebdc5e97f0058fab79d3390d06530d1
+                                        });
+                                })
+                                .catch(function(error) {
+                                    console.log("Error getting documents: ", error);
+                                });
+
+                        }, function() {
+                            handleLocationError(true, infoWindow, map.getCenter());
                         });
-                    })
-                    .catch(function(error) {
-                        console.log("Error getting documents: ", error);
-                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
 
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-    }
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-    }
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);
+            }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
@@ -7425,8 +7437,8 @@
     }
 
     body.is-preload #banner>.inner {
-       
- -moz-filter: none;
+
+        -moz-filter: none;
         -webkit-filter: none;
         -ms-filter: none;
         filter: none;
@@ -7436,7 +7448,8 @@
         transform: none;
         opacity: 1;
     }
-    </style>
+    </s
+tyle>
 </body>
 
 
