@@ -176,7 +176,7 @@
             <div class="inner">
                 <header class="major">
                     <center>
-                        <h1 id="title">CAR4ALLTEST</h1>
+                        <h1 id="title">CAR4ALLTESTT</h1>
                     </center>
                     <br>
                     <h1>Rent a car at low prices</h1>
@@ -7451,6 +7451,7 @@
         transform: none;
         opacity: 1;
     }
+
 
 
     </s tyle></body></html>
