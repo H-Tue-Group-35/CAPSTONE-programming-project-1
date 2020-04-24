@@ -137,11 +137,14 @@
      <nav>
 
 
-        
-       <li class="navbar" <a href="contact"></a>></li>
         <li class="navbar">Sign up</li>
         
-        
+        <ul>
+            <li><a href="contact">Contact us</a></li>
+        </ul>
+      
+
+
         </nav>
      
      </div>
