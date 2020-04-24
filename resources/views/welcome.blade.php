@@ -144,7 +144,7 @@
  padding: 10px;
  font-family: "Source Sans Pro", Helvetica, sans-serif;
 
-font-size: 1.6em;
+font-size: 1.7em;
 
         }
         

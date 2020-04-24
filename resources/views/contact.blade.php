@@ -7,7 +7,59 @@
 </head>
 <body>
     
-    <h1>this is the contact us page!</h1>
+    <style>
+    
+h1{
+    font-size: 3.5em;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    text-decoration: underline;
+}    
+
+.center{
+    text-align: center;
+    border: 2px solid black;
+}
+
+
+    </style>
+
+
+    <h1>Contact Us</h1>
+
+<div class="center">
+
+<section>
+                        <div class="contact-method">
+                            
+                            <h3>Email</h3>
+                            <a href="#">Car4all@gmail.com</a>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="contact-method">
+                         
+                            <h3>Phone</h3>
+                            <span>(03) 100-5555 12387</span>
+                            <br>
+                            <span>(04) 450-0400 12387</span>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="contact-method">
+                           
+                            <h3>Address</h3>
+                            <span>1234 Collins Street #5432<br />
+                                Melbourne, CBD 3051<br />
+                                Australia</span>
+                        </div>
+                    </section>
+
+
+</div>
+
+
+
 
 
     <style>
