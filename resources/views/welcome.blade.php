@@ -49,9 +49,7 @@
 
                     <<
                     <<
-                    <<
-                    <
-                    HEAD
+                    << < HEAD
                     var pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
@@ -110,7 +108,7 @@
                                             querySnapshot.forEach(function(doc) {
                                                 // doc.data() is never undefined for query doc snapshots
                                                 console.log(doc.id, " => ", doc.data()
-                                                    .location);
+                                                .location);
                                                 var coordinates = {
                                                     lat: doc.data().location.latitude,
                                                     lng: doc.data().location.longitude
@@ -128,8 +126,7 @@
                                         .catch(function(error) {
                                             console.log("Error getting documents: ", error); >>>
                                             >>>
-                                            >
-                                            ada21f417ebdc5e97f0058fab79d3390d06530d1
+                                            > ada21f417ebdc5e97f0058fab79d3390d06530d1
                                         });
                                 })
                                 .catch(function(error) {
@@ -176,7 +173,7 @@
             <div class="inner">
                 <header class="major">
                     <center>
-                        <h1 id="title">CAR4ALLTEST</h1>
+                        <h1 id="title">CAR4ALL</h1>
                     </center>
                     <br>
                     <h1>Rent a car at low prices</h1>
@@ -7451,6 +7448,10 @@
         transform: none;
         opacity: 1;
     }
+    </s
+tyle>
+</body>
 
 
-    </s tyle></body></html>
+
+</html>
