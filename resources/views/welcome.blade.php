@@ -109,16 +109,7 @@
         }
         </style>
 
-        <style>
-        
-        .navbar{
- text-align: center;
- display: inline;
- margin: 0;
-
-        }
-        
-        </style>
+      
 
 
         <!-- Banner -->
@@ -132,18 +123,44 @@
             </div>
         </section>
 
-        <div class="navbar">
+        <div class="center">
      
      <nav>
 
 
-        <li class="navbar">Sign up</li>
-        
         <ul>
-            <li><a href="contact">contact</a></li>
+        
+       
+        <style>
+.center{
+    text-align:center;
+}
+
+        
+        .navbar{
+ text-align: center;
+ display: inline;
+ margin: 0;
+ padding: 10px;
+ font-family: "Source Sans Pro", Helvetica, sans-serif;
+
+font-size: 1.6em;
+
+        }
+        
+        </style>
+
+    <li class="navbar"><a href="booking">Booking</a></li>
+    
+        
+    
+            <li class="navbar"><a href="contact">Contact</a></li>
+
+            <li class="navbar" ><a href="login">Login</a></li>
         </ul>
       
-
+      
+      
 
         </nav>
      

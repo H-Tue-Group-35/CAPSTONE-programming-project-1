@@ -21,6 +21,8 @@ Route::view('contact', 'contact');
 
 Route::view('booking', 'booking');
 
+Route::view('login', 'login');
+
 
 Route::get('/location','LocationController@index');
 
