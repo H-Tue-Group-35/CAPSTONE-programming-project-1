@@ -117,15 +117,7 @@
                     <center>
                         <h1 id="title">CAR4ALL</h1>
                     </center>
-                    <br>
-                    <h1>Rent a car at low prices</h1>
                 </header>
-                <div class="content">
-                    <p>Car4All Connecting you with the people, places, and things you love.</p>
-                    <ul class="actions">
-                        <li><a href="#one" class="button next scrolly">Select a Car</a></li>
-                    </ul>
-                </div>
             </div>
         </section>
 		
