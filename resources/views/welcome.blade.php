@@ -114,23 +114,13 @@
         .navbar{
  text-align: center;
  display: inline;
+ margin: 0;
 
         }
         
         </style>
 
-<div class="navbar">
-     
-     <nav>
-        
-        
-        <li>About us</li>
-        <li>Sign up</li>
-        
-        
-        </nav>
-     
-     </div>
+
         <!-- Banner -->
         <section id="banner" class="major">
             <div class="inner">
@@ -142,7 +132,18 @@
             </div>
         </section>
 
- 
+        <div class="navbar">
+     
+     <nav>
+        
+        
+        <li class="navbar">About us</li>
+        <li class="navbar">Sign up</li>
+        
+        
+        </nav>
+     
+     </div>
         
       
         
