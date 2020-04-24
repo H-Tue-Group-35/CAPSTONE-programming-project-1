@@ -69,7 +69,7 @@
                                 };
 
                                 markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
-                                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                    url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
                                 }}))
                             });
                         })
