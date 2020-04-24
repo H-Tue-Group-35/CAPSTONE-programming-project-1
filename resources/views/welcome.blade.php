@@ -135,9 +135,10 @@
         <div class="navbar">
      
      <nav>
+
+
         
-        <li class="navbar" <a href="contact"></a>
- >Contact us</li>
+       <li class="navbar" <a href="contact"></a>></li>
         <li class="navbar">Sign up</li>
         
         
