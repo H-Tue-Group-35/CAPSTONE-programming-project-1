@@ -128,9 +128,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Main -->
-        <div id="main">
 		
             <section id="two">
                 <div class="inner">
@@ -144,6 +141,9 @@
                     </ul>
                 </div>
             </section>
+
+        <!-- Main -->
+        <div id="main">
 
             <!-- One -->
             <section id="one" class="tiles">
