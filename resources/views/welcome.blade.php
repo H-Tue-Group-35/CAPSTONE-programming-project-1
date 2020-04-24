@@ -136,8 +136,8 @@
      
      <nav>
         
-        
-        <li class="navbar">About us</li>
+        <li class="navbar" <a href="contact"></a>
+ >Contact us</li>
         <li class="navbar">Sign up</li>
         
         

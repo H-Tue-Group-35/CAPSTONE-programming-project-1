@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>/Users/mehyarbelal/Documents/GitHub/CAPSTONE-programming-project-1/resources/views/home.blade.php
 <html>
   <head>
     <title>Geolocation</title>

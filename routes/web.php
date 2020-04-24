@@ -17,5 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('contact', function()
+{
+    return View::make('pages.contact');
+});
+
 Route::get('/location','LocationController@index');
 
