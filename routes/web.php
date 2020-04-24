@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::view('contact', 'contact');
 
+Route::view('booking', 'booking');
+
 
 Route::get('/location','LocationController@index');
 
