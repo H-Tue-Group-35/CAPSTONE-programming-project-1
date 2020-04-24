@@ -120,6 +120,19 @@
                 </header>
             </div>
         </section>
+
+        <center>
+        
+        <nav>
+        
+        
+        <li>About us</li>
+        <li>Sign up</li>
+        
+        
+        </nav>
+        
+        </center>
 		
             <section id="two">
                 <div class="inner">
