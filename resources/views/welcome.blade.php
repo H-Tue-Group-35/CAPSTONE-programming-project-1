@@ -227,6 +227,19 @@
                     </header>
                 </article>
             </section>
+			
+            <section id="two">
+                <div class="inner">
+                    <header class="major">
+                        <h2>Locate Your Nearest vehicle</h2>
+
+                    </header>
+                    <div id="map" style="height:800px;"></div>
+                    <ul class="actions">
+                        <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
+                    </ul>
+                </div>
+            </section>
 
             <!-- Two -->
             <section id="two">
@@ -245,18 +258,7 @@
                 </div>
             </section>
 
-            <section id="two">
-                <div class="inner">
-                    <header class="major">
-                        <h2>Locate Your Nearest vehicle</h2>
 
-                    </header>
-                    <div id="map" style="height:800px;"></div>
-                    <ul class="actions">
-                        <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
-                    </ul>
-                </div>
-            </section>
 
         </div>
 
