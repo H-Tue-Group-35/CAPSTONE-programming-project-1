@@ -140,7 +140,7 @@
         <li class="navbar">Sign up</li>
         
         <ul>
-            <li><a href="contact">Contact us</a></li>
+            <li><a href="contact">contact</a></li>
         </ul>
       
 

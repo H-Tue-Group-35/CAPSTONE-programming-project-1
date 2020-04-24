@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('contact');
-});
+Route::view('contact', 'contact',);
 
 
 Route::get('/location','LocationController@index');
