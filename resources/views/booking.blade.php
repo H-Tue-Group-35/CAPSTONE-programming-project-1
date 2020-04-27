@@ -13,7 +13,7 @@
     
     h1{
         font-size: 3.5em;
-   
+        text-shadow: 2px 2px black;
         text-align: center;
         text-decoration: underline;
     }    
