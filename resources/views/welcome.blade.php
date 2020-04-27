@@ -61,16 +61,42 @@
                         .get()
                         .then(function(querySnapshot) {
                             querySnapshot.forEach(function(doc) {
-                                // doc.data() is never undefined for query doc snapshots
-                                console.log(doc.id, " => ", doc.data().location);
-                                var coordinates = {
-                                    lat: doc.data().location.latitude,
-                                    lng: doc.data().location.longitude
-                                };
 
-                                markers.push(new google.maps.Marker({position: coordinates, map: map, icon: {
-                                    url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
-                                }}))
+                                if (doc.data().available) {
+
+                                
+                                    var coordinates = {
+                                        lat: doc.data().location.latitude,
+                                        lng: doc.data().location.longitude
+                                    };
+
+                                    var contentString = 
+                                        '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="'+ 
+                                        doc.data().image +'" alt="" width="246" height="138" /></span></p>' +
+                                        '<p style="text-align: center;"><span style="color: #000000;">Brand: '+ doc.data().brand +'</span></p>' +
+                                        '<p style="text-align: center;"><span style="color: #000000;">Model: '+ doc.data().model +'</span></p>' +
+                                        '<p style="text-align: center;"><span style="color: #000000;">Seats: '+ doc.data().seats +'</span></p>' +
+                                        '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
+                                        '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
+                                        '<p style="text-align: center;"><button><span style="color: #000000;"> Book Now</span> </button></p>';
+
+                                    var carInfo = new google.maps.InfoWindow({
+                                        content: contentString
+                                    });
+
+                                    var carMarker = new google.maps.Marker({
+                                        position: coordinates,
+                                        map: map,
+                                        icon: {
+                                            url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
+                                        }
+                                    });
+                                    carMarker.addListener('click', function() {
+                                        carInfo.open(map, carMarker);
+                                    });
+
+                                    markers.push(carMarker);
+                                }
                             });
                         })
                         .catch(function(error) {
@@ -93,6 +119,7 @@
                 'Error: Your browser doesn\'t support geolocation.');
             infoWindow.open(map);
         }
+
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap"></script>
 </head>
