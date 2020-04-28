@@ -23,6 +23,9 @@ Route::view('booking', 'booking');
 
 Route::view('login', 'login');
 
+Route::view('cp', 'cp');
 
-Route::get('/location','LocationController@index');
+Route::view('admin', 'admin');
 
+
+Route::get('/location', 'LocationController@index');

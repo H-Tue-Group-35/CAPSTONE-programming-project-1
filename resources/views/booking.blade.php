@@ -1,111 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book today!</title>
 </head>
-<body>
- 
 
-    
-<style>
-    
-    h1{
+<body>
+
+
+    <?php
+
+    echo "Hello WOrld";
+
+
+    ?>
+    <style>
+    h1 {
         font-size: 3.5em;
-   
+
         text-align: center;
         text-decoration: underline;
-    }    
-    
-    .center{
+    }
+
+    .center {
         text-align: center;
         border: 2px solid black;
     }
-    
-    
-        </style>
-    
-    
-        <h1>Book Now</h1>
-    
+    </style>
+
+
+    <h1>Book Now</h1>
+
     <div class="center">
-    
-    <section>
-                    
 
-                    <form method="post" action="#">
-                        <div class="fields">
-                            <div class="field half">
-                                <label for="location">Location</label>
-                                <input type="text" name="location" id="location" />
-                            </div>
-
-                            <div class="field half">
-                                <label for="vehicle-type">Select Vehicle Type</label>
-
-                                <select name="vehicle-type" id="vehicle-type">
-                                    <option value="">- Vehicle Type -</option>
-                                    <option value="1">Large: Premium</option>
-                                    <option value="2">Large: Station wagon</option>
-                                    <option value="3">Medium: Low emission</option>
-                                    <option value="4">Small: Economy</option>
-                                    <option value="5">Small: Mini</option>
-                                    <option value="6">Small: Mini Low emission</option>
-                                </select>
-                            </div>
-
-                            <div class="field half">
-                                <label for="date-from">Date from</label>
-                                <input type="text" name="date-from" id="date-from" />
-                            </div>
-
-                            <div class="field half">
-                                <label for="date-to">Date to</label>
-                                <input type="text" name="date-to" id="date-to" />
-                            </div>
-
-                            <div class="field">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" />
-                            </div>
-
-                      
-                     
-
-                            <div class="field half text-right">
-                                <label>&nbsp;</label>
+        <section>
 
 
-<div class="btnnn"> 
-                                <ul class="actions">
-                                    <li class="btnnn"><input type="submit" value="Book Now" class="primary" /></li>
-                                </ul>
-                                </div>
-                                
+            <form method="post" action="#">
+                <div class="fields">
+                    <div class="field half">
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" />
+                    </div>
 
-                                <style>
-                                
-                                .btnnn{
-                                    text-align:center;
-                                }
-                                
-                                </style>
-                            </div>
+                    <div class="field half">
+                        <label for="vehicle-type">Select Vehicle Type</label>
+
+                        <select name="vehicle-type" id="vehicle-type">
+                            <option value="">- Vehicle Type -</option>
+                            <option value="1">Large: Premium</option>
+                            <option value="2">Large: Station wagon</option>
+                            <option value="3">Medium: Low emission</option>
+                            <option value="4">Small: Economy</option>
+                            <option value="5">Small: Mini</option>
+                            <option value="6">Small: Mini Low emission</option>
+                        </select>
+                    </div>
+
+                    <div class="field half">
+                        <label for="date-from">Date from</label>
+                        <input type="text" name="date-from" id="date-from" />
+                    </div>
+
+                    <div class="field half">
+                        <label for="date-to">Date to</label>
+                        <input type="text" name="date-to" id="date-to" />
+                    </div>
+
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+
+
+
+
+                    <div class="field half text-right">
+                        <label>&nbsp;</label>
+
+
+                        <div class="btnnn">
+                            <ul class="actions">
+                                <li class="btnnn"><input type="submit" value="Book Now" class="primary" /></li>
+                            </ul>
                         </div>
-                    </form>
-                </section>
-                <section class="split">
-                    <section>
-                        <div class="contact-method">
-                          
-                            <h3>Email</h3>
-                            <a href="#">car4all@gmail.com</a>
-                        </div>
-                    </section>
-                 
-    
-    
+
+
+                        <style>
+                        .btnnn {
+                            text-align: center;
+                        }
+                        </style>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="split">
+            <section>
+                <div class="contact-method">
+
+                    <h3>Email</h3>
+                    <a href="#">car4all@gmail.com</a>
+                </div>
+            </section>
+
+
+
     </div>
 
 
@@ -7085,4 +7087,5 @@
 
 
 </body>
+
 </html>
