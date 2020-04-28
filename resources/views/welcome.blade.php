@@ -184,13 +184,6 @@
                         font-size: 1.7em;
 
                     }
-
-
-                    #deletelater {
-
-                        color: #15ed8c;
-                        text-decoration: underline;
-                    }
                     </style>
 
                     <li class="navbar"><a href="booking">Booking</a></li>
@@ -202,9 +195,9 @@
                     <li class="navbar"><a href="login">Login</a></li>
 
 
-                    <li class="navbar" id="delete_later"><a href="cp">Control Panel</a></li>
+                    <li class="navbar"><a href="cp">Control Panel</a></li>
 
-                    <li class="navbar" id="delete_later"><a href="admin">Admin</a></li>
+                    <li class="navbar"><a href="admin">Admin</a></li>
                 </ul>
 
 
