@@ -115,7 +115,7 @@
                                 };
 
                                 var contentString =
-                                    '<p>This is debug code to show unavailable cars</p>';
+                                    '<p style="color: #000000;">This is debug code to show unavailable cars</p>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
