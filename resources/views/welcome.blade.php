@@ -115,18 +115,7 @@
                                 };
 
                                 var contentString =
-                                    '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
-                                    doc.data().image +
-                                    '" alt="" width="246" height="138" /></span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
-                                    doc.data().brand + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Model: ' +
-                                    doc.data().model + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
-                                    doc.data().seats + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;"> Book Now</span> </button></p>';
+                                    '<p>This is debug code to show unavailable cars</p>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
