@@ -44,7 +44,4 @@ jobs:
 workflows:
   gcloud_test_deploy:
     jobs:
-      - test
-      - deploy:
-          requires:
-            - test
+      - deploy
