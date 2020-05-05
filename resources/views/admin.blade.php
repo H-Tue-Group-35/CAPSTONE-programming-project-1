@@ -7002,7 +7002,7 @@ session_start();
 	<button type="submit">Login</button>
 	</form>
 	
-	<li class="navbar"><a href="login_check">login check</a></li>
+	<a href="login_check">login check</a>
 	
 </body>
 
