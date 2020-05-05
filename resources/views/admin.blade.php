@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -6987,6 +6992,16 @@
 	
 	
 	<p>Please login to access admin panel:</p>
+	
+	<form action="login_check.php" method="POST">
+	Username: <input type="text" name="username" id="username" maxlength="20" required>
+	<br/><br/>
+	<!--Password: <input type="password" name="password" id="password">-->
+	Password: <input type="text" name="password" id="password" maxlength="20" required>
+	<br/><br/>
+	<button type="submit">Login</button>
+	</form>
+	
 </body>
 
 </html>
