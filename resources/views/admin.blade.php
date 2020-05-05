@@ -9,7 +9,7 @@
 
 <body>
 
-    <h1>ADMIN PAGE</h1>
+    <h1>Admin login</h1>
 
 
 
@@ -6984,6 +6984,9 @@
         opacity: 1;
     }
     </style>
+	
+	
+	<p>Please login to access admin panel:</p>
 </body>
 
 </html>
