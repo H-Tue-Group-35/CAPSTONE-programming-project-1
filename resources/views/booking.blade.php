@@ -12,7 +12,7 @@
 
     <?php
 
-    echo "Hello WOrld";
+    echo "This is a test";
 
 
     ?>
