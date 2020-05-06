@@ -27,6 +27,8 @@ ob_start();
 
         if (empty($_GET['name'])) {
             $error_message = "you cannot not leave ur name empty";
+        } else {
+            $error_message = "";
         }
 
 
