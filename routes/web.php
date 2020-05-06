@@ -27,6 +27,8 @@ Route::view('cp', 'cp');
 
 Route::view('admin', 'admin');
 
+Route::view('payment', 'payment');
+
 Route::view('login_check', 'login_check');
 
 

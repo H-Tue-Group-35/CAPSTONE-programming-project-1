@@ -62,7 +62,7 @@
 
                 var markers = []
                 console.log(typeof(markers));
-				
+
 
                 db.collection("Vehicles")
                     .get()
@@ -106,9 +106,8 @@
                                 });
 
                                 markers.push(carMarker);
-                            }
-							else // if car is not available, show debug marker for now
-							{
+                            } else // if car is not available, show debug marker for now
+                            {
                                 var coordinates = {
                                     lat: doc.data().location.latitude,
                                     lng: doc.data().location.longitude
@@ -133,7 +132,7 @@
                                 });
 
                                 markers.push(carMarker);
-							}
+                            }
                         });
                     })
                     .catch(function(error) {
@@ -226,6 +225,8 @@
                     <li class="navbar"><a href="cp">Control Panel</a></li>
 
                     <li class="navbar"><a href="admin">Admin</a></li>
+
+                    <li class="navbar"><a href="payment">Payment</a></li>
                 </ul>
 
 
@@ -7511,5 +7512,7 @@
     }
     </style>
 </body>
+
+
 
 </html>
