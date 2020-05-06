@@ -25,11 +25,14 @@ ob_start();
 
     if (isset($_GET['submit'])) {
 
+        if (empty($_GET['name'])) {
+            $error_message = "you cannot not leave ur name empty";
+        }
 
 
         header('Location: https://car-for-all-273711.appspot.com/payment');
     } else {
-        $error_message = "You Cannot Leave fields empty";
+        // $error_message = "You Cannot Leave fields empty";
     }
 
 
@@ -52,9 +55,9 @@ ob_start();
 
         <h2 id="h2"> <?php
 
-                echo  $error_message;
+                        echo  $error_message;
 
-                ?> </h2>
+                        ?> </h2>
 
 
         <form method="get" action="">
