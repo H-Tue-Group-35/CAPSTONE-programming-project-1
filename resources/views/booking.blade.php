@@ -25,7 +25,7 @@ ob_start();
 
         echo "it is full sir";
 
-        header('Location: /payment');
+        header('Location: https://car-for-all-273711.appspot.com/payment');
     } else {
         echo "it didn't work";
     }
