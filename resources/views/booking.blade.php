@@ -8,78 +8,70 @@
 </head>
 
 <body>
+    <div class="center">
+        <h1>Booking</h1>
 
-    <h1>Booking</h1>
+        <form method="post" action="#">
+            <div class="fields">
 
-    <form method="post" action="#">
-        <div class="fields">
-            <div class="field half">
-                <label for="location">Location</label>
-                <input type="text" name="location" id="location" />
+
+                <div class="field half">
+                    <label for="date-from">Date from</label>
+                    <input type="text" name="date-from" id="date-from" />
+                </div>
+
+                <div class="field half">
+                    <label for="date-to">Date to</label>
+                    <input type="text" name="date-to" id="date-to" />
+                </div>
+
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" />
+                </div>
+
+                <div class="field half">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" />
+                </div>
+
+                <div class="field half">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" id="phone" />
+                </div>
+
+
+
+
+
+
             </div>
 
-            <div class="field half">
-                <label for="vehicle-type">Select Vehicle Type</label>
+            <div class="center">
 
-                <select name="vehicle-type" id="vehicle-type">
-                    <option value="">- Vehicle Type -</option>
-                    <option value="1">Large: Premium</option>
-                    <option value="2">Large: Station wagon</option>
-                    <option value="3">Medium: Low emission</option>
-                    <option value="4">Small: Economy</option>
-                    <option value="5">Small: Mini</option>
-                    <option value="6">Small: Mini Low emission</option>
-                </select>
+                <div class="field half text-right">
+                    <label>&nbsp;</label>
+
+
+
+                    <input type="submit" value="Send" class="primary" />
+
+
+
+                </div>
+
             </div>
-
-            <div class="field half">
-                <label for="date-from">Date from</label>
-                <input type="text" name="date-from" id="date-from" />
-            </div>
-
-            <div class="field half">
-                <label for="date-to">Date to</label>
-                <input type="text" name="date-to" id="date-to" />
-            </div>
-
-            <div class="field">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" />
-            </div>
-
-            <div class="field half">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" />
-            </div>
-
-            <div class="field half">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" id="phone" />
-            </div>
-
-            <div class="field">
-                <label for="message">Comment</label>
-                <textarea name="message" id="message" rows="3"></textarea>
-            </div>
-
-            <div class="field half">
-                <label for="captcha">Captcha</label>
-                <input type="text" name="captcha" id="captcha" />
-            </div>
-
-            <div class="field half text-right">
-                <label>&nbsp;</label>
-
-                <ul class="actions">
-                    <li><input type="submit" value="Send" class="primary" /></li>
-                </ul>
-            </div>
-        </div>
-    </form>
+        </form>
 
 
+    </div>
 
+    <style>
+    .center {
+        text-align: center;
 
+    }
+    </style>
     <style>
     /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
