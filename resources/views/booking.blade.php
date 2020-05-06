@@ -37,7 +37,7 @@ ob_start();
 
         header('Location: https://car-for-all-273711.appspot.com/payment');
     } else {
-        // $error_message = "You Cannot Leave fields empty";
+        $error_message = "You Cannot Leave fields empty";
     }
 
 
