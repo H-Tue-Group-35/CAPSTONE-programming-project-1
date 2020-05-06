@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,10 +18,24 @@
 </head>
 
 <body>
+    <?php
+
+    if (isset($_GET['submit'])) {
+
+        echo "it is full sir";
+    } else {
+        echo "it didn't work";
+    }
+
+
+    ?>
+
+
+
     <div class="center">
         <h1>Booking</h1>
 
-        <form method="post" action="#">
+        <form method="get" action="">
             <div class="fields">
 
 
@@ -54,7 +78,7 @@
 
 
 
-                    <input type="submit" value="Send" class="primary" />
+                    <input type="submit" value="Send" class="primary" name="submit" />
 
 
 
