@@ -21,13 +21,15 @@ ob_start();
 <body>
     <?php
 
+    $error_message = "";
+
     if (isset($_GET['submit'])) {
 
-        echo "it is full sir";
+
 
         header('Location: https://car-for-all-273711.appspot.com/payment');
     } else {
-        echo "it didn't work";
+        $error_message = "You Cannot Leave fields empty";
     }
 
 
@@ -37,6 +39,23 @@ ob_start();
 
     <div class="center">
         <h1>Booking</h1>
+
+        <br>
+        <br>
+
+        <style>
+        #h2 {
+
+            color: red;
+        }
+        </style>
+
+        <h2 id="h2"> <?php
+
+                echo  $error_message;
+
+                ?> </h2>
+
 
         <form method="get" action="">
             <div class="fields">
@@ -97,6 +116,12 @@ ob_start();
     .center {
         text-align: center;
 
+
+    }
+
+
+    h2 {
+        color: red;
     }
     </style>
     <style>
