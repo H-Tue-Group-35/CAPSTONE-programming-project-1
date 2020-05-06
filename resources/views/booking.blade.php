@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 
 
@@ -23,6 +24,8 @@ session_start();
     if (isset($_GET['submit'])) {
 
         echo "it is full sir";
+
+        header('Location: /payment');
     } else {
         echo "it didn't work";
     }
