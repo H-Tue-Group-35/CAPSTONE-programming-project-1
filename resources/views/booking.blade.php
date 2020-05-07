@@ -6,7 +6,6 @@ ob_start();
 $error_message = "";
 
 
-//header('Location: https://car-for-all-273711.appspot.com/payment');
 
 if (isset($_GET['submit'])) {
 
@@ -25,6 +24,9 @@ if (isset($_GET['submit'])) {
 
         $error_message = "You cannot leave Phone Empty";
     }
+
+
+    header('Location: https://car-for-all-273711.appspot.com/payment');
 }
 
 
