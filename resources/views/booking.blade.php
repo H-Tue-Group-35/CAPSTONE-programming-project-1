@@ -44,9 +44,7 @@ if (isset($_GET['submit'])) {
 <body>
 
 
-    <?php
-    $error_message = "";
-    ?>
+
 
     <div class="center">
         <h1>Booking</h1>
