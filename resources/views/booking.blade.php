@@ -104,9 +104,9 @@ ob_start();
 
         if (isset($_GET['submit'])) {
 
-            if (!empty($_GET['name'])) {
+            if (empty($_GET['email'])) {
                 $error_message = "you cannot not leave ur name empty";
-                echo "its working";
+
 
 
                 //header('Location: https://car-for-all-273711.appspot.com/payment');
