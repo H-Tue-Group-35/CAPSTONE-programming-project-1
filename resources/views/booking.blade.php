@@ -18,7 +18,7 @@ $error_message = "";
 
 if (isset($_GET['submit'])) {
 
-    if (!isset($_GET['email'])) {
+    if (empty($_GET['email'])) {
 
         $error_message = "You cannot leave email empty";
     } else {
