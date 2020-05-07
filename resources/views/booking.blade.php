@@ -104,7 +104,7 @@ ob_start();
 
         if (isset($_GET['submit'])) {
 
-            if (empty($_GET['name'])) {
+            if (!empty($_GET['name'])) {
                 $error_message = "you cannot not leave ur name empty";
                 echo "its working";
 
