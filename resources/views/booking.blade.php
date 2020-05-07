@@ -107,14 +107,14 @@ ob_start();
             if (empty($_GET['name'])) {
                 $error_message = "you cannot not leave ur name empty";
                 echo "its working";
+
+
+                header('Location: https://car-for-all-273711.appspot.com/payment');
             } else {
                 $error_message = "";
 
                 echo "not working";
             }
-
-
-            header('Location: https://car-for-all-273711.appspot.com/payment');
         } else {
             // $error_message = "You Cannot Leave fields empty";
         }
