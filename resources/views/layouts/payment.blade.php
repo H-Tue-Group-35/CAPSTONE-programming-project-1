@@ -18,7 +18,7 @@ ob_start();
 </head>
 
 <body>
-    <h1>okay</h1>
+    <h1>Payment</h1>
 
 
     <style>
