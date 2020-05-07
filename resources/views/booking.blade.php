@@ -16,6 +16,14 @@ if (isset($_GET['submit'])) {
     } elseif (empty($_GET['name'])) {
 
         $error_message = "Don't leave your name field empty";
+    } elseif (empty($_GET['date-from'])) {
+
+        $error_message = "You cannot leave Date from Empty";
+    } elseif (empty($_GET['date-to'])) {
+        $error_message = "You cannot leave Date to Empty";
+    } elseif (empty($_GET['phone'])) {
+
+        $error_message = "You cannot leave Phone Empty";
     }
 }
 
