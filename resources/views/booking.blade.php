@@ -4,34 +4,34 @@ ob_start();
 
 
 $error_message = "";
-// if (empty($_GET['email'])) {
-//     $error_message = "you cannot not leave ur name empty";
 
 
-
-//     //header('Location: https://car-for-all-273711.appspot.com/payment');
-// } else {
-//     $error_message = "";
-
-//     echo "not working";
-// }
+//header('Location: https://car-for-all-273711.appspot.com/payment');
 
 if (isset($_GET['submit'])) {
 
     if (empty($_GET['email'])) {
 
         $error_message = "You cannot leave email empty";
-    } else {
+    } elseif (empty($_GET['name'])) {
+
+        $error_message = "Don't leave your name field empty";
     }
-} else {
-    $error_message = "You Cannot Leave fields empty";
 }
+
+
+
 
 
 
 ?>
 
 
+
+
+
+
+}
 <!DOCTYPE html>
 <html lang="en">
 
