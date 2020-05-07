@@ -20,6 +20,14 @@ ob_start();
 <body>
     <h1>Payment</h1>
 
+
+    <div class="texty">
+        <p>We currently Only accept Paypal as a payment method, as it is very secure</p>
+        <p>If you do not have an paypal account, you can pay as a guest</p>
+        <p> and Remember, you can always sign up for a free acount with us</p>
+        <p>and we well store your credit card details!</p>
+    </div>
+
     <style>
     <style>.center {
         text-align: center;
