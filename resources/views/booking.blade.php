@@ -21,7 +21,9 @@ ob_start();
 <body>
 
 
-
+    <?php
+    $error_message = "";
+    ?>
 
     <div class="center">
         <h1>Booking</h1>
@@ -98,7 +100,7 @@ ob_start();
 
         <?php
 
-        $error_message = "";
+
 
         if (isset($_GET['submit'])) {
 
