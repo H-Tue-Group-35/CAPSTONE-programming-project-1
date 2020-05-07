@@ -109,7 +109,7 @@ ob_start();
                 echo "its working";
 
 
-                header('Location: https://car-for-all-273711.appspot.com/payment');
+                //header('Location: https://car-for-all-273711.appspot.com/payment');
             } else {
                 $error_message = "";
 
