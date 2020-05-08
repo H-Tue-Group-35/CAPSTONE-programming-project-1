@@ -18,19 +18,38 @@ ob_start();
 </head>
 
 <body>
-    <h1>Payment</h1>
 
+    <div class="center">
+        <h1>Payment</h1>
+    </div>
+    <div class="center">
+        <div class="texty">
+            <p>We currently Only accept Paypal as a payment method, as it is very secure</p>
+            <p>If you do not have an paypal account, you can pay as a guest</p>
+            <p>and we well store your credit card details!</p>
 
-    <div class="texty">
-        <p>We currently Only accept Paypal as a payment method, as it is very secure</p>
-        <p>If you do not have an paypal account, you can pay as a guest</p>
-        <p> and Remember, you can always sign up for a free acount with us</p>
-        <p>and we well store your credit card details!</p>
+        </div>
     </div>
 
+    <div class="center">
+
+
+
+    </div>
+
+
+
     <style>
-    <style>.center {
+    .texty p {
+        margin: 1;
+        padding: 1;
+        line-height: 0.3;
+
+    }
+
+    .center {
         text-align: center;
+        padding: 20px;
 
 
     }
@@ -38,6 +57,11 @@ ob_start();
 
     h2 {
         color: red;
+    }
+
+    p {
+        margin: 1;
+        padding: 1;
     }
     </style>
     <style>
