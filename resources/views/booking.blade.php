@@ -118,7 +118,7 @@ if (isset($_GET['submit'])) {
 
 
 
-                    <input type="submit" value="Send" class="primary" name="submit" />
+                    <input type="submit" value="Book Now" class="primary" name="submit" />
 
 
 
