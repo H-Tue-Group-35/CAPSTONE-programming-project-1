@@ -1,17 +1,14 @@
 <?php
 session_start();
 ob_start();
+
+	if (strcmp($username,"admin") === 0 && strcmp($password,"admin") === 0)
+	{
+		// password is correct, redirect to cp
+		header('Location: https://car-for-all-273711.appspot.com/cp');
+		exit();
+	}
+
+header('Location: https://car-for-all-273711.appspot.com/admin');
+exit();
 ?>
-
-<html>
-<head>
-<title>login check</title>
-</head>
-<body>
-
-<h1>Login Check</h1>
-<p>
-HELLO THIS IS LOGIN CHECKER. Recieved: <?php echo $username ?> and <?php echo $password ?>
-</p>
-</body>
-</html>
