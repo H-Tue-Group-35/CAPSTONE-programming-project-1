@@ -43,7 +43,7 @@ session_start();
             <script>
             var error_message = document.getElementById("message");
 
-            var datafrom = document.getElementById("date-form");
+            var datafrom = document.getElementById("date-form").value;
 
             if (datafrom == "") {
                 alert("cant leave this empty");
