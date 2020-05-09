@@ -162,6 +162,9 @@
 
     <h1>Admin Control Panel</h1>
 	
+	<h2>Fleet Status</h2>
+	
+	<h2>Make new Vehicle (also random option)</h2>
 	
 	<h2>Emergency map</h2>
 	
