@@ -59,6 +59,7 @@ ob_start();
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
+        window.open("https://car-for-all-273711.appspot.com/","_self");
 
     }
 
