@@ -1,12 +1,5 @@
 <?php
 session_start();
-ob_start();
-
-if (isset($_GET['submit']))
-{
-        header('Location: https://car-for-all-273711.appspot.com/cp');
-}
-
 ?>
 
 <html lang="en">
@@ -25,13 +18,13 @@ if (isset($_GET['submit']))
 	
 	<p>Please login to access admin panel:</p>
 	
-	<form method="get">
+	<form action="login_check" method="POST">
 	Username: <input type="text" name="username" id="username" maxlength="20" required>
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
 	Password: <input type="text" name="password" id="password" maxlength="20" required>
 	<br/><br/>
-	<input type="submit" value="Login" class="primary" name="submit" />
+	<button type="submit">Login</button>
 	</form>
 	
 	<a href="login_check">debug bypass login</a>

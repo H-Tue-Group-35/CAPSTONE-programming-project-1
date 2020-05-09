@@ -27,7 +27,7 @@ Route::view('login', 'login');
 
 Route::view('cp', 'cp');
 
-Route::view('admin', 'admin');
+Route::post('admin', 'HomeController@adminLogin');
 
 Route::view('login_check', 'login_check');
 
