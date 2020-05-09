@@ -3,30 +3,11 @@ session_start();
 ob_start();
 
 
+
+
 $error_message = "";
 
 
-
-if (isset($_GET['submit'])) {
-
-    if (empty($_GET['email'])) {
-
-        $error_message = "You cannot leave email empty";
-    } elseif (empty($_GET['name'])) {
-
-        $error_message = "Don't leave your name field empty";
-    } elseif (empty($_GET['date-from'])) {
-
-        $error_message = "You cannot leave Date from Empty";
-    } elseif (empty($_GET['date-to'])) {
-        $error_message = "You cannot leave Date to Empty";
-    } elseif (empty($_GET['phone'])) {
-
-        $error_message = "You cannot leave Phone Empty";
-    } else {
-        header('Location: https://car-for-all-273711.appspot.com/payment');
-    }
-}
 
 
 
@@ -38,9 +19,6 @@ if (isset($_GET['submit'])) {
 
 
 
-
-
-}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,10 +26,11 @@ if (isset($_GET['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book now!</title>
+
+
 </head>
 
 <body>
-
 
 
 
@@ -75,18 +54,18 @@ if (isset($_GET['submit'])) {
                         ?> </h2>
 
 
-        <form method="get" action="">
+        <form method="post" action="payment">
             <div class="fields">
 
 
                 <div class="field half">
                     <label for="date-from">Date from</label>
-                    <input type="text" name="date-from" id="date-from" />
+                    <input type="text" name="datefrom" id="date-from" />
                 </div>
 
                 <div class="field half">
                     <label for="date-to">Date to</label>
-                    <input type="text" name="date-to" id="date-to" />
+                    <input type="text" name="dateto" id="date-to" />
                 </div>
 
                 <div class="field">
@@ -117,7 +96,7 @@ if (isset($_GET['submit'])) {
                     <label>&nbsp;</label>
 
 
-
+                    <input type="hidden" name="carID" value="<?php echo  $carid; ?>" >
                     <input type="submit" value="Book Now" class="primary" name="submit" />
 
 
