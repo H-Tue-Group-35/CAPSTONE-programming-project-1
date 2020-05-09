@@ -1,12 +1,5 @@
 <?php
 session_start();
-ob_start();
-
-if (isset($_GET['submit']))
-{
-        header('Location: https://car-for-all-273711.appspot.com/cp');
-}
-
 ?>
 
 <html lang="en">
