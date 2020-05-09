@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $carid = $_POST["carID"];
         return view('booking', ['carid' => $carid]);
-    
+    }
 
     public function pay()
     {
