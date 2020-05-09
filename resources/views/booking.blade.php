@@ -1,24 +1,3 @@
-<?php
-session_start();
-ob_start();
-
-
-
-
-$error_message = "";
-
-
-
-
-
-
-
-
-?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,64 +26,76 @@ $error_message = "";
         }
         </style>
 
-        <h2 id="h2"> <?php
-
-                        echo  $error_message;
-
-                        ?> </h2>
+        <h2 id="h2">
 
 
-        <form method="post" action="payment">
-            <div class="fields">
 
 
-                <div class="field half">
-                    <label for="date-from">Date from</label>
-                    <input type="text" name="datefrom" id="date-from" />
+
+            <script>
+            var error_message = document.getElementById("message");
+
+            var datafrom = document.getElementById("date-form");
+
+            if (datafrom == "") {
+                alert("cant leave this empty");
+            } else {
+                alert("error");
+            }
+            </script>
+
+
+            <form method="post" action="payment">
+                <div class="fields">
+
+                    <h3 id="message"></h3>
+                    <div class="field half">
+                        <label for="date-from">Date from</label>
+                        <input type="text" name="datefrom" id="date-from" />
+                    </div>
+
+                    <div class="field half">
+                        <label for="date-to">Date to</label>
+                        <input type="text" name="dateto" id="date-to" />
+                    </div>
+
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+
+                    <div class="field half">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" />
+                    </div>
+
+                    <div class="field half">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone" />
+                    </div>
+
+
+
+
+
+
                 </div>
 
-                <div class="field half">
-                    <label for="date-to">Date to</label>
-                    <input type="text" name="dateto" id="date-to" />
-                </div>
+                <div class="center">
 
-                <div class="field">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" />
-                </div>
+                    <div class="field half text-right">
+                        <label>&nbsp;</label>
 
-                <div class="field half">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" />
-                </div>
 
-                <div class="field half">
-                    <label for="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" />
-                </div>
+                        <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
+                        <input type="submit" value="Book Now" class="primary" name="submit" />
 
 
 
-
-
-
-            </div>
-
-            <div class="center">
-
-                <div class="field half text-right">
-                    <label>&nbsp;</label>
-
-
-                    <input type="hidden" name="carID" value="<?php echo  $carid; ?>" >
-                    <input type="submit" value="Book Now" class="primary" name="submit" />
-
-
+                    </div>
 
                 </div>
-
-            </div>
-        </form>
+            </form>
 
 
 
