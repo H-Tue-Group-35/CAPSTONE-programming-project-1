@@ -29,7 +29,7 @@ Route::view('cp', 'cp');
 
 Route::view('admin', 'admin');
 
-Route::view('login_check', 'login_check');
+Route::post('login_check', 'HomeController@adminLogin');
 
 
 Route::get('/location', 'LocationController@index');
