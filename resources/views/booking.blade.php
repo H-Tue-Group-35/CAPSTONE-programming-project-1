@@ -47,7 +47,7 @@ session_start();
 
 
 
-        <form method="post" action="payment" name="form">
+        <form method="post" action="payment" name="form" id="form">
             <div class="fields">
 
 
@@ -90,7 +90,7 @@ session_start();
 
 
                     <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
-                    <input type="submit" value="Book Now" class="primary" name="submit" id="sub" />
+                    <input type="submit" value="Book Now" class="primary" name="submit" />
 
 
 
@@ -110,10 +110,11 @@ session_start();
     var datefrom = document.getElementById("date-form");
     var dateto = document.getElementById("date-to");
     var message = document.getElementById("message");
-    var submit = document.getElementById("sub");
+    var myform = document.getElementById("form");
 
 
-    while (submit != null) {
+
+    myform.addEventListener("submit", function() {
 
         if (datefrom == null) {
 
@@ -125,8 +126,7 @@ session_start();
             message.innerHTML = "";
         }
 
-
-    }
+    });
     </script>
 
 
