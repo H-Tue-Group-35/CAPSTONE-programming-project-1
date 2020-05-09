@@ -119,7 +119,7 @@ session_start();
 
             message.innerHTML = "You cannnot leave Date-from empty";
 
-        } else if (datato == null) {
+        } else if (dateto == null) {
             message.innerHTML = "You cannnot leave Date-to empty";
         } else {
             message.innerHTML = "";
