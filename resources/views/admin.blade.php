@@ -24,7 +24,7 @@ session_start();
 	<!--Password: <input type="password" name="password" id="password">-->
 	Password: <input type="text" name="password" id="password" maxlength="20" required>
 	<br/><br/>
-	<input type="submit" value="Login" class="primary" name="submit" />
+	<button type="submit">Login</button>
 	</form>
 	
 	<a href="login_check">debug bypass login</a>
