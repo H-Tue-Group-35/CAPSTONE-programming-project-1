@@ -17,17 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('contact', 'contact');
+Route::post('booking', 'HomeController@book');
 
-Route::view('booking', 'booking');
+Route::post('payment', 'HomeController@pay');
+
+Route::view('contact', 'contact');
 
 Route::view('login', 'login');
 
 Route::view('cp', 'cp');
 
 Route::view('admin', 'admin');
-
-Route::view('payment', 'payment');
 
 Route::view('login_check', 'login_check');
 
