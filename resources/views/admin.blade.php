@@ -29,6 +29,7 @@ ob_start();
 	</form>
 	
 	<a href="login_check">debug bypass login</a>
+	<a href="/">Index</a>
 	
 </body>
 
