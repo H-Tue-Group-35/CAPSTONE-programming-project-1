@@ -25,13 +25,12 @@ if (isset($_GET['submit']))
 	
 	<p>Please login to access admin panel:</p>
 	
-	<form action="login_check" method="get">
+	<form method="get">
 	Username: <input type="text" name="username" id="username" maxlength="20" required>
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
 	Password: <input type="text" name="password" id="password" maxlength="20" required>
 	<br/><br/>
-	<button type="submit">Login</button>
 	<input type="submit" value="Login" class="primary" name="submit" />
 	</form>
 	
