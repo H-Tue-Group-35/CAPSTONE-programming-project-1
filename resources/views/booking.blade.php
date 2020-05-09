@@ -124,6 +124,9 @@ session_start();
         } else {
             message.innerHTML = "";
         }
+
+
+    }
     </script>
 
 
