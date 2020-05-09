@@ -1,6 +1,12 @@
 <?php
 session_start();
-?>
+
+//Receive username from client side
+$entered_username = $_POST['username'];
+//Receive password from client side
+$entered_password = $_POST['password'];
+
+]);
 
 <html>
 <head>
