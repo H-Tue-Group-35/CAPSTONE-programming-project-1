@@ -28,88 +28,108 @@ session_start();
         <br>
 
         <style>
-        #h2 {
+        #message {
 
             color: red;
+            font-size: 2em;
+            font-weight: 2em;
         }
         </style>
 
-        <h2 id="h2">
+
+
+        <p id="message">
+        </p>
 
 
 
 
 
-            <script>
-            var error_message = document.getElementById("message");
-
-            var datafrom = document.getElementById("date-form").value;
-
-            if (datafrom == "") {
-                alert("cant leave this empty");
-            } else {
-                alert("error");
-            }
-            </script>
 
 
-            <form method="get" action="payment">
-                <div class="fields">
+        <form method="post" action="payment" name="form">
+            <div class="fields">
 
-                    <h3 id="message"></h3>
-                    <div class="field half">
-                        <label for="date-from">Date from</label>
-                        <input type="text" name="datefrom" id="date-from" />
-                    </div>
 
-                    <div class="field half">
-                        <label for="date-to">Date to</label>
-                        <input type="text" name="dateto" id="date-to" />
-                    </div>
+                <div class="field half">
+                    <label for="date-from">Date from</label>
+                    <input type="text" name="datefrom" id="date-from" />
+                </div>
 
-                    <div class="field">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" />
-                    </div>
+                <div class="field half">
+                    <label for="date-to">Date to</label>
+                    <input type="text" name="dateto" id="date-to" />
+                </div>
 
-                    <div class="field half">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" />
-                    </div>
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" />
+                </div>
 
-                    <div class="field half">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" id="phone" />
-                    </div>
+                <div class="field half">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" />
+                </div>
+
+                <div class="field half">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" id="phone" />
+                </div>
 
 
 
+
+
+
+            </div>
+
+            <div class="center">
+
+                <div class="field half text-right">
+                    <label>&nbsp;</label>
+
+
+                    <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
+                    <input type="submit" value="Book Now" class="primary" name="submit" id="sub" />
 
 
 
                 </div>
 
-                <div class="center">
-
-                    <div class="field half text-right">
-                        <label>&nbsp;</label>
-
-
-                        <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
-                        <input type="submit" value="Book Now" class="primary" name="submit" />
-
-
-
-                    </div>
-
-                </div>
-            </form>
+            </div>
+        </form>
 
 
 
 
 
     </div>
+
+
+    <script>
+    var datefrom = document.getElementById("date-form");
+    var dateto = document.getElementById("date-to");
+    var message = document.getElementById("message");
+    var submit = document.getElementById("sub");
+
+
+    while (submit != null) {
+
+        if (datefrom == null) {
+
+            message.innerHTML = "You cannnot leave Date-from empty";
+
+        } else if (datato == null) {
+            message.innerHTML = "You cannnot leave Date-to empty";
+        } else {
+            message.innerHTML = "";
+        }
+    </script>
+
+
+
+
+
 
     <style>
     .center {
