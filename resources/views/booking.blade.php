@@ -1,3 +1,11 @@
+<?php
+
+
+session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +53,7 @@
             </script>
 
 
-            <form method="post" action="payment">
+            <form method="get" action="payment">
                 <div class="fields">
 
                     <h3 id="message"></h3>
