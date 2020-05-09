@@ -13,7 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'booking',
-        'payment'
+        'payment',
+		'login_check'
         //
     ];
 }

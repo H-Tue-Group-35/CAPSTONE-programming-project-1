@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $carid = $_POST["carID"];
         return view('booking', ['carid' => $carid]);
-    }
+    
 
     public function pay()
     {
@@ -34,5 +34,12 @@ class HomeController extends Controller
             'email'  => $_POST["email"],
             'phone'  => $_POST["phone"]
         ]);
+    }
+	
+    public function adminLogin()
+    {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        return view('login_check', ['username' => $username],['password' => $password]);
     }
 }
