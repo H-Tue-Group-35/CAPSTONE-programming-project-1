@@ -88,7 +88,9 @@
                                     doc.data().seats + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;"> Book Now</span> </button></p>';
+                                    '<form method="post" action="booking">' +
+                                    '<p style="text-align: center;"><input type="hidden" name="carID" value="'+ 
+                                    doc.id + '" ><input type="submit" value="Submit" style="background-color: #DE6247;" /></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
