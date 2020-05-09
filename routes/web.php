@@ -27,7 +27,7 @@ Route::view('login', 'login');
 
 Route::view('cp', 'cp');
 
-Route::post('admin', 'admin');
+Route::view('admin', 'admin');
 
 Route::view('login_check', 'login_check');
 
