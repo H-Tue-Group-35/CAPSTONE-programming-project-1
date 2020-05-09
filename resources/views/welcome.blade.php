@@ -215,8 +215,8 @@
                     }
                     </style>
 
-                    <li class="navbar"><a href="payment">Payment</a></li>
-                    <li class="navbar"><a href="booking">Booking</a></li>
+                    <!--li class="navbar"><a href="payment">Payment</a></li-->
+                    <!--li class="navbar"><a href="booking">Booking</a></li-->
 
 
 
@@ -225,9 +225,9 @@
                     <li class="navbar"><a href="login">Login</a></li>
 
 
-                    <li class="navbar"><a href="cp">Control Panel</a></li>
+                    <!--li class="navbar"><a href="cp">Control Panel</a></li-->
 
-                    <li class="navbar"><a href="admin">Admin</a></li>
+                    <li class="navbar"><a href="admin">Admin login</a></li>
 
                 </ul>
 
