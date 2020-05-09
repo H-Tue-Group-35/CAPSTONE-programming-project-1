@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 
 <html lang="en">
@@ -18,7 +19,7 @@ session_start();
 	
 	<p>Please login to access admin panel:</p>
 	
-	<form action="login_check" method="POST">
+	<form action="login_check" method="post">
 	Username: <input type="text" name="username" id="username" maxlength="20" required>
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
