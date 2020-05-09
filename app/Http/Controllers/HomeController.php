@@ -36,10 +36,4 @@ class HomeController extends Controller
         ]);
     }
 	
-    // public function adminLogin()
-    // {
-        // $username = $_POST["username"];
-        // $password = $_POST["password"];
-        // return view('login_check', ['username' => $username],['password' => $password]);
-    // }
 }
