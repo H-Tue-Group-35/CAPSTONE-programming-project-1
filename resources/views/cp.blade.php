@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://car-for-all-273711.appspot.com/style.css" />
     <title>Admin Control Panel</title>
 	
 	<!-- Connect to Firebase so we can get stats on all Vehicles -->
