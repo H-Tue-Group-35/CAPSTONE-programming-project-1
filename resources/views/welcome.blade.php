@@ -89,8 +89,9 @@
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
                                     '<form method="post" action="booking">' +
-                                    '<p style="text-align: center;"><input type="hidden" name="carID" value="'+ 
-                                    doc.id + '" ><input type="submit" value="Submit" style="background-color: #DE6247;" /></p></form>';
+                                    '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+                                    doc.id +
+                                    '" ><input type="submit" value="Submit" style="background-color: #DE6247;" /></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -216,7 +217,7 @@
                     </style>
 
                     <!--li class="navbar"><a href="payment">Payment</a></li-->
-                    <!--li class="navbar"><a href="booking">Booking</a></li-->
+                    <li class="navbar"><a href="booking">Booking</a></li>
 
 
 
@@ -7514,6 +7515,7 @@
     }
     </style>
 </body>
+
 
 
 
