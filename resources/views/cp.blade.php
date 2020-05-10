@@ -190,12 +190,14 @@
 	
 	<h2>Make new Vehicle (also random option)</h2>
 	
-		Model: <input type="text" name="model" id="model" maxlength="12" required>
+	<form onsubmit="makeVehicle()">
+	  Model: <input type="text" name="model" id="model" maxlength="12" required>
+	  <input type="submit">
+	</form>
+		
+		
 		<br/>
-	
-	<button onclick="makeVehicle()">Make vehicle</button>
 
-	
 	<h2>Emergency map</h2>
 	
 	<div id="map" style="height:800px;"></div>
