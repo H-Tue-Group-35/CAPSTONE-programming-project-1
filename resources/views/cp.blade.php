@@ -152,37 +152,50 @@
         infoWindow.open(map);
     }
 	
-	/* Random lat and long should use following range:
-	
-		Lat
-		-37.787222
-		-37.831706
-		range: 0.044484
 
-		Long
-		144.964875
-		144.923676
-		range: 0.041199
-		
-		Math.random() generates random value from 0-1
+	/*
+		This adds the vehicle to the database. If coordinate fields are
+		empty it puts the vehicle randomly in the city
 	*/
-	
 	function makeVehicle()
 	{
-		alert("car added to db");
-		//var db = firebase.firestore();
-		// const firebaseAdmin = require('firebase-admin');
+		/* Random lat and long should use following range:
+		
+			Lat
+			-37.787222
+			-37.831706
+			range: 0.044484
 
-		// new GeoPoint ( latitude :  number ,  longitude :  number ) : GeoPoint
+			Long
+			144.964875
+			144.923676
+			range: 0.041199
+			
+			Math.random() generates random value from 0-1
+		*/
 		
+		alert("Car added to database");
+
 		// Generate random coords
-		
 		var randomLat = (Math.random() * 0.044484)-37.831706;
 		var randomLong = (Math.random() * 0.041199)+144.923676;
 		
 		//alert("Random coords: "+randomLat+", "+randomLong);
 		
 		var vModel = document.getElementById('model').value;
+		var vBrand = document.getElementById('fBrand').value;
+		
+		var vLat = document.getElementById('fLat').value;
+		var vLong = document.getElementById('fLong').value;
+		
+		if (vLat == "" || vLong == "")
+		{
+			alert("EMPTY");
+		}
+		
+		var vSeats = document.getElementById('fSeats').value;
+		
+		//if (vLat==
 
 		db.collection("Vehicles").add({
 		available: "true",
@@ -190,7 +203,8 @@
 		/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
 		location: new firebase.firestore.GeoPoint(randomLat, randomLong),
 		model: vModel,
-		seats: 5
+		brand: vBrand,
+		seats: fSeats
 		});
 		
 		
@@ -209,18 +223,20 @@
 	<h1>Admin Control Panel</h1>
 
 	<h2>Fleet Status</h2>
+	
+	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
 
 	<form onsubmit="makeVehicle()">
-	Brand: <input type="text" name="model" id="model" maxlength="12" required>
+	Brand: <input type="text" name="fBrand" id="fBrand" maxlength="12" required>
 	<br/>
 	Model: <input type="text" name="model" id="model" maxlength="12" required>
 	<br/>
-	Seats: <input type="number" id="nSeats" name="nSeats" min="1" max="12" value="5" required>
+	Seats: <input type="number" id="fSeats" name="fSeats" min="1" max="12" value="5" required>
 	<br/>
 	Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
-	<input type="text" name="fLong" id="fLong" maxlength="12">
+				 <input type="text" name="fLong" id="fLong" maxlength="12">
 	<br/>
 	Status:
 	<br/>
