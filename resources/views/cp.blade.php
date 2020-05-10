@@ -199,6 +199,14 @@
 	  <br/>
 	  Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
 	  <input type="text" name="fLong" id="fLong" maxlength="12">
+	  <br/>
+
+<input type="radio" id="active" name="Active" value="active">
+<label for="active">True</label><br>
+<input type="radio" id="inactive" name="inactive" value="inactive">
+<label for="inactive">False</label><br>
+	
+		<br/>
 	  <input type="submit">
 	</form>
 		
