@@ -183,6 +183,8 @@
 	
 	<h2>Make new Vehicle (also random option)</h2>
 	
+	<button onclick="makeVehicle()">Make vehicle</button>
+	
 	<h2>Emergency map</h2>
 	
 	<div id="map" style="height:800px;"></div>
