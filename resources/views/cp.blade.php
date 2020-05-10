@@ -9,7 +9,6 @@ ob_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{{ asset('public/css/style.css') }}" rel="stylesheet" type="text/css" >
 	
     <title>Admin Control Panel</title>
 	
@@ -235,6 +234,8 @@ ob_start();
 	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
 	
 	<?php
+	
+		echo "<p>HELLO THIS IS PHP</p>";
 
 
 		use Google\Cloud\Firestore\FirestoreClient;
@@ -251,7 +252,8 @@ ob_start();
 			$db = new FirestoreClient();
 			printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
 		}
-
+	
+		echo "<p>HELLO THIS IS MORE PHP</p>";
 	?>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
