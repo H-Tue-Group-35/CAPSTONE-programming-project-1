@@ -191,10 +191,14 @@
 	<h2>Make new Vehicle (also random option)</h2>
 	
 	<form onsubmit="makeVehicle()">
+	  Brand: <input type="text" name="model" id="model" maxlength="12" required>
+	  <br/>
 	  Model: <input type="text" name="model" id="model" maxlength="12" required>
+	  <br/>
 	  Seats: <input type="number" id="nSeats" name="nSeats" min="1" max="12" required>
-	  Latitude: <input type="text" name="fLat" id="fLat" maxlength="12">
-	  Longitude: <input type="text" name="fLong" id="fLong" maxlength="12">
+	  <br/>
+	  Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
+	  <input type="text" name="fLong" id="fLong" maxlength="12">
 	  <input type="submit">
 	</form>
 		
