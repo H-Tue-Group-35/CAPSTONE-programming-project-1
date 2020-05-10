@@ -252,6 +252,9 @@ ob_start();
 			$db = new FirestoreClient();
 			echo "Created Cloud Firestore client with default project ID.";
 		}
+		
+		echo "<p>CALLING INITIALIZE</p>";
+		initialize();
 	
 		echo "<p>HELLO THIS IS MORE PHP</p>";
 	?>
