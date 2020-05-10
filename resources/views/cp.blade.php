@@ -1,3 +1,8 @@
+<?php
+session_start();
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -174,7 +179,7 @@
 			Math.random() generates random value from 0-1
 		*/
 		
-		alert("Car added to database");
+		//alert("Car added to database");
 
 		// Generate random coords
 		var randomLat = (Math.random() * 0.044484)-37.831706;
@@ -190,24 +195,27 @@
 		
 		if (vLat == "" || vLong == "")
 		{
-			alert("EMPTY");
+			alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
+		}
+		else
+		{
+			alert("Vehicle added to map.");
+			randomLat = vLat;
+			randomLong = vLong;
 		}
 		
 		var vSeats = document.getElementById('fSeats').value;
-		
-		//if (vLat==
 
-		db.collection("Vehicles").add({
-		available: "true",
-		image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
-		/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
-		location: new firebase.firestore.GeoPoint(randomLat, randomLong),
-		model: vModel,
-		brand: vBrand,
-		seats: fSeats
+		db.collection("Vehicles").add
+		({
+			available: "true",
+			image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
+			/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
+			location: new firebase.firestore.GeoPoint(randomLat, randomLong),
+			model: vModel,
+			brand: vBrand,
+			seats: fSeats
 		});
-		
-		
 		
 	}
 	
@@ -225,6 +233,26 @@
 	<h2>Fleet Status</h2>
 	
 	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
+	
+	<?php
+
+
+		use Google\Cloud\Firestore\FirestoreClient;
+
+		/**
+		 * Initialize Cloud Firestore with default project ID.
+		 * ```
+		 * initialize();
+		 * ```
+		 */
+		function initialize()
+		{
+			// Create the Cloud Firestore client
+			$db = new FirestoreClient();
+			printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+		}
+
+	?>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
 
