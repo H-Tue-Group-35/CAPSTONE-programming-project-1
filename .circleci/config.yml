@@ -36,9 +36,7 @@ jobs:
             chgrp -R www-data storage bootstrap/cache
             chmod -R ug+rwx storage bootstrap/cache
             
-            echo | pecl install grpc
-            
-            echo | php -i
+            sudo pecl install grpc
             
     
             gcloud app deploy
