@@ -180,7 +180,7 @@
 		var randomLat = (Math.random() * 0.044484)-37.831706;
 		var randomLong = (Math.random() * 0.041199)+144.923676;
 		
-		alert("Random coords: "+randomLat+", "+randomLong);
+		//alert("Random coords: "+randomLat+", "+randomLong);
 		
 		var vModel = document.getElementById('model').value;
 
@@ -188,6 +188,7 @@
 		available: "true",
 		image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
 		/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
+		location: new firebase.firestore.GeoPoint(randomLat, randomLong),
 		model: vModel,
 		seats: 5
 		});
