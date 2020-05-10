@@ -151,6 +151,23 @@
             'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
+	
+	
+	function makeVehicle()
+	{
+		const firebaseAdmin = require('firebase-admin');
+		
+		new GeoPoint ( latitude :  number ,  longitude :  number ) : GeoPoint
+		
+		db.collection("Vehicles").add({
+			available: "true",
+			image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
+			myLocation: new firebaseAdmin.firestore.GeoPoint(0,0),
+			model: 'test',
+			seats: 5
+		});
+	}
+	
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
