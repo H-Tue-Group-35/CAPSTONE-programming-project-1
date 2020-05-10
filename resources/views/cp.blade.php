@@ -152,6 +152,20 @@
         infoWindow.open(map);
     }
 	
+	/* Random lat and long should use following range:
+	
+		Lat
+		-37.787222
+		-37.831706
+		range: 0.044484
+
+		Long
+		144.964875
+		144.923676
+		range: 0.041199
+		
+		Math.random() generates random value from 0-1
+	*/
 	
 	function makeVehicle()
 	{
@@ -160,6 +174,13 @@
 		// const firebaseAdmin = require('firebase-admin');
 
 		// new GeoPoint ( latitude :  number ,  longitude :  number ) : GeoPoint
+		
+		// Generate random coords
+		
+		var randomLat = (Math.random() * 0.044484)-37.831706;
+		var randomLong = (Math.random() * 0.041199)+144.923676;
+		
+		alert("Random coords: "+randomLat+", "+randomLong);
 		
 		var vModel = document.getElementById('model').value;
 
@@ -188,7 +209,7 @@
 
 	<h2>Fleet Status</h2>
 
-	<h2>Make new Vehicle (also random option)</h2>
+	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
 
 	<form onsubmit="makeVehicle()">
 	Brand: <input type="text" name="model" id="model" maxlength="12" required>
