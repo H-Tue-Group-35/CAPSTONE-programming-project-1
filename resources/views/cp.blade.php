@@ -184,37 +184,38 @@
 
 <body>
 
-    <h1>Admin Control Panel</h1>
-	
-	<h2>Fleet Status</h2>
-	
-	<h2>Make new Vehicle (also random option)</h2>
-	
-	<form onsubmit="makeVehicle()">
-	  Brand: <input type="text" name="model" id="model" maxlength="12" required>
-	  <br/>
-	  Model: <input type="text" name="model" id="model" maxlength="12" required>
-	  <br/>
-	  Seats: <input type="number" id="nSeats" name="nSeats" min="1" max="12" required>
-	  <br/>
-	  Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
-	  <input type="text" name="fLong" id="fLong" maxlength="12">
-	  <br/>
+	<h1>Admin Control Panel</h1>
 
-<input type="radio" id="active" name="Active" value="active">
-<label for="active">True</label><br>
-<input type="radio" id="inactive" name="inactive" value="inactive">
-<label for="inactive">False</label><br>
-	
-		<br/>
-	  <input type="submit">
+	<h2>Fleet Status</h2>
+
+	<h2>Make new Vehicle (also random option)</h2>
+
+	<form onsubmit="makeVehicle()">
+	Brand: <input type="text" name="model" id="model" maxlength="12" required>
+	<br/>
+	Model: <input type="text" name="model" id="model" maxlength="12" required>
+	<br/>
+	Seats: <input type="number" id="nSeats" name="nSeats" min="1" max="12" value="5" required>
+	<br/>
+	Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
+	<input type="text" name="fLong" id="fLong" maxlength="12">
+	<br/>
+	Active:
+	<br/>
+	<input type="radio" id="active" name="active" value="active">
+	<label for="active">True</label><br>
+	<input type="radio" id="inactive" name="active" value="inactive">
+	<label for="inactive">False</label><br>
+
+	<br/>
+	<input type="submit">
 	</form>
 		
-		
-		<br/>
+
+	<br/>
 
 	<h2>Emergency map</h2>
-	
+
 	<div id="map" style="height:800px;"></div>
 
 </body>
