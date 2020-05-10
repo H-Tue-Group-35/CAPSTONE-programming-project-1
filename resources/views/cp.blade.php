@@ -155,6 +155,8 @@
 	
 	function makeVehicle()
 	{
+		alert("test");
+		    var db = firebase.firestore();
 		const firebaseAdmin = require('firebase-admin');
 		
 		new GeoPoint ( latitude :  number ,  longitude :  number ) : GeoPoint
