@@ -192,6 +192,9 @@
 	
 	<form onsubmit="makeVehicle()">
 	  Model: <input type="text" name="model" id="model" maxlength="12" required>
+	  Seats: <input type="number" id="nSeats" name="nSeats" min="1" max="12" required>
+	  Latitude: <input type="text" name="fLat" id="fLat" maxlength="12">
+	  Longitude: <input type="text" name="fLong" id="fLong" maxlength="12">
 	  <input type="submit">
 	</form>
 		
