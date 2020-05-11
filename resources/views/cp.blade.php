@@ -86,8 +86,8 @@ ob_start();
                                     doc.data().seats + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>';
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Deactivate</span> </button></p>';
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>' +
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Deactivate</span> </button></p>' +
                                     '<p style="text-align: center;"><button><span style="color: #000000;">Delete</span> </button></p>';
 
                                 var carInfo = new google.maps.InfoWindow({
@@ -126,8 +126,8 @@ ob_start();
                                     doc.data().seats + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>';
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Activate</span> </button></p>';
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>' +
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Activate</span> </button></p>' +
                                     '<p style="text-align: center;"><button><span style="color: #000000;">Delete</span> </button></p>';
 
                                 var carInfo = new google.maps.InfoWindow({
