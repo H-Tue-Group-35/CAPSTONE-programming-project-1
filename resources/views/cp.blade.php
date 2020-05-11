@@ -13,7 +13,6 @@ ob_start();
     <title>Admin Control Panel</title>
 	
 	<!-- Connect to Firebase so we can get stats on all Vehicles -->
-	
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 	
