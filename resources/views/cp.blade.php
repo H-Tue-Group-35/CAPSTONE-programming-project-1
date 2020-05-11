@@ -89,9 +89,9 @@ ob_start();
                                     '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><input type="submit" value="Summon emergency services" />' +
-									'<input type="submit" value="Deactivate" />' +
-									'<input type="submit" value="Delete" /></p></form>';
+                                    '" ><button onclick="test()">Summon emergency services</button>' +
+									'<button onclick="test()">Deactivate</button>' +
+									'<button onclick="test()">Delete</button></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -132,9 +132,9 @@ ob_start();
                                     '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><input type="submit" value="Summon emergency services" />' +
-									'<input type="submit" value="Activate" />' +
-									'<input type="submit" value="Delete" /></p></form>';
+                                    '" ><button onclick="test()">Summon emergency services</button>' +
+									'<button onclick="test()">Activate</button>' +
+									'<button onclick="test()">Delete</button></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
