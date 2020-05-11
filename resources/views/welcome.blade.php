@@ -194,112 +194,18 @@ ob_start();
             </nav>
         </div>
 		
-        <!-- Main -->
-        <div id="main">
+		<section id="two">
+		<div class="inner">
+			<header class="major">
+				<h2>Locate Your Nearest vehicle</h2>
 
-            <!-- Two -->
-            <section id="two">
-                <div class="inner">
-                    <header class="major">
-                        <h2>About us</h2>
-                    </header>
-                    <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna
-                        magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna.
-                        Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem
-                        consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus
-                        amet pharetra et feugiat tempus.</p>
-                    <ul class="actions">
-                        <li><a href="about.php" class="button next">Read more</a></li>
-                    </ul>
-                </div>
-            </section>
-
-
-
-        </div>
-
-        <!-- inquiry -->
-        <section id="contact">
-            <div class="inner">
-                <section class="split">
-                    <section>
-                        <div class="contact-method">
-                            <span class="icon alt fa-envelope"></span>
-                            <h3>Email</h3>
-                            <a href="#">carrentalwebsite@untitled.tld</a>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="contact-method">
-                            <span class="icon alt fa-phone"></span>
-                            <h3>Phone</h3>
-                            <span>(000) 000-0000 x12387</span>
-                            <br>
-                            <span>(000) 000-0000 x12387</span>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="contact-method">
-                            <span class="icon alt fa-home"></span>
-                            <h3>Address</h3>
-                            <span>1234 Somewhere Road #5432<br />
-                                Melbourne, TN 00000<br />
-                                Australia</span>
-                        </div>
-                    </section>
-                    <section>
-                        <h3>Terms</h3>
-
-                        <div class="box">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam quasi molestiae quo
-                                repudiandae repellat dolore impedit alias soluta, excepturi aperiam aliquid numquam
-                                dignissimos nulla exercitationem vel, fuga accusamus voluptate, ipsa quia. Possimus odit
-                                ipsam deleniti nisi soluta voluptas! Nemo aperiam dignissimos, nisi. Necessitatibus cum
-                                quos dolor incidunt! Ab voluptatum sapiente voluptas fuga in rem voluptatibus rerum
-                                ipsam eos dolorem aspernatur saepe incidunt provident nihil, quos ad perspiciatis est
-                                voluptatem commodi. Repellat dolores, ipsam facere ipsum, cumque deleniti perferendis
-                                delectus consequatur harum fuga et architecto vitae neque suscipit. Aut vero architecto
-                                non maxime molestiae autem dolores, corporis, molestias esse voluptatum nobis error
-                                minima deserunt provident consectetur. Qui, ipsa assumenda voluptatum asperiores
-                                laudantium nobis harum sint quis sed quia, officiis odit eaque a! Quos provident eos
-                                earum facilis nam consequuntur reiciendis amet sunt? Quia, quasi sunt. Aliquam labore
-                                vitae, officiis ullam itaque. Id non est earum praesentium incidunt officia quos modi at
-                                suscipit quibusdam. Id nostrum beatae ea atque, fugiat mollitia, eius, sed eos quidem
-                                itaque inventore hic reiciendis quas doloremque illum. Enim eum labore odio alias.
-                                Consectetur molestias, suscipit, animi amet enim eius, voluptates nulla sapiente earum
-                                tenetur explicabo iusto ad officiis! Praesentium minus illo saepe voluptatibus
-                                obcaecati, excepturi, sit nam quaerat ab velit deserunt tenetur magni quae temporibus!
-                                Iusto sapiente iste eos, ipsa dolores obcaecati voluptas commodi, nesciunt officiis at
-                                quis magni quos, ducimus ad. Minus dicta blanditiis voluptatum ipsa, voluptatem sequi
-                                eligendi nam est possimus libero aliquam, eos provident repellendus dolores. Distinctio
-                                corrupti ea ipsam, dolore, dolorem similique eos illo iure ad maxime, cumque doloribus
-                                iusto expedita quidem accusantium cum, voluptatibus ducimus! Neque eos cupiditate at
-                                molestias sequi enim! Amet nesciunt dolorem quisquam sunt ad quos fugit at alias
-                                distinctio nihil nostrum, itaque a repudiandae soluta dicta quasi, repellat quidem
-                                autem. Architecto, esse porro iure repellat sed. Quidem?</p>
-                        </div>
-                    </section>
-                </section>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-                <ul class="icons">
-                    <li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="icon alt fa-pinterest"><span class="label">Pinterest</span></a></li>
-                    <li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="#" class="icon alt fa-google-plus"><span class="label">Google plus</span></a></li>
-                </ul>
-                <ul class="copyright">
-                    <li>&copy; 2018 <a href="#">Car Rental Company Ltd</a> | All rights reserved.</li>
-                    <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-                </ul>
-            </div>
-        </footer>
+			</header>
+			<div id="map" style="height:800px;"></div>
+			<ul class="actions">
+				<!-- <li><a href="about.php" class="button next">Read more</a></li> -->
+			</ul>
+		</div>
+		</section>
 
     </div>
 
