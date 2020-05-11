@@ -73,7 +73,7 @@ ob_start();
                                     lat: doc.data().location.latitude,
                                     lng: doc.data().location.longitude
                                 };
-
+								
                                 var contentString =
                                     '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
                                     doc.data().image +
@@ -86,9 +86,12 @@ ob_start();
                                     doc.data().seats + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Deactivate</span> </button></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Delete</span> </button></p>';
+                                    '<form method="post" action="booking">' +
+                                    '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+                                    doc.id +
+                                    '" ><input type="submit" value="Summon emergency services" style="background-color: #DE6247;" />' +
+									'<input type="submit" value="Deactivate" style="background-color: #DE6247;"' +
+									'<input type="submit" value="Delete" style="background-color: #DE6247;"</p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -124,11 +127,14 @@ ob_start();
                                     doc.data().model + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
                                     doc.data().seats + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
+                                    '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Activate</span> </button></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Delete</span> </button></p>';
+                                    '<form method="post" action="booking">' +
+                                    '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+                                    doc.id +
+                                    '" ><input type="submit" value="Summon emergency services" style="background-color: #DE6247;" />' +
+									'<input type="submit" value="Activate" style="background-color: #DE6247;"' +
+									'<input type="submit" value="Delete" style="background-color: #DE6247;"</p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
