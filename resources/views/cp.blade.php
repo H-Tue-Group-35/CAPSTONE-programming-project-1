@@ -38,7 +38,7 @@ ob_start();
                 lat: -37.806,
                 lng: 144.954
             },
-            zoom: 14
+            zoom: 12
         });
         infoWindow = new google.maps.InfoWindow;
 
@@ -182,15 +182,18 @@ ob_start();
 	}
 	function vehicleActivate()
 	{
-		alert("activate vehicle" + document.getElementById('carID').value);
+		var cID = document.getElementById('carID').value;
+		alert("activate vehicle" + cID);
 	}
 	function vehicleDeactivate()
 	{
-		alert("deactivate vehicle" + document.getElementById('carID').value);
+		var cID = document.getElementById('carID').value;
+		alert("deactivate vehicle" + cID);
 	}
 	function vehicleDelete()
 	{
-		alert("delete vehicle" + document.getElementById('carID').value);
+		var cID = document.getElementById('carID').value;
+		alert("delete vehicle" + cID);
 	}
 
 	/*
