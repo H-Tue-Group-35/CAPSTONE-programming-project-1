@@ -86,7 +86,7 @@ ob_start();
                                     doc.data().seats + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<form method="post" action="booking">' +
+                                    '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
                                     '" ><input type="submit" value="Summon emergency services" />' +
@@ -129,7 +129,7 @@ ob_start();
                                     doc.data().seats + '</span></p>' +	
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<form method="post" action="booking">' +
+                                    '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
                                     '" ><input type="submit" value="Summon emergency services" />' +
@@ -176,6 +176,10 @@ ob_start();
         infoWindow.open(map);
     }
 	
+	function test()
+	{
+		alert("delete/activate/deactivate vehicle");
+	}
 
 	/*
 		This adds the vehicle to the database. If coordinate fields are
