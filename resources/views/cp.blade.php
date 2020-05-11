@@ -247,6 +247,10 @@ ob_start();
   width: 100%;
   clear: both;
 }
+.container radio {
+  width: 100%;
+  clear: none;
+}
 	</style>
 	
 </head>
