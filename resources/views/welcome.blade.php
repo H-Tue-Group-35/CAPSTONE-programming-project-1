@@ -96,12 +96,10 @@ ob_start();
 					doc.data().seats + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form onsubmit="test()">' +
+					'<form method="post" action="booking">' +
 					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
 					doc.id +
-					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-					'<button onclick="vehicleDeactivate()">Deactivate</button>' +
-					'<button onclick="vehicleDelete()">Delete</button></p></form>';
+					'" ><input type="submit" value="Submit" style="background-color: #DE6247;" /></p></form>';
 
 					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
@@ -118,48 +116,8 @@ ob_start();
 
 					markers.push(carMarker);
 				}
-				else // if car is not available, show debug marker for now
+				else // if car is not available, do not display it to customer
 				{
-
-					var coordinates = 
-					{
-						lat: doc.data().location.latitude,
-						lng: doc.data().location.longitude
-					};
-
-					var contentString =
-					'<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
-					doc.data().image +
-					'" alt="" width="246" height="138" /></span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
-					doc.data().brand + '</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Model: ' +
-					doc.data().model + '</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
-					doc.data().seats + '</span></p>' +	
-					'<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form onsubmit="test()">' +
-					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
-					doc.id +
-					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-					'<button onclick="vehicleActivate()">Activate</button>' +
-					'<button onclick="vehicleDelete()">Delete</button></p></form>';
-
-					var carInfo = new google.maps.InfoWindo
-					({ content: contentString });
-
-					var carMarker = new google.maps.Marke
-					({
-						position: coordinates,
-						map: map,
-						icon: { url: "http://maps.google.com/mapfiles/kml/pal3/icon45.png" }
-					});
-					
-					carMarker.addListener('click', function()
-					{ carInfo.open(map, carMarker); });
-
-					markers.push(carMarker);
 				}
 			});
 		}).catch(function(error)
@@ -176,88 +134,6 @@ ob_start();
 		'Error: Your browser doesn\'t support geolocation.');
 		infoWindow.open(map);
     }
-	
-	function vehicleEmergency()
-	{
-		alert("Emergency services summoned.");
-	}
-	function vehicleActivate()
-	{
-		//var cID = document.getElementById('carID').value;
-		alert("activate vehicle");
-	}
-	function vehicleDeactivate()
-	{
-		//var cID = document.getElementById('carID').value;
-		alert("deactivate vehicle");
-	}
-	function vehicleDelete()
-	{
-		//var cID = document.getElementById('carID').value;
-		alert("delete vehicle");
-	}
-
-	/*
-		This adds the vehicle to the database. If coordinate fields are
-		empty it puts the vehicle randomly in the city
-	*/
-	function makeVehicle()
-	{
-		/* Random lat and long should use following range:
-		
-			Lat
-			-37.787222
-			-37.831706
-			range: 0.044484
-
-			Long
-			144.964875
-			144.923676
-			range: 0.041199
-			
-			Math.random() generates random value from 0-1
-		*/
-		
-		//alert("Car added to database");
-
-		// Generate random coords
-		var randomLat = (Math.random() * 0.044484)-37.831706;
-		var randomLong = (Math.random() * 0.041199)+144.923676;
-		
-		//alert("Random coords: "+randomLat+", "+randomLong);
-		
-		var vModel = document.getElementById('model').value;
-		var vBrand = document.getElementById('fBrand').value;
-		
-		var vLat = document.getElementById('fLat').value;
-		var vLong = document.getElementById('fLong').value;
-		
-		if (vLat == "" || vLong == "")
-		{
-			alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
-		}
-		else
-		{
-			alert("Vehicle added to map.");
-			randomLat = vLat;
-			randomLong = vLong;
-		}
-		
-		var vSeats = document.getElementById('fSeats').value;
-
-		db.collection("Vehicles").add
-		({
-			available: "true",
-			image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
-			/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
-			location: new firebase.firestore.GeoPoint(randomLat, randomLong),
-			model: vModel,
-			brand: vBrand,
-			seats: fSeats
-		});
-		
-	}
-	
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
