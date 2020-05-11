@@ -138,13 +138,73 @@ ob_start();
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
-	
-	<style>
+</head>
 
-    /*!
- *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <style>
+        #title {
+            font-size: 30px;
+
+        }
+        </style>
+
+        <!-- Banner -->
+        <section id="banner" class="major">
+            <div class="inner">
+                <header class="major">
+                    <center>
+                        <h1 id="title">CAR4ALL</h1>
+                    </center>
+                </header>
+            </div>
+        </section>
+
+        <div class="center">
+            <nav>
+                <ul>
+                    <style>
+                    .center {
+                        text-align: center;
+                    }
+
+
+                    .navbar {
+                        text-align: center;
+                        display: inline;
+                        margin: 0;
+                        padding: 10px;
+                        font-family: "Source Sans Pro", Helvetica, sans-serif;
+
+                        font-size: 1.7em;
+
+                    }
+                    </style>
+
+                    <li class="navbar"><a href="contact">Contact</a></li>
+                    <li class="navbar"><a href="login">Login</a></li>
+                    <li class="navbar"><a href="admin">Admin login</a></li>
+                </ul>
+            </nav>
+        </div>
+		
+		<section id="two">
+		<div class="inner">
+			<header class="major">
+				<h2>Locate Your Nearest vehicle</h2>
+
+			</header>
+			<div id="map" style="height:800px;"></div>
+		</div>
+		</section>
+
+    </div>
+	
+
+	<style>
     @font-face {
         font-family: 'FontAwesome';
         src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -7111,72 +7171,9 @@ ob_start();
         opacity: 1;
     }
 	</style>
-	
-</head>
-
-<body class="is-preload">
-
-    <!-- Wrapper -->
-    <div id="wrapper">
-
-        <style>
-        #title {
-            font-size: 30px;
-
-        }
-        </style>
-
-        <!-- Banner -->
-        <section id="banner" class="major">
-            <div class="inner">
-                <header class="major">
-                    <center>
-                        <h1 id="title">CAR4ALL</h1>
-                    </center>
-                </header>
-            </div>
-        </section>
-
-        <div class="center">
-            <nav>
-                <ul>
-                    <style>
-                    .center {
-                        text-align: center;
-                    }
-
-
-                    .navbar {
-                        text-align: center;
-                        display: inline;
-                        margin: 0;
-                        padding: 10px;
-                        font-family: "Source Sans Pro", Helvetica, sans-serif;
-
-                        font-size: 1.7em;
-
-                    }
-                    </style>
-
-                    <li class="navbar"><a href="contact">Contact</a></li>
-                    <li class="navbar"><a href="login">Login</a></li>
-                    <li class="navbar"><a href="admin">Admin login</a></li>
-                </ul>
-            </nav>
-        </div>
-		
-		<section id="two">
-		<div class="inner">
-			<header class="major">
-				<h2>Locate Your Nearest vehicle</h2>
-
-			</header>
-			<div id="map" style="height:800px;"></div>
-		</div>
-		</section>
-
-    </div>
 
 </body>
+
+
 
 </html>
