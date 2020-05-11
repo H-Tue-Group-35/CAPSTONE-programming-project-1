@@ -89,9 +89,9 @@ ob_start();
                                     '<form method="post" action="booking">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><input type="submit" value="Summon emergency services" style="background-color: #DE6247;" />' +
-									'<input type="submit" value="Deactivate" style="background-color: #DE6247;"' +
-									'<input type="submit" value="Delete" style="background-color: #DE6247;"</p></form>';
+                                    '" ><input type="submit" value="Summon emergency services" />' +
+									'<input type="submit" value="Deactivate" />' +
+									'<input type="submit" value="Delete" /></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -132,9 +132,9 @@ ob_start();
                                     '<form method="post" action="booking">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><input type="submit" value="Summon emergency services" style="background-color: #DE6247;" />' +
-									'<input type="submit" value="Activate" style="background-color: #DE6247;"' +
-									'<input type="submit" value="Delete" style="background-color: #DE6247;"</p></form>';
+                                    '" ><input type="submit" value="Summon emergency services" />' +
+									'<input type="submit" value="Activate" />' +
+									'<input type="submit" value="Delete" /></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -249,6 +249,9 @@ ob_start();
 		}
 
 		.container input {
+		  width: 100%;
+		}
+		.container select {
 		  width: 100%;
 		}
 
