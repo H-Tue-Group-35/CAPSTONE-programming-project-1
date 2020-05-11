@@ -232,32 +232,6 @@ ob_start();
 	<h2>Fleet Status</h2>
 	
 	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
-	
-	<?php
-	
-		echo "<p>HELLO THIS IS PHP</p>";
-
-
-		use Google\Cloud\Firestore\FirestoreClient;
-
-		/**
-		 * Initialize Cloud Firestore with default project ID.
-		 * ```
-		 * initialize();
-		 * ```
-		 */
-		function initialize()
-		{
-			// Create the Cloud Firestore client
-			$db = new FirestoreClient();
-			echo "<p>Created Cloud Firestore client with default project ID.</p>";
-		}
-		
-		echo "<p>CALLING INITIALIZE</p>";
-		initialize();
-	
-		echo "<p>HELLO THIS IS MORE PHP</p>";
-	?>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
 
