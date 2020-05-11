@@ -137,7 +137,7 @@ ob_start();
 					doc.data().model + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
 					doc.data().seats + '</span></p>' +	
-					'<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
 					'<form onsubmit="test()">' +
 					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
