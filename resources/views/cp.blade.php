@@ -259,7 +259,7 @@ ob_start();
 	<br/>
 	Status:
 	<br/>
-	<input type="radio" id="active" name="active" value="active">
+	<input type="radio" id="active" name="active" value="active" checked>
 	<label for="active">Active</label><br>
 	<input type="radio" id="inactive" name="active" value="inactive">
 	<label for="inactive">Inactive</label><br>
