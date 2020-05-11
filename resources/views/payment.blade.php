@@ -54,17 +54,45 @@ ob_start();
         })
         .then(function() {
             console.log("Document successfully updated!");
+            window.open("https://car-for-all-273711.appspot.com/?dt="+(new Date()).getTime(),"_self");
         })
         .catch(function(error) {
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
-        window.open("https://car-for-all-273711.appspot.com/","_self");
+        
 
     }
 
-    
+    </script>
 
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AbV9Q5txmsUY5w0vRyP7P3lkzRAlfOnkijns2CRZYx4y6a1Cw2evkROAwedNEttZ9Ln7CrziKVe3xsy3&currency=AUD" data-sdk-integration-source="button-factory"></script>
+    <script>
+    paypal.Buttons({
+        style: {
+            shape: 'rect',
+            color: 'blue',
+            layout: 'vertical',
+            label: 'paypal',
+            
+        },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '0.01'
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {  
+                alert('Booking completed');
+                book();
+            });
+        }
+    }).render('#paypal-button-container');
     </script>
 
 </head>
@@ -72,15 +100,14 @@ ob_start();
 <body>
 
     <div class="center">
-        <h1>Payment<?php echo $carID ?></h1>
+        <h1>Payment<br><?php echo $carID ?></h1>
     </div>
     <div class="center">
         <div class="texty">
             <p>We currently Only accept Paypal as a payment method, as it is very secure</p>
             <p>If you do not have an paypal account, you can pay as a guest</p>
             <p>and we well store your credit card details!</p>
-            <button onClick="book()"><span style="color: #000000;"> PAY</span> </button>
-
+            <div id="paypal-button-container"></div>
         </div>
     </div>
 

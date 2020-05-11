@@ -1,10 +1,14 @@
+<?php
+session_start();
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{{ asset('public/css/style.css') }}" rel="stylesheet" type="text/css" >
 	
     <title>Admin Control Panel</title>
 	
@@ -151,6 +155,69 @@
             'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
+	
+
+	/*
+		This adds the vehicle to the database. If coordinate fields are
+		empty it puts the vehicle randomly in the city
+	*/
+	function makeVehicle()
+	{
+		/* Random lat and long should use following range:
+		
+			Lat
+			-37.787222
+			-37.831706
+			range: 0.044484
+
+			Long
+			144.964875
+			144.923676
+			range: 0.041199
+			
+			Math.random() generates random value from 0-1
+		*/
+		
+		//alert("Car added to database");
+
+		// Generate random coords
+		var randomLat = (Math.random() * 0.044484)-37.831706;
+		var randomLong = (Math.random() * 0.041199)+144.923676;
+		
+		//alert("Random coords: "+randomLat+", "+randomLong);
+		
+		var vModel = document.getElementById('model').value;
+		var vBrand = document.getElementById('fBrand').value;
+		
+		var vLat = document.getElementById('fLat').value;
+		var vLong = document.getElementById('fLong').value;
+		
+		if (vLat == "" || vLong == "")
+		{
+			alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
+		}
+		else
+		{
+			alert("Vehicle added to map.");
+			randomLat = vLat;
+			randomLong = vLong;
+		}
+		
+		var vSeats = document.getElementById('fSeats').value;
+
+		db.collection("Vehicles").add
+		({
+			available: "true",
+			image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
+			/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
+			location: new firebase.firestore.GeoPoint(randomLat, randomLong),
+			model: vModel,
+			brand: vBrand,
+			seats: fSeats
+		});
+		
+	}
+	
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
@@ -160,14 +227,66 @@
 
 <body>
 
-    <h1>Admin Control Panel</h1>
-	
+	<h1>Admin Control Panel</h1>
+
 	<h2>Fleet Status</h2>
 	
-	<h2>Make new Vehicle (also random option)</h2>
+	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
 	
+	<?php
+	
+		echo "<p>HELLO THIS IS PHP</p>";
+
+
+		use Google\Cloud\Firestore\FirestoreClient;
+
+		/**
+		 * Initialize Cloud Firestore with default project ID.
+		 * ```
+		 * initialize();
+		 * ```
+		 */
+		function initialize()
+		{
+			// Create the Cloud Firestore client
+			$db = new FirestoreClient();
+			echo "<p>Created Cloud Firestore client with default project ID.</p>";
+		}
+		
+		echo "<p>CALLING INITIALIZE</p>";
+		initialize();
+	
+		echo "<p>HELLO THIS IS MORE PHP</p>";
+	?>
+
+	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
+
+	<form onsubmit="makeVehicle()">
+	Brand: <input type="text" name="fBrand" id="fBrand" maxlength="12" required>
+	<br/>
+	Model: <input type="text" name="model" id="model" maxlength="12" required>
+	<br/>
+	Seats: <input type="number" id="fSeats" name="fSeats" min="1" max="12" value="5" required>
+	<br/>
+	Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
+				 <input type="text" name="fLong" id="fLong" maxlength="12">
+	<br/>
+	Status:
+	<br/>
+	<input type="radio" id="active" name="active" value="active">
+	<label for="active">Active</label><br>
+	<input type="radio" id="inactive" name="active" value="inactive">
+	<label for="inactive">Inactive</label><br>
+
+	<br/>
+	<input type="submit">
+	</form>
+		
+
+	<br/>
+
 	<h2>Emergency map</h2>
-	
+
 	<div id="map" style="height:800px;"></div>
 
 </body>
