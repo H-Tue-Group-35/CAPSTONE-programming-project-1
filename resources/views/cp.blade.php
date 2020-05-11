@@ -34,15 +34,11 @@ ob_start();
 
     function initMap()
 	{
-        map = new google.maps.Map(document.getElementById('map'),
+		map = new google.maps.Map(document.getElementById('map'),
 		{
-            center: {
-                lat: -37.806,
-                lng: 144.954
-            },
-            zoom: 12
-        }
-		);
+			center: { lat: -37.806, lng: 144.954 },zoom: 12
+		});
+		
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
@@ -195,18 +191,18 @@ ob_start();
 	}
 	function vehicleActivate()
 	{
-		var cID = document.getElementById('carID').value;
-		alert("activate vehicle" + cID);
+		//var cID = document.getElementById('carID').value;
+		alert("activate vehicle");
 	}
 	function vehicleDeactivate()
 	{
-		var cID = document.getElementById('carID').value;
-		alert("deactivate vehicle" + cID);
+		//var cID = document.getElementById('carID').value;
+		alert("deactivate vehicle");
 	}
 	function vehicleDelete()
 	{
-		var cID = document.getElementById('carID').value;
-		alert("delete vehicle" + cID);
+		//var cID = document.getElementById('carID').value;
+		alert("delete vehicle");
 	}
 
 	/*
