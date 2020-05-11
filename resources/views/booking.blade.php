@@ -132,7 +132,7 @@ session_start();
             message.innerHTML = "Email to must be filled out"
             return false;
         } else {
-            alert("404 error")
+            console.log("ready")
         }
     }
     </script>
