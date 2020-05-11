@@ -260,7 +260,7 @@ ob_start();
 	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
-
+	<div class="container">
 	<form onsubmit="makeVehicle()">
 	Brand: <input type="text" name="fBrand" id="fBrand" maxlength="12" required>
 	<br/>
@@ -281,7 +281,7 @@ ob_start();
 	<br/>
 	<input type="submit">
 	</form>
-		
+	</div>
 
 	<br/>
 
