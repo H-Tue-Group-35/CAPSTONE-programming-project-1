@@ -126,7 +126,7 @@ ob_start();
                                     '<p style="text-align: center;"><span style="color: #000000;">Model: ' +
                                     doc.data().model + '</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
-                                    doc.data().seats + '</span></p>' +
+                                    doc.data().seats + '</span></p>' +	
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
                                     '<form method="post" action="booking">' +
@@ -251,9 +251,7 @@ ob_start();
 		.container input {
 		  width: 100%;
 		}
-		.container radio {
-		  width: 50%;
-		}
+
 	</style>
 	
 </head>
@@ -279,11 +277,10 @@ ob_start();
 				 <input type="text" name="fLong" id="fLong" maxlength="12">
 	<br/>
 	Status:
-	<br/>
-	<input type="radio" id="active" name="active" value="active" checked>
-	<label for="active">Active</label><br>
-	<input type="radio" id="inactive" name="active" value="inactive">
-	<label for="inactive">Inactive</label><br>
+	<select id="fStatus" name="fStatus">
+	  <option value="fActive">Active</option>
+	  <option value="fInactive">Inactive</option>
+	</select>
 
 	<br/>
 	<input type="submit">
