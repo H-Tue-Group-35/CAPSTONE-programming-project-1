@@ -53,8 +53,6 @@ ob_start();
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-
-
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map
@@ -64,8 +62,7 @@ ob_start();
 			function()
 			{
 				handleLocationError(true, infoWindow, map.getCenter());
-			}
-			);
+			});
 		}
 		else
 		{
@@ -73,11 +70,8 @@ ob_start();
 			handleLocationError(false, infoWindow, map.getCenter());
 		}
 
-
-
 		var markers = []
 		console.log(typeof(markers));
-
 
 		db.collection("Vehicles").get().then(function(querySnapshot)
 		{
@@ -110,20 +104,18 @@ ob_start();
 					'<button onclick="vehicleDeactivate()">Deactivate</button>' +
 					'<button onclick="vehicleDelete()">Delete</button></p></form>';
 
-					var carInfo = new google.maps.InfoWindow({
-					content: contentString
-					});
+					var carInfo = new google.maps.InfoWindow
+					({ content: contentString });
 
-					var carMarker = new google.maps.Marker({
-					position: coordinates,
-					map: map,
-					icon: {
-					url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
-					}
+					var carMarker = new google.maps.Marker
+					({
+						position: coordinates,
+						map: map,
+						icon: { url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png" }
 					});
-					carMarker.addListener('click', function() {
-					carInfo.open(map, carMarker);
-					});
+					
+					carMarker.addListener('click', function()
+					{ carInfo.open(map, carMarker); });
 
 					markers.push(carMarker);
 				}
@@ -177,12 +169,13 @@ ob_start();
 		});
     }
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
+    function handleLocationError(browserHasGeolocation, infoWindow, pos)
+	{
+		infoWindow.setPosition(pos);
+		infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+		infoWindow.open(map);
     }
 	
 	function vehicleEmergency()

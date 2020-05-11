@@ -53,8 +53,6 @@
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-
-
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map
@@ -64,8 +62,7 @@
 			function()
 			{
 				handleLocationError(true, infoWindow, map.getCenter());
-			}
-			);
+			});
 		}
 		else
 		{
@@ -73,11 +70,8 @@
 			handleLocationError(false, infoWindow, map.getCenter());
 		}
 
-
-
 		var markers = []
 		console.log(typeof(markers));
-
 
 		db.collection("Vehicles").get().then(function(querySnapshot)
 		{
