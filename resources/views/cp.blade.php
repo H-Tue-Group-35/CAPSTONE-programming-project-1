@@ -69,8 +69,6 @@ ob_start();
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function(doc) {
                             if (doc.data().available) {
-
-
                                 var coordinates = {
                                     lat: doc.data().location.latitude,
                                     lng: doc.data().location.longitude
@@ -89,6 +87,8 @@ ob_start();
                                     '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
                                     '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
                                     '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>';
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Deactivate</span> </button></p>';
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Delete</span> </button></p>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -108,13 +108,27 @@ ob_start();
                                 markers.push(carMarker);
                             } else // if car is not available, show debug marker for now
                             {
+
                                 var coordinates = {
                                     lat: doc.data().location.latitude,
                                     lng: doc.data().location.longitude
                                 };
 
                                 var contentString =
-                                    '<p style="color: #000000;">This is debug code to show unavailable cars</p>';
+                                    '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
+                                    doc.data().image +
+                                    '" alt="" width="246" height="138" /></span></p>' +
+                                    '<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
+                                    doc.data().brand + '</span></p>' +
+                                    '<p style="text-align: center;"><span style="color: #000000;">Model: ' +
+                                    doc.data().model + '</span></p>' +
+                                    '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
+                                    doc.data().seats + '</span></p>' +
+                                    '<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
+                                    '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>';
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Activate</span> </button></p>';
+                                    '<p style="text-align: center;"><button><span style="color: #000000;">Delete</span> </button></p>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -124,7 +138,7 @@ ob_start();
                                     position: coordinates,
                                     map: map,
                                     icon: {
-                                        url: "http://maps.google.com/mapfiles/kml/pal3/icon45.png"
+                                        url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
                                     }
                                 });
                                 carMarker.addListener('click', function() {
@@ -271,7 +285,8 @@ ob_start();
 
 	<br/>
 
-	<h2>Emergency map</h2>
+	<h2>Vehicle map</h2>
+	<p>Delete vehicles or summon emergency services.</p>
 
 	<div id="map" style="height:800px;"></div>
 
