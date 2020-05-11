@@ -89,9 +89,9 @@ ob_start();
                                     '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-									'<button onclick="vehicleDeactivate()">Deactivate</button>' +
-									'<button onclick="vehicleDelete()">Delete</button></p></form>';
+                                    '" ><button onclick="vehicleEmergency(doc.id)">Summon emergency services</button>' +
+									'<button onclick="vehicleDeactivate(doc.id)">Deactivate</button>' +
+									'<button onclick="vehicleDelete(doc.id)">Delete</button></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -132,9 +132,9 @@ ob_start();
                                     '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-									'<button onclick="vehicleActivate()">Activate</button>' +
-									'<button onclick="vehicleDelete()">Delete</button></p></form>';
+                                    '" ><button onclick="vehicleEmergency(doc.id)">Summon emergency services</button>' +
+									'<button onclick="vehicleActivate(doc.id)">Activate</button>' +
+									'<button onclick="vehicleDelete(doc.id)">Delete</button></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -176,21 +176,21 @@ ob_start();
         infoWindow.open(map);
     }
 	
-	function vehicleEmergency()
+	function vehicleEmergency(id)
 	{
 		alert("Emergency services summoned.");
 	}
-	function vehicleActivate()
+	function vehicleActivate(id)
 	{
-		alert("activate vehicle");
+		alert("activate vehicle" + id);
 	}
-	function vehicleDeactivate()
+	function vehicleDeactivate(id)
 	{
-		alert("deactivate vehicle");
+		alert("deactivate vehicle" + id);
 	}
-	function vehicleDelete()
+	function vehicleDelete(id)
 	{
-		alert("delete vehicle");
+		alert("delete vehicle" + id);
 	}
 
 	/*
