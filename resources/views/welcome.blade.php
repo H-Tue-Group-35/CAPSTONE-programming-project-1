@@ -167,13 +167,8 @@ ob_start();
         </section>
 
         <div class="center">
-
             <nav>
-
-
                 <ul>
-
-
                     <style>
                     .center {
                         text-align: center;
@@ -192,46 +187,13 @@ ob_start();
                     }
                     </style>
 
-                    <!--li class="navbar"><a href="payment">Payment</a></li-->
-                    <!-- <li class="navbar"><a href="booking">Booking</a></li> -->
-
-
-
                     <li class="navbar"><a href="contact">Contact</a></li>
-
                     <li class="navbar"><a href="login">Login</a></li>
-
-
-                    <!--li class="navbar"><a href="cp">Control Panel</a></li-->
-
                     <li class="navbar"><a href="admin">Admin login</a></li>
-
                 </ul>
-
-
-
-
             </nav>
-
         </div>
-
-
-
-
-
-        <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <h2>Locate Your Nearest vehicle</h2>
-
-                </header>
-                <div id="map" style="height:800px;"></div>
-                <ul class="actions">
-                    <!-- <li><a href="about.php" class="button next">Read more</a></li> -->
-                </ul>
-            </div>
-        </section>
-
+		
         <!-- Main -->
         <div id="main">
 
@@ -259,77 +221,6 @@ ob_start();
         <!-- inquiry -->
         <section id="contact">
             <div class="inner">
-                <section>
-                    <header class="major">
-                        <h2>Book now</h2>
-                    </header>
-
-                    <form method="post" action="#">
-                        <div class="fields">
-                            <div class="field half">
-                                <label for="location">Location</label>
-                                <input type="text" name="location" id="location" />
-                            </div>
-
-                            <div class="field half">
-                                <label for="vehicle-type">Select Vehicle Type</label>
-
-                                <select name="vehicle-type" id="vehicle-type">
-                                    <option value="">- Vehicle Type -</option>
-                                    <option value="1">Large: Premium</option>
-                                    <option value="2">Large: Station wagon</option>
-                                    <option value="3">Medium: Low emission</option>
-                                    <option value="4">Small: Economy</option>
-                                    <option value="5">Small: Mini</option>
-                                    <option value="6">Small: Mini Low emission</option>
-                                </select>
-                            </div>
-
-                            <div class="field half">
-                                <label for="date-from">Date from</label>
-                                <input type="text" name="date-from" id="date-from" />
-                            </div>
-
-                            <div class="field half">
-                                <label for="date-to">Date to</label>
-                                <input type="text" name="date-to" id="date-to" />
-                            </div>
-
-                            <div class="field">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" />
-                            </div>
-
-                            <div class="field half">
-                                <label for="email">Email</label>
-                                <input type="text" name="email" id="email" />
-                            </div>
-
-                            <div class="field half">
-                                <label for="phone">Phone</label>
-                                <input type="text" name="phone" id="phone" />
-                            </div>
-
-                            <div class="field">
-                                <label for="message">Comment</label>
-                                <textarea name="message" id="message" rows="3"></textarea>
-                            </div>
-
-                            <div class="field half">
-                                <label for="captcha">Captcha</label>
-                                <input type="text" name="captcha" id="captcha" />
-                            </div>
-
-                            <div class="field half text-right">
-                                <label>&nbsp;</label>
-
-                                <ul class="actions">
-                                    <li><input type="submit" value="Send" class="primary" /></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                </section>
                 <section class="split">
                     <section>
                         <div class="contact-method">
