@@ -135,7 +135,7 @@ ob_start();
 		infoWindow.open(map);
     }
     </script>
-    <script
+    <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
 </head>

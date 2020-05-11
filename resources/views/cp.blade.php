@@ -259,7 +259,7 @@ ob_start();
 	}
 	
     </script>
-    <script
+    <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
 	
