@@ -38,7 +38,7 @@ ob_start();
                 lat: -37.806,
                 lng: 144.954
             },
-            zoom: 17
+            zoom: 14
         });
         infoWindow = new google.maps.InfoWindow;
 
@@ -89,9 +89,9 @@ ob_start();
                                     '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><button onclick="vehicleEmergency(doc.id)">Summon emergency services</button>' +
-									'<button onclick="vehicleDeactivate(doc.id)">Deactivate</button>' +
-									'<button onclick="vehicleDelete(doc.id)">Delete</button></p></form>';
+                                    '" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
+									'<button onclick="vehicleDeactivate()">Deactivate</button>' +
+									'<button onclick="vehicleDelete()">Delete</button></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -132,9 +132,9 @@ ob_start();
                                     '<form onsubmit="test()">' +
                                     '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                                     doc.id +
-                                    '" ><button onclick="vehicleEmergency(doc.id)">Summon emergency services</button>' +
-									'<button onclick="vehicleActivate(doc.id)">Activate</button>' +
-									'<button onclick="vehicleDelete(doc.id)">Delete</button></p></form>';
+                                    '" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
+									'<button onclick="vehicleActivate()">Activate</button>' +
+									'<button onclick="vehicleDelete()">Delete</button></p></form>';
 
                                 var carInfo = new google.maps.InfoWindow({
                                     content: contentString
@@ -176,21 +176,21 @@ ob_start();
         infoWindow.open(map);
     }
 	
-	function vehicleEmergency(id)
+	function vehicleEmergency()
 	{
 		alert("Emergency services summoned.");
 	}
-	function vehicleActivate(id)
+	function vehicleActivate()
 	{
-		alert("activate vehicle" + id);
+		alert("activate vehicle" + document.getElementById('carID').value);
 	}
-	function vehicleDeactivate(id)
+	function vehicleDeactivate()
 	{
-		alert("deactivate vehicle" + id);
+		alert("deactivate vehicle" + document.getElementById('carID').value);
 	}
-	function vehicleDelete(id)
+	function vehicleDelete()
 	{
-		alert("delete vehicle" + id);
+		alert("delete vehicle" + document.getElementById('carID').value);
 	}
 
 	/*
