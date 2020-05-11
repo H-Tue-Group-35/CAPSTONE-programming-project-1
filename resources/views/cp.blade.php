@@ -76,14 +76,13 @@ ob_start();
 		{
 			querySnapshot.forEach(function(doc)
 			{
+				var coordinates =
+				{
+					lat: doc.data().location.latitude,
+					lng: doc.data().location.longitude
+				};
 				if (doc.data().available)
 				{
-					var coordinates =
-					{
-						lat: doc.data().location.latitude,
-						lng: doc.data().location.longitude
-					};
-
 					var contentString =
 					'<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
 					doc.data().image +
@@ -120,13 +119,6 @@ ob_start();
 				}
 				else // if car is not available, show debug marker for now
 				{
-
-					var coordinates = 
-					{
-						lat: doc.data().location.latitude,
-						lng: doc.data().location.longitude
-					};
-
 					var contentString =
 					'<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
 					doc.data().image +
@@ -146,10 +138,10 @@ ob_start();
 					'<button onclick="vehicleActivate()">Activate</button>' +
 					'<button onclick="vehicleDelete()">Delete</button></p></form>';
 
-					var carInfo = new google.maps.InfoWindo
+					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
 
-					var carMarker = new google.maps.Marke
+					var carMarker = new google.maps.Marker
 					({
 						position: coordinates,
 						map: map,
