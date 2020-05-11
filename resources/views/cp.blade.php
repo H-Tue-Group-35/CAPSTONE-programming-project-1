@@ -238,19 +238,16 @@ ob_start();
     </script>
 	
 	<style>
-.container {
-  width: 200px;
-  clear: none;
-}
+		.container {
+		  width: 200px;
+		}
 
-.container input {
-  width: 100%;
-  clear: none;
-}
-.container radio {
-  width: 100%;
-  clear: none;
-}
+		.container input {
+		  width: 100%;
+		}
+		.container radio {
+		  width: 50%;
+		}
 	</style>
 	
 </head>
