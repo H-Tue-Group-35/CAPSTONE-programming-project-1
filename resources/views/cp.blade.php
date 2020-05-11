@@ -240,12 +240,12 @@ ob_start();
 	<style>
 .container {
   width: 200px;
-  clear: both;
+  clear: none;
 }
 
 .container input {
   width: 100%;
-  clear: both;
+  clear: none;
 }
 .container radio {
   width: 100%;
