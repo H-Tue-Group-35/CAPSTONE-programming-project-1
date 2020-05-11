@@ -45,9 +45,7 @@ session_start();
 
 
 
-
-
-        <form method="post" action="payment" name="form" id="form">
+        <form method="post" action="payment" name="form" id="form" onsubmit="return validateForm()">
             <div class="fields">
 
 
@@ -106,27 +104,37 @@ session_start();
     </div>
 
 
+
+
     <script>
-    var datefrom = document.getElementById("date-form");
-    var dateto = document.getElementById("date-to");
-    var message = document.getElementById("message");
-    var myform = document.getElementById("form");
+    let message = document.getElementById("message");
 
+    function validateForm() {
+        var datefrom = document.forms["form"]["datefrom"].value;
+        var dateto = document.forms["form"]["dateto"].value;
+        var phone = document.forms["form"]["phone"].value;
+        var name = document.forms["form"]["name"].value;
+        var email = document.forms["form"]["email"].value;
 
-
-    myform.addEventListener("submit", function() {
-
-        if (datefrom == null) {
-
-            message.innerHTML = "You cannnot leave Date-from empty";
-
-        } else if (dateto == null) {
-            message.innerHTML = "You cannnot leave Date-to empty";
+        if (datefrom == "") {
+            message.innerHTML = "Date from must be filled out"
+            return false;
+        } else if (dateto == "") {
+            message.innerHTML = "Date to must be filled out"
+            return false;
+        } else if (phone == "") {
+            message.innerHTML = "Phone to must be filled out"
+            return false;
+        } else if (name == "") {
+            message.innerHTML = "Name to must be filled out"
+            return false;
+        } else if (email == "") {
+            message.innerHTML = "Email to must be filled out"
+            return false;
         } else {
-            message.innerHTML = "";
+            alert("404 error")
         }
-
-    });
+    }
     </script>
 
 
