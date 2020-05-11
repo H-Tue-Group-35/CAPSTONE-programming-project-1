@@ -217,7 +217,7 @@
                     </style>
 
                     <!--li class="navbar"><a href="payment">Payment</a></li-->
-                    <li class="navbar"><a href="booking">Booking</a></li>
+                    <!-- <li class="navbar"><a href="booking">Booking</a></li> -->
 
 
 
