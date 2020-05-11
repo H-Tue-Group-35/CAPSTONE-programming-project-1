@@ -47,7 +47,7 @@ session_start();
 
 
 
-        <form method="post" action="" name="form" id="form">
+        <form method="post" action="payment" name="form" id="form">
             <div class="fields">
 
 
