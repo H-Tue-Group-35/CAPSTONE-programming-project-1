@@ -239,7 +239,7 @@ ob_start();
 	
 	<style>
 .container {
-  width: 500px;
+  width: 200px;
   clear: both;
 }
 
