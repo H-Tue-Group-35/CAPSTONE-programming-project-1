@@ -138,7 +138,7 @@ ob_start();
                                     position: coordinates,
                                     map: map,
                                     icon: {
-                                        url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
+                                        url: "http://maps.google.com/mapfiles/kml/pal3/icon45.png"
                                     }
                                 });
                                 carMarker.addListener('click', function() {
