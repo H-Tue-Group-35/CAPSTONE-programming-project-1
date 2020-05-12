@@ -244,7 +244,7 @@ ob_start();
 			/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
 			location: new firebase.firestore.GeoPoint(randomLat, randomLong),
 			model: vModel,
-			brand: vBrand
+			brand: vBrand,
 			seats: vSeats
 		});
 		alert("db operation done");
