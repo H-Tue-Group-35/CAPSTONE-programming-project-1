@@ -1,5 +1,7 @@
 runtime: php72
 
+secure: always
+
 env_variables:
   ## Put production environment variables here.
   APP_KEY: base64:N+4nxQumgUSp+oMwrnUgVD1/ZmAgtG5C7fqr50fkfLk=
