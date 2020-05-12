@@ -226,11 +226,11 @@ ob_start();
 		
 		if (vLat == "" || vLong == "")
 		{
-			alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
+			//alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
 		}
 		else
 		{
-			alert("Vehicle added to map.");
+			//alert("Vehicle added to map.");
 			randomLat = vLat;
 			randomLong = vLong;
 		}
@@ -239,14 +239,15 @@ ob_start();
 
 		db.collection("Vehicles").add
 		({
-			available: "true",
-			image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
+			available: true,
+			//image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
 			/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
 			location: new firebase.firestore.GeoPoint(randomLat, randomLong),
 			model: vModel,
 			brand: vBrand,
 			seats: fSeats
 		});
+		alert("db operation done");
 		
 	}
 	
