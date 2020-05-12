@@ -247,7 +247,7 @@ ob_start();
 			brand: vBrand,
 			seats: vSeats
 		});
-		alert("db operation done");
+		//alert("db operation done");
 		
 	}
 	
