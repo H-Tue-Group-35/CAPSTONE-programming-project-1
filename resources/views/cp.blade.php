@@ -84,9 +84,6 @@ ob_start();
 				if (doc.data().available)
 				{
 					var contentString =
-					'<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
-					doc.data().image +
-					'" alt="" width="246" height="138" /></span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
 					doc.data().brand + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Model: ' +
@@ -120,9 +117,6 @@ ob_start();
 				else // if car is not available, show debug marker for now
 				{
 					var contentString =
-					'<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
-					doc.data().image +
-					'" alt="" width="246" height="138" /></span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
 					doc.data().brand + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Model: ' +
