@@ -13,7 +13,6 @@ ob_start();
     <title>Admin Control Panel</title>
 	
 	<!-- Connect to Firebase so we can get stats on all Vehicles -->
-	
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 	
@@ -32,130 +31,157 @@ ob_start();
     var db = firebase.firestore();
     var map, infoWindow;
 
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: -37.806,
-                lng: 144.954
-            },
-            zoom: 17
-        });
+    function initMap()
+	{
+		map = new google.maps.Map(document.getElementById('map'),
+		{
+			center: { lat: -37.806, lng: 144.954 },zoom: 12
+		});
+		
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+        if (navigator.geolocation) 
+		{
+            navigator.geolocation.getCurrentPosition(function(position)
+			{
                 console.log(position.coords.latitude);
 
-                var pos = {
+                var pos =
+				{
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-
-
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map
                 });
                 map.setCenter(pos);
+			},
+			function()
+			{
+				handleLocationError(true, infoWindow, map.getCenter());
+			});
+		}
+		else
+		{
+			// Browser doesn't support Geolocation
+			handleLocationError(false, infoWindow, map.getCenter());
+		}
 
+		var markers = []
+		console.log(typeof(markers));
 
-                var markers = []
-                console.log(typeof(markers));
+		db.collection("Vehicles").get().then(function(querySnapshot)
+		{
+			querySnapshot.forEach(function(doc)
+			{
+				var coordinates =
+				{
+					lat: doc.data().location.latitude,
+					lng: doc.data().location.longitude
+				};
+				if (doc.data().available)
+				{
+					var contentString =
+					'<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
+					doc.data().brand + '</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Model: ' +
+					doc.data().model + '</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
+					doc.data().seats + '</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
+					'<form onsubmit="test()">' +
+					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+					doc.id +
+					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
+					'<button onclick="vehicleDeactivate()">Deactivate</button>' +
+					'<button onclick="vehicleDelete()">Delete</button></p></form>';
 
+					var carInfo = new google.maps.InfoWindow
+					({ content: contentString });
 
-                db.collection("Vehicles")
-                    .get()
-                    .then(function(querySnapshot) {
-                        querySnapshot.forEach(function(doc) {
-                            if (doc.data().available) {
+					var carMarker = new google.maps.Marker
+					({
+						position: coordinates,
+						map: map,
+						icon: { url: "https://maps.google.com/mapfiles/kml/pal4/icon15.png" }
+					});
+					
+					carMarker.addListener('click', function()
+					{ carInfo.open(map, carMarker); });
 
+					markers.push(carMarker);
+				}
+				else // if car is not available, show debug marker for now
+				{
+					var contentString =
+					'<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
+					doc.data().brand + '</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Model: ' +
+					doc.data().model + '</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
+					doc.data().seats + '</span></p>' +	
+					'<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
+					'<form onsubmit="test()">' +
+					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+					doc.id +
+					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
+					'<button onclick="vehicleActivate()">Activate</button>' +
+					'<button onclick="vehicleDelete()">Delete</button></p></form>';
 
-                                var coordinates = {
-                                    lat: doc.data().location.latitude,
-                                    lng: doc.data().location.longitude
-                                };
+					var carInfo = new google.maps.InfoWindow
+					({ content: contentString });
 
-                                var contentString =
-                                    '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
-                                    doc.data().image +
-                                    '" alt="" width="246" height="138" /></span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
-                                    doc.data().brand + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Model: ' +
-                                    doc.data().model + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
-                                    doc.data().seats + '</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
-                                    '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-                                    '<p style="text-align: center;"><button><span style="color: #000000;">Summon emergency services</span> </button></p>';
+					var carMarker = new google.maps.Marker
+					({
+						position: coordinates,
+						map: map,
+						icon: { url: "https://maps.google.com/mapfiles/kml/pal3/icon45.png" }
+					});
+					
+					carMarker.addListener('click', function()
+					{ carInfo.open(map, carMarker); });
 
-                                var carInfo = new google.maps.InfoWindow({
-                                    content: contentString
-                                });
-
-                                var carMarker = new google.maps.Marker({
-                                    position: coordinates,
-                                    map: map,
-                                    icon: {
-                                        url: "http://maps.google.com/mapfiles/kml/pal4/icon15.png"
-                                    }
-                                });
-                                carMarker.addListener('click', function() {
-                                    carInfo.open(map, carMarker);
-                                });
-
-                                markers.push(carMarker);
-                            } else // if car is not available, show debug marker for now
-                            {
-                                var coordinates = {
-                                    lat: doc.data().location.latitude,
-                                    lng: doc.data().location.longitude
-                                };
-
-                                var contentString =
-                                    '<p style="color: #000000;">This is debug code to show unavailable cars</p>';
-
-                                var carInfo = new google.maps.InfoWindow({
-                                    content: contentString
-                                });
-
-                                var carMarker = new google.maps.Marker({
-                                    position: coordinates,
-                                    map: map,
-                                    icon: {
-                                        url: "http://maps.google.com/mapfiles/kml/pal3/icon45.png"
-                                    }
-                                });
-                                carMarker.addListener('click', function() {
-                                    carInfo.open(map, carMarker);
-                                });
-
-                                markers.push(carMarker);
-                            }
-                        });
-                    })
-                    .catch(function(error) {
-                        console.log("Error getting documents: ", error);
-                    });
-
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
+					markers.push(carMarker);
+				}
+			});
+		}).catch(function(error)
+		{
+			console.log("Error getting documents: ", error);
+		});
     }
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
+    function handleLocationError(browserHasGeolocation, infoWindow, pos)
+	{
+		infoWindow.setPosition(pos);
+		infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+		infoWindow.open(map);
     }
 	
+	function vehicleEmergency()
+	{
+		alert("Emergency services summoned.");
+	}
+	function vehicleActivate()
+	{
+		//var cID = document.getElementById('carID').value;
+		alert("activate vehicle");
+	}
+	function vehicleDeactivate()
+	{
+		//var cID = document.getElementById('carID').value;
+		alert("deactivate vehicle");
+	}
+	function vehicleDelete()
+	{
+		//var cID = document.getElementById('carID').value;
+		alert("delete vehicle");
+	}
 
 	/*
 		This adds the vehicle to the database. If coordinate fields are
@@ -194,11 +220,11 @@ ob_start();
 		
 		if (vLat == "" || vLong == "")
 		{
-			alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
+			//alert("Vehicle placed at random coordinates: "+randomLat+", "+randomLong);
 		}
 		else
 		{
-			alert("Vehicle added to map.");
+			//alert("Vehicle added to map.");
 			randomLat = vLat;
 			randomLong = vLong;
 		}
@@ -207,14 +233,15 @@ ob_start();
 
 		db.collection("Vehicles").add
 		({
-			available: "true",
-			image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
+			available: true,
+			//image: "https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Fcorolla.png?alt=media&token=84eb8d77-91a4-469a-b502-78fdac83ae6a",
 			/* myLocation: new firebaseAdmin.firestore.GeoPoint(0,0), */
 			location: new firebase.firestore.GeoPoint(randomLat, randomLong),
 			model: vModel,
 			brand: vBrand,
-			seats: fSeats
+			seats: vSeats
 		});
+		//alert("db operation done");
 		
 	}
 	
@@ -222,6 +249,20 @@ ob_start();
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
+	
+	<style>
+		.container {
+		  width: 200px;
+		}
+
+		.container input {
+		  width: 100%;
+		}
+		.container select {
+		  width: 100%;
+		}
+
+	</style>
 	
 </head>
 
@@ -232,35 +273,9 @@ ob_start();
 	<h2>Fleet Status</h2>
 	
 	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
-	
-	<?php
-	
-		echo "<p>HELLO THIS IS PHP</p>";
-
-
-		use Google\Cloud\Firestore\FirestoreClient;
-
-		/**
-		 * Initialize Cloud Firestore with default project ID.
-		 * ```
-		 * initialize();
-		 * ```
-		 */
-		function initialize()
-		{
-			// Create the Cloud Firestore client
-			$db = new FirestoreClient();
-			echo "<p>Created Cloud Firestore client with default project ID.</p>";
-		}
-		
-		echo "<p>CALLING INITIALIZE</p>";
-		initialize();
-	
-		echo "<p>HELLO THIS IS MORE PHP</p>";
-	?>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
-
+	<div class="container">
 	<form onsubmit="makeVehicle()">
 	Brand: <input type="text" name="fBrand" id="fBrand" maxlength="12" required>
 	<br/>
@@ -272,20 +287,20 @@ ob_start();
 				 <input type="text" name="fLong" id="fLong" maxlength="12">
 	<br/>
 	Status:
-	<br/>
-	<input type="radio" id="active" name="active" value="active">
-	<label for="active">Active</label><br>
-	<input type="radio" id="inactive" name="active" value="inactive">
-	<label for="inactive">Inactive</label><br>
+	<select id="fStatus" name="fStatus">
+	  <option value="fActive">Active</option>
+	  <option value="fInactive">Inactive</option>
+	</select>
 
 	<br/>
 	<input type="submit">
 	</form>
-		
+	</div>
 
 	<br/>
 
-	<h2>Emergency map</h2>
+	<h2>Vehicle map</h2>
+	<p>Delete vehicles or summon emergency services.</p>
 
 	<div id="map" style="height:800px;"></div>
 
