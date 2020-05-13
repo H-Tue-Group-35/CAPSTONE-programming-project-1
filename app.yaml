@@ -1,6 +1,7 @@
 runtime: php72
 
-secure: always
+handlers:
+    secure: always
 
 env_variables:
   ## Put production environment variables here.
