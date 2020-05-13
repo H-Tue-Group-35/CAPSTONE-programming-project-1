@@ -29,7 +29,7 @@ Route::view('cp', 'cp');
 
 Route::view('admin', 'admin');
 
-Route::view('transactionhistory', 'transactionhistory');
+//Route::view('transactionhistory', 'transactionhistory');
 
 Route::post('login_check', 'HomeController@adminLogin');
 
