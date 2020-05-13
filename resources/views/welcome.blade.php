@@ -178,7 +178,7 @@ ob_start();
                     <li class="navbar"><a href="contact">Contact</a></li>
                     <li class="navbar"><a href="login">Login</a></li>
                     <li class="navbar"><a href="admin">Admin login</a></li>
-                    <li class="navbar"><a href="transactionhistory">Admin login</a></li>
+                    <li class="navbar"><a href="transactionhistory">TransactionHistory</a></li>
                 </ul>
             </nav>
         </div>
