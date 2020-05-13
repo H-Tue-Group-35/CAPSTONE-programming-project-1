@@ -30,7 +30,7 @@ session_start();
 
 <body>
 
-    <h1> This is the transaction History page</h1>
+    <h1> This is the transaction History pagee</h1>
 
 
     <div class="center">
