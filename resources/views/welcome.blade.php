@@ -9,10 +9,10 @@ ob_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
     <title>Car4All</title>
-	
-	<!-- Connect to Firebase so we can get stats on all Vehicles -->
+
+    <!-- Connect to Firebase so we can get stats on all Vehicles -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
@@ -31,108 +31,99 @@ ob_start();
     var db = firebase.firestore();
     var map, infoWindow;
 
-    function initMap()
-	{
-		map = new google.maps.Map(document.getElementById('map'),
-		{
-			center: { lat: -37.806, lng: 144.954 },zoom: 12
-		});
-		
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: -37.806,
+                lng: 144.954
+            },
+            zoom: 12
+        });
+
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
-        if (navigator.geolocation) 
-		{
-            navigator.geolocation.getCurrentPosition(function(position)
-			{
-                console.log(position.coords.latitude);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                    console.log(position.coords.latitude);
 
-                var pos =
-				{
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map
+                    });
+                    map.setCenter(pos);
+                },
+                function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
                 });
-                map.setCenter(pos);
-			},
-			function()
-			{
-				handleLocationError(true, infoWindow, map.getCenter());
-			});
-		}
-		else
-		{
-			// Browser doesn't support Geolocation
-			handleLocationError(false, infoWindow, map.getCenter());
-		}
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
 
-		var markers = []
-		console.log(typeof(markers));
+        var markers = []
+        console.log(typeof(markers));
 
-		db.collection("Vehicles").get().then(function(querySnapshot)
-		{
-			querySnapshot.forEach(function(doc)
-			{
-				if (doc.data().available)
-				{
-					var coordinates =
-					{
-						lat: doc.data().location.latitude,
-						lng: doc.data().location.longitude
-					};
+        db.collection("Vehicles").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                if (doc.data().available) {
+                    var coordinates = {
+                        lat: doc.data().location.latitude,
+                        lng: doc.data().location.longitude
+                    };
 
-					var contentString =
-					'<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
-					doc.data().image +
-					'" alt="" width="246" height="138" /></span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
-					doc.data().brand + '</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Model: ' +
-					doc.data().model + '</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
-					doc.data().seats + '</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form method="post" action="booking">' +
-					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
-					doc.id +
-					'" ><input type="submit" value="Submit" style="background-color: #DE6247;" /></p></form>';
+                    var contentString =
+                        '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
+                        doc.data().image +
+                        '" alt="" width="246" height="138" /></span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
+                        doc.data().brand + '</span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000;">Model: ' +
+                        doc.data().model + '</span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
+                        doc.data().seats + '</span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
+                        '<form method="post" action="booking">' +
+                        '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+                        doc.id +
+                        '" ><input type="submit" value="Submit" style="background-color: #DE6247;" /></p></form>';
 
-					var carInfo = new google.maps.InfoWindow
-					({ content: contentString });
+                    var carInfo = new google.maps.InfoWindow({
+                        content: contentString
+                    });
 
-					var carMarker = new google.maps.Marker
-					({
-						position: coordinates,
-						map: map,
-						icon: { url: "https://maps.google.com/mapfiles/kml/pal4/icon15.png" }
-					});
-					
-					carMarker.addListener('click', function()
-					{ carInfo.open(map, carMarker); });
+                    var carMarker = new google.maps.Marker({
+                        position: coordinates,
+                        map: map,
+                        icon: {
+                            url: "https://maps.google.com/mapfiles/kml/pal4/icon15.png"
+                        }
+                    });
 
-					markers.push(carMarker);
-				}
-				else // if car is not available, do not display it to customer
-				{
-				}
-			});
-		}).catch(function(error)
-		{
-			console.log("Error getting documents: ", error);
-		});
+                    carMarker.addListener('click', function() {
+                        carInfo.open(map, carMarker);
+                    });
+
+                    markers.push(carMarker);
+                } else // if car is not available, do not display it to customer
+                {}
+            });
+        }).catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
     }
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos)
-	{
-		infoWindow.setPosition(pos);
-		infoWindow.setContent(browserHasGeolocation ?
-		'Error: The Geolocation service failed.' :
-		'Error: Your browser doesn\'t support geolocation.');
-		infoWindow.open(map);
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
     }
     </script>
     <script async defer
@@ -187,24 +178,25 @@ ob_start();
                     <li class="navbar"><a href="contact">Contact</a></li>
                     <li class="navbar"><a href="login">Login</a></li>
                     <li class="navbar"><a href="admin">Admin login</a></li>
+                    <li class="navbar"><a href="transactionhistory">Admin login</a></li>
                 </ul>
             </nav>
         </div>
-		
-		<section id="two">
-		<div class="inner">
-			<header class="major">
-				<h2>Locate Your Nearest vehicle</h2>
 
-			</header>
-			<div id="map" style="height:800px;"></div>
-		</div>
-		</section>
+        <section id="two">
+            <div class="inner">
+                <header class="major">
+                    <h2>Locate Your Nearest vehicle</h2>
+
+                </header>
+                <div id="map" style="height:800px;"></div>
+            </div>
+        </section>
 
     </div>
-	
 
-	<style>
+
+    <style>
     @font-face {
         font-family: 'FontAwesome';
         src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -7170,7 +7162,7 @@ ob_start();
         transform: none;
         opacity: 1;
     }
-	</style>
+    </style>
 
 </body>
 
