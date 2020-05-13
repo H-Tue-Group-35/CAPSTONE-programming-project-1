@@ -9,6 +9,7 @@
 
 <body>
 
+    <h1> This is the transaction History page</h1>
     <script>
     // db.collection("user").get().then((snapshot) => {
     // snapshot.docs.forEach(doc => {
