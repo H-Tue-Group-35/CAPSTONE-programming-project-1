@@ -36,7 +36,13 @@ session_start();
     <div class="center">
 
         <ul class="bookings"></ul>
+        <div class="content">
 
+            <form id="add-cafe-form"></form>
+
+            <ul id="cafe-list"></ul>
+
+        </div>
 
     </div>
     <script>
@@ -63,7 +69,7 @@ session_start();
 
 
 
-    const users = document.getElementById("users");
+    const Bookings = document.getElementById("Bookings");
 
     function renderuser(doc) {
 
@@ -73,8 +79,8 @@ session_start();
 
         li.setAttribute("data-id", doc.id);
 
-        username.textContent = doc.data().username;
-        password.textContent = doc.data().password;
+        username.textContent = doc.data().carID;
+        password.textContent = doc.data().datefrom;
 
         li.appendChild(username)
         li.appendChild(password)
