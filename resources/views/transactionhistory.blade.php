@@ -80,7 +80,7 @@ session_start();
     }
 
 
-    db.collection("user").get().then((snapshot) => {
+    db.collection("Bookings").get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             console.log(doc.data())
             renderuser(doc);
