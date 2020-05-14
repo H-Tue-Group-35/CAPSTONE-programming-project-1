@@ -16,22 +16,6 @@ session_start();
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
 
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
-        authDomain: "car-for-all-273711.firebaseapp.com",
-        databaseURL: "https://car-for-all-273711.firebaseio.com",
-        projectId: "car-for-all-273711",
-        storageBucket: "car-for-all-273711.appspot.com",
-        messagingSenderId: "548693459929",
-        appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    var db = firebase.firestore();
-    </script>
-
-
 
 </head>
 
@@ -59,15 +43,22 @@ session_start();
         </div>
 
     </div>
-    <script>
-    // db.collection("user").get().then((snapshot) => {
-    // snapshot.docs.forEach(doc => {
-    // console.log(doc.data())
-    // })
-    // })
-    </script>
+
 
     <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
+        authDomain: "car-for-all-273711.firebaseapp.com",
+        databaseURL: "https://car-for-all-273711.firebaseio.com",
+        projectId: "car-for-all-273711",
+        storageBucket: "car-for-all-273711.appspot.com",
+        messagingSenderId: "548693459929",
+        appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
     const cafeList = document.querySelector('#cafe-list');
 
     function renderuser(doc) {
