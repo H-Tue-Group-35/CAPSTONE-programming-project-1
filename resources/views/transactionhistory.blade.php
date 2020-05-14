@@ -75,18 +75,15 @@ session_start();
 
         carID.textContent = doc.data().carID;
         datefrom.textContent = doc.data().datefrom;
-
         dateto.textContent = doc.data().dateto;
         email.textContent = doc.data().email;
-
-
         name.textContent = doc.data().name;
         phone.textContent = doc.data().phone;
 
         li.appendChild(carID)
         li.appendChild(datefrom)
 
-        li.appendChild(li)
+        cafeList.appendChild(li)
 
     }
 
