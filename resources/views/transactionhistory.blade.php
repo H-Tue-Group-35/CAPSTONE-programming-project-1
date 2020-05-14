@@ -66,11 +66,22 @@ session_start();
         let li = document.createElement("li");
         let carID = document.createElement("span");
         let datefrom = document.createElement("span");
+        let dateto = document.createElement("span");
+        let email = document.createElement("span");
+        let name = document.createElement("span");
+        let phone = document.createElement("span");
 
         li.setAttribute("data-id", doc.id);
 
         carID.textContent = doc.data().carID;
         datefrom.textContent = doc.data().datefrom;
+
+        dateto.textContent = doc.data().dateto;
+        email.textContent = doc.data().email;
+
+
+        name.textContent = doc.data().name;
+        phone.textContent = doc.data().phone;
 
         li.appendChild(carID)
         li.appendChild(datefrom)
