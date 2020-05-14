@@ -68,22 +68,21 @@ session_start();
     var db = firebase.firestore();
 
 
-
-    const Bookings = document.getElementById("Bookings");
+    const cafeList = document.querySelector('#cafe-list');
 
     function renderuser(doc) {
 
         let li = document.createElement("li");
-        let username = document.createElement("span");
-        let password = document.createElement("span");
+        let carID = document.createElement("span");
+        let datefrom = document.createElement("span");
 
         li.setAttribute("data-id", doc.id);
 
-        username.textContent = doc.data().carID;
-        password.textContent = doc.data().datefrom;
+        carID.textContent = doc.data().carID;
+        datefrom.textContent = doc.data().datefrom;
 
-        li.appendChild(username)
-        li.appendChild(password)
+        li.appendChild(carID)
+        li.appendChild(datefrom)
 
         users.appendChild(li)
 
