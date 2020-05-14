@@ -57,7 +57,7 @@ session_start();
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
+    var db = firebase.firestore();
 
     const cafeList = document.querySelector('#cafe-list');
 
