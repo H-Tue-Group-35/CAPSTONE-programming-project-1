@@ -195,6 +195,23 @@ ob_start();
 
     </div>
 
+    <br>
+    <br>
+
+    <section>
+
+
+        <div class="center">
+            <br>
+            <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
+            <img src="https://cdn.vroomvroomvroom.com.au/images/vroomvroomvroom-com-au/cms/Depositphotos_49076389_righthanddrive.jpg"
+                alt="">
+
+
+        </div>
+
+
+    </section>
 
     <style>
     @font-face {
@@ -3529,8 +3546,16 @@ ob_start();
         margin: 0 0 2em 0;
     }
 
+
+    h2 {
+        color: black;
+        font-weight: 600;
+        line-height: 1.65;
+        margin: 0 0 1em 0;
+    }
+
     h1,
-    h2,
+
     h3,
     h4,
     h5,
