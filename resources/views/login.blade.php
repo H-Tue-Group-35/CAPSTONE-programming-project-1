@@ -12,6 +12,10 @@ ob_start();
     <title>Login</title>
 </head>
 <body>
+
+<?php
+$_SESSION["login_id"] = "TEST";
+?>
     
     <h1>User login</h1>
 	<p>Please login to make bookings</p>
