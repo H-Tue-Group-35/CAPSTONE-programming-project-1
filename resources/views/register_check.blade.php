@@ -11,8 +11,6 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
     <title>Registering</title>
-	
-
 </head>
 
 
@@ -39,7 +37,7 @@ Registering...
 	db.collection("Users").add
 	({
 		Username: "TEST",
-		Payment details: "none",
+		Payment: "none",
 		Password: "PASSWORD",
 		Phone: "none"
 	});
