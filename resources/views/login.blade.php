@@ -20,7 +20,7 @@
 	<button type="submit">Login</button>
 	</form>
 	
-	<a href="register">Register an account</a>
+	No account? <a href="register">Register</a>
 	<br/>
 	<a href="/">Back to home</a>
 	
