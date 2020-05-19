@@ -6066,6 +6066,7 @@ button:disabled,
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
+	color: blue;
     background-color: #000000;
     box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.15);
     cursor: default;
@@ -6084,6 +6085,7 @@ button:disabled,
 
 header {
     background-color: black;
+	color: blue;
 }
 
 body.is-preload #header.alt {
