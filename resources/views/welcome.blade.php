@@ -176,7 +176,7 @@ ob_start();
 
                     }
                     </style>
-                    <li class="navbar"><a href="transactionhistory">TransactionHistory</a></li>
+                    <li class="navbar"><a href="transactionhistory">Transaction History</a></li>
                     <li class="navbar"><a href="contact">Contact</a></li>
                     <li class="navbar"><a href="login">Login</a></li>
                     <li class="navbar"><a href="admin">Admin login</a></li>
