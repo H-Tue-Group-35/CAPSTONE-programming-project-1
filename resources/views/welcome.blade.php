@@ -1,7 +1,8 @@
 <?php
 session_start();
 ob_start();
-Session::put('login_id', 'ayaya');
+//Session::put('login_id', 'ayaya');
+$request->session()->put('login_id', 'value');
 ?>
 
 <!DOCTYPE html>
@@ -137,10 +138,10 @@ Session::put('login_id', 'ayaya');
 <header style="text-align:right">
 <?php
 
-if ($request->session()->has('login_id'))
-{
-    echo "AY";
-}
+// if ($request->session()->has('login_id'))
+// {
+    // echo "AY";
+// }
     if (isset($_SESSION['login_id']))
 	{
         echo ("Logged in as ".$_SESSION['login_id']);
