@@ -25,6 +25,8 @@ Route::view('contact', 'contact');
 
 Route::view('login', 'login');
 
+Route::view('register', 'register');
+
 Route::view('cp', 'cp');
 
 Route::view('admin', 'admin');
