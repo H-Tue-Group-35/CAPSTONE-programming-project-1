@@ -10,7 +10,7 @@ ob_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Car4All</title>
+    <title>Car4Alll</title>
 
     <!-- Connect to Firebase so we can get stats on all Vehicles -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
