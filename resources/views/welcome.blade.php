@@ -40,18 +40,18 @@ ob_start();
 	
 	function initHeader()
 	{
-		//var user_id = sessionStorage.getItem("loginid");
+		var user_id = sessionStorage.getItem("loginid");
 		console.log("Session: "+sessionStorage.getItem("loginid"));
 
-		if (localStorage.hasOwnProperty('loginid'))
-		{
-			console.log("Path 2");
-			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
-		}
-		else
+		if (user_id.length==0)
 		{
 			console.log("Path 1");
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
+		}
+		else
+		{
+			console.log("Path 2");
+			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
 		}
 		
 	}
