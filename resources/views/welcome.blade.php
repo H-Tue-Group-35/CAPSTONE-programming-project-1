@@ -40,16 +40,18 @@ ob_start();
 	
 	function initHeader()
 	{
+		
 		var userid = sessionStorage.getItem("loginid");
 		
-		console.log("Session: "+userid);
-		
-		if (userid) {
+		if ( userid && userid != '' )
+		{
 			document.getElementById("fHeader").innerHTML = 'Logged in as '+userid+' <a href="logout">[Logout]</a>';
-		} else {
+		}
+		else
+		{
+			sessionStorage.loginid = '';
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
 		}
-
 
 	}
 
