@@ -22,7 +22,7 @@ ob_start();
 
     <script>
 	
-	sessionStorage.loginid = "none";
+	//sessionStorage.loginid = "none";
 	
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",

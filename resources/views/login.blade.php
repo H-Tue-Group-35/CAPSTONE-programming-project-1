@@ -15,6 +15,7 @@ ob_start();
 
 <script>
 sessionStorage.loginid = "LOGIN SESS";
+console.log("LOGIN SESSION: "+sessionStorage.getItem("loginid"));
 </script>
 
 <?php
