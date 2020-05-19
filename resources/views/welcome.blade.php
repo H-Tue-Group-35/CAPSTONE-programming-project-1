@@ -133,8 +133,8 @@ ob_start();
     </script>
 </head>
 
-<header>
-TEST
+<header style="text-align:right">
+Logged in as: X [Logout]
 </header>
 
 <body class="is-preload">
