@@ -13,3 +13,10 @@ env_variables:
 
   SESSION_DRIVER: cookie
   
+handlers:
+
+- url: /(.+\.(gif|png|jpg|css))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg|css)$
+  
+  
