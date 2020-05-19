@@ -14,8 +14,7 @@ ob_start();
 <body>
 
 <script>
-//sessionStorage.loginid = "LOGIN SESS";
-localStorage.setItem('loginid', 'AYAYA');
+sessionStorage.loginid = "AYAYA";
 console.log("LOGIN SESSION: "+sessionStorage.getItem("loginid"));
 </script>
 

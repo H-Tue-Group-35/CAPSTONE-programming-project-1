@@ -26,6 +26,7 @@ Route::post('payment', 'HomeController@pay');
 Route::view('contact', 'contact');
 
 Route::view('login', 'login');
+Route::view('logout', 'logout');
 
 Route::view('register', 'register');
 
