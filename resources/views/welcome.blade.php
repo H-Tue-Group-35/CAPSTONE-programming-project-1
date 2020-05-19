@@ -41,6 +41,8 @@ ob_start();
     function initMap() {
 		
 		console.log("SESSION: "+sessionStorage.getItem("loginid"));
+		document.getElementById("fHeader").innerHTML = "AYAYA";
+
 		
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
@@ -141,7 +143,7 @@ ob_start();
     </script>
 </head>
 
-<header style="text-align:right">
+<header id="fHeader" style="text-align:right">
 <?php
 
 // if ($request->session()->has('login_id'))
