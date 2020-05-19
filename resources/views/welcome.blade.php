@@ -149,7 +149,7 @@ ob_start();
             <div class="inner">
                 <header class="major">
                     <center>
-                        <h1 id="title">CAR4ALL</h1>
+                        <h1 id="title">CAR4ALLL</h1>
                     </center>
                 </header>
             </div>
