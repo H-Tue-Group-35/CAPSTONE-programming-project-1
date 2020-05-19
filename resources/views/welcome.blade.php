@@ -136,6 +136,11 @@ Session::put('login_id', 'ayaya');
 
 <header style="text-align:right">
 <?php
+
+if ($request->session()->has('login_id'))
+{
+    echo "AY";
+}
     if (isset($_SESSION['login_id']))
 	{
         echo ("Logged in as ".$_SESSION['login_id']);
