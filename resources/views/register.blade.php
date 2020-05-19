@@ -19,6 +19,7 @@ ob_start();
 	<p>Please enter your details to create an account</p>
 	
 	<form action="register_check" method="post">
+	@csrf <!-- {{ csrf_field() }} -->
 	Username: <input type="text" name="username" id="username" maxlength="20" required>
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
