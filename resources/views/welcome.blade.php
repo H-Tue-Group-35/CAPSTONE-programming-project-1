@@ -40,21 +40,15 @@ ob_start();
 	
 	function initHeader()
 	{
-		var user_id = localStorage['loginid'] || '';
-		//var user_id = sessionStorage.getItem("loginid");
-		console.log("Session: "+sessionStorage.getItem("loginid"));
-
-		if (user_id=='')
-		{
-			console.log("Path 1");
+		console.log("Session: "+localStorage['loginid']);
+		
+		if ("loginid" in localStorage) {
+			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage['loginid']+' <a href="logout">[Logout]</a>';
+		} else {
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
 		}
-		else
-		{
-			console.log("Path 2");
-			document.getElementById("fHeader").innerHTML = 'Logged in as '+user_id+' <a href="logout">[Logout]</a>';
-		}
-		
+
+
 	}
 
     function initMap() {
