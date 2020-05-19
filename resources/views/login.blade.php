@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/style.css" rel="stylesheet" type="text/css" >
+	<!--link href="/style.css" rel="stylesheet" type="text/css" -->
     <title>Login</title>
 </head>
 <body>
     
     <h1>User login</h1>
-
-
-	
 	<p>Please login to make bookings</p>
 	
 	<form action="login_check_user" method="post">

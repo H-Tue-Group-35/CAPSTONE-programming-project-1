@@ -34,6 +34,7 @@ Route::view('admin', 'admin');
 Route::view('transactionhistory', 'transactionhistory');
 
 Route::post('login_check', 'HomeController@adminLogin');
+Route::post('register_check', 'HomeController@userRegister');
 
 
 Route::get('/location', 'LocationController@index');
