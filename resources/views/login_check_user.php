@@ -1,13 +1,13 @@
-<script>
-sessionStorage.loginid = <?php echo '$username' ?>;
-</script>
-
 <?php
 session_start();
 ob_start();
+?>
 
+<script>
+sessionStorage.loginid = "<?php echo $username ?>";
+</script>
 
-
+<?php
 	if (strcmp($username,"admin") === 0 && strcmp($password,"admin") === 0)
 	{
 		// password is correct, redirect to cp
