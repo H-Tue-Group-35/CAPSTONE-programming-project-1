@@ -1,6 +1,12 @@
+<script>
+sessionStorage.loginid = <?php echo $username ?>;
+</script>
+
 <?php
 session_start();
 ob_start();
+
+
 
 	if (strcmp($username,"admin") === 0 && strcmp($password,"admin") === 0)
 	{
