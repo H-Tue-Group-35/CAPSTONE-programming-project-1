@@ -37,6 +37,7 @@ Route::view('admin', 'admin');
 Route::view('transactionhistory', 'transactionhistory');
 
 Route::post('login_check', 'HomeController@adminLogin');
+Route::post('login_check_user', 'HomeController@userLogin');
 Route::post('register_check', 'HomeController@userRegister');
 
 

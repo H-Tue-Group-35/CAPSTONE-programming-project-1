@@ -43,6 +43,13 @@ class HomeController extends Controller
         return view('login_check', ['username' => $username],['password' => $password]);
     }
 	
+    public function userLogin()
+    {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        return view('login_check_user', ['username' => $username],['password' => $password]);
+    }
+	
     public function userRegister()
     {
         $username = $_POST["username"];
