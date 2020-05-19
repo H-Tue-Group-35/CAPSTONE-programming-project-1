@@ -139,11 +139,11 @@ $_SESSION["login_id"] = "TEST";
 <?php
     if (isset($_SESSION['login_id']))
 	{
-        echo ("Logged in as "+$_SESSION['login_id']);
+        //echo ("Logged in as "+$_SESSION['login_id']);
     }
 	else
 	{
-		echo ('<a href="login">[Login]</a> <a href="register">[Login]</a>');
+		//echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
 	}
 
 
