@@ -60,9 +60,6 @@ ob_start();
 		{
 			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
 		}
-}
-		
-		if ( user_id 
 		
 	}
 
@@ -152,6 +149,8 @@ ob_start();
         }).catch(function(error) {
             console.log("Error getting documents: ", error);
         });
+		
+		initHeader();
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
