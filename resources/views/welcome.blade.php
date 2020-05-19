@@ -169,8 +169,8 @@ ob_start();
                         margin: 0;
                         padding: 10px;
                         font-family: "Source Sans Pro", Helvetica, sans-serif;
-
                         font-size: 1.7em;
+                        color: black;
 
                     }
                     </style>
@@ -3432,7 +3432,7 @@ ob_start();
     }
 
     body {
-        background: #242943;
+        background: #f5f5f5;
     }
 
     body.is-preload *,
