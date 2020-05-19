@@ -1,6 +1,8 @@
 <?php
 session_start();
 ob_start();
+
+$_SESSION["login_id"] = "TEST";
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +136,18 @@ ob_start();
 </head>
 
 <header style="text-align:right">
-<a href="login">[Login]</a> <a href="register">[Login]</a>
+<?php
+    if (isset($_SESSION['login_id']))
+	{
+        echo ("Logged in as "+$_SESSION['login_id']);
+    }
+	else
+	{
+		echo ('<a href="login">[Login]</a> <a href="register">[Login]</a>');
+	}
+
+
+?>
 </header>
 
 <body class="is-preload">
