@@ -1,8 +1,6 @@
 <?php
 session_start();
 ob_start();
-
-$_SESSION["login_id"] = "TEST";
 ?>
 
 <!DOCTYPE html>
@@ -151,6 +149,11 @@ $_SESSION["login_id"] = "TEST";
 </header>
 
 <body class="is-preload">
+
+<?php
+
+$_SESSION["login_id"] = "TEST";
+?>
 
     <!-- Wrapper -->
     <div id="wrapper">
