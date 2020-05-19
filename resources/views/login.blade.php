@@ -13,6 +13,10 @@ ob_start();
 </head>
 <body>
 
+<script>
+sessionStorage.loginid = "LOGIN SESS";
+</script>
+
 <?php
 $_SESSION["login_id"] = "TEST";
 ?>

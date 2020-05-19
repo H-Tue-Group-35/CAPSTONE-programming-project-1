@@ -22,7 +22,7 @@ ob_start();
 
     <script>
 	
-	sessionStorage.loginid = "AYAYA";
+	sessionStorage.loginid = "none";
 	
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
@@ -148,14 +148,14 @@ ob_start();
 // {
     // echo "AY";
 // }
-    if (isset($_SESSION['login_id']))
-	{
-        echo ("Logged in as ".$_SESSION['login_id']);
-    }
-	else
-	{
-		echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
-	}
+    // if (isset($_SESSION['login_id']))
+	// {
+        // echo ("Logged in as ".$_SESSION['login_id']);
+    // }
+	// else
+	// {
+		// echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
+	// }
 	//echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
 
 ?>
