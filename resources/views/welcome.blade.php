@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+Session::put('somekey', 'somevalue');
 ?>
 
 <!DOCTYPE html>
