@@ -1,5 +1,5 @@
 <script>
-sessionStorage.loginid = <?php echo $username ?>;
+sessionStorage.loginid = <?php echo '$username' ?>;
 </script>
 
 <?php
