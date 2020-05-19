@@ -45,7 +45,7 @@ ob_start();
 		console.log("Session: "+userid);
 		
 		if (userid) {
-			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage['loginid']+' <a href="logout">[Logout]</a>';
+			document.getElementById("fHeader").innerHTML = 'Logged in as '+sessionStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
 		} else {
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
 		}
