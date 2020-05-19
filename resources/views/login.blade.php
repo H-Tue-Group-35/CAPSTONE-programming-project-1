@@ -7,8 +7,24 @@
 </head>
 <body>
     
-    This is the login page
+    <h1>User login</h1>
 
+
+	
+	<p>Please login to make bookings</p>
+	
+	<form action="login_check_user" method="post">
+	Username: <input type="text" name="username" id="username" maxlength="20" required>
+	<br/><br/>
+	<!--Password: <input type="password" name="password" id="password">-->
+	Password: <input type="text" name="password" id="password" maxlength="20" required>
+	<br/><br/>
+	<button type="submit">Login</button>
+	</form>
+	
+	<a href="register">Register an account</a>
+	<a href="/">Back to homepage</a>
+	
 
 
     <style>
