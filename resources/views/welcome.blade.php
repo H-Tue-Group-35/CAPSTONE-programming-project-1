@@ -42,18 +42,8 @@ ob_start();
 	{
 		var user_id = sessionStorage.getItem("loginid");
 		console.log("Session: "+sessionStorage.getItem("loginid"));
-		
-    // if (isset($_SESSION['login_id']))
-	// {
-        // echo ("Logged in as ".$_SESSION['login_id']);
-    // }
-	// else
-	// {
-		// echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
-	// }
-	//echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
-		
-		if (localStorage.getItem("loginid") === null)
+
+		if (user_id === null)
 		{
 			console.log("Path 1");
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
@@ -62,7 +52,6 @@ ob_start();
 		{
 			console.log("Path 2");
 			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
-			
 		}
 		
 	}
@@ -171,23 +160,6 @@ ob_start();
 </head>
 
 <header id="fHeader" style="text-align:right">
-<?php
-
-// if ($request->session()->has('login_id'))
-// {
-    // echo "AY";
-// }
-    // if (isset($_SESSION['login_id']))
-	// {
-        // echo ("Logged in as ".$_SESSION['login_id']);
-    // }
-	// else
-	// {
-		// echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
-	// }
-	//echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
-
-?>
 </header>
 
 <body class="is-preload">
