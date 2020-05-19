@@ -55,11 +55,14 @@ ob_start();
 		
 		if (localStorage.getItem("loginid") === null)
 		{
+			console.log("Path 1");
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
 		}
 		else
 		{
+			console.log("Path 2");
 			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
+			
 		}
 		
 	}
