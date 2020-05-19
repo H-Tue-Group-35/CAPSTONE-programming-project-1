@@ -22,6 +22,7 @@ console.log("LOGIN SESSION: "+sessionStorage.getItem("loginid"));
 	<p>Please login to make bookings</p>
 	
 	<form action="login_check_user" method="post">
+	@csrf <!-- {{ csrf_field() }} -->
 	Username: <input type="text" name="username" id="username" maxlength="20" required>
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
