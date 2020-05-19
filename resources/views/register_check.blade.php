@@ -18,6 +18,12 @@ exit();
 </head>
 
 
+
+
+<body>
+Registering...
+</body>
+
     <script>
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
@@ -28,14 +34,26 @@ exit();
         messagingSenderId: "548693459929",
         appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
     };
-
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
     var map, infoWindow;
-	
+
+	db.collection("Users").add
+	({
+		Username: "TEST",
+		Payment details: "none",
+		Password: "PASSWORD",
+		Phone: "none"
+	});
+	.then(function()
+	{
+		console.log("Document successfully written!");
+	})
+	.catch(function(error)
+	{
+		console.error("Error writing document: ", error);
+	});
 	
 	</script>
-
-<body>
-Registering...
-</body>
+	
+</html>
