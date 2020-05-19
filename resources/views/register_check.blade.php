@@ -40,7 +40,7 @@ Registering...
 		Payment: "none",
 		Password: "PASSWORD",
 		Phone: "none"
-	});
+	})
 	.then(function()
 	{
 		console.log("Document successfully written!");
