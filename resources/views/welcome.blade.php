@@ -12,6 +12,7 @@ ob_start();
 
     <title>Car4Alll</title>
 
+
     <!-- Connect to Firebase so we can get stats on all Vehicles -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
@@ -183,6 +184,13 @@ ob_start();
             </nav>
         </div>
 
+        <br>
+        <br>
+
+        <div class="center">
+            <img src="https://i.ibb.co/3y5cmS9/c1e88dfc-d1a1-467d-ab8c-9a08b4434d36-200x200.png" alt="">
+
+        </div>
         <section id="two">
             <div class="inner">
                 <header class="major">
@@ -204,11 +212,12 @@ ob_start();
         <div class="center">
             <br>
             <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
-            <img src="https://cdn.vroomvroomvroom.com.au/images/vroomvroomvroom-com-au/cms/Depositphotos_49076389_righthanddrive.jpg"
-                alt="">
+            <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt="">
 
 
-        </div>
+
+            < </div>
+
 
 
     </section>
