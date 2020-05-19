@@ -4,6 +4,6 @@ ob_start();
 ?>
 
 <script>
-sessionStorage.loginid = null;
+sessionStorage.loginid = '';
 window.location.replace("https://car-for-all-273711.appspot.com/");
 </script>

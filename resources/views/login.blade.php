@@ -17,10 +17,6 @@ ob_start();
 sessionStorage.loginid = "AYAYA";
 console.log("LOGIN SESSION: "+sessionStorage.getItem("loginid"));
 </script>
-
-<?php
-$_SESSION["login_id"] = "TEST";
-?>
     
     <h1>User login</h1>
 	<p>Please login to make bookings</p>
