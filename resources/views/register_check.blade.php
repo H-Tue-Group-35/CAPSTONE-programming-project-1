@@ -48,6 +48,7 @@ Registering...
 	.then(function()
 	{
 		console.log("Document successfully written!");
+		window.location.replace("https://car-for-all-273711.appspot.com/");
 	})
 	.catch(function(error)
 	{

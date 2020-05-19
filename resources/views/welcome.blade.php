@@ -133,6 +133,10 @@ ob_start();
     </script>
 </head>
 
+<header>
+TEST
+</header>
+
 <body class="is-preload">
 
     <!-- Wrapper -->
