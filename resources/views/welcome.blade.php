@@ -52,7 +52,7 @@ ob_start();
 		else
 		{
 			console.log("Path 2");
-			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
+			document.getElementById("fHeader").innerHTML = 'Logged in as '+user_id+' <a href="logout">[Logout]</a>';
 		}
 		
 	}
@@ -143,8 +143,6 @@ ob_start();
         }).catch(function(error) {
             console.log("Error getting documents: ", error);
         });
-		
-		initHeader();
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -256,6 +254,10 @@ $_SESSION["login_id"] = "TEST";
 
 
     </section>
+	
+<script>
+initHeader();
+</script>
 
 </body>
 
