@@ -40,9 +40,11 @@ ob_start();
 	
 	function initHeader()
 	{
-		console.log("Session: "+localStorage['loginid']);
+		var userid = sessionStorage.getItem("loginid");
 		
-		if ("loginid" in localStorage) {
+		console.log("Session: "+userid);
+		
+		if (userid) {
 			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage['loginid']+' <a href="logout">[Logout]</a>';
 		} else {
 			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
