@@ -5,6 +5,8 @@ ob_start();
 
 <script>
 sessionStorage.loginid = "<?php echo $username ?>";
+
+console.log("SESSION: "+sessionStorage.loginid);
 </script>
 
 <?php
