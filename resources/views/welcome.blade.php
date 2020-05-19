@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-Session::put('somekey', 'somevalue');
+Session::put('login_id', 'ayaya');
 ?>
 
 <!DOCTYPE html>
@@ -136,15 +136,15 @@ Session::put('somekey', 'somevalue');
 
 <header style="text-align:right">
 <?php
-    // if (isset($_SESSION['login_id']))
-	// {
-        // echo ("Logged in as ".$_SESSION['login_id']);
-    // }
-	// else
-	// {
-		// echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
-	// }
-	echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
+    if (isset($_SESSION['login_id']))
+	{
+        echo ("Logged in as ".$_SESSION['login_id']);
+    }
+	else
+	{
+		echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
+	}
+	//echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
 
 ?>
 </header>

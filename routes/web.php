@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+	
+    $value = session('loginid', 'default');
 });
 
 Route::post('booking', 'HomeController@book');
