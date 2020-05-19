@@ -37,12 +37,36 @@ ob_start();
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
     var map, infoWindow;
+	
+	function initHeader()
+	{
+		var user_id = sessionStorage.getItem("loginid");
+		
+    // if (isset($_SESSION['login_id']))
+	// {
+        // echo ("Logged in as ".$_SESSION['login_id']);
+    // }
+	// else
+	// {
+		// echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
+	// }
+	//echo ('<a href="login">[Login]</a> <a href="register">[Register]</a>');
+		
+		if (localStorage.getItem("loginid") === null)
+		{
+			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
+		}
+		else
+		{
+			document.getElementById("fHeader").innerHTML = 'Logged in as '+localStorage.getItem("loginid")+' <a href="logout">[Logout]</a>';
+		}
+}
+		
+		if ( user_id 
+		
+	}
 
     function initMap() {
-		
-		console.log("SESSION: "+sessionStorage.getItem("loginid"));
-		document.getElementById("fHeader").innerHTML = "AYAYA";
-
 		
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
