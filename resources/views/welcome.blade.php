@@ -41,6 +41,7 @@ ob_start();
 	function initHeader()
 	{
 		var user_id = sessionStorage.getItem("loginid");
+		console.log("Session: "+sessionStorage.getItem("loginid"));
 		
     // if (isset($_SESSION['login_id']))
 	// {
