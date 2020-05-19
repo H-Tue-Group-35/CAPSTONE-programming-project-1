@@ -23,6 +23,7 @@
 	</form>
 	
 	<a href="register">Register an account</a>
+	<br/>
 	<a href="/">Back to home</a>
 	
 

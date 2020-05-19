@@ -21,6 +21,7 @@
 	</form>
 	
 	Already have an account? <a href="login">Login</a>
+	<br/>
 	<a href="/">Back to home</a>
 
 </body>
