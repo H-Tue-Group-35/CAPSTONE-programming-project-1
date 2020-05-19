@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 //Session::put('login_id', 'ayaya');
-$request->session()->put('login_id', 'value');
+//$request->session()->put('login_id', 'value');
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +21,9 @@ $request->session()->put('login_id', 'value');
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
     <script>
+	
+	sessionStorage.loginid = "AYAYA";
+	
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
         authDomain: "car-for-all-273711.firebaseapp.com",
@@ -36,6 +39,9 @@ $request->session()->put('login_id', 'value');
     var map, infoWindow;
 
     function initMap() {
+		
+		console.log("SESSION: "+sessionStorage.getItem("loginid"));
+		
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
                 lat: -37.806,
