@@ -134,7 +134,7 @@ ob_start();
 </head>
 
 <header style="text-align:right">
-<a href="login">Login</a>
+<a href="login">[Login]</a> <a href="register">[Login]</a>
 </header>
 
 <body class="is-preload">

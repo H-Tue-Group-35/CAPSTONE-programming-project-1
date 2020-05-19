@@ -6083,11 +6083,6 @@ button:disabled,
     z-index: 10000;
 }
 
-header {
-    background-color: black;
-	color: blue;
-}
-
 body.is-preload #header.alt {
     opacity: 0;
 }
@@ -6108,6 +6103,7 @@ body.is-preload #header.alt {
     }
 
     #header nav a[href="#menu"]:last-child {
+        padding-right: 4.5em !important;
         padding-right: 4.5em !important;
     }
 }
