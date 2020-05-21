@@ -205,7 +205,7 @@ $_SESSION["login_id"] = "TEST";
                             <ul class="left hide-on-med-and-down">
                                 <li><a href="transactionhistory">Transaction History</a></li>
                                 <li><a href="contact">Contact</a></li>
-                                <li><a href="admin">Admin login</a></li>
+                                <li><a href="admin">Admin loginnnn</a></li>
                             </ul>
                         </div>
                     </nav>
