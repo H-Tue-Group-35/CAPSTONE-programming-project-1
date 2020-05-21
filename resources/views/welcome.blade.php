@@ -211,10 +211,11 @@ $_SESSION["login_id"] = "TEST";
                     </style>
 
 
+
                     <nav>
                         <div class="nav-wrapper">
-                            <!-- <a href="#!" class="brand-logo center">Car4all</a> -->
-                            <ul class="left hide-on-med-and-down">
+                            <a href="#" class="brand-logo">Logo</a>
+                            <ul id="nav-mobile" class="left hide-on-med-and-down">
                                 <li><a href="transactionhistory">Transaction History</a></li>
                                 <li><a href="contact">Contact</a></li>
                                 <li><a href="admin">Admin loginnnn</a></li>
@@ -286,6 +287,10 @@ $_SESSION["login_id"] = "TEST";
     </script>
 
     <style>
+    ul {
+        text-align: center;
+    }
+
     body {
         background: #8e9eab;
         /* fallback for old browsers */
