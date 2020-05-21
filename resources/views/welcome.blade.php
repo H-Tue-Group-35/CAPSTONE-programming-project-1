@@ -278,6 +278,11 @@ $_SESSION["login_id"] = "TEST";
             text-decoration: underline;
 
         }
+
+
+        #banner {
+            background: white;
+        }
         </style>
 
 
