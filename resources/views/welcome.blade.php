@@ -19,6 +19,11 @@ ob_start();
     <!-- Connect to Firebase so we can get stats on all Vehicles -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
     //sessionStorage.loginid = "none";
@@ -191,22 +196,38 @@ $_SESSION["login_id"] = "TEST";
                     .center {
                         text-align: center;
                     }
-
-
-                    .navbar {
-                        text-align: center;
-                        display: inline;
-                        margin: 0;
-                        padding: 10px;
-                        font-family: "Source Sans Pro", Helvetica, sans-serif;
-                        font-size: 1.7em;
-                        color: black;
-
-                    }
                     </style>
+
+
+                    <nav>
+                        <div class="nav-wrapper">
+                            <!-- <a href="#!" class="brand-logo center">Car4all</a> -->
+                            <ul class="left hide-on-med-and-down">
+                                <li><a href="transactionhistory">Transaction History</a></li>
+                                <li><a href="contact">Contact</a></li>
+                                <li><a href="admin">Admin login</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <!--
+
+
+                    <nav>
+                        <div class="nav-wrapper">
+                            <a href="#" class="brand-logo">Car-4-All</a>
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                            </ul>
+                        </div>
+                    </nav> -->
+
+
+
+                    <!--
                     <li class="navbar"><a href="transactionhistory">Transaction History</a></li>
                     <li class="navbar"><a href="contact">Contact</a></li>
-                    <li class="navbar"><a href="admin">Admin login</a></li>
+                    <li class="navbar"><a href="admin">Admin login</a></li> -->
 
                 </ul>
             </nav>
