@@ -12,7 +12,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/style.css" rel="stylesheet" type="text/css" >
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Book now!</title>
 
 
@@ -155,7 +156,7 @@ session_start();
         color: red;
     }
     </style>
-	
+
 </body>
 
 </html>
