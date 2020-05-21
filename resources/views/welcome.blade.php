@@ -21,9 +21,8 @@ ob_start();
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
     <script>
-	
-	//sessionStorage.loginid = "none";
-	
+    //sessionStorage.loginid = "none";
+
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
         authDomain: "car-for-all-273711.firebaseapp.com",
@@ -37,26 +36,23 @@ ob_start();
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
     var map, infoWindow;
-	
-	function initHeader()
-	{
-		
-		var userid = sessionStorage.getItem("loginid");
-		
-		if ( userid && userid != '' )
-		{
-			document.getElementById("fHeader").innerHTML = 'Logged in as '+userid+' <a href="logout">[Logout]</a>';
-		}
-		else
-		{
-			sessionStorage.loginid = '';
-			document.getElementById("fHeader").innerHTML = '<a href="login">[Login]</a> <a href="register">[Register]</a>';
-		}
 
-	}
+    function initHeader() {
+
+        var userid = sessionStorage.getItem("loginid");
+
+        if (userid && userid != '') {
+            document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="logout">[Logout]</a>';
+        } else {
+            sessionStorage.loginid = '';
+            document.getElementById("fHeader").innerHTML =
+                '<a href="login">[Login]</a> <a href="register">[Register]</a>';
+        }
+
+    }
 
     function initMap() {
-		
+
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
                 lat: -37.806,
@@ -161,7 +157,7 @@ ob_start();
 
 <body class="is-preload">
 
-<?php
+    <?php
 
 $_SESSION["login_id"] = "TEST";
 ?>
@@ -180,9 +176,10 @@ $_SESSION["login_id"] = "TEST";
         <section id="banner" class="major">
             <div class="inner">
                 <header class="major">
-                    <center>
-                        <h1 id="title">CAR4ALLL</h1>
-                    </center>
+                    <div class="center">
+                        <img src="https://i.ibb.co/3y5cmS9/c1e88dfc-d1a1-467d-ab8c-9a08b4434d36-200x200.png" alt="">
+
+                    </div>
                 </header>
             </div>
         </section>
@@ -218,10 +215,7 @@ $_SESSION["login_id"] = "TEST";
         <br>
         <br>
 
-        <div class="center">
-            <img src="https://i.ibb.co/3y5cmS9/c1e88dfc-d1a1-467d-ab8c-9a08b4434d36-200x200.png" alt="">
 
-        </div>
         <section id="two">
             <div class="inner">
                 <header class="major">
@@ -243,6 +237,7 @@ $_SESSION["login_id"] = "TEST";
         <div class="center">
             <br>
             <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
+
             <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt="">
 
 
@@ -252,10 +247,10 @@ $_SESSION["login_id"] = "TEST";
 
 
     </section>
-	
-<script>
-initHeader();
-</script>
+
+    <script>
+    initHeader();
+    </script>
 
 </body>
 
