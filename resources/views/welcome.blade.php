@@ -284,7 +284,7 @@ $_SESSION["login_id"] = "TEST";
 
             background: white;
         }
-        }
+
 
         .carlogo {
             background: white;
