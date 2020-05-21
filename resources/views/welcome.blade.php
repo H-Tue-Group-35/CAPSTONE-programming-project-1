@@ -307,7 +307,7 @@ $_SESSION["login_id"] = "TEST";
 
     h2 {
         text-decoration: underline;
-        text-shadow: 2px 2px whitesmoke;
+
     }
     </style>
 
