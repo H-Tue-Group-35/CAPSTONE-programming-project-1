@@ -185,7 +185,8 @@ $_SESSION["login_id"] = "TEST";
                     <div class="center">
 
                         <div class="carlogo">
-                            <img src="https://i.ibb.co/3y5cmS9/c1e88dfc-d1a1-467d-ab8c-9a08b4434d36-200x200.png" alt="">
+                            <img id="logopic"
+                                src="https://i.ibb.co/3y5cmS9/c1e88dfc-d1a1-467d-ab8c-9a08b4434d36-200x200.png" alt="">
 
                         </div>
                     </div>
@@ -298,6 +299,11 @@ $_SESSION["login_id"] = "TEST";
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
         color: black;
+    }
+
+    h2 {
+        text-decoration: underline;
+        text-shadow: 2px 2px whitesmoke;
     }
     </style>
 
