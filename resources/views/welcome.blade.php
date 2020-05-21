@@ -280,9 +280,6 @@ $_SESSION["login_id"] = "TEST";
         }
 
 
-        #banner {
-            background: white;
-        }
 
 
         .carlogo {
