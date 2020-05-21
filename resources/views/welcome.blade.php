@@ -212,17 +212,16 @@ $_SESSION["login_id"] = "TEST";
 
 
 
-                    <nav>
-                        <div class="nav-wrapper">
-                            <a href="#" class="brand-logo">Logo</a>
-                            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <nav class="#1565c0 blue darken-3">
+                        <div class="nav-wrapper container">
+
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="transactionhistory">Transaction History</a></li>
                                 <li><a href="contact">Contact</a></li>
                                 <li><a href="admin">Admin loginnnn</a></li>
                             </ul>
                         </div>
                     </nav>
-
                     <!--
 
 
