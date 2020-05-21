@@ -193,9 +193,7 @@ $_SESSION["login_id"] = "TEST";
 
 
                     <style>
-                    .carlogo {
-                        background: white;
-                    }
+                    .carlogo {}
                     </style>
                 </header>
             </div>
