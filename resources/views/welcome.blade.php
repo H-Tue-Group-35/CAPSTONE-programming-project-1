@@ -201,115 +201,86 @@ $_SESSION["login_id"] = "TEST";
             </div>
         </section>
 
-        <div class="center">
-            <nav>
-                <ul>
-                    <style>
-                    .center {
-                        text-align: center;
-                    }
-                    </style>
 
 
 
-                    <nav class="#1565c0 blue darken-3">
-                        <div class="nav-wrapper container">
-
-                            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a href="transactionhistory">Transaction History</a></li>
-                                <li><a href="contact">Contact</a></li>
-                                <li><a href="admin">Admin loginnnn</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <!--
-
-
-                    <nav>
-                        <div class="nav-wrapper">
-                            <a href="#" class="brand-logo">Car-4-All</a>
-                            <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-                            </ul>
-                        </div>
-                    </nav> -->
-
-
-
-                    <!--
-                    <li class="navbar"><a href="transactionhistory">Transaction History</a></li>
-                    <li class="navbar"><a href="contact">Contact</a></li>
-                    <li class="navbar"><a href="admin">Admin login</a></li> -->
-
+        <nav class="#1565c0 blue darken-3">
+            <div class="nav-wrapper container">
+                <a href="#" class="brand-logo">Car4All</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="transactionhistory">Transaction History</a></li>
+                    <li><a href="contact">Contact</a></li>
+                    <li><a href="admin">Admin login</a></li>
                 </ul>
-            </nav>
+            </div>
+        </nav>
+        <div class="center">
+
+
+
+
+
+            <section id="two">
+                <div class="inner">
+                    <header class="major">
+                        <h2>Locate Your Nearest vehicle</h2>
+
+                    </header>
+                    <div id="map" style="height:800px;"></div>
+                </div>
+            </section>
+
         </div>
 
         <br>
         <br>
 
+        <section>
 
-        <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <h2>Locate Your Nearest vehicle</h2>
 
-                </header>
-                <div id="map" style="height:800px;"></div>
-            </div>
+            <div class="center">
+                <br>
+                <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
+
+                <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt="">
+
+
+
+                < </div>
+
+
+
         </section>
 
-    </div>
+        <script>
+        initHeader();
+        </script>
 
-    <br>
-    <br>
+        <style>
+        ul {
+            text-align: center;
+        }
 
-    <section>
+        body {
+            background: #8e9eab;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right,
+                    #eef2f3,
+                    #8e9eab);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right,
+                    #eef2f3,
+                    #8e9eab);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+            color: black;
+        }
 
-        <div class="center">
-            <br>
-            <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
+        h2 {
+            text-decoration: underline;
 
-            <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt="">
-
-
-
-            < </div>
-
-
-
-    </section>
-
-    <script>
-    initHeader();
-    </script>
-
-    <style>
-    ul {
-        text-align: center;
-    }
-
-    body {
-        background: #8e9eab;
-        /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right,
-                #eef2f3,
-                #8e9eab);
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right,
-                #eef2f3,
-                #8e9eab);
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-        color: black;
-    }
-
-    h2 {
-        text-decoration: underline;
-
-    }
-    </style>
+        }
+        </style>
 
 
 
