@@ -280,11 +280,13 @@ $_SESSION["login_id"] = "TEST";
         }
 
 
-
-
-        /* .carlogo {
+        #banner {
             background: white;
-        } */
+        }
+
+        .carlogo {
+            background: white;
+        }
         </style>
 
 
