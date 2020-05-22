@@ -322,9 +322,9 @@ $_SESSION["login_id"] = "TEST";
 
 
 
-        .carlogo {
+        /* .carlogo {
             background: white;
-        }
+        } */
         </style>
 
 
