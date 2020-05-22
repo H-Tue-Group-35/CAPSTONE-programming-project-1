@@ -315,6 +315,7 @@ $_SESSION["login_id"] = "TEST";
 
         h2 {
             text-decoration: underline;
+            margin: 10px;
 
         }
 
