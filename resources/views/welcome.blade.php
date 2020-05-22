@@ -314,11 +314,12 @@ $_SESSION["login_id"] = "TEST";
         }
 
         h2 {
-            text-decoration: underline;
-            margin: 40px;
+
+            margin: 45px;
             font-family: "Roboto", sans-serif;
-            font-weight: 2em;
+            font-weight: 2.5em;
             padding: 5px;
+            font-size: 2.5em;
 
         }
 
