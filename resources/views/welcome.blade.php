@@ -176,6 +176,11 @@ $_SESSION["login_id"] = "TEST";
             font-size: 30px;
 
         }
+
+        .mySlides {
+            display: none;
+
+        }
         </style>
 
         <!-- Banner -->
@@ -240,8 +245,40 @@ $_SESSION["login_id"] = "TEST";
                 <br>
                 <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
 
-                <img class="responsive-img"
-                    src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt="">
+                <!-- <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt=""> -->
+
+
+                <div class="w3-content w3-section" style="max-width:900px">
+                    <img class="mySlides"
+                        src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg"
+                        style="width:100%">
+                    <img class="mySlides"
+                        src="https://media.gettyimages.com/videos/smiling-senior-man-driving-a-car-and-looking-at-camera-video-id1159788545?s=640x640"
+                        style="width:100%">
+                    <img class="mySlides"
+                        src="https://image.freepik.com/free-photo/asian-women-driving-car-smile-happily-with-glad-positive-expression-during-drive-travel-journey-people-enjoy-laughing-transport-relaxed-happy-woman-roadtrip-vacation-concept_41350-454.jpg"
+                        style="width:100%">
+                </div>
+
+                <script>
+                var myIndex = 0;
+                carousel();
+
+                function carousel() {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    myIndex++;
+                    if (myIndex > x.length) {
+                        myIndex = 1
+                    }
+                    x[myIndex - 1].style.display = "block";
+                    setTimeout(carousel, 2000); // Change image every 2 seconds
+                }
+                </script>
+
 
 
 
