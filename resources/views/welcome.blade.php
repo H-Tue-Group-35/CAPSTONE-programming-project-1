@@ -249,7 +249,7 @@ $_SESSION["login_id"] = "TEST";
                 <!-- <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt=""> -->
 
 
-                <div class="w3-content w3-section" style="max-width:900px">
+                <div class="w3-content w3-section" style="max-width:1000px">
                     <img class="mySlides"
                         src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg"
                         style="width:100%">
@@ -260,7 +260,7 @@ $_SESSION["login_id"] = "TEST";
                         src="https://image.freepik.com/free-photo/asian-women-driving-car-smile-happily-with-glad-positive-expression-during-drive-travel-journey-people-enjoy-laughing-transport-relaxed-happy-woman-roadtrip-vacation-concept_41350-454.jpg"
                         style="width:100%">
                 </div>
-
+                <br>
                 <script>
                 var myIndex = 0;
                 carousel();
