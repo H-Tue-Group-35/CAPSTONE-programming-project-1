@@ -315,7 +315,9 @@ $_SESSION["login_id"] = "TEST";
 
         h2 {
             text-decoration: underline;
-            margin: 10px;
+            margin: 20px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 2em;
 
         }
 
