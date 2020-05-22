@@ -253,7 +253,7 @@ $_SESSION["login_id"] = "TEST";
                         src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg"
                         style="width:100%">
                     <img class="mySlides"
-                        src="https://media.gettyimages.com/videos/smiling-senior-man-driving-a-car-and-looking-at-camera-video-id1159788545?s=640x640"
+                        src="https://blackgunownersassociation.org/wp-content/uploads/2018/02/black-gun-owners-association-auto-home-motorcycle-insurance.jpg"
                         style="width:100%">
                     <img class="mySlides"
                         src="https://image.freepik.com/free-photo/asian-women-driving-car-smile-happily-with-glad-positive-expression-during-drive-travel-journey-people-enjoy-laughing-transport-relaxed-happy-woman-roadtrip-vacation-concept_41350-454.jpg"
