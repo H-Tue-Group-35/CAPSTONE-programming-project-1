@@ -36,6 +36,12 @@ session_start();
             font-size: 2em;
             font-weight: 2em;
         }
+
+        input {
+            color: white;
+            background: #292929;
+        }
+
         </style>
 
 
@@ -53,12 +59,12 @@ session_start();
 
                 <div class="field half">
                     <label for="date-from">Date from</label>
-                    <input type="date" name="datefrom" id="date-from" required/>
+                    <input type="date" name="datefrom" id="date-from" onchange="changeMinDate(this.value)" required/>
                 </div>
 
                 <div class="field half">
                     <label for="date-to">Date to</label>
-                    <input type="date" name="dateto" id="date-to" required/>
+                    <input type="date" name="dateto" id="date-to" onchange="changeMaxDate(this.value)" required/>
                 </div>
 
                 <div class="field">
@@ -110,6 +116,21 @@ session_start();
 
     <script>
     let message = document.getElementById("message");
+    document.getElementById("date-from").setAttribute("min", currentDate());
+    document.getElementById("date-to").setAttribute("min", currentDate());
+
+    
+    function changeMinDate(date) {
+        if (date == "") {
+            document.getElementById("date-to").setAttribute("min", currentDate());
+        }
+        document.getElementById("date-to").setAttribute("min", date);
+    }
+
+    function changeMaxDate(date) {
+        document.getElementById("date-from").setAttribute("max", date);
+    }
+
 
     function validateForm() {
         var datefrom = document.forms["form"]["datefrom"].value;
@@ -137,6 +158,25 @@ session_start();
             console.log("ready")
         }
     }
+
+    function currentDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        if(dd<10){
+                dd='0'+dd
+            } 
+            if(mm<10){
+                mm='0'+mm
+            } 
+
+        today = yyyy+'-'+mm+'-'+dd;
+        return today;
+    }
+
+    
+    
     </script>
 
 
