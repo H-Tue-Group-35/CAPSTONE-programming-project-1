@@ -96,7 +96,7 @@ ob_start();
 <body>
 
     <div class="center">
-        <h1>Payment<br><?php echo $carID ?></h1>
+        <h1>Payment</h1>
     </div>
     <div class="center">
         <div class="texty">
