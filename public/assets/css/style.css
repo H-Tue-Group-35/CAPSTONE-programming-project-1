@@ -5041,10 +5041,10 @@
         -webkit-appearance: none;
         -ms-appearance: none;
         appearance: none;
-        background: rgba(212, 212, 255, 0.035);
+        background: #292929;
         border: none;
         border-radius: 0;
-        color: black;
+        color: white;
         display: block;
         outline: 0;
         padding: 0 1em;
