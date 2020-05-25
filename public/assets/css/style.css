@@ -4907,14 +4907,7 @@
         width: calc(100% + 0.5em);
     }
 
-    header.major> :first-child:after {
-        content: '';
-        background-color: #ffffff;
-        display: block;
-        height: 2px;
-        margin: 0.325em 0 0.5em 0;
-        width: 100%;
-    }
+
 
     header.major>p {
         font-size: 0.7em;
@@ -6377,7 +6370,6 @@
         display: -webkit-flex;
         display: -ms-flex;
         display: flex;
-        padding: 6em 0 2em 0;
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -6387,7 +6379,6 @@
         height: 60vh;
         margin-bottom: -3.25em;
         max-height: 32em;
-        min-height: 22em;
         position: relative;
         top: -3.25em;
     }
@@ -6471,13 +6462,13 @@
         letter-spacing: 0.25em;
         text-transform: uppercase;
     }
-
+/*
     #banner.major {
         height: 75vh;
         min-height: 30em;
         max-height: 50em;
     }
-
+*/
     #banner.major.alt {
         opacity: 0.75;
     }
