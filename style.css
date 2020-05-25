@@ -16,6 +16,10 @@
     font-style: normal;
 }
 
+.texty {
+    color: black
+}
+
 .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -5036,7 +5040,7 @@ textarea {
     background: rgba(212, 212, 255, 0.035);
     border: none;
     border-radius: 0;
-    color: inherit;
+    color: black;
     display: block;
     outline: 0;
     padding: 0 1em;
