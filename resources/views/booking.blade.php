@@ -47,33 +47,33 @@ session_start();
 
 
 
-        <form method="post" action="payment" name="form" id="form" onsubmit="return validateForm()">
+        <form method="post" action="payment" name="form" id="form" onsubmit="return validateForm()" autocomplete="on">
             <div class="fields">
 
 
                 <div class="field half">
                     <label for="date-from">Date from</label>
-                    <input type="text" name="datefrom" id="date-from" />
+                    <input type="date" name="datefrom" id="date-from" required/>
                 </div>
 
                 <div class="field half">
                     <label for="date-to">Date to</label>
-                    <input type="text" name="dateto" id="date-to" />
+                    <input type="date" name="dateto" id="date-to" required/>
                 </div>
 
                 <div class="field">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" />
+                    <input type="text" name="name" id="name" placeholder="Name" required />
                 </div>
 
                 <div class="field half">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" />
+                    <input type="email" name="email" id="email" placeholder="Email" required/>
                 </div>
 
                 <div class="field half">
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" />
+                    <input type="tel" name="phone" id="phone" placeholder="10 digit mobile number" pattern="[0-9]{10}" required/>
                 </div>
 
 
@@ -90,7 +90,7 @@ session_start();
 
 
                     <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
-                    <input type="submit" value="Book Now" class="primary" name="submit" />
+                    <input type="submit" value="Proceed to Checkout" class="primary" name="submit" />
 
 
 
