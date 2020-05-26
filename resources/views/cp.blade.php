@@ -262,12 +262,116 @@ ob_start();
 		.container select {
 		  width: 100%;
 		}
+		
+        #message {
+
+            color: red;
+            font-size: 2em;
+            font-weight: 2em;
+        }
+
+        input {
+            color: white;
+            background: #292929;
+        }
 
 	</style>
 	
 </head>
 
 <body>
+
+    <div class="center">
+        <h1>Admin Control Panel</h1>
+
+        <br>
+        <br>
+		
+		<h2>Add new vehicle</h2>
+		
+		<form onsubmit="makeVehicle()">
+		<div class="field half">
+		Brand: <input type="text" name="fBrand" id="fBrand" maxlength="12" required>
+		</div>
+		<div class="field half">
+		Model: <input type="text" name="model" id="model" maxlength="12" required>
+		</div>
+		<div class="field half">
+		Seats: <input type="number" id="fSeats" name="fSeats" min="1" max="12" value="5" required>
+		</div>
+		<div class="field half">
+		Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
+					 <input type="text" name="fLong" id="fLong" maxlength="12">
+		</div>
+		Status:
+		<select id="fStatus" name="fStatus">
+		  <option value="fActive">Active</option>
+		  <option value="fInactive">Inactive</option>
+		</select>
+
+		<br/>
+		<input type="submit">
+		</form>
+		</div>
+
+        <form method="post" action="payment" name="form" id="form" onsubmit="return validateForm()" autocomplete="on">
+            <div class="fields">
+
+
+                <div class="field half">
+                    <label for="date-from">Date from</label>
+                    <input type="date" name="datefrom" id="date-from" onchange="changeMinDate(this.value)" required/>
+                </div>
+
+                <div class="field half">
+                    <label for="date-to">Date to</label>
+                    <input type="date" name="dateto" id="date-to" onchange="changeMaxDate(this.value)" required/>
+                </div>
+
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" required />
+                </div>
+
+                <div class="field half">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email" required/>
+                </div>
+
+                <div class="field half">
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" id="phone" placeholder="10 digit mobile number" pattern="[0-9]{10}" required/>
+                </div>
+
+
+
+
+
+
+            </div>
+
+            <div class="center">
+
+                <div class="field half text-right">
+                    <label>&nbsp;</label>
+
+
+                    <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
+                    <input type="submit" value="Proceed to Checkout" class="primary" name="submit" />
+
+
+
+                </div>
+
+            </div>
+        </form>
+
+
+
+
+
+    </div>
+
 
 	<h1>Admin Control Panel</h1>
 
@@ -276,27 +380,7 @@ ob_start();
 	<p>List all vehicles here for easy management. Add ability to make active/inactive or delete.</p>
 
 	<h2>Make new Vehicle (empty coordinates will give random position in city)</h2>
-	<div class="container">
-	<form onsubmit="makeVehicle()">
-	Brand: <input type="text" name="fBrand" id="fBrand" maxlength="12" required>
-	<br/>
-	Model: <input type="text" name="model" id="model" maxlength="12" required>
-	<br/>
-	Seats: <input type="number" id="fSeats" name="fSeats" min="1" max="12" value="5" required>
-	<br/>
-	Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
-				 <input type="text" name="fLong" id="fLong" maxlength="12">
-	<br/>
-	Status:
-	<select id="fStatus" name="fStatus">
-	  <option value="fActive">Active</option>
-	  <option value="fInactive">Inactive</option>
-	</select>
 
-	<br/>
-	<input type="submit">
-	</form>
-	</div>
 
 	<br/>
 
