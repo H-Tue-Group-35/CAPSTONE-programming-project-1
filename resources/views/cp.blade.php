@@ -272,6 +272,17 @@ ob_start();
 	{
 		display: none;
 	}
+	#message
+	{
+		color: red;
+		font-size: 2em;
+		font-weight: 2em;
+	}
+	input
+	{
+		color: black;
+		background: #292929;
+	}
 </style>
 
 <body>
