@@ -103,9 +103,9 @@ ob_start();
 					'<form onsubmit="test()">' +
 					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
 					doc.id +
-					'" ><button onclick="vehicleEmergency() style="background-color: #DE6247;">Summon emergency services</button>' +
-					'<button onclick="vehicleDeactivate() style="background-color: #DE6247;">Deactivate</button>' +
-					'<button onclick="vehicleDelete() style="background-color: #DE6247;">Delete</button></p></form>';
+					'" ><button onclick="vehicleEmergency() style="background-color: #DE6247; color: #000000;">Summon emergency services</button>' +
+					'<button onclick="vehicleDeactivate() style="background-color: #DE6247; color: #000000;">Deactivate</button>' +
+					'<button onclick="vehicleDelete() style="background-color: #DE6247; color: #000000;">Delete</button></p></form>';
 
 					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
@@ -339,7 +339,7 @@ ob_start();
 		Seats: <input type="number" id="fSeats" name="fSeats" min="1" max="12" value="5" required>
 		</div>
 		<div class="field half">
-		Coordinates: <input type="text" name="fLat" id="fLat" maxlength="12">
+		Coordinates (leave empty for random): <input type="text" name="fLat" id="fLat" maxlength="12">
 					 <input type="text" name="fLong" id="fLong" maxlength="12">
 		</div>
 		<div class="field half">
