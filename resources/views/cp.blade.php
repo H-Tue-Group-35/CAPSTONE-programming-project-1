@@ -286,6 +286,20 @@ ob_start();
 	
 </head>
 
+<!-- Wrapper -->
+<div id="wrapper">
+
+<style>
+	#title
+	{
+		font-size: 30px;
+	}
+	.mySlides
+	{
+		display: none;
+	}
+</style>
+
 <body>
 
     <div class="center">
@@ -328,6 +342,7 @@ ob_start();
 		<div id="map" style="height:800px;"></div>
 
     </div>
+</div>
 
 </body>
 </html>
