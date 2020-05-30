@@ -103,9 +103,9 @@ ob_start();
 					'<form onsubmit="test()">' +
 					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
 					doc.id +
-					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-					'<button onclick="vehicleDeactivate()">Deactivate</button>' +
-					'<button onclick="vehicleDelete()">Delete</button></p></form>';
+					'" ><button onclick="vehicleEmergency() style="background-color: #DE6247;">Summon emergency services</button>' +
+					'<button onclick="vehicleDeactivate() style="background-color: #DE6247;">Deactivate</button>' +
+					'<button onclick="vehicleDelete() style="background-color: #DE6247;">Delete</button></p></form>';
 
 					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
