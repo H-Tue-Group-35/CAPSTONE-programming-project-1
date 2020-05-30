@@ -258,32 +258,6 @@ ob_start();
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
 	
-	<style>
-		.container {
-		  width: 200px;
-		}
-
-		.container input {
-		  width: 100%;
-		}
-		.container select {
-		  width: 100%;
-		}
-		
-        #message {
-
-            color: red;
-            font-size: 2em;
-            font-weight: 2em;
-        }
-
-        input {
-            color: white;
-            background: #292929;
-        }
-
-	</style>
-	
 </head>
 
 <!-- Wrapper -->
