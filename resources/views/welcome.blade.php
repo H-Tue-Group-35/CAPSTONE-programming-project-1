@@ -13,7 +13,7 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/style.css" rel="stylesheet" type="text/css">
 
-    <title>Car4Alll</title>
+    <title>Car4All</title>
 
 
     <!-- Connect to Firebase so we can get stats on all Vehicles -->
