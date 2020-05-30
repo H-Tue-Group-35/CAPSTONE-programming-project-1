@@ -307,6 +307,73 @@ ob_start();
 		
 	}
 	
+	//periodically update map to update vehicle positions and status
+	function updateLoop()
+	{
+		// update markers
+		console.log("update loop");
+		// var arrayLength = userMarkers.length;
+		// for (var i = 0; i < arrayLength; i++)
+		// {
+			// userMarkers[i].setMap(null);
+		// }
+		
+		// userMarkers = [];
+		// markerID = [];
+		
+		// // pull existing markers from db.
+		// db.collection("marker").where("user", "==", getCookie("userid")).get().then(function(querySnapshot)
+		// {
+            // querySnapshot.forEach(function(doc)
+			// {
+                    // var coordinates =
+					// {
+                        // lat: doc.data().location.latitude,
+                        // lng: doc.data().location.longitude
+                    // };
+
+                    // var fitMarker = new google.maps.Marker
+					// ({
+                        // position: coordinates,
+                        // map: map,
+                        // icon: { url: "/fitmarker.png" }
+                    // });
+                    // userMarkers.push(fitMarker);
+					// markerID.push(doc.id);
+					
+            // });
+        // }).catch(function(error)
+		// {
+            // console.log("Error getting documents: ", error);
+        // });
+	}
+	
+	// Main interval function to keep track of application state
+	// interval shouldn't be too often to allow time for database updates and whatnot.
+	var interval = setInterval(updateLoop, 5000);
+	
+	// Get distance between two geopoints
+	function getDistance (lat1, lng1, lat2, lng2 ) 
+	{
+		var earthRadius = 3958.75;
+		var dLat = toRadians(lat2-lat1);
+		var dLng = toRadians(lng2-lng1);
+		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+		Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+		Math.sin(dLng/2) * Math.sin(dLng/2);
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		var dist = earthRadius * c;
+
+		var meterConversion = 1609.0;
+
+		return dist * meterConversion;
+	}
+	function toRadians(degrees)
+	{
+	  var pi = Math.PI;
+	  return degrees * (pi/180);
+	}		
+	
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
