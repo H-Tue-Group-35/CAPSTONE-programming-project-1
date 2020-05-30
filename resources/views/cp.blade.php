@@ -24,6 +24,60 @@ ob_start();
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 	
+<style>
+	#title
+	{
+		font-size: 30px;
+	}
+	.mySlides
+	{
+		display: none;
+	}
+	#message
+	{
+		color: red;
+		font-size: 2em;
+		font-weight: 2em;
+	}
+	input
+	{
+		color: black;
+		background: #292929;
+		text-align: center;
+	}
+	ul
+	{
+		text-align: center;
+	}
+
+	body
+	{
+		background: #8e9eab;
+		/* fallback for old browsers */
+		background: -webkit-linear-gradient(to right,
+		#eef2f3,
+		#8e9eab);
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right,
+		#eef2f3,
+		#8e9eab);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		color: black;
+	}
+
+	h2
+	{
+
+		margin: 45px;
+		font-family: "Roboto", sans-serif;
+		font-weight: 2.5em;
+		padding: 5px;
+		font-size: 2.5em;
+
+	}
+</style>
+	
     <script>
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
@@ -262,61 +316,6 @@ ob_start();
 
 <!-- Wrapper -->
 <div id="wrapper">
-
-<style>
-	#title
-	{
-		font-size: 30px;
-	}
-	.mySlides
-	{
-		display: none;
-	}
-	#message
-	{
-		color: red;
-		font-size: 2em;
-		font-weight: 2em;
-	}
-	input
-	{
-		color: black;
-		background: #292929;
-		text-align: center;
-	}
-	ul
-	{
-		text-align: center;
-	}
-
-	body
-	{
-		background: #8e9eab;
-		/* fallback for old browsers */
-		background: -webkit-linear-gradient(to right,
-		#eef2f3,
-		#8e9eab);
-		/* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to right,
-		#eef2f3,
-		#8e9eab);
-		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-		color: black;
-	}
-
-	h2
-	{
-
-		margin: 45px;
-		font-family: "Roboto", sans-serif;
-		font-weight: 2.5em;
-		padding: 5px;
-		font-size: 2.5em;
-
-	}
-        </style>
-</style>
 
 <body>
 
