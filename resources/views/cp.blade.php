@@ -282,6 +282,7 @@ ob_start();
 	{
 		color: black;
 		background: #292929;
+		text-align: center;
 	}
 	ul
 	{
