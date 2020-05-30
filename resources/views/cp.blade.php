@@ -98,7 +98,7 @@ ob_start();
 					doc.data().model + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
 					doc.data().seats + '</span></p>' +
-					'<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
+					'<p style="text-align: center;"><span style="color: #000000;">Available</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
 					'<form onsubmit="test()">' +
 					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
@@ -283,6 +283,38 @@ ob_start();
 		color: black;
 		background: #292929;
 	}
+	ul
+	{
+		text-align: center;
+	}
+
+	body
+	{
+		background: #8e9eab;
+		/* fallback for old browsers */
+		background: -webkit-linear-gradient(to right,
+		#eef2f3,
+		#8e9eab);
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right,
+		#eef2f3,
+		#8e9eab);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		color: black;
+	}
+
+	h2
+	{
+
+		margin: 45px;
+		font-family: "Roboto", sans-serif;
+		font-weight: 2.5em;
+		padding: 5px;
+		font-size: 2.5em;
+
+	}
+        </style>
 </style>
 
 <body>
