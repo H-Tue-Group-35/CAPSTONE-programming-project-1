@@ -309,16 +309,30 @@ ob_start();
 		
 	}
 	
+	var aVehicles = [];
+	var aVehiclesLocations = [];
+	
 	// loop through all vehicles and snap the coordinates to the road.
-	function snapCarsToRoad()
+	function updateVehicleCoords()
 	{
-		console.log("snap to road");
-
+		
+		// loop through array and update db.
+		for (i = 0; i < aVehicles.length; i++)
+		{
+			console.log("Update coords here");
+			//text += cars[i] + "<br>";
+		}
+		
+		
+		aVehicles = [];
+		aVehiclesLocations = [];
+		
+		//console.log("snap to road");
 		db.collection("Vehicles").get().then(function(querySnapshot)
 		{
             querySnapshot.forEach(function(doc)
 			{
-				console.log("car");
+				//console.log("car");
 				var coordinates =
 				{
 					lat: doc.data().location.latitude,
@@ -341,7 +355,10 @@ ob_start();
 					//coordinates.lat = 4
 					doc.update({ "location": data.snappedPoints[0].location });
 					
-					console.log("Snap done");
+					aVehicles.push(doc.id);
+					aVehiclesLocations.push(data.snappedPoints[0].location);
+					
+					//console.log("Snap done");
 				});
 				console.log("End of snap func");
 
@@ -372,7 +389,7 @@ ob_start();
 		console.log("update loop");
 		
 		
-		snapCarsToRoad();
+		updateVehicleCoords();
 		// var arrayLength = userMarkers.length;
 		// for (var i = 0; i < arrayLength; i++)
 		// {
