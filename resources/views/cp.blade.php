@@ -317,13 +317,31 @@ ob_start();
             querySnapshot.forEach(function(doc)
 			{
 				console.log("car");
-				// querySnapshot.forEach(function(doc)
-				// {
-						// var coordinates =
-						// {
-							// lat: doc.data().location.latitude,
-							// lng: doc.data().location.longitude
-						// };
+				var coordinates =
+				{
+					lat: doc.data().location.latitude,
+					lng: doc.data().location.longitude
+				};
+				
+				// snap the coordinates to the nearest road
+				var coordString = coordinates.lat.toString() + "," + coordinates.lng.toString();
+				console.log("Snapping: "+coordString);
+
+				$.get('https://roads.googleapis.com/v1/snapToRoads',
+				{
+					interpolate: false,
+					key: "AIzaSyAFZBF28p1IJCd8JiC1BaV8aNCSYJq6fEo",
+					path: coordString
+				},
+				function(data)
+				{
+					//placeMarkerAt(data.snappedPoints[0].location.latitude,data.snappedPoints[0].location.longitude);
+					//coordinates.lat = 4
+					doc.update({ "location": data.snappedPoints[0].location });
+					
+					console.log("Snap done");
+				});
+				console.log("End of snap func");
 
 						// var fitMarker = new google.maps.Marker
 						// ({
