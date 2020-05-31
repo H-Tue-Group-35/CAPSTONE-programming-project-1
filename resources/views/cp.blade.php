@@ -320,6 +320,8 @@ ob_start();
 		for (i = 0; i < aVehicles.length; i++)
 		{
 			console.log("Update coords here");
+			console.log("Doc ID: "+aVehicles[i]);
+			console.log("Coordinate: "+aVehiclesLocations[i]);
 			//text += cars[i] + "<br>";
 		}
 		
