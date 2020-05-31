@@ -353,7 +353,7 @@ ob_start();
 				{
 					//placeMarkerAt(data.snappedPoints[0].location.latitude,data.snappedPoints[0].location.longitude);
 					//coordinates.lat = 4
-					doc.update({ "location": data.snappedPoints[0].location });
+					//doc.update({ "location": data.snappedPoints[0].location });
 					
 					aVehicles.push(doc.id);
 					aVehiclesLocations.push(data.snappedPoints[0].location);
