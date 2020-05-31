@@ -94,6 +94,8 @@ ob_start();
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
     var map, infoWindow;
+	
+	var markers = [];
 
     function initMap()
 	{
@@ -133,8 +135,8 @@ ob_start();
 			handleLocationError(false, infoWindow, map.getCenter());
 		}
 
-		var markers = []
-		console.log(typeof(markers));
+
+		//console.log(typeof(markers));
 
 		db.collection("Vehicles").get().then(function(querySnapshot)
 		{
@@ -316,20 +318,16 @@ ob_start();
 	function updateVehicleCoords()
 	{
 		
-		// loop through array and update db.
+		// loop through array and update markers.
 		for (i = 0; i < aVehicles.length; i++)
 		{
-			//console.log("Update coords here");
-			//console.log("Doc ID: "+aVehicles[i]);
-			//console.log("Coordinate: "+aVehiclesLocations[i]);
-			//text += cars[i] + "<br>";
+			markers[i].setPosition(aVehiclesLocations[i]);
 		}
 		
 		
 		aVehicles = [];
 		aVehiclesLocations = [];
-		
-		//console.log("snap to road");
+
 		db.collection("Vehicles").get().then(function(querySnapshot)
 		{
             querySnapshot.forEach(function(doc)
@@ -353,30 +351,13 @@ ob_start();
 				},
 				function(data)
 				{
-					//placeMarkerAt(data.snappedPoints[0].location.latitude,data.snappedPoints[0].location.longitude);
-					//coordinates.lat = 4
-					//doc.update({ "location": data.snappedPoints[0].location });
-					
 					aVehicles.push(doc.id);
 					aVehiclesLocations.push(data.snappedPoints[0].location);
 					
 					db.collection("Vehicles").doc(doc.id).update({"location": data.snappedPoints[0].location});
-					
-					//console.log("Snap done");
+
 				});
 				console.log("End of snap func");
-
-						// var fitMarker = new google.maps.Marker
-						// ({
-							// position: coordinates,
-							// map: map,
-							// icon: { url: "/fitmarker.png" }
-						// });
-						// userMarkers.push(fitMarker);
-						// markerID.push(doc.id);
-						
-				// });
-					
             });
         }).catch(function(error)
 		{
@@ -386,48 +367,19 @@ ob_start();
 		
 	}
 	
+	function updateMarkers()
+	{
+
+	}
+	
 	//periodically update map to update vehicle positions and status
 	function updateLoop()
 	{
 		// update markers
 		console.log("update loop");
-		
-		
-		updateVehicleCoords();
-		// var arrayLength = userMarkers.length;
-		// for (var i = 0; i < arrayLength; i++)
-		// {
-			// userMarkers[i].setMap(null);
-		// }
-		
-		// userMarkers = [];
-		// markerID = [];
-		
-		// // pull existing markers from db.
-		// db.collection("marker").where("user", "==", getCookie("userid")).get().then(function(querySnapshot)
-		// {
-            // querySnapshot.forEach(function(doc)
-			// {
-                    // var coordinates =
-					// {
-                        // lat: doc.data().location.latitude,
-                        // lng: doc.data().location.longitude
-                    // };
 
-                    // var fitMarker = new google.maps.Marker
-					// ({
-                        // position: coordinates,
-                        // map: map,
-                        // icon: { url: "/fitmarker.png" }
-                    // });
-                    // userMarkers.push(fitMarker);
-					// markerID.push(doc.id);
-					
-            // });
-        // }).catch(function(error)
-		// {
-            // console.log("Error getting documents: ", error);
-        // });
+		// snap the vehicles to the road and update the markers.
+		updateVehicleCoords();
 	}
 	
 	// Main interval function to keep track of application state
