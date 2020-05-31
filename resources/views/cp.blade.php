@@ -319,9 +319,9 @@ ob_start();
 		// loop through array and update db.
 		for (i = 0; i < aVehicles.length; i++)
 		{
-			console.log("Update coords here");
-			console.log("Doc ID: "+aVehicles[i]);
-			console.log("Coordinate: "+aVehiclesLocations[i]);
+			//console.log("Update coords here");
+			//console.log("Doc ID: "+aVehicles[i]);
+			//console.log("Coordinate: "+aVehiclesLocations[i]);
 			//text += cars[i] + "<br>";
 		}
 		
@@ -359,6 +359,8 @@ ob_start();
 					
 					aVehicles.push(doc.id);
 					aVehiclesLocations.push(data.snappedPoints[0].location);
+					
+					db.collection("Vehicles").doc(doc.id).update({"location": data.snappedPoints[0].location});
 					
 					//console.log("Snap done");
 				});
