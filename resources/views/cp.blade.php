@@ -307,11 +307,52 @@ ob_start();
 		
 	}
 	
+	// loop through all vehicles and snap the coordinates to the road.
+	function snapCarsToRoad()
+	{
+		console.log("snap to road");
+
+		db.collection("Vehicles").get().then(function(querySnapshot)
+		{
+            querySnapshot.forEach(function(doc)
+			{
+				console.log("car");
+				// querySnapshot.forEach(function(doc)
+				// {
+						// var coordinates =
+						// {
+							// lat: doc.data().location.latitude,
+							// lng: doc.data().location.longitude
+						// };
+
+						// var fitMarker = new google.maps.Marker
+						// ({
+							// position: coordinates,
+							// map: map,
+							// icon: { url: "/fitmarker.png" }
+						// });
+						// userMarkers.push(fitMarker);
+						// markerID.push(doc.id);
+						
+				// });
+					
+            });
+        }).catch(function(error)
+		{
+            console.log("Error getting documents: ", error);
+        });
+		
+		
+	}
+	
 	//periodically update map to update vehicle positions and status
 	function updateLoop()
 	{
 		// update markers
 		console.log("update loop");
+		
+		
+		snapCarsToRoad();
 		// var arrayLength = userMarkers.length;
 		// for (var i = 0; i < arrayLength; i++)
 		// {
