@@ -29,8 +29,6 @@ ob_start();
 
     <h1>Admin login</h1>
 
-
-	
 	<p>Please login to access admin panel:</p>
 	
 	<form action="login_check" method="post">
