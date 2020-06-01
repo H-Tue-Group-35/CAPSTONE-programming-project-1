@@ -17,7 +17,7 @@
 }
 
 .texty {
-    color: black
+    color: black;
 }
 
 .fa {
@@ -3350,7 +3350,6 @@ p {
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
@@ -4910,8 +4909,6 @@ header.major > :first-child {
     margin-bottom: 0;
     width: calc(100% + 0.5em);
 }
-
-
 
 header.major > p {
     font-size: 0.7em;
