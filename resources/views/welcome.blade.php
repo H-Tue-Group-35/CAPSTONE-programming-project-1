@@ -12,8 +12,8 @@ ob_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/style.css" rel="stylesheet" type="text/css">
-
-    <title>Car4Alll</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <title>Car4All</title>
 
 
     <!-- Connect to Firebase so we can get stats on all Vehicles -->
@@ -226,7 +226,7 @@ $_SESSION["login_id"] = "TEST";
 
             <section id="two">
                 <div class="inner">
-                    <header class="major">
+                    <header class="major animate__animated animate__bounce">
                         <h2 class="center">Locate Your Nearest vehicle</h2>
 
                     </header>
