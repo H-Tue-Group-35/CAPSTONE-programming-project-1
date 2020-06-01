@@ -227,7 +227,7 @@ $_SESSION["login_id"] = "TEST";
             <section id="two">
                 <div class="inner">
                     <header class="major animate__animated animate__bounce">
-                        <h2 class="center">Locate Your Nearest vehicle</h2>
+                        <h2 class="center major animate__animated animate__bounce">Locate Your Nearest vehicle</h2>
 
                     </header>
                     <div id="map" style="height:800px;"></div>
