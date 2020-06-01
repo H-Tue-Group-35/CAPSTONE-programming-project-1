@@ -191,7 +191,7 @@ $_SESSION["login_id"] = "TEST";
                     <div class="center">
 
                         <div class="carlogo">
-                            <img id="logopic"
+                            <img class="animate__backInDown" id="logopic"
                                 src="https://i.ibb.co/3y5cmS9/c1e88dfc-d1a1-467d-ab8c-9a08b4434d36-200x200.png" alt="">
 
                         </div>
