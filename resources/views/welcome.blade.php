@@ -244,7 +244,7 @@ $_SESSION["login_id"] = "TEST";
 
             <div class="center">
                 <br>
-                <h2>Compare Rates to Find a Top Car Hire in Melbourne</h2>
+                <h2 class="animate__animated animate__bounce">Compare Rates to Find a Top Car Hire in Melbourne</h2>
 
                 <!-- <img src="https://cdn.motor1.com/images/mgl/rg2XY/s3/happy-family-driving-in-car.jpg" alt=""> -->
 
