@@ -235,8 +235,10 @@ ob_start();
 	}
 	function vehicleActivate()
 	{
-		//var cID = document.getElementById('carID').value;
-		alert("activate vehicle");
+		var cID = document.getElementById('carID').value;
+		
+		Console.log("ACTIVATE VEHICLE");
+		//alert("activate vehicle");
 	}
 	function vehicleDeactivate()
 	{
