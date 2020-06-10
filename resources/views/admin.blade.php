@@ -31,7 +31,7 @@ ob_start();
 
 	<p>Please login to access admin panel:</p>
 	
-	<form action="login_check" method="post">
+	<form action="login_check" method="post"> @csrf
 	Username: <input type="text" name="username" id="username" maxlength="20" required>
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
