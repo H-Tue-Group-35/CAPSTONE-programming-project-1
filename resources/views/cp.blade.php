@@ -159,7 +159,7 @@ ob_start();
 					'<p style="text-align: center;"><span style="color: #000000;">Available</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
 					'<form onsubmit="test()">' +
-					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+					'<p style="text-align: center;"><input type="hidden" id="carid" name="carID" value="' +
 					doc.id +
 					'" ><button onclick="vehicleEmergency() style="color: #000000;">Summon emergency services</button>' +
 					'<button onclick="vehicleDeactivate() style="color: #000000;">Deactivate</button>' +
@@ -192,7 +192,7 @@ ob_start();
 					'<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
 					'<form onsubmit="test()">' +
-					'<p style="text-align: center;"><input type="hidden" name="carID" value="' +
+					'<p style="text-align: center;"><input type="hidden" id="carid" name="carID" value="' +
 					doc.id +
 					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
 					'<button onclick="vehicleActivate()">Activate</button>' +
