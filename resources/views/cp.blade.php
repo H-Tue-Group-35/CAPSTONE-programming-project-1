@@ -324,7 +324,10 @@ ob_start();
 		// loop through array and update markers.
 		for (i = 0; i < aVehicles.length; i++)
 		{
-			markers[i].setPosition(aVehiclesLocations[i]);
+			if ( aVehiclesLocations[i].latitude != null )
+			{
+				markers[i].setPosition(aVehiclesLocations[i]);
+			}
 		}
 		
 		
