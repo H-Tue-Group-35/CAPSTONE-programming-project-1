@@ -237,13 +237,13 @@ ob_start();
 	{
 		var cID = document.getElementById('carID').value;
 		
-		console.log("ACTIVATE VEHICLE");
+		console.log("ACTIVATE VEHICLE: "+cID);
 		//alert("activate vehicle");
 	}
 	function vehicleDeactivate()
 	{
 		var cID = document.getElementById('carID').value;
-		console.log("DEACTIVATE VEHICLE");
+		console.log("DEACTIVATE VEHICLE: "+cID);
 		//alert("deactivate vehicle");
 	}
 	function vehicleDelete()
