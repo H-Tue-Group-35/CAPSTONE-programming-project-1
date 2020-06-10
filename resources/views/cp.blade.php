@@ -243,7 +243,8 @@ ob_start();
 	function vehicleDeactivate()
 	{
 		//var cID = document.getElementById('carID').value;
-		alert("deactivate vehicle");
+		Console.log("ACTIVATE VEHICLE");
+		//alert("deactivate vehicle");
 	}
 	function vehicleDelete()
 	{
