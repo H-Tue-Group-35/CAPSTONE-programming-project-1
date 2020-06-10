@@ -237,7 +237,7 @@ ob_start();
 	{
 		var cID = document.getElementById('carID').value;
 		
-		console.log("ACTIVATE VEHICLE: "+cID);
+		//console.log("ACTIVATE VEHICLE: "+cID);
 		
 		// Set the car as active
 		db.collection("Vehicles").doc(cID).update
@@ -252,7 +252,7 @@ ob_start();
 	function vehicleDeactivate()
 	{
 		var cID = document.getElementById('carID').value;
-		console.log("DEACTIVATE VEHICLE: "+cID);
+		//console.log("DEACTIVATE VEHICLE: "+cID);
 		
 		// Set the car as inactive
 		db.collection("Vehicles").doc(cID).update
@@ -266,8 +266,8 @@ ob_start();
 	}
 	function vehicleDelete()
 	{
-		//var cID = document.getElementById('carID').value;
-		alert("delete vehicle");
+		var cID = document.getElementById('carID').value;
+		//console.log("delete vehicle");
 		
 		db.collection("Vehicles").doc(cID).delete().then(function()
 		{
