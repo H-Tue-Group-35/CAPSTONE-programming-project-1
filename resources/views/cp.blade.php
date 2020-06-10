@@ -240,11 +240,13 @@ ob_start();
 		console.log("ACTIVATE VEHICLE: "+cID);
 		
 		// Set the car as active
-		db.collection("Vehicles").doc(cID).update({
-		"available": true
+		db.collection("Vehicles").doc(cID).update
+		({
+			"available": true
 		})
-		.then(function() {
-		console.log("Car activated");
+		.then(function()
+		{
+			console.log("Car activated");
 		});
 	}
 	function vehicleDeactivate()
@@ -253,17 +255,27 @@ ob_start();
 		console.log("DEACTIVATE VEHICLE: "+cID);
 		
 		// Set the car as inactive
-		db.collection("Vehicles").doc(cID).update({
-		"available": false
+		db.collection("Vehicles").doc(cID).update
+		({
+			"available": false
 		})
-		.then(function() {
-		console.log("Car deactivated");
+		.then(function()
+		{
+			console.log("Car deactivated");
 		});
 	}
 	function vehicleDelete()
 	{
 		//var cID = document.getElementById('carID').value;
 		alert("delete vehicle");
+		
+		db.collection("Vehicles").doc(cID).delete().then(function()
+		{
+			 console.log("Vehicle deleted");
+		}).catch(function(error)
+		{
+			 console.error("Error deleting vehicle: ", error);
+		});
 	}
 
 	/*
