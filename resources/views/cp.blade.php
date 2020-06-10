@@ -158,12 +158,12 @@ ob_start();
 					doc.data().seats + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Available</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form onsubmit="test()">' +
-					'<p style="text-align: center;"><input type="hidden" id="carid" name="carID" value="' +
+					'<form onsubmit="">' +
+					'<p style="text-align: center;"><input type="hidden" id="carID" name="carID" value="' +
 					doc.id +
-					'" ><button onclick="vehicleEmergency() style="color: #000000;">Summon emergency services</button>' +
-					'<button onclick="vehicleDeactivate() style="color: #000000;">Deactivate</button>' +
-					'<button onclick="vehicleDelete() style="color: #000000;">Delete</button></p></form>';
+					'" ><button onclick="vehicleEmergency()" style="color: #000000;">Summon emergency services</button>' +
+					'<button onclick="vehicleDeactivate()" style="color: #000000;">Deactivate</button>' +
+					'<button onclick="vehicleDelete()" style="color: #000000;">Delete</button></p></form>';
 
 					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
@@ -191,12 +191,12 @@ ob_start();
 					doc.data().seats + '</span></p>' +	
 					'<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form onsubmit="test()">' +
-					'<p style="text-align: center;"><input type="hidden" id="carid" name="carID" value="' +
+					'<form onsubmit="">' +
+					'<p style="text-align: center;"><input type="hidden" id="carID" name="carID" value="' +
 					doc.id +
-					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-					'<button onclick="vehicleActivate()">Activate</button>' +
-					'<button onclick="vehicleDelete()">Delete</button></p></form>';
+					'" ><button onclick="vehicleEmergency()" style="color: #000000;">Summon emergency services</button>' +
+					'<button onclick="vehicleActivate()" style="color: #000000;">Activate</button>' +
+					'<button onclick="vehicleDelete()" style="color: #000000;">Delete</button></p></form>';
 
 					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
@@ -237,19 +237,45 @@ ob_start();
 	{
 		var cID = document.getElementById('carID').value;
 		
-		Console.log("ACTIVATE VEHICLE");
-		//alert("activate vehicle");
+		//console.log("ACTIVATE VEHICLE: "+cID);
+		
+		// Set the car as active
+		db.collection("Vehicles").doc(cID).update
+		({
+			"available": true
+		})
+		.then(function()
+		{
+			console.log("Car activated");
+		});
 	}
 	function vehicleDeactivate()
 	{
-		//var cID = document.getElementById('carID').value;
-		Console.log("ACTIVATE VEHICLE");
-		//alert("deactivate vehicle");
+		var cID = document.getElementById('carID').value;
+		//console.log("DEACTIVATE VEHICLE: "+cID);
+		
+		// Set the car as inactive
+		db.collection("Vehicles").doc(cID).update
+		({
+			"available": false
+		})
+		.then(function()
+		{
+			console.log("Car deactivated");
+		});
 	}
 	function vehicleDelete()
 	{
-		//var cID = document.getElementById('carID').value;
-		alert("delete vehicle");
+		var cID = document.getElementById('carID').value;
+		//console.log("delete vehicle");
+		
+		db.collection("Vehicles").doc(cID).delete().then(function()
+		{
+			 console.log("Vehicle deleted");
+		}).catch(function(error)
+		{
+			 console.error("Error deleting vehicle: ", error);
+		});
 	}
 
 	/*
@@ -322,7 +348,7 @@ ob_start();
 	{
 		
 		// loop through array and update markers.
-		for (i = 0; i < aVehicles.length; i++)
+		for (i = 0; i < aVehiclesLocations.length; i++)
 		{
 			markers[i].setPosition(aVehiclesLocations[i]);
 		}
