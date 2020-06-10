@@ -238,13 +238,27 @@ ob_start();
 		var cID = document.getElementById('carID').value;
 		
 		console.log("ACTIVATE VEHICLE: "+cID);
-		//alert("activate vehicle");
+		
+		// Set the car as active
+		db.collection("Vehicles").doc(cID).update({
+		"active": true
+		})
+		.then(function() {
+		console.log("Car activated");
+		});
 	}
 	function vehicleDeactivate()
 	{
 		var cID = document.getElementById('carID').value;
 		console.log("DEACTIVATE VEHICLE: "+cID);
-		//alert("deactivate vehicle");
+		
+		// Set the car as inactive
+		db.collection("Vehicles").doc(cID).update({
+		"active": false
+		})
+		.then(function() {
+		console.log("Car deactivated");
+		});
 	}
 	function vehicleDelete()
 	{
