@@ -241,7 +241,7 @@ ob_start();
 		
 		// Set the car as active
 		db.collection("Vehicles").doc(cID).update({
-		"active": true
+		"available": true
 		})
 		.then(function() {
 		console.log("Car activated");
@@ -254,7 +254,7 @@ ob_start();
 		
 		// Set the car as inactive
 		db.collection("Vehicles").doc(cID).update({
-		"active": false
+		"available": false
 		})
 		.then(function() {
 		console.log("Car deactivated");
