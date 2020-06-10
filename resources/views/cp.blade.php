@@ -194,9 +194,9 @@ ob_start();
 					'<form onsubmit="">' +
 					'<p style="text-align: center;"><input type="hidden" id="carID" name="carID" value="' +
 					doc.id +
-					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
-					'<button onclick="vehicleActivate()">Activate</button>' +
-					'<button onclick="vehicleDelete()">Delete</button></p></form>';
+					'" ><button onclick="vehicleEmergency()" style="color: #000000;">Summon emergency services</button>' +
+					'<button onclick="vehicleDeactivate()" style="color: #000000;">Deactivate</button>' +
+					'<button onclick="vehicleDelete()" style="color: #000000;">Delete</button></p></form>';
 
 					var carInfo = new google.maps.InfoWindow
 					({ content: contentString });
@@ -242,8 +242,8 @@ ob_start();
 	}
 	function vehicleDeactivate()
 	{
-		//var cID = document.getElementById('carID').value;
-		console.log("ACTIVATE VEHICLE");
+		var cID = document.getElementById('carID').value;
+		console.log("DEACTIVATE VEHICLE");
 		//alert("deactivate vehicle");
 	}
 	function vehicleDelete()
