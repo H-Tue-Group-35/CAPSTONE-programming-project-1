@@ -368,6 +368,30 @@ ob_start();
 					lng: doc.data().location.longitude
 				};
 				
+				if (doc.data().available)
+				{
+				}
+				else
+				{
+					// move the car around
+					
+					// Generate random variance from 0.001 to 0.002.
+					var randomLatVariance = (Math.random() * 0.001) + 0.001;
+					var randomLngVariance = (Math.random() * 0.001) + 0.001;
+					
+					// 50% chance of making the coords negative
+					if (Math.random() >= 0.5) // flip lat
+					{
+						randomLatVariance = -randomLatVariance;
+					}
+					if (Math.random() >= 0.5) // flip long
+					{
+						randomLngVariance = -randomLngVariance;
+					}
+					console.log("moving car around");
+					
+				}
+				
 				// snap the coordinates to the nearest road
 				var coordString = coordinates.lat.toString() + "," + coordinates.lng.toString();
 				console.log("Snapping: "+coordString);
@@ -413,7 +437,7 @@ ob_start();
 	
 	// Main interval function to keep track of application state
 	// interval shouldn't be too often to allow time for database updates and whatnot.
-	var interval = setInterval(updateLoop, 5000);
+	var interval = setInterval(updateLoop, 10000);
 	
 	// Get distance between two geopoints
 	function getDistance (lat1, lng1, lat2, lng2 ) 
