@@ -158,7 +158,7 @@ ob_start();
 					doc.data().seats + '</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">Available</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form onsubmit="test()">' +
+					'<form onsubmit="">' +
 					'<p style="text-align: center;"><input type="hidden" id="carID" name="carID" value="' +
 					doc.id +
 					'" ><button onclick="vehicleEmergency() style="color: #000000;">Summon emergency services</button>' +
@@ -191,7 +191,7 @@ ob_start();
 					doc.data().seats + '</span></p>' +	
 					'<p style="text-align: center;"><span style="color: #000000;">Unavailable</span></p>' +
 					'<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
-					'<form onsubmit="test()">' +
+					'<form onsubmit="">' +
 					'<p style="text-align: center;"><input type="hidden" id="carID" name="carID" value="' +
 					doc.id +
 					'" ><button onclick="vehicleEmergency()">Summon emergency services</button>' +
