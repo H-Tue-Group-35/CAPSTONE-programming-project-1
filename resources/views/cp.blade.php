@@ -411,7 +411,7 @@ ob_start();
 						// loop through array and update markers.
 						for (i = 0; i < aVehiclesLocations.length; i++)
 						{
-							if ( aVehiclesLocations[i].id = doc.id )
+							if ( aVehiclesLocations[i].id == doc.id )
 							{
 								console.log("MATCH. Put marker: "+aVehiclesLocations[i]);
 								markers[i].setPosition(aVehiclesLocations[i]);
