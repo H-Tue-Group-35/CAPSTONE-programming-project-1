@@ -339,8 +339,8 @@ ob_start();
 			// loop through array and update markers.
 			for (i = 0; i < aVehiclesLocations.length; i++)
 			{
-				console.log("Put marker: "+aVehiclesLocations[i]);
-				markers[i].setPosition(aVehiclesLocations[i]);
+				//console.log("Put marker: "+aVehiclesLocations[i]);
+				//markers[i].setPosition(aVehiclesLocations[i]);
 			}
 
 			aVehicles = [];
@@ -393,8 +393,7 @@ ob_start();
 					},
 					function(data)
 					{
-						aVehicles.push(doc.id);
-						aVehiclesLocations.push(data.snappedPoints[0].location);
+						// for some reason setMarker uses latlng, but snapToRoads uses LatitudeLongitude...
 						
 						//console.log("Snapped location: "+data.snappedPoints[0].location);
 						console.log("Snapped location lat: "+data.snappedPoints[0].location.latitude);
@@ -403,7 +402,23 @@ ob_start();
 						data.snappedPoints[0].location.lat=data.snappedPoints[0].location.latitude;
 						data.snappedPoints[0].location.lng=data.snappedPoints[0].location.longitude;
 
+
+						aVehicles.push(doc.id);
+						aVehiclesLocations.push(data.snappedPoints[0].location);
 						db.collection("Vehicles").doc(doc.id).update({"location": data.snappedPoints[0].location});
+						
+						
+						// loop through array and update markers.
+						for (i = 0; i < aVehiclesLocations.length; i++)
+						{
+							if ( aVehiclesLocations[i].id = doc.id )
+							{
+								console.log("MATCH. Put marker: "+aVehiclesLocations[i]);
+								markers[i].setPosition(aVehiclesLocations[i]);
+							}
+
+						}
+						
 					});
 					console.log("End of snap func");
 				});
