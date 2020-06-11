@@ -396,7 +396,9 @@ ob_start();
 						aVehicles.push(doc.id);
 						aVehiclesLocations.push(data.snappedPoints[0].location);
 						
-						console.log("Snapped location: "+data.snappedPoints[0].location);
+						console.log("Snapped location: "+data.snappedPoints[0].location;
+						console.log("Snapped location lat: "+data.snappedPoints[0].location.latitude);
+						console.log("Snapped location lng: "+data.snappedPoints[0].location.longitude);
 
 						db.collection("Vehicles").doc(doc.id).update({"location": data.snappedPoints[0].location});
 					});
