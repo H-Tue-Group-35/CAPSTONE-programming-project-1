@@ -169,7 +169,7 @@ ob_start();
 						({
 							position: coordinates,
 							map: map,
-							icon: { url: "https://maps.google.com/mapfiles/kml/pal4/icon15.png" }
+							icon: { url: "https://maps.google.com/mapfiles/kml/pal4/icon15.png" },
 							id: doc.id
 						});
 
@@ -203,7 +203,7 @@ ob_start();
 						({
 							position: coordinates,
 							map: map,
-							icon: { url: "https://maps.google.com/mapfiles/kml/pal3/icon45.png" }
+							icon: { url: "https://maps.google.com/mapfiles/kml/pal3/icon45.png" },
 							id: doc.id
 						});
 
