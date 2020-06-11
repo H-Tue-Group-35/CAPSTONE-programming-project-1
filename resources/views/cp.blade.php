@@ -170,6 +170,7 @@ ob_start();
 							position: coordinates,
 							map: map,
 							icon: { url: "https://maps.google.com/mapfiles/kml/pal4/icon15.png" }
+							id: doc.id
 						});
 
 						carMarker.addListener('click', function()
@@ -203,6 +204,7 @@ ob_start();
 							position: coordinates,
 							map: map,
 							icon: { url: "https://maps.google.com/mapfiles/kml/pal3/icon45.png" }
+							id: doc.id
 						});
 
 						carMarker.addListener('click', function()
@@ -339,6 +341,7 @@ ob_start();
 			// loop through array and update markers.
 			for (i = 0; i < aVehiclesLocations.length; i++)
 			{
+				console.log("Put marker: "+aVehiclesLocations[i]);
 				markers[i].setPosition(aVehiclesLocations[i]);
 			}
 
