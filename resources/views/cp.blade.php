@@ -300,8 +300,6 @@ ob_start();
 			var randomLat = (Math.random() * 0.044484)-37.831706;
 			var randomLong = (Math.random() * 0.041199)+144.923676;
 
-			//alert("Random coords: "+randomLat+", "+randomLong);
-
 			var vModel = document.getElementById('model').value;
 			var vBrand = document.getElementById('fBrand').value;
 
@@ -397,6 +395,8 @@ ob_start();
 					{
 						aVehicles.push(doc.id);
 						aVehiclesLocations.push(data.snappedPoints[0].location);
+						
+						console.log("Snapped location: "+data.snappedPoints[0].location);
 
 						db.collection("Vehicles").doc(doc.id).update({"location": data.snappedPoints[0].location});
 					});
