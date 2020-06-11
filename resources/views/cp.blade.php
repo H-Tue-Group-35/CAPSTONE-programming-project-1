@@ -368,7 +368,7 @@ ob_start();
 					lng: doc.data().location.longitude
 				};
 				
-				if (doc.data().available)
+				if (doc.data().booked)
 				{
 				}
 				else
@@ -411,6 +411,7 @@ ob_start();
 					aVehiclesLocations.push(data.snappedPoints[0].location);
 					
 					db.collection("Vehicles").doc(doc.id).update({"location": data.snappedPoints[0].location});
+					db.collection("Vehicles").doc(doc.id).update({"booked": false});
 
 				});
 				console.log("End of snap func");
