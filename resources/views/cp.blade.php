@@ -370,14 +370,11 @@ ob_start();
 				
 				if (doc.data().booked)
 				{
-				}
-				else
-				{
 					// move the car around
 					
-					// Generate random variance from 0.001 to 0.002.
-					var randomLatVariance = (Math.random() * 0.0001) + 0.0001;
-					var randomLngVariance = (Math.random() * 0.0001) + 0.0001;
+					// Generate random variance from 0.0005 to 0.001
+					var randomLatVariance = (Math.random() * 0.0005) + 0.0005;
+					var randomLngVariance = (Math.random() * 0.0005) + 0.0005;
 					
 					// 50% chance of making the coords negative
 					if (Math.random() >= 0.5) // flip lat
@@ -392,6 +389,10 @@ ob_start();
 					
 					coordinates.lat += randomLngVariance;
 					coordinates.lng += randomLngVariance;
+				}
+				else
+				{
+
 					
 				}
 				
