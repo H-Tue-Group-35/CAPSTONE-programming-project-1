@@ -409,13 +409,13 @@ ob_start();
 						
 						
 						// loop through array and update markers.
-						for (i = 0; i < aVehiclesLocations.length; i++)
+						for (i = 0; i < markers.length; i++)
 						{
-							console.log("Marker id: "+aVehiclesLocations[i].id);
-							if ( aVehiclesLocations[i].id == doc.id )
+							console.log("Marker id: "+markers[i].id);
+							if ( markers[i].id == doc.id )
 							{
-								console.log("MATCH. Put marker: "+aVehiclesLocations[i]);
-								markers[i].setPosition(aVehiclesLocations[i]);
+								console.log("MATCH. Put marker");
+								markers[i].setPosition(data.snappedPoints[0].location);
 							}
 
 						}
