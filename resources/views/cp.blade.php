@@ -376,8 +376,8 @@ ob_start();
 					// move the car around
 					
 					// Generate random variance from 0.001 to 0.002.
-					var randomLatVariance = (Math.random() * 0.001) + 0.001;
-					var randomLngVariance = (Math.random() * 0.001) + 0.001;
+					var randomLatVariance = (Math.random() * 0.0001) + 0.0001;
+					var randomLngVariance = (Math.random() * 0.0001) + 0.0001;
 					
 					// 50% chance of making the coords negative
 					if (Math.random() >= 0.5) // flip lat
@@ -389,6 +389,9 @@ ob_start();
 						randomLngVariance = -randomLngVariance;
 					}
 					console.log("moving car around");
+					
+					coordinates.lat += randomLngVariance;
+					coordinates.lng += randomLngVariance;
 					
 				}
 				
