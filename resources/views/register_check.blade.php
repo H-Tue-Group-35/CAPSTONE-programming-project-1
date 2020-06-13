@@ -33,26 +33,32 @@ Registering...
 		$db = new FirestoreClient();
 		//printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
 		
-		$docRef = $db->collection('post')->document('lovelace2');
-		$docRef->set([
-		'first' => 'Ada',
-		'last' => 'Lovelace',
-		'born' => 1815
-		]);
+		// $docRef = $db->collection('post')->document('lovelace2');
+		// $docRef->set([
+		// 'first' => 'Ada',
+		// 'last' => 'Lovelace',
+		// 'born' => 1815
+		// ]);
 		//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
 
 		printf('db test success');
 		
-		// usersRef.get()
-		// .then((docSnapshot) => {
-		// if (docSnapshot.exists) {
-		// usersRef.onSnapshot((doc) => {
-		// // do stuff with the data
-		// });
-		// } else {
-		// usersRef.set({...}) // create the document
-		// }
-		// });
+		$docRef = $db->collection('post')->document('lovelace2');
+		$docRef.get().then((docSnapshot) =>
+		{
+			if (docSnapshot.exists)
+			{
+				$docRef.onSnapshot((doc) =>
+				{
+					// do stuff with the data
+					printf('document doesnt exist');
+				});
+			} else 
+			{
+				//usersRef.set({...}) // create the document
+				printf('document already exists');
+			}
+		});
 
 	}
 	
