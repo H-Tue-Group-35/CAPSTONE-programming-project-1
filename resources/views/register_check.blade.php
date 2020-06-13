@@ -41,24 +41,19 @@ Registering...
 		// ]);
 		//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
 
-		printf('db test success');
-		
+
 		$docRef = $db->collection('post')->document('lovelace2');
-		$docRef.get().then((docSnapshot) =>
+		$snapshot = $docRef->snapshot();
+
+		if ($snapshot->exists())
 		{
-			if (docSnapshot.exists)
-			{
-				$docRef.onSnapshot((doc) =>
-				{
-					// do stuff with the data
-					printf('document doesnt exist');
-				});
-			} else 
-			{
-				//usersRef.set({...}) // create the document
-				printf('document already exists');
-			}
-		});
+			printf('Document data:' . PHP_EOL);
+			print_r($snapshot->data());
+		}
+		else
+		{
+			printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
+		}
 
 	}
 	
