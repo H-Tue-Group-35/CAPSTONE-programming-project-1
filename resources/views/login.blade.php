@@ -100,7 +100,7 @@ ob_start();
 	<!--Password: <input type="password" name="password" id="password">-->
 	Password: <input type="text" name="password" id="password" maxlength="20" required>
 	<br/><br/>
-	<button type="submit">Login</button>
+	<button type="submit" style="color: #000000;">Login</button>
 	</form>
 
 	No account? <a href="register">Register</a>
