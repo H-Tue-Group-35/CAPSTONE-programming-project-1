@@ -5,7 +5,6 @@ namespace Illuminate\View\Compilers;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Illuminate\View\AnonymousComponent;
 use InvalidArgumentException;
@@ -17,13 +16,6 @@ use ReflectionClass;
  */
 class ComponentTagCompiler
 {
-    /**
-     * The Blade compiler instance.
-     *
-     * @var \Illuminate\View\Compilers\BladeCompiler
-     */
-    protected $blade;
-
     /**
      * The component class aliases.
      *
@@ -42,14 +34,11 @@ class ComponentTagCompiler
      * Create new component tag compiler.
      *
      * @param  array  $aliases
-     * @param  \Illuminate\View\Compilers\BladeCompiler|null
      * @return void
      */
-    public function __construct(array $aliases = [], ?BladeCompiler $blade = null)
+    public function __construct(array $aliases = [])
     {
         $this->aliases = $aliases;
-
-        $this->blade = $blade ?: new BladeCompiler(new Filesystem, sys_get_temp_dir());
     }
 
     /**
@@ -203,7 +192,7 @@ class ComponentTagCompiler
             $parameters = $data->all();
         }
 
-        return " @component('{$class}', '{$component}', [".$this->attributesToString($parameters, $escapeBound = false).'])
+        return " @component('{$class}', [".$this->attributesToString($parameters, $escapeBound = false).'])
 <?php $component->withAttributes(['.$this->attributesToString($attributes->all()).']); ?>';
     }
 
@@ -365,7 +354,7 @@ class ComponentTagCompiler
 
                 $this->boundAttributes[$attribute] = true;
             } else {
-                $value = "'".$this->compileAttributeEchos($value)."'";
+                $value = "'".str_replace("'", "\\'", $value)."'";
             }
 
             return [$attribute => $value];
@@ -388,45 +377,6 @@ class ComponentTagCompiler
         /xm";
 
         return preg_replace($pattern, ' bind:$1=', $attributeString);
-    }
-
-    /**
-     * Compile any Blade echo statements that are present in the attribute string.
-     *
-     * These echo statements need to be converted to string concatenation statements.
-     *
-     * @param  string  $attributeString
-     * @return string
-     */
-    protected function compileAttributeEchos(string $attributeString)
-    {
-        $value = $this->blade->compileEchos($attributeString);
-
-        $value = $this->escapeSingleQuotesOutsideOfPhpBlocks($value);
-
-        $value = str_replace('<?php echo ', '\'.', $value);
-        $value = str_replace('; ?>', '.\'', $value);
-
-        return $value;
-    }
-
-    /**
-     * Escape the single quotes in the given string that are outside of PHP blocks.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    protected function escapeSingleQuotesOutsideOfPhpBlocks(string $value)
-    {
-        return collect(token_get_all($value))->map(function ($token) {
-            if (! is_array($token)) {
-                return $token;
-            }
-
-            return $token[0] === T_INLINE_HTML
-                        ? str_replace("'", "\\'", $token[1])
-                        : $token[1];
-        })->implode('');
     }
 
     /**

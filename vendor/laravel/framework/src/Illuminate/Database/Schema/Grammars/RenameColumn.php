@@ -22,15 +22,13 @@ class RenameColumn
      */
     public static function compile(Grammar $grammar, Blueprint $blueprint, Fluent $command, Connection $connection)
     {
-        $schema = $connection->getDoctrineSchemaManager();
-        $databasePlatform = $schema->getDatabasePlatform();
-        $databasePlatform->registerDoctrineTypeMapping('enum', 'string');
-
         $column = $connection->getDoctrineColumn(
             $grammar->getTablePrefix().$blueprint->getTable(), $command->from
         );
 
-        return (array) $databasePlatform->getAlterTableSQL(static::getRenamedDiff(
+        $schema = $connection->getDoctrineSchemaManager();
+
+        return (array) $schema->getDatabasePlatform()->getAlterTableSQL(static::getRenamedDiff(
             $grammar, $blueprint, $command, $column, $schema
         ));
     }

@@ -203,8 +203,6 @@ class Cursor
 
     /**
      * Move the cursor forwards
-     *
-     * @return void
      */
     public function advance()
     {
@@ -216,8 +214,6 @@ class Cursor
      *
      * @param int  $characters       Number of characters to advance by
      * @param bool $advanceByColumns Whether to advance by columns instead of spaces
-     *
-     * @return void
      */
     public function advanceBy(int $characters, bool $advanceByColumns = false)
     {
@@ -359,6 +355,9 @@ class Cursor
         return $this->currentPosition - $this->previousPosition;
     }
 
+    /**
+     * @return string
+     */
     public function getRemainder(): string
     {
         if ($this->currentPosition >= $this->length) {
@@ -380,11 +379,17 @@ class Cursor
         return $prefix . $subString;
     }
 
+    /**
+     * @return string
+     */
     public function getLine(): string
     {
         return $this->line;
     }
 
+    /**
+     * @return bool
+     */
     public function isAtEnd(): bool
     {
         return $this->currentPosition >= $this->length;
@@ -433,7 +438,7 @@ class Cursor
      * passing it back into restoreState(), as the number of values and their
      * contents may change in any future release without warning.
      *
-     * @return array<mixed>
+     * @return array
      */
     public function saveState()
     {
@@ -452,9 +457,7 @@ class Cursor
      *
      * Pass in the value previously obtained by calling saveState().
      *
-     * @param array<mixed> $state
-     *
-     * @return void
+     * @param array $state
      */
     public function restoreState($state)
     {
@@ -468,16 +471,28 @@ class Cursor
           ) = $state;
     }
 
+    /**
+     * @return int
+     */
     public function getPosition(): int
     {
         return $this->currentPosition;
     }
 
+    /**
+     * @return string
+     */
     public function getPreviousText(): string
     {
         return \mb_substr($this->line, $this->previousPosition, $this->currentPosition - $this->previousPosition, 'UTF-8');
     }
 
+    /**
+     * @param int      $start
+     * @param int|null $length
+     *
+     * @return string
+     */
     public function getSubstring(int $start, ?int $length = null): string
     {
         if ($this->isMultibyte) {
@@ -489,6 +504,9 @@ class Cursor
         return \substr($this->line, $start);
     }
 
+    /**
+     * @return int
+     */
     public function getColumn(): int
     {
         return $this->column;

@@ -44,7 +44,7 @@ class ParserFactory
      */
     public function hasKindsSupport()
     {
-        return \class_exists(OriginalParserFactory::class);
+        return \class_exists('PhpParser\ParserFactory');
     }
 
     /**
@@ -77,7 +77,9 @@ class ParserFactory
                 throw new \InvalidArgumentException('Unknown parser kind');
             }
 
-            $parser = $originalFactory->create(\constant(OriginalParserFactory::class . '::' . $kind));
+            $parserClass = 'PhpParser\ParserFactory';
+
+            $parser = $originalFactory->create(\constant($parserClass . '::' . $kind));
         } else {
             if ($kind !== null) {
                 throw new \InvalidArgumentException('Install PHP Parser v2.x to specify parser kind');

@@ -215,10 +215,8 @@ class NativeSessionStorage implements SessionStorageInterface
             return false;
         }
 
-        if (null !== $lifetime && $lifetime != ini_get('session.cookie_lifetime')) {
-            $this->save();
+        if (null !== $lifetime) {
             ini_set('session.cookie_lifetime', $lifetime);
-            $this->start();
         }
 
         if ($destroy) {
@@ -226,6 +224,10 @@ class NativeSessionStorage implements SessionStorageInterface
         }
 
         $isRegenerated = session_regenerate_id($destroy);
+
+        // The reference to $_SESSION in session bags is lost in PHP7 and we need to re-create it.
+        // @see https://bugs.php.net/70013
+        $this->loadSession();
 
         if (null !== $this->emulateSameSite) {
             $originalCookie = SessionUtils::popSessionCookie(session_name(), session_id());

@@ -24,16 +24,12 @@ use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 interface ConfigurableEnvironmentInterface extends EnvironmentInterface
 {
     /**
-     * @param array<string, mixed> $config
-     *
-     * @return void
+     * @param array $config
      */
     public function mergeConfig(array $config = []);
 
     /**
-     * @param array<string, mixed> $config
-     *
-     * @return void
+     * @param array $config
      */
     public function setConfig(array $config = []);
 

@@ -806,7 +806,7 @@ class Mailable implements MailableContract, Renderable
             'name' => $name ?? basename($path),
             'options' => $options,
         ])->unique(function ($file) {
-            return $file['name'].$file['disk'].$file['path'];
+            return $file['disk'].$file['path'];
         })->all();
 
         return $this;
@@ -824,9 +824,8 @@ class Mailable implements MailableContract, Renderable
     {
         $this->rawAttachments = collect($this->rawAttachments)
                 ->push(compact('data', 'name', 'options'))
-                ->unique(function ($file) {
-                    return $file['name'].$file['data'];
-                })->all();
+                ->unique('data')
+                ->all();
 
         return $this;
     }

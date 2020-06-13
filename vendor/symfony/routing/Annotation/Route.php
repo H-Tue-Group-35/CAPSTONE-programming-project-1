@@ -31,7 +31,9 @@ class Route
     private $methods = [];
     private $schemes = [];
     private $condition;
-    private $priority;
+    private $locale;
+    private $format;
+    private $utf8;
 
     /**
      * @param array $data An array of key/value parameters
@@ -67,11 +69,6 @@ class Route
         if (isset($data['utf8'])) {
             $data['options']['utf8'] = filter_var($data['utf8'], FILTER_VALIDATE_BOOLEAN) ?: false;
             unset($data['utf8']);
-        }
-
-        if (isset($data['stateless'])) {
-            $data['defaults']['_stateless'] = filter_var($data['stateless'], FILTER_VALIDATE_BOOLEAN) ?: false;
-            unset($data['stateless']);
         }
 
         foreach ($data as $key => $value) {
@@ -181,15 +178,5 @@ class Route
     public function getCondition()
     {
         return $this->condition;
-    }
-
-    public function setPriority(int $priority): void
-    {
-        $this->priority = $priority;
-    }
-
-    public function getPriority(): ?int
-    {
-        return $this->priority;
     }
 }

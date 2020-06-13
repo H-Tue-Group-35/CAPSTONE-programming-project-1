@@ -10,9 +10,6 @@ use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\Concerns\AsPivot;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection as BaseCollection;
@@ -521,22 +518,6 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
     }
 
     /**
-     * Eager load relationships on the polymorphic relation of a model.
-     *
-     * @param  string  $relation
-     * @param  array  $relations
-     * @return $this
-     */
-    public function loadMorph($relation, $relations)
-    {
-        $className = get_class($this->{$relation});
-
-        $this->{$relation}->load($relations[$className] ?? []);
-
-        return $this;
-    }
-
-    /**
      * Eager load relations on the model if they are not already eager loaded.
      *
      * @param  array|string  $relations
@@ -562,22 +543,6 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
         $relations = is_string($relations) ? func_get_args() : $relations;
 
         $this->newCollection([$this])->loadCount($relations);
-
-        return $this;
-    }
-
-    /**
-     * Eager load relationship counts on the polymorphic relation of a model.
-     *
-     * @param  string  $relation
-     * @param  array  $relations
-     * @return $this
-     */
-    public function loadMorphCount($relation, $relations)
-    {
-        $className = get_class($this->{$relation});
-
-        $this->{$relation}->loadCount($relations[$className] ?? []);
 
         return $this;
     }
@@ -905,7 +870,7 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
     /**
      * Destroy the models for the given IDs.
      *
-     * @param  \Illuminate\Support\Collection|array|int|string  $ids
+     * @param  \Illuminate\Support\Collection|array|int  $ids
      * @return int
      */
     public static function destroy($ids)
@@ -1142,29 +1107,6 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
     }
 
     /**
-     * Determine if the model has a given scope.
-     *
-     * @param  string  $scope
-     * @return bool
-     */
-    public function hasNamedScope($scope)
-    {
-        return method_exists($this, 'scope'.ucfirst($scope));
-    }
-
-    /**
-     * Apply the given named scope if possible.
-     *
-     * @param  string  $scope
-     * @param  array  $parameters
-     * @return mixed
-     */
-    public function callNamedScope($scope, array $parameters = [])
-    {
-        return $this->{'scope'.ucfirst($scope)}(...$parameters);
-    }
-
-    /**
      * Convert the model instance to an array.
      *
      * @return array
@@ -1237,8 +1179,7 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
         );
 
         $this->load(collect($this->relations)->reject(function ($relation) {
-            return $relation instanceof Pivot
-                || (is_object($relation) && in_array(AsPivot::class, class_uses_recursive($relation), true));
+            return $relation instanceof Pivot;
         })->keys()->all());
 
         $this->syncOriginal();
@@ -1579,14 +1520,7 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
      */
     public function resolveChildRouteBinding($childType, $value, $field)
     {
-        $relationship = $this->{Str::plural(Str::camel($childType))}();
-
-        if ($relationship instanceof HasManyThrough ||
-            $relationship instanceof BelongsToMany) {
-            return $relationship->where($relationship->getRelated()->getTable().'.'.$field, $value)->first();
-        } else {
-            return $relationship->where($field, $value)->first();
-        }
+        return $this->{Str::plural($childType)}()->where($field, $value)->first();
     }
 
     /**
@@ -1723,10 +1657,6 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
     {
         if (in_array($method, ['increment', 'decrement'])) {
             return $this->$method(...$parameters);
-        }
-
-        if ($resolver = (static::$relationResolvers[get_class($this)][$method] ?? null)) {
-            return $resolver($this);
         }
 
         return $this->forwardCallTo($this->newQuery(), $method, $parameters);

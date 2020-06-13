@@ -41,12 +41,8 @@ final class UrlAutolinkProcessor
             (?:\# (?:[\pL\pN\-._\~!$&\'()*+,;=:@/?]|%%[0-9A-Fa-f]{2})* )?   # a fragment (optional)
         )~ixu';
 
-    /** @var string */
     private $finalRegex;
 
-    /**
-     * @param array<int, string> $allowedProtocols
-     */
     public function __construct(array $allowedProtocols = ['http', 'https', 'ftp'])
     {
         $this->finalRegex = \sprintf(self::REGEX, \implode('|', $allowedProtocols));
@@ -69,7 +65,7 @@ final class UrlAutolinkProcessor
         }
     }
 
-    private static function processAutolinks(Text $node, string $regex): void
+    private static function processAutolinks(Text $node, $regex)
     {
         $contents = \preg_split($regex, $node->getContent(), -1, PREG_SPLIT_DELIM_CAPTURE);
 
@@ -118,7 +114,7 @@ final class UrlAutolinkProcessor
         $node->detach();
     }
 
-    private static function addLink(Text $node, string $url): void
+    private static function addLink(Text $node, $url)
     {
         // Auto-prefix 'http://' onto 'www' URLs
         if (\substr($url, 0, 4) === 'www.') {
@@ -135,7 +131,7 @@ final class UrlAutolinkProcessor
      *
      * @return bool
      */
-    private static function hasMoreCloserParensThanOpeners(string $content): bool
+    private static function hasMoreCloserParensThanOpeners($content)
     {
         // Scan the entire autolink for the total number of parentheses.
         // If there is a greater number of closing parentheses than opening ones,

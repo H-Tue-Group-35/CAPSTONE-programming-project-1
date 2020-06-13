@@ -286,6 +286,8 @@ class ResponseHeaderBag extends HeaderBag
 
     private function initDate(): void
     {
-        $this->set('Date', gmdate('D, d M Y H:i:s').' GMT');
+        $now = \DateTime::createFromFormat('U', time());
+        $now->setTimezone(new \DateTimeZone('UTC'));
+        $this->set('Date', $now->format('D, d M Y H:i:s').' GMT');
     }
 }

@@ -318,15 +318,7 @@ class MockConfiguration
         }
 
         if (class_exists($this->targetClassName)) {
-            $alias = null;
-            if (strpos($this->targetClassName, '@') !== false) {
-                $alias = (new MockNameBuilder())
-                    ->addPart('anonymous_class')
-                    ->addPart(md5($this->targetClassName))
-                    ->build();
-                class_alias($this->targetClassName, $alias);
-            }
-            $dtc = DefinedTargetClass::factory($this->targetClassName, $alias);
+            $dtc = DefinedTargetClass::factory($this->targetClassName);
 
             if ($this->getTargetObject() == false && $dtc->isFinal()) {
                 throw new \Mockery\Exception(
@@ -427,13 +419,11 @@ class MockConfiguration
         $nameBuilder = new MockNameBuilder();
 
         if ($this->getTargetObject()) {
-            $className = get_class($this->getTargetObject());
-            $nameBuilder->addPart(strpos($className, '@') !== false ? md5($className) : $className);
+            $nameBuilder->addPart(get_class($this->getTargetObject()));
         }
 
         if ($this->getTargetClass()) {
-            $className = $this->getTargetClass()->getName();
-            $nameBuilder->addPart(strpos($className, '@') !== false ? md5($className) : $className);
+            $nameBuilder->addPart($this->getTargetClass()->getName());
         }
 
         foreach ($this->getTargetInterfaces() as $targetInterface) {

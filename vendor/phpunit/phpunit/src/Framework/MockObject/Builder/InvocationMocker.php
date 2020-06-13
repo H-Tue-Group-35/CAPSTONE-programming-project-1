@@ -53,9 +53,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
         $this->configurableMethods = $configurableMethods;
     }
 
-    /**
-     * @return $this
-     */
     public function id($id): self
     {
         $this->invocationHandler->registerMatcher($id, $this->matcher);
@@ -63,9 +60,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function will(Stub $stub): Identity
     {
         $this->matcher->setStub($stub);
@@ -141,9 +135,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
         return $this->will($stub);
     }
 
-    /**
-     * @return $this
-     */
     public function after($id): self
     {
         $this->matcher->setAfterMatchBuilderId($id);
@@ -153,8 +144,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
 
     /**
      * @throws RuntimeException
-     *
-     * @return $this
      */
     public function with(...$arguments): self
     {
@@ -169,8 +158,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
      * @param array ...$arguments
      *
      * @throws RuntimeException
-     *
-     * @return $this
      */
     public function withConsecutive(...$arguments): self
     {
@@ -183,8 +170,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
 
     /**
      * @throws RuntimeException
-     *
-     * @return $this
      */
     public function withAnyParameters(): self
     {
@@ -199,8 +184,6 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
      * @param Constraint|string $constraint
      *
      * @throws RuntimeException
-     *
-     * @return $this
      */
     public function method($constraint): self
     {

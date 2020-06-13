@@ -97,9 +97,9 @@ class FilterOptions
     /**
      * Validate that grep, invert and insensitive input options are consistent.
      *
-     * @throws RuntimeException if input is invalid
-     *
      * @param InputInterface $input
+     *
+     * @return bool
      */
     private function validateInput(InputInterface $input)
     {
@@ -127,19 +127,19 @@ class FilterOptions
     /**
      * Validate that $pattern is a valid regular expression.
      *
-     * @throws RuntimeException if pattern is invalid
-     *
      * @param string $pattern
+     *
+     * @return bool
      */
     private function validateRegex($pattern)
     {
-        \set_error_handler([ErrorException::class, 'throwException']);
+        \set_error_handler(['Psy\Exception\ErrorException', 'throwException']);
         try {
             \preg_match($pattern, '');
         } catch (ErrorException $e) {
-            throw new RuntimeException(\str_replace('preg_match(): ', 'Invalid regular expression: ', $e->getRawMessage()));
-        } finally {
             \restore_error_handler();
+            throw new RuntimeException(\str_replace('preg_match(): ', 'Invalid regular expression: ', $e->getRawMessage()));
         }
+        \restore_error_handler();
     }
 }

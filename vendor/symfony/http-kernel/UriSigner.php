@@ -11,8 +11,6 @@
 
 namespace Symfony\Component\HttpKernel;
 
-use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Signs URIs.
  *
@@ -78,14 +76,6 @@ class UriSigner
         unset($params[$this->parameter]);
 
         return hash_equals($this->computeHash($this->buildUrl($url, $params)), $hash);
-    }
-
-    public function checkRequest(Request $request): bool
-    {
-        $qs = ($qs = $request->server->get('QUERY_STRING')) ? '?'.$qs : '';
-
-        // we cannot use $request->getUri() here as we want to work with the original URI (no query string reordering)
-        return $this->check($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo().$qs);
     }
 
     private function computeHash(string $uri): string

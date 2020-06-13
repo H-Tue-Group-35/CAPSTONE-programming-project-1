@@ -20,7 +20,6 @@ class_exists(AcceptHeader::class);
 class_exists(FileBag::class);
 class_exists(HeaderBag::class);
 class_exists(HeaderUtils::class);
-class_exists(InputBag::class);
 class_exists(ParameterBag::class);
 class_exists(ServerBag::class);
 
@@ -85,14 +84,14 @@ class Request
     /**
      * Request body parameters ($_POST).
      *
-     * @var InputBag
+     * @var ParameterBag
      */
     public $request;
 
     /**
      * Query string parameters ($_GET).
      *
-     * @var InputBag
+     * @var ParameterBag
      */
     public $query;
 
@@ -113,7 +112,7 @@ class Request
     /**
      * Cookies ($_COOKIE).
      *
-     * @var InputBag
+     * @var ParameterBag
      */
     public $cookies;
 
@@ -208,11 +207,6 @@ class Request
     private $isHostValid = true;
     private $isForwardedValid = true;
 
-    /**
-     * @var bool|null
-     */
-    private $isSafeContentPreferred;
-
     private static $trustedHeaderSet = -1;
 
     private static $forwardedParams = [
@@ -268,10 +262,10 @@ class Request
      */
     public function initialize(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     {
-        $this->request = new InputBag($request);
-        $this->query = new InputBag($query);
+        $this->request = new ParameterBag($request);
+        $this->query = new ParameterBag($query);
         $this->attributes = new ParameterBag($attributes);
-        $this->cookies = new InputBag($cookies);
+        $this->cookies = new ParameterBag($cookies);
         $this->files = new FileBag($files);
         $this->server = new ServerBag($server);
         $this->headers = new HeaderBag($this->server->getHeaders());
@@ -302,7 +296,7 @@ class Request
             && \in_array(strtoupper($request->server->get('REQUEST_METHOD', 'GET')), ['PUT', 'DELETE', 'PATCH'])
         ) {
             parse_str($request->getContent(), $data);
-            $request->request = new InputBag($data);
+            $request->request = new ParameterBag($data);
         }
 
         return $request;
@@ -444,16 +438,16 @@ class Request
     {
         $dup = clone $this;
         if (null !== $query) {
-            $dup->query = new InputBag($query);
+            $dup->query = new ParameterBag($query);
         }
         if (null !== $request) {
-            $dup->request = new InputBag($request);
+            $dup->request = new ParameterBag($request);
         }
         if (null !== $attributes) {
             $dup->attributes = new ParameterBag($attributes);
         }
         if (null !== $cookies) {
-            $dup->cookies = new InputBag($cookies);
+            $dup->cookies = new ParameterBag($cookies);
         }
         if (null !== $files) {
             $dup->files = new FileBag($files);
@@ -709,12 +703,12 @@ class Request
             return $result;
         }
 
-        if ($this->query->has($key)) {
-            return $this->query->all()[$key];
+        if ($this !== $result = $this->query->get($key, $this)) {
+            return $result;
         }
 
-        if ($this->request->has($key)) {
-            return $this->request->all()[$key];
+        if ($this !== $result = $this->request->get($key, $this)) {
+            return $result;
         }
 
         return $default;
@@ -1565,8 +1559,8 @@ class Request
 
     /**
      * Gets the preferred format for the response by inspecting, in the following order:
-     *   * the request format set using setRequestFormat;
-     *   * the values of the Accept HTTP header.
+     *   * the request format set using setRequestFormat
+     *   * the values of the Accept HTTP header
      *
      * Note that if you use this method, you should send the "Vary: Accept" header
      * in the response to prevent any issues with intermediary HTTP caches.
@@ -1716,29 +1710,6 @@ class Request
     public function isXmlHttpRequest()
     {
         return 'XMLHttpRequest' == $this->headers->get('X-Requested-With');
-    }
-
-    /**
-     * Checks whether the client browser prefers safe content or not according to RFC8674.
-     *
-     * @see https://tools.ietf.org/html/rfc8674
-     */
-    public function preferSafeContent(): bool
-    {
-        if (null !== $this->isSafeContentPreferred) {
-            return $this->isSafeContentPreferred;
-        }
-
-        if (!$this->isSecure()) {
-            // see https://tools.ietf.org/html/rfc8674#section-3
-            $this->isSafeContentPreferred = false;
-
-            return $this->isSafeContentPreferred;
-        }
-
-        $this->isSafeContentPreferred = AcceptHeader::fromString($this->headers->get('Prefer'))->has('safe');
-
-        return $this->isSafeContentPreferred;
     }
 
     /*
