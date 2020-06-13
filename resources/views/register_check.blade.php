@@ -21,36 +21,25 @@ ob_start();
 	<?php
 		use Google\Cloud\Firestore\FirestoreClient;
 
-		function initialize()
+		// Create the Cloud Firestore client
+		$db = new FirestoreClient();
+
+		$docRef = $db->collection('post')->document($_POST['username']);
+		$snapshot = $docRef->snapshot();
+
+		if ($snapshot->exists())
 		{
-			// Create the Cloud Firestore client
-			$db = new FirestoreClient();
-
-			$docRef = $db->collection('post')->document($_POST['username']);
-			$snapshot = $docRef->snapshot();
-
-			if ($snapshot->exists())
-			{
-				printf("Error: This user already exists. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
-			}
-			else
-			{
-				//printf("User does not exist, making account.");
-				
-				
-				$docRef->set
-				([
-					'username' => $_POST['username'],
-					'password' => $_POST['password']
-				]);
-				
-				printf("Account created successfully. You may now <a href='login'>login</a>.");
-				
-			}
-
+			printf("Error: This user already exists. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
 		}
-		
-		initialize();
+		else
+		{	
+			$docRef->set
+			([
+				'username' => $_POST['username'],
+				'password' => $_POST['password']
+			]);
+			printf("Account created successfully. You may now <a href='login'>login</a>.");	
+		}
 	?>
 </body>
 
