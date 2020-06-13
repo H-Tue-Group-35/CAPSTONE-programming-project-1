@@ -94,12 +94,7 @@ ob_start();
 		// Create the Cloud Firestore client
 		$db = new FirestoreClient();
 		printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
-
-
-	}
-	
-	function testDB()
-	{
+		
 		$docRef = $db->collection('users')->document('lovelace');
 		$docRef->set([
 		'first' => 'Ada',
@@ -107,12 +102,11 @@ ob_start();
 		'born' => 1815
 		]);
 		printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
+
+
 	}
 	
 	initialize();
-	
-	
-	testDB();
 ?>
     
 	<h1>User register</h1>
