@@ -1093,17 +1093,17 @@
     },
     {
         "name": "google/protobuf",
-        "version": "v3.11.4",
-        "version_normalized": "3.11.4.0",
+        "version": "v3.12.2",
+        "version_normalized": "3.12.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/protocolbuffers/protobuf-php.git",
-            "reference": "a5001eb559dcaac0bf6d8c7edc52b3828c618185"
+            "reference": "571f9a4ba39826a18611ae568d97b6007954c070"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/a5001eb559dcaac0bf6d8c7edc52b3828c618185",
-            "reference": "a5001eb559dcaac0bf6d8c7edc52b3828c618185",
+            "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/571f9a4ba39826a18611ae568d97b6007954c070",
+            "reference": "571f9a4ba39826a18611ae568d97b6007954c070",
             "shasum": ""
         },
         "require": {
@@ -1115,7 +1115,7 @@
         "suggest": {
             "ext-bcmath": "Need to support JSON deserialization"
         },
-        "time": "2020-02-14T22:17:05+00:00",
+        "time": "2020-05-27T17:57:58+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
