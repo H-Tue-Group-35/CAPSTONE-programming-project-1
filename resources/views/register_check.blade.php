@@ -17,80 +17,51 @@ ob_start();
     <title>Registering</title>
 </head>
 
-
-
-
 <body>
-Registering...
+	<?php
+		use Google\Cloud\Firestore\FirestoreClient;
+
+		function initialize()
+		{
+			// Create the Cloud Firestore client
+			$db = new FirestoreClient();
+			//printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+			
+			// $docRef = $db->collection('post')->document('lovelace2');
+			// $docRef->set([
+			// 'first' => 'Ada',
+			// 'last' => 'Lovelace',
+			// 'born' => 1815
+			// ]);
+			//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
+
+
+			$docRef = $db->collection('post')->document('lovelace2');
+			$snapshot = $docRef->snapshot();
+
+			if ($snapshot->exists())
+			{
+				printf("Error: This user already exists. Try again. Back to home.");
+			}
+			else
+			{
+				printf("User does not exist, making account.");
+				
+				
+				$docRef->set([
+				'first' => 'Ada',
+				'last' => 'Lovelace',
+				'born' => 1815
+				]);
+				
+			}
+
+		}
+		
+		initialize();
+	?>
 </body>
 
-<?php
-	use Google\Cloud\Firestore\FirestoreClient;
 
-	function initialize()
-	{
-		// Create the Cloud Firestore client
-		$db = new FirestoreClient();
-		//printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
-		
-		// $docRef = $db->collection('post')->document('lovelace2');
-		// $docRef->set([
-		// 'first' => 'Ada',
-		// 'last' => 'Lovelace',
-		// 'born' => 1815
-		// ]);
-		//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
-
-
-		$docRef = $db->collection('post')->document('lovelace2');
-		$snapshot = $docRef->snapshot();
-
-		if ($snapshot->exists())
-		{
-			printf('Document data:' . PHP_EOL);
-			print_r($snapshot->data());
-		}
-		else
-		{
-			printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
-		}
-
-	}
-	
-	initialize();
-?>
-
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",
-        authDomain: "car-for-all-273711.firebaseapp.com",
-        databaseURL: "https://car-for-all-273711.firebaseio.com",
-        projectId: "car-for-all-273711",
-        storageBucket: "car-for-all-273711.appspot.com",
-        messagingSenderId: "548693459929",
-        appId: "1:548693459929:web:3b914dd957d24cf9358fc8"
-    };
-    firebase.initializeApp(firebaseConfig);
-    var db = firebase.firestore();
-    var map, infoWindow;
-
-	db.collection("Users").add
-	({
-		Username: "TEST",
-		Payment: "none",
-		Password: "PASSWORD",
-		Phone: "none"
-	})
-	.then(function()
-	{
-		console.log("Document successfully written!");
-		window.location.replace("https://car-for-all-273711.appspot.com/");
-	})
-	.catch(function(error)
-	{
-		console.error("Error writing document: ", error);
-	});
-	
-	</script>
 	
 </html>
