@@ -25,34 +25,26 @@ ob_start();
 		{
 			// Create the Cloud Firestore client
 			$db = new FirestoreClient();
-			//printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
-			
-			// $docRef = $db->collection('post')->document('lovelace2');
-			// $docRef->set([
-			// 'first' => 'Ada',
-			// 'last' => 'Lovelace',
-			// 'born' => 1815
-			// ]);
-			//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
-
 
 			$docRef = $db->collection('post')->document($_POST['username']);
 			$snapshot = $docRef->snapshot();
 
 			if ($snapshot->exists())
 			{
-				printf("Error: This user already exists. Try again. Back to home.");
+				printf("Error: This user already exists. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
 			}
 			else
 			{
-				printf("User does not exist, making account.");
+				//printf("User does not exist, making account.");
 				
 				
 				$docRef->set
 				([
 					'username' => $_POST['username'],
-					'password' => 'password'
+					'password' => $_POST['password']
 				]);
+				
+				printf("Account created successfully. You may now <a href='login'>login</a>.");
 				
 			}
 
