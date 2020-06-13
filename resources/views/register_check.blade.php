@@ -36,7 +36,7 @@ ob_start();
 			//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
 
 
-			$docRef = $db->collection('post')->document('lovelace2');
+			$docRef = $db->collection('post')->document($_POST['username']);
 			$snapshot = $docRef->snapshot();
 
 			if ($snapshot->exists())
@@ -48,10 +48,10 @@ ob_start();
 				printf("User does not exist, making account.");
 				
 				
-				$docRef->set([
-				'first' => 'Ada',
-				'last' => 'Lovelace',
-				'born' => 1815
+				$docRef->set
+				([
+					'username' => $_POST['username'],
+					'password' => 'password'
 				]);
 				
 			}
