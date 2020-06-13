@@ -24,6 +24,30 @@ ob_start();
 Registering...
 </body>
 
+<?php
+	use Google\Cloud\Firestore\FirestoreClient;
+
+	function initialize()
+	{
+		// Create the Cloud Firestore client
+		$db = new FirestoreClient();
+		//printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+		
+		$docRef = $db->collection('post')->document();
+		$docRef->set([
+		'first' => 'Ada',
+		'last' => 'Lovelace',
+		'born' => 1815
+		]);
+		//printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
+
+		printf('db test success');
+
+	}
+	
+	initialize();
+?>
+
     <script>
     var firebaseConfig = {
         apiKey: "AIzaSyC2ZMCg8GIWJeW1Y5n3cjsQ4Wk1fDM4J-8",

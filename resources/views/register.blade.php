@@ -83,12 +83,6 @@ ob_start();
 <?php
 	use Google\Cloud\Firestore\FirestoreClient;
 
-	/**
-	* Initialize Cloud Firestore with default project ID.
-	* ```
-	* initialize();
-	* ```
-	*/
 	function initialize()
 	{
 		// Create the Cloud Firestore client
