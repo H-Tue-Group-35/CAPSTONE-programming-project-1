@@ -25,7 +25,6 @@
  * - Sebastian Thierer
  * - quinterocesar
  * - Daniel Commesse Liévanos (danielcommesse)
- * - Pete Scopes (pdscopes)
  */
 return [
     'year' => ':count año|:count años',
@@ -49,20 +48,13 @@ return [
     'second' => ':count segundo|:count segundos',
     'a_second' => 'unos segundos|:count segundos',
     's' => ':counts',
-    'millisecond' => ':count milisegundo|:count milisegundos',
-    'a_millisecond' => 'un milisegundo|:count milisegundos',
-    'ms' => ':countms',
     'ago' => 'hace :time',
     'from_now' => 'en :time',
     'after' => ':time después',
     'before' => ':time antes',
     'diff_now' => 'ahora mismo',
-    'diff_today' => 'hoy',
-    'diff_today_regexp' => 'hoy(?:\\s+a)?(?:\\s+las)?',
     'diff_yesterday' => 'ayer',
-    'diff_yesterday_regexp' => 'ayer(?:\\s+a)?(?:\\s+las)?',
     'diff_tomorrow' => 'mañana',
-    'diff_tomorrow_regexp' => 'mañana(?:\\s+a)?(?:\\s+las)?',
     'diff_before_yesterday' => 'antier',
     'diff_after_tomorrow' => 'pasado mañana',
     'formats' => [

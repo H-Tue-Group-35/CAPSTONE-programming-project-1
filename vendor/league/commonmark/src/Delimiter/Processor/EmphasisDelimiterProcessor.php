@@ -40,21 +40,33 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
         $this->char = $char;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getOpeningCharacter(): string
     {
         return $this->char;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getClosingCharacter(): string
     {
         return $this->char;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getMinLength(): int
     {
         return 1;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getDelimiterUse(DelimiterInterface $opener, DelimiterInterface $closer): int
     {
         // "Multiple of 3" rule for internal delimiter runs
@@ -78,6 +90,9 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
         return 0;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(AbstractStringContainer $opener, AbstractStringContainer $closer, int $delimiterUse)
     {
         if ($delimiterUse === 1) {
@@ -98,6 +113,9 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
         $opener->insertAfter($emphasis);
     }
 
+    /**
+     * @param ConfigurationInterface $configuration
+     */
     public function setConfiguration(ConfigurationInterface $configuration)
     {
         $this->config = $configuration;

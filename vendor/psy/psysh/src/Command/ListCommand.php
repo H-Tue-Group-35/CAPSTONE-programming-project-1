@@ -258,14 +258,13 @@ HELP
             $input->setOption('vars', true);
         } else {
             // if a target is passed, classes, functions, etc don't make sense
-            foreach (['vars', 'globals'] as $option) {
+            foreach (['vars', 'globals', 'functions', 'classes', 'interfaces', 'traits'] as $option) {
                 if ($input->getOption($option)) {
                     throw new RuntimeException('--' . $option . ' does not make sense with a specified target');
                 }
             }
 
-            // @todo ensure that 'functions', 'classes', 'interfaces', 'traits' only accept namespace target?
-            foreach (['constants', 'properties', 'methods', 'functions', 'classes', 'interfaces', 'traits'] as $option) {
+            foreach (['constants', 'properties', 'methods'] as $option) {
                 if ($input->getOption($option)) {
                     return;
                 }

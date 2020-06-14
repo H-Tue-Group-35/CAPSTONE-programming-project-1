@@ -120,7 +120,7 @@ class Configuration
     }
 
     /**
-     * Remove all overridden parameter maps from internal PHP classes.
+     * Remove all overriden parameter maps from internal PHP classes.
      */
     public function resetInternalClassMethodParamMaps()
     {

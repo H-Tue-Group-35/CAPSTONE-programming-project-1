@@ -389,10 +389,6 @@ class ResourceRegistrar
             $action['middleware'] = $options['middleware'];
         }
 
-        if (isset($options['excluded_middleware'])) {
-            $action['excluded_middleware'] = $options['excluded_middleware'];
-        }
-
         return $action;
     }
 

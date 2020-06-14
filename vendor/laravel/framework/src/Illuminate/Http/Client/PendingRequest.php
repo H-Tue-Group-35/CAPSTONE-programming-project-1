@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\HandlerStack;
-use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 
 class PendingRequest
@@ -388,20 +387,6 @@ class PendingRequest
     }
 
     /**
-     * Issue a HEAD request to the given URL.
-     *
-     * @param  string  $url
-     * @param  array|string|null  $query
-     * @return \Illuminate\Http\Client\Response
-     */
-    public function head(string $url, $query = null)
-    {
-        return $this->send('HEAD', $url, [
-            'query' => $query,
-        ]);
-    }
-
-    /**
      * Issue a POST request to the given URL.
      *
      * @param  string  $url
@@ -472,10 +457,6 @@ class PendingRequest
         $url = ltrim(rtrim($this->baseUrl, '/').'/'.ltrim($url, '/'), '/');
 
         if (isset($options[$this->bodyFormat])) {
-            if ($this->bodyFormat === 'multipart') {
-                $options[$this->bodyFormat] = $this->parseMultipartBodyFormat($options[$this->bodyFormat]);
-            }
-
             $options[$this->bodyFormat] = array_merge(
                 $options[$this->bodyFormat], $this->pendingFiles
             );
@@ -485,10 +466,8 @@ class PendingRequest
 
         return retry($this->tries ?? 1, function () use ($method, $url, $options) {
             try {
-                $laravelData = $this->parseRequestData($method, $url, $options);
-
                 return tap(new Response($this->buildClient()->request($method, $url, $this->mergeOptions([
-                    'laravel_data' => $laravelData,
+                    'laravel_data' => $options[$this->bodyFormat] ?? [],
                     'on_stats' => function ($transferStats) {
                         $this->transferStats = $transferStats;
                     },
@@ -504,46 +483,6 @@ class PendingRequest
                 throw new ConnectionException($e->getMessage(), 0, $e);
             }
         }, $this->retryDelay ?? 100);
-    }
-
-    /**
-     * Parse multi-part form data.
-     *
-     * @param  array  $data
-     * @return array|array[]
-     */
-    protected function parseMultipartBodyFormat(array $data)
-    {
-        return collect($data)->map(function ($value, $key) {
-            return is_array($value) ? $value : ['name' => $key, 'contents' => $value];
-        })->values()->all();
-    }
-
-    /**
-     * Get the request data as an array so that we can attach it to the request for convenient assertions.
-     *
-     * @param  string  $method
-     * @param  string  $url
-     * @param  array  $options
-     * @return array
-     */
-    protected function parseRequestData($method, $url, array $options)
-    {
-        $laravelData = $options[$this->bodyFormat] ?? $options['query'] ?? [];
-
-        $urlString = Str::of($url);
-
-        if (empty($laravelData) && $method === 'GET' && $urlString->contains('?')) {
-            $laravelData = (string) $urlString->after('?');
-        }
-
-        if (is_string($laravelData)) {
-            parse_str($laravelData, $parsedData);
-
-            $laravelData = is_array($parsedData) ? $parsedData : [];
-        }
-
-        return $laravelData;
     }
 
     /**

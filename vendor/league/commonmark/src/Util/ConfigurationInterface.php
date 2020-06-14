@@ -16,18 +16,14 @@ interface ConfigurationInterface
     /**
      * Merge an existing array into the current configuration
      *
-     * @param array<string, mixed> $config
-     *
-     * @return void
+     * @param array $config
      */
     public function merge(array $config = []);
 
     /**
      * Replace the entire array with something else
      *
-     * @param array<string, mixed> $config
-     *
-     * @return void
+     * @param array $config
      */
     public function replace(array $config = []);
 
@@ -50,8 +46,6 @@ interface ConfigurationInterface
      *
      * @param string     $key
      * @param mixed|null $value
-     *
-     * @return void
      */
     public function set(string $key, $value = null);
 }

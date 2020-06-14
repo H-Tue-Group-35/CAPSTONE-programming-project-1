@@ -32,8 +32,6 @@ class RegisterListenersPass implements CompilerPassInterface
 
     private $hotPathEvents = [];
     private $hotPathTagName;
-    private $noPreloadEvents = [];
-    private $noPreloadTagName;
 
     public function __construct(string $dispatcherService = 'event_dispatcher', string $listenerTag = 'kernel.event_listener', string $subscriberTag = 'kernel.event_subscriber', string $eventAliasesParameter = 'event_dispatcher.event_aliases')
     {
@@ -43,24 +41,10 @@ class RegisterListenersPass implements CompilerPassInterface
         $this->eventAliasesParameter = $eventAliasesParameter;
     }
 
-    /**
-     * @return $this
-     */
-    public function setHotPathEvents(array $hotPathEvents, string $tagName = 'container.hot_path')
+    public function setHotPathEvents(array $hotPathEvents, $tagName = 'container.hot_path')
     {
         $this->hotPathEvents = array_flip($hotPathEvents);
         $this->hotPathTagName = $tagName;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setNoPreloadEvents(array $noPreloadEvents, string $tagName = 'container.no_preload'): self
-    {
-        $this->noPreloadEvents = array_flip($noPreloadEvents);
-        $this->noPreloadTagName = $tagName;
 
         return $this;
     }
@@ -71,17 +55,15 @@ class RegisterListenersPass implements CompilerPassInterface
             return;
         }
 
-        $aliases = [];
-
         if ($container->hasParameter($this->eventAliasesParameter)) {
             $aliases = $container->getParameter($this->eventAliasesParameter);
+            $container->getParameterBag()->remove($this->eventAliasesParameter);
+        } else {
+            $aliases = [];
         }
-
-        $globalDispatcherDefinition = $container->findDefinition($this->dispatcherService);
+        $definition = $container->findDefinition($this->dispatcherService);
 
         foreach ($container->findTaggedServiceIds($this->listenerTag, true) as $id => $events) {
-            $noPreload = 0;
-
             foreach ($events as $event) {
                 $priority = isset($event['priority']) ? $event['priority'] : 0;
 
@@ -108,28 +90,17 @@ class RegisterListenersPass implements CompilerPassInterface
                     }
                 }
 
-                $dispatcherDefinition = $globalDispatcherDefinition;
-                if (isset($event['dispatcher'])) {
-                    $dispatcherDefinition = $container->getDefinition($event['dispatcher']);
-                }
-
-                $dispatcherDefinition->addMethodCall('addListener', [$event['event'], [new ServiceClosureArgument(new Reference($id)), $event['method']], $priority]);
+                $definition->addMethodCall('addListener', [$event['event'], [new ServiceClosureArgument(new Reference($id)), $event['method']], $priority]);
 
                 if (isset($this->hotPathEvents[$event['event']])) {
                     $container->getDefinition($id)->addTag($this->hotPathTagName);
-                } elseif (isset($this->noPreloadEvents[$event['event']])) {
-                    ++$noPreload;
                 }
-            }
-
-            if ($noPreload && \count($events) === $noPreload) {
-                $container->getDefinition($id)->addTag($this->noPreloadTagName);
             }
         }
 
         $extractingDispatcher = new ExtractingEventDispatcher();
 
-        foreach ($container->findTaggedServiceIds($this->subscriberTag, true) as $id => $tags) {
+        foreach ($container->findTaggedServiceIds($this->subscriberTag, true) as $id => $attributes) {
             $def = $container->getDefinition($id);
 
             // We must assume that the class value has been correctly filled, even if the service is created by a factory
@@ -143,37 +114,16 @@ class RegisterListenersPass implements CompilerPassInterface
             }
             $class = $r->name;
 
-            $dispatcherDefinitions = [];
-            foreach ($tags as $attributes) {
-                if (!isset($attributes['dispatcher']) || isset($dispatcherDefinitions[$attributes['dispatcher']])) {
-                    continue;
-                }
-
-                $dispatcherDefinitions[] = $container->getDefinition($attributes['dispatcher']);
-            }
-
-            if (!$dispatcherDefinitions) {
-                $dispatcherDefinitions = [$globalDispatcherDefinition];
-            }
-
-            $noPreload = 0;
             ExtractingEventDispatcher::$aliases = $aliases;
             ExtractingEventDispatcher::$subscriber = $class;
             $extractingDispatcher->addSubscriber($extractingDispatcher);
             foreach ($extractingDispatcher->listeners as $args) {
                 $args[1] = [new ServiceClosureArgument(new Reference($id)), $args[1]];
-                foreach ($dispatcherDefinitions as $dispatcherDefinition) {
-                    $dispatcherDefinition->addMethodCall('addListener', $args);
-                }
+                $definition->addMethodCall('addListener', $args);
 
                 if (isset($this->hotPathEvents[$args[0]])) {
                     $container->getDefinition($id)->addTag($this->hotPathTagName);
-                } elseif (isset($this->noPreloadEvents[$args[0]])) {
-                    ++$noPreload;
                 }
-            }
-            if ($noPreload && \count($extractingDispatcher->listeners) === $noPreload) {
-                $container->getDefinition($id)->addTag($this->noPreloadTagName);
             }
             $extractingDispatcher->listeners = [];
             ExtractingEventDispatcher::$aliases = [];

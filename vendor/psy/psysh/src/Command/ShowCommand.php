@@ -11,8 +11,10 @@
 
 namespace Psy\Command;
 
+use JakubOnderka\PhpConsoleHighlighter\Highlighter;
+use Psy\Configuration;
+use Psy\ConsoleColorFactory;
 use Psy\Exception\RuntimeException;
-use Psy\Exception\UnexpectedTargetException;
 use Psy\Formatter\CodeFormatter;
 use Psy\Formatter\SignatureFormatter;
 use Psy\Input\CodeArgument;
@@ -26,14 +28,18 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ShowCommand extends ReflectingCommand
 {
+    private $colorMode;
+    private $highlighter;
     private $lastException;
     private $lastExceptionIndex;
 
     /**
-     * @param string|null $colorMode (deprecated and ignored)
+     * @param string|null $colorMode (default: null)
      */
     public function __construct($colorMode = null)
     {
+        $this->colorMode = $colorMode ?: Configuration::COLOR_MODE_AUTO;
+
         parent::__construct();
     }
 
@@ -108,24 +114,13 @@ HELP
 
     private function writeCodeContext(InputInterface $input, OutputInterface $output)
     {
-        try {
-            list($target, $reflector) = $this->getTargetAndReflector($input->getArgument('target'));
-        } catch (UnexpectedTargetException $e) {
-            // If we didn't get a target and Reflector, maybe we got a filename?
-            $target = $e->getTarget();
-            if (\is_string($target) && \is_file($target) && $code = @\file_get_contents($target)) {
-                // @todo maybe set $__file to $target?
-                return $output->page(CodeFormatter::formatCode($code));
-            } else {
-                throw $e;
-            }
-        }
+        list($target, $reflector) = $this->getTargetAndReflector($input->getArgument('target'));
 
         // Set some magic local variables
         $this->setCommandScopeVariables($reflector);
 
         try {
-            $output->page(CodeFormatter::format($reflector));
+            $output->page(CodeFormatter::format($reflector, $this->colorMode), OutputInterface::OUTPUT_RAW);
         } catch (RuntimeException $e) {
             $output->writeln(SignatureFormatter::format($reflector));
             throw $e;
@@ -178,7 +173,7 @@ HELP
         $line = isset($trace[$index]['line']) ? $trace[$index]['line'] : 'n/a';
 
         $output->writeln(\sprintf(
-            'From <info>%s:%d</info> at <strong>level %d</strong> of backtrace (of %d):',
+            'From <info>%s:%d</info> at <strong>level %d</strong> of backtrace (of %d).',
             OutputFormatter::escape($file),
             OutputFormatter::escape($line),
             $index + 1,
@@ -224,10 +219,17 @@ HELP
             return;
         }
 
-        $startLine = \max($line - 5, 0);
-        $endLine = $line + 5;
+        $output->write($this->getHighlighter()->getCodeSnippet($code, $line, 5, 5), false, OutputInterface::OUTPUT_RAW);
+    }
 
-        $output->write(CodeFormatter::formatCode($code, $startLine, $endLine, $line), false);
+    private function getHighlighter()
+    {
+        if (!$this->highlighter) {
+            $factory = new ConsoleColorFactory($this->colorMode);
+            $this->highlighter = new Highlighter($factory->getConsoleColor());
+        }
+
+        return $this->highlighter;
     }
 
     private function setCommandScopeVariablesFromContext(array $context)

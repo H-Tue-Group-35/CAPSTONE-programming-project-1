@@ -99,13 +99,6 @@ final class TableParser implements BlockParserInterface, EnvironmentAwareInterfa
         return true;
     }
 
-    /**
-     * @param string             $line
-     * @param array<int, string> $columns
-     * @param string             $type
-     *
-     * @return TableRow|null
-     */
     private function parseRow(string $line, array $columns, string $type = TableCell::TYPE_BODY): ?TableRow
     {
         $cells = $this->split(new Cursor(\trim($line)));
@@ -136,11 +129,6 @@ final class TableParser implements BlockParserInterface, EnvironmentAwareInterfa
         return $row;
     }
 
-    /**
-     * @param Cursor $cursor
-     *
-     * @return array<int, string>
-     */
     private function split(Cursor $cursor): array
     {
         if ($cursor->getCharacter() === '|') {
@@ -184,7 +172,7 @@ final class TableParser implements BlockParserInterface, EnvironmentAwareInterfa
     /**
      * @param Cursor $cursor
      *
-     * @return array<int, string>
+     * @return array
      */
     private function parseColumns(Cursor $cursor): array
     {
@@ -260,6 +248,9 @@ final class TableParser implements BlockParserInterface, EnvironmentAwareInterfa
         return null;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setEnvironment(EnvironmentInterface $environment)
     {
         $this->environment = $environment;

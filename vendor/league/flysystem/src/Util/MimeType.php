@@ -102,8 +102,6 @@ class MimeType
         'txt' => 'text/plain',
         'text' => 'text/plain',
         'log' => 'text/plain',
-        'markdown' => 'text/markdown',
-        'md' => 'text/markdown',
         'rtx' => 'text/richtext',
         'rtf' => 'text/rtf',
         'xml' => 'application/xml',
@@ -188,7 +186,6 @@ class MimeType
         'odb' => 'application/vnd.oasis.opendocument.database',
         'ott' => 'application/vnd.oasis.opendocument.text-template',
         'webp' => 'image/webp',
-        'ico' => 'image/x-icon',
     ];
 
     /**

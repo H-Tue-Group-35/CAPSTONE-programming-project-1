@@ -36,7 +36,7 @@ class Mock implements MockInterface
     protected $_mockery_expectations = array();
 
     /**
-     * Stores an initial number of expectations that can be manipulated
+     * Stores an inital number of expectations that can be manipulated
      * while using the getter method.
      *
      * @var int
@@ -170,7 +170,7 @@ class Mock implements MockInterface
     public function mockery_init(\Mockery\Container $container = null, $partialObject = null, $instanceMock = true)
     {
         if (is_null($container)) {
-            $container = new \Mockery\Container();
+            $container = new \Mockery\Container;
         }
         $this->_mockery_container = $container;
         if (!is_null($partialObject)) {
@@ -191,7 +191,7 @@ class Mock implements MockInterface
     /**
      * Set expected method calls
      *
-     * @param string ...$methodNames one or many methods that are expected to be called in this mock
+     * @param mixed ...$methodNames one or many methods that are expected to be called in this mock
      *
      * @return \Mockery\ExpectationInterface|\Mockery\Expectation|\Mockery\HigherOrderMessage
      */
@@ -211,9 +211,7 @@ class Mock implements MockInterface
         $allowMockingProtectedMethods = $this->_mockery_allowMockingProtectedMethods;
 
         $lastExpectation = \Mockery::parseShouldReturnArgs(
-            $this,
-            $methodNames,
-            function ($method) use ($self, $allowMockingProtectedMethods) {
+            $this, $methodNames, function ($method) use ($self, $allowMockingProtectedMethods) {
                 $rm = $self->mockery_getMethod($method);
                 if ($rm) {
                     if ($rm->isPrivate()) {
@@ -279,7 +277,7 @@ class Mock implements MockInterface
     /**
      * Shortcut method for setting an expectation that a method should not be called.
      *
-     * @param string ...$methodNames one or many methods that are expected not to be called in this mock
+     * @param array ...$methodNames one or many methods that are expected not to be called in this mock
      * @return \Mockery\ExpectationInterface|\Mockery\Expectation|\Mockery\HigherOrderMessage
      */
     public function shouldNotReceive(...$methodNames)
@@ -319,7 +317,7 @@ class Mock implements MockInterface
     public function asUndefined()
     {
         $this->_mockery_ignoreMissing = true;
-        $this->_mockery_defaultReturnValue = new \Mockery\Undefined();
+        $this->_mockery_defaultReturnValue = new \Mockery\Undefined;
         return $this;
     }
 
@@ -705,6 +703,10 @@ class Mock implements MockInterface
      */
     public function mockery_returnValueForMethod($name)
     {
+        if (version_compare(PHP_VERSION, '7.0.0-dev') < 0) {
+            return;
+        }
+
         $rm = $this->mockery_getMethod($name);
         if (!$rm || !$rm->hasReturnType()) {
             return;
@@ -717,7 +719,7 @@ class Mock implements MockInterface
             return null;
         }
 
-        $type = $returnType->getName();
+        $type = PHP_VERSION_ID >= 70100 ? $returnType->getName() : (string) $returnType;
         switch ($type) {
             case '':       return;
             case 'string': return '';
@@ -734,7 +736,7 @@ class Mock implements MockInterface
             case 'Traversable':
             case 'Generator':
                 // Remove eval() when minimum version >=5.5
-                $generator = function () { yield; };
+                $generator = eval('return function () { yield; };');
                 return $generator();
 
             case 'self':
@@ -744,7 +746,9 @@ class Mock implements MockInterface
                 return null;
 
             case 'object':
-                return \Mockery::mock();
+                if (version_compare(PHP_VERSION, '7.2.0-dev') >= 0) {
+                    return \Mockery::mock();
+                }
 
             default:
                 return \Mockery::mock($type);

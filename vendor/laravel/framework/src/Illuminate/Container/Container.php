@@ -663,9 +663,9 @@ class Container implements ArrayAccess, ContainerContract
     {
         $abstract = $this->getAlias($abstract);
 
-        $concrete = $this->getContextualConcrete($abstract);
-
-        $needsContextualBuild = ! empty($parameters) || ! is_null($concrete);
+        $needsContextualBuild = ! empty($parameters) || ! is_null(
+            $this->getContextualConcrete($abstract)
+        );
 
         // If an instance of the type is currently being managed as a singleton we'll
         // just return an existing instance instead of instantiating new instances
@@ -676,9 +676,7 @@ class Container implements ArrayAccess, ContainerContract
 
         $this->with[] = $parameters;
 
-        if (is_null($concrete)) {
-            $concrete = $this->getConcrete($abstract);
-        }
+        $concrete = $this->getConcrete($abstract);
 
         // We're ready to instantiate an instance of the concrete type registered for
         // the binding. This will instantiate the types, as well as resolve any of
@@ -725,6 +723,10 @@ class Container implements ArrayAccess, ContainerContract
      */
     protected function getConcrete($abstract)
     {
+        if (! is_null($concrete = $this->getContextualConcrete($abstract))) {
+            return $concrete;
+        }
+
         // If we don't have a registered resolver or concrete for the type, we'll just
         // assume each type is a concrete name and will attempt to resolve it as is
         // since the container should be able to resolve concretes automatically.
@@ -739,7 +741,7 @@ class Container implements ArrayAccess, ContainerContract
      * Get the contextual concrete binding for the given abstract.
      *
      * @param  string  $abstract
-     * @return \Closure|string|array|null
+     * @return \Closure|string|null
      */
     protected function getContextualConcrete($abstract)
     {
@@ -848,7 +850,7 @@ class Container implements ArrayAccess, ContainerContract
     /**
      * Resolve all of the dependencies from the ReflectionParameters.
      *
-     * @param  \ReflectionParameter[]  $dependencies
+     * @param  array  $dependencies
      * @return array
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
@@ -870,15 +872,9 @@ class Container implements ArrayAccess, ContainerContract
             // If the class is null, it means the dependency is a string or some other
             // primitive type which we can not resolve since it is not a class and
             // we will just bomb out with an error since we have no-where to go.
-            $result = is_null(Util::getParameterClassName($dependency))
+            $results[] = is_null($dependency->getClass())
                             ? $this->resolvePrimitive($dependency)
                             : $this->resolveClass($dependency);
-
-            if ($dependency->isVariadic()) {
-                $results = array_merge($results, $result);
-            } else {
-                $results[] = $result;
-            }
         }
 
         return $results;
@@ -928,7 +924,7 @@ class Container implements ArrayAccess, ContainerContract
      */
     protected function resolvePrimitive(ReflectionParameter $parameter)
     {
-        if (! is_null($concrete = $this->getContextualConcrete('$'.$parameter->getName()))) {
+        if (! is_null($concrete = $this->getContextualConcrete('$'.$parameter->name))) {
             return $concrete instanceof Closure ? $concrete($this) : $concrete;
         }
 
@@ -950,46 +946,19 @@ class Container implements ArrayAccess, ContainerContract
     protected function resolveClass(ReflectionParameter $parameter)
     {
         try {
-            return $parameter->isVariadic()
-                        ? $this->resolveVariadicClass($parameter)
-                        : $this->make(Util::getParameterClassName($parameter));
+            return $this->make($parameter->getClass()->name);
         }
 
         // If we can not resolve the class instance, we will check to see if the value
         // is optional, and if it is we will return the optional parameter value as
         // the value of the dependency, similarly to how we do this with scalars.
         catch (BindingResolutionException $e) {
-            if ($parameter->isDefaultValueAvailable()) {
+            if ($parameter->isOptional()) {
                 return $parameter->getDefaultValue();
-            }
-
-            if ($parameter->isVariadic()) {
-                return [];
             }
 
             throw $e;
         }
-    }
-
-    /**
-     * Resolve a class based variadic dependency from the container.
-     *
-     * @param  \ReflectionParameter  $parameter
-     * @return mixed
-     */
-    protected function resolveVariadicClass(ReflectionParameter $parameter)
-    {
-        $className = Util::getParameterClassName($parameter);
-
-        $abstract = $this->getAlias($className);
-
-        if (! is_array($concrete = $this->getContextualConcrete($abstract))) {
-            return $this->make($className);
-        }
-
-        return array_map(function ($abstract) {
-            return $this->resolve($abstract);
-        }, $concrete);
     }
 
     /**

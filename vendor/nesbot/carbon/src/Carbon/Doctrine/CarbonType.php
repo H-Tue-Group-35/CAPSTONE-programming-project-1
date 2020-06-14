@@ -6,20 +6,87 @@
  */
 namespace Carbon\Doctrine;
 
+use Carbon\Carbon;
+use Carbon\CarbonInterface;
+use DateTimeInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
 
-class CarbonType extends DateTimeType implements CarbonDoctrineType
+trait CarbonType
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    protected function getCarbonClassName(): string
     {
-        return 'carbon';
+        return Carbon::class;
+    }
+
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    {
+        $precision = $fieldDeclaration['precision'] ?: DateTimeDefaultPrecision::get();
+        $type = parent::getSQLDeclaration($fieldDeclaration, $platform);
+
+        if (!$precision) {
+            return $type;
+        }
+
+        if (strpos($type, '(') !== false) {
+            return preg_replace('/\(\d+\)/', "($precision)", $type);
+        }
+
+        list($before, $after) = explode(' ', "$type ");
+
+        return trim("$before($precision) $after");
     }
 
     /**
-     * {@inheritdoc}
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function convertToPHPValue($value, AbstractPlatform $platform)
+    {
+        if ($value === null || $value instanceof CarbonInterface) {
+            return $value;
+        }
+
+        $class = $this->getCarbonClassName();
+
+        if ($value instanceof DateTimeInterface) {
+            return $class::instance($value);
+        }
+
+        $date = $class::parse($value);
+
+        if (!$date) {
+            throw ConversionException::conversionFailedFormat(
+                $value,
+                $this->getName(),
+                'Y-m-d H:i:s.u'
+            );
+        }
+
+        return $date;
+    }
+
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    {
+        if ($value === null) {
+            return $value;
+        }
+
+        if ($value instanceof DateTimeInterface) {
+            return $value->format('Y-m-d H:i:s.u');
+        }
+
+        throw ConversionException::conversionFailedInvalidType(
+            $value,
+            $this->getName(),
+            ['null', 'DateTime']
+        );
+    }
+
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {

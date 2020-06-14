@@ -53,6 +53,7 @@ class Command
         'useDefaultConfiguration' => true,
         'loadedExtensions'        => [],
         'notLoadedExtensions'     => [],
+        'warnings'                => [],
     ];
 
     /**
@@ -146,11 +147,6 @@ class Command
     ];
 
     /**
-     * @var @psalm-var list<string>
-     */
-    private $warnings = [];
-
-    /**
      * @var bool
      */
     private $versionStringPrinted = false;
@@ -201,7 +197,7 @@ class Command
         unset($this->arguments['test'], $this->arguments['testFile']);
 
         try {
-            $result = $runner->doRun($suite, $this->arguments, $this->warnings, $exit);
+            $result = $runner->doRun($suite, $this->arguments, $exit);
         } catch (Exception $e) {
             print $e->getMessage() . \PHP_EOL;
         }
@@ -789,7 +785,7 @@ class Command
             \substr($this->options[1][0], -4, 4) !== '.php' &&
             \substr($this->options[1][0], -1, 1) !== '/' &&
             !\is_dir($this->options[1][0])) {
-            $this->warnings[] = 'Invocation with class name is deprecated';
+            $this->arguments['warnings'][] = 'Invocation with class name is deprecated';
         }
 
         if (!isset($this->arguments['test'])) {

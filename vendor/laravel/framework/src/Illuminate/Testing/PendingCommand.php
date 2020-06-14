@@ -5,7 +5,6 @@ namespace Illuminate\Testing;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Contracts\Container\Container;
-use Illuminate\Support\Arr;
 use Mockery;
 use Mockery\Exception\NoMatchingExpectationException;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
@@ -103,7 +102,7 @@ class PendingCommand
      * Specify an expected choice question with expected answers that will be asked/shown when the command runs.
      *
      * @param  string  $question
-     * @param  string|array  $answer
+     * @param  string  $answer
      * @param  array  $answers
      * @param  bool  $strict
      * @return $this
@@ -158,17 +157,15 @@ class PendingCommand
      * Execute the command.
      *
      * @return int
-     *
-     * @throws \Mockery\Exception\NoMatchingExpectationException
      */
     public function run()
     {
         $this->hasExecuted = true;
 
-        $mock = $this->mockConsoleOutput();
+        $this->mockConsoleOutput();
 
         try {
-            $exitCode = $this->app->make(Kernel::class)->call($this->command, $this->parameters, $mock);
+            $exitCode = $this->app->make(Kernel::class)->call($this->command, $this->parameters);
         } catch (NoMatchingExpectationException $e) {
             if ($e->getMethodName() === 'askQuestion') {
                 $this->test->fail('Unexpected question "'.$e->getActualArguments()[0]->getQuestion().'" was asked.');
@@ -184,43 +181,13 @@ class PendingCommand
             );
         }
 
-        $this->verifyExpectations();
-
         return $exitCode;
-    }
-
-    /**
-     * Determine if expected questions / choices / outputs are fulfilled.
-     *
-     * @return void
-     */
-    protected function verifyExpectations()
-    {
-        if (count($this->test->expectedQuestions)) {
-            $this->test->fail('Question "'.Arr::first($this->test->expectedQuestions)[0].'" was not asked.');
-        }
-
-        if (count($this->test->expectedChoices) > 0) {
-            foreach ($this->test->expectedChoices as $question => $answers) {
-                $assertion = $answers['strict'] ? 'assertEquals' : 'assertEqualsCanonicalizing';
-
-                $this->test->{$assertion}(
-                    $answers['expected'],
-                    $answers['actual'],
-                    'Question "'.$question.'" has different options.'
-                );
-            }
-        }
-
-        if (count($this->test->expectedOutput)) {
-            $this->test->fail('Output "'.Arr::first($this->test->expectedOutput).'" was not printed.');
-        }
     }
 
     /**
      * Mock the application's console output.
      *
-     * @return \Mockery\MockInterface
+     * @return void
      */
     protected function mockConsoleOutput()
     {
@@ -249,8 +216,6 @@ class PendingCommand
         $this->app->bind(OutputStyle::class, function () use ($mock) {
             return $mock;
         });
-
-        return $mock;
     }
 
     /**

@@ -31,7 +31,6 @@ class TextPart extends AbstractPart
     private $disposition;
     private $name;
     private $encoding;
-    private $seekable;
 
     /**
      * @param resource|string $body
@@ -41,13 +40,12 @@ class TextPart extends AbstractPart
         parent::__construct();
 
         if (!\is_string($body) && !\is_resource($body)) {
-            throw new \TypeError(sprintf('The body of "%s" must be a string or a resource (got "%s").', self::class, get_debug_type($body)));
+            throw new \TypeError(sprintf('The body of "%s" must be a string or a resource (got "%s").', self::class, \is_object($body) ? \get_class($body) : \gettype($body)));
         }
 
         $this->body = $body;
         $this->charset = $charset;
         $this->subtype = $subtype;
-        $this->seekable = \is_resource($body) ? stream_get_meta_data($body)['seekable'] && 0 === fseek($body, 0, SEEK_CUR) : null;
 
         if (null === $encoding) {
             $this->encoding = $this->chooseEncoding();
@@ -95,11 +93,11 @@ class TextPart extends AbstractPart
 
     public function getBody(): string
     {
-        if (null === $this->seekable) {
+        if (!\is_resource($this->body)) {
             return $this->body;
         }
 
-        if ($this->seekable) {
+        if (stream_get_meta_data($this->body)['seekable'] ?? false) {
             rewind($this->body);
         }
 
@@ -113,8 +111,8 @@ class TextPart extends AbstractPart
 
     public function bodyToIterable(): iterable
     {
-        if (null !== $this->seekable) {
-            if ($this->seekable) {
+        if (\is_resource($this->body)) {
+            if (stream_get_meta_data($this->body)['seekable'] ?? false) {
                 rewind($this->body);
             }
             yield from $this->getEncoder()->encodeByteStream($this->body);
@@ -187,7 +185,7 @@ class TextPart extends AbstractPart
     public function __sleep()
     {
         // convert resources to strings for serialization
-        if (null !== $this->seekable) {
+        if (\is_resource($this->body)) {
             $this->body = $this->getBody();
         }
 

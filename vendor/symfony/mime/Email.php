@@ -464,8 +464,14 @@ class Email extends Message
         $htmlPart = null;
         $html = $this->html;
         if (null !== $this->html) {
+            if (\is_resource($html)) {
+                if (stream_get_meta_data($html)['seekable'] ?? false) {
+                    rewind($html);
+                }
+
+                $html = stream_get_contents($html);
+            }
             $htmlPart = new TextPart($html, $this->htmlCharset, 'html');
-            $html = $htmlPart->getBody();
             preg_match_all('(<img\s+[^>]*src\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+)))i', $html, $names);
             $names = array_filter(array_unique(array_merge($names[2], $names[3])));
         }
@@ -553,16 +559,28 @@ class Email extends Message
     public function __serialize(): array
     {
         if (\is_resource($this->text)) {
-            $this->text = (new TextPart($this->text))->getBody();
+            if (stream_get_meta_data($this->text)['seekable'] ?? false) {
+                rewind($this->text);
+            }
+
+            $this->text = stream_get_contents($this->text);
         }
 
         if (\is_resource($this->html)) {
-            $this->html = (new TextPart($this->html))->getBody();
+            if (stream_get_meta_data($this->html)['seekable'] ?? false) {
+                rewind($this->html);
+            }
+
+            $this->html = stream_get_contents($this->html);
         }
 
         foreach ($this->attachments as $i => $attachment) {
             if (isset($attachment['body']) && \is_resource($attachment['body'])) {
-                $this->attachments[$i]['body'] = (new TextPart($attachment['body']))->getBody();
+                if (stream_get_meta_data($attachment['body'])['seekable'] ?? false) {
+                    rewind($attachment['body']);
+                }
+
+                $this->attachments[$i]['body'] = stream_get_contents($attachment['body']);
             }
         }
 

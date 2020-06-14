@@ -648,7 +648,7 @@ abstract class ParserAbstract implements Parser
     }
 
     protected function handleBuiltinTypes(Name $name) {
-        $builtinTypes = [
+        $scalarTypes = [
             'bool'     => true,
             'int'      => true,
             'float'    => true,
@@ -658,7 +658,6 @@ abstract class ParserAbstract implements Parser
             'object'   => true,
             'null'     => true,
             'false'    => true,
-            'mixed'    => true,
         ];
 
         if (!$name->isUnqualified()) {
@@ -666,7 +665,7 @@ abstract class ParserAbstract implements Parser
         }
 
         $lowerName = $name->toLowerString();
-        if (!isset($builtinTypes[$lowerName])) {
+        if (!isset($scalarTypes[$lowerName])) {
             return $name;
         }
 
@@ -843,29 +842,21 @@ abstract class ParserAbstract implements Parser
     }
 
     /**
-     * Create attributes for a zero-length common-capturing nop.
+     * Create attributes for a zero-length node with the given start attributes.
      *
-     * @param Comment[] $comments
+     * @param array $startAttributes
      * @return array
      */
-    protected function createCommentNopAttributes(array $comments) {
-        $comment = $comments[count($comments) - 1];
-        $commentEndLine = $comment->getEndLine();
-        $commentEndFilePos = $comment->getEndFilePos();
-        $commentEndTokenPos = $comment->getEndTokenPos();
-
-        $attributes = ['comments' => $comments];
-        if (-1 !== $commentEndLine) {
-            $attributes['startLine'] = $commentEndLine;
-            $attributes['endLine'] = $commentEndLine;
+    protected function createZeroLengthAttributes(array $startAttributes) {
+        $attributes = $startAttributes;
+        if (isset($startAttributes['startLine'])) {
+            $attributes['endLine'] = $startAttributes['startLine'];
         }
-        if (-1 !== $commentEndFilePos) {
-            $attributes['startFilePos'] = $commentEndFilePos + 1;
-            $attributes['endFilePos'] = $commentEndFilePos;
+        if (isset($startAttributes['startTokenPos'])) {
+            $attributes['endTokenPos'] = $startAttributes['startTokenPos'] - 1;
         }
-        if (-1 !== $commentEndTokenPos) {
-            $attributes['startTokenPos'] = $commentEndTokenPos + 1;
-            $attributes['endTokenPos'] = $commentEndTokenPos;
+        if (isset($startAttributes['startFilePos'])) {
+            $attributes['endFilePos'] = $startAttributes['startFilePos'] - 1;
         }
         return $attributes;
     }

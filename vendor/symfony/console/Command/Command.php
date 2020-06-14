@@ -29,9 +29,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class Command
 {
-    public const SUCCESS = 0;
-    public const FAILURE = 1;
-
     /**
      * @var string|null The default command name
      */
@@ -258,7 +255,7 @@ class Command
             $statusCode = $this->execute($input, $output);
 
             if (!\is_int($statusCode)) {
-                throw new \TypeError(sprintf('Return value of "%s::execute()" must be of the type int, "%s" returned.', static::class, get_debug_type($statusCode)));
+                throw new \TypeError(sprintf('Return value of "%s::execute()" must be of the type int, "%s" returned.', static::class, \gettype($statusCode)));
             }
         }
 
@@ -453,13 +450,10 @@ class Command
 
     /**
      * @param bool $hidden Whether or not the command should be hidden from the list of commands
-     *                     The default value will be true in Symfony 6.0
      *
      * @return Command The current instance
-     *
-     * @final since Symfony 5.1
      */
-    public function setHidden(bool $hidden /*= true*/)
+    public function setHidden(bool $hidden)
     {
         $this->hidden = $hidden;
 

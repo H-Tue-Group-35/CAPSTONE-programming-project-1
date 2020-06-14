@@ -66,6 +66,11 @@ final class RegexHelper
     public const REGEX_THEMATIC_BREAK = '/^(?:(?:\*[ \t]*){3,}|(?:_[ \t]*){3,}|(?:-[ \t]*){3,})[ \t]*$/';
     public const REGEX_LINK_DESTINATION_BRACES = '/^(?:<(?:[^<>\\n\\\\\\x00]|\\\\.)*>)/';
 
+    /**
+     * @param string $character
+     *
+     * @return bool
+     */
     public static function isEscapable(string $character): bool
     {
         return \preg_match('/' . self::PARTIAL_ESCAPABLE . '/', $character) === 1;
@@ -101,7 +106,7 @@ final class RegexHelper
      * @param string $subject
      * @param int    $offset
      *
-     * @return array<string>|null
+     * @return array|null
      */
     public static function matchAll(string $pattern, string $subject, int $offset = 0): ?array
     {
@@ -201,6 +206,11 @@ final class RegexHelper
         throw new \InvalidArgumentException('Invalid HTML block type');
     }
 
+    /**
+     * @param string $url
+     *
+     * @return bool
+     */
     public static function isLinkPotentiallyUnsafe(string $url): bool
     {
         return \preg_match(self::REGEX_UNSAFE_PROTOCOL, $url) !== 0 && \preg_match(self::REGEX_SAFE_DATA_PROTOCOL, $url) === 0;

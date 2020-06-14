@@ -36,14 +36,14 @@ trait Options
     /**
      * First day of week.
      *
-     * @var int|string
+     * @var int
      */
     protected static $weekStartsAt = CarbonInterface::MONDAY;
 
     /**
      * Last day of week.
      *
-     * @var int|string
+     * @var int
      */
     protected static $weekEndsAt = CarbonInterface::SUNDAY;
 

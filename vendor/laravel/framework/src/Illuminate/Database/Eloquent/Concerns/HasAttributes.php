@@ -231,11 +231,6 @@ trait HasAttributes
                 $attributes[$key] = $attributes[$key]->format(explode(':', $value, 2)[1]);
             }
 
-            if ($attributes[$key] && $attributes[$key] instanceof DateTimeInterface &&
-                $this->isClassCastable($key)) {
-                $attributes[$key] = $this->serializeDate($attributes[$key]);
-            }
-
             if ($attributes[$key] instanceof Arrayable) {
                 $attributes[$key] = $attributes[$key]->toArray();
             }
@@ -358,8 +353,7 @@ trait HasAttributes
         // If the attribute exists in the attribute array or has a "get" mutator we will
         // get the attribute's value. Otherwise, we will proceed as if the developers
         // are asking for a relationship's value. This covers both types of values.
-        if (array_key_exists($key, $this->attributes) ||
-            array_key_exists($key, $this->casts) ||
+        if (array_key_exists($key, $this->getAttributes()) ||
             $this->hasGetMutator($key) ||
             $this->isClassCastable($key)) {
             return $this->getAttributeValue($key);
@@ -415,8 +409,7 @@ trait HasAttributes
         // If the "attribute" exists as a method on the model, we will just assume
         // it is a relationship and will load and return results from the query
         // and hydrate the relationship's value on the "relationships" array.
-        if (method_exists($this, $key) ||
-            (static::$relationResolvers[get_class($this)][$key] ?? null)) {
+        if (method_exists($this, $key)) {
             return $this->getRelationshipFromMethod($key);
         }
     }
@@ -483,7 +476,7 @@ trait HasAttributes
     protected function mutateAttributeForArray($key, $value)
     {
         $value = $this->isClassCastable($key)
-                    ? $this->getClassCastableAttributeValue($key, $value)
+                    ? $this->getClassCastableAttributeValue($key)
                     : $this->mutateAttribute($key, $value);
 
         return $value instanceof Arrayable ? $value->toArray() : $value;
@@ -547,7 +540,7 @@ trait HasAttributes
         }
 
         if ($this->isClassCastable($key)) {
-            return $this->getClassCastableAttributeValue($key, $value);
+            return $this->getClassCastableAttributeValue($key);
         }
 
         return $value;
@@ -557,27 +550,18 @@ trait HasAttributes
      * Cast the given attribute using a custom cast class.
      *
      * @param  string  $key
-     * @param  mixed  $value
      * @return mixed
      */
-    protected function getClassCastableAttributeValue($key, $value)
+    protected function getClassCastableAttributeValue($key)
     {
         if (isset($this->classCastCache[$key])) {
             return $this->classCastCache[$key];
         } else {
             $caster = $this->resolveCasterClass($key);
 
-            $value = $caster instanceof CastsInboundAttributes
-                        ? $value
-                        : $caster->get($this, $key, $value, $this->attributes);
-
-            if ($caster instanceof CastsInboundAttributes || ! is_object($value)) {
-                unset($this->classCastCache[$key]);
-            } else {
-                $this->classCastCache[$key] = $value;
-            }
-
-            return $value;
+            return $this->classCastCache[$key] = $caster instanceof CastsInboundAttributes
+                ? ($this->attributes[$key] ?? null)
+                : $caster->get($this, $key, $this->attributes[$key] ?? null, $this->attributes);
         }
     }
 
@@ -1082,7 +1066,7 @@ trait HasAttributes
 
         $arguments = [];
 
-        if (is_string($castType) && strpos($castType, ':') !== false) {
+        if (strpos($castType, ':') !== false) {
             $segments = explode(':', $castType, 2);
 
             $castType = $segments[0];
@@ -1091,10 +1075,6 @@ trait HasAttributes
 
         if (is_subclass_of($castType, Castable::class)) {
             $castType = $castType::castUsing();
-        }
-
-        if (is_object($castType)) {
-            return $castType;
         }
 
         return new $castType(...$arguments);
@@ -1423,7 +1403,7 @@ trait HasAttributes
         }
 
         // If the attribute exists within the cast array, we will convert it to
-        // an appropriate native PHP type dependent upon the associated value
+        // an appropriate native PHP type dependant upon the associated value
         // given with the key in the pair. Dayle made this comment line up.
         if ($this->hasCast($key)) {
             return $this->castAttribute($key, $value);

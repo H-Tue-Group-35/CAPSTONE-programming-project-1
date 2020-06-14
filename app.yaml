@@ -12,6 +12,7 @@ env_variables:
   APP_ROUTES_CACHE: /tmp/routes.php
 
   SESSION_DRIVER: cookie
+  LOG_CHANNEL: stderr
   
 handlers:
 

@@ -16,9 +16,6 @@ use Psy\Context;
 use Psy\ContextAware;
 use Psy\Exception\ErrorException;
 use Psy\Exception\RuntimeException;
-use Psy\Exception\UnexpectedTargetException;
-use Psy\Reflection\ReflectionClassConstant;
-use Psy\Reflection\ReflectionConstant_;
 use Psy\Util\Mirror;
 
 /**
@@ -118,15 +115,9 @@ abstract class ReflectingCommand extends Command implements ContextAware
         }
 
         // Check $name against the current namespace and use statements.
-        if (self::couldBeClassName($name)) {
-            try {
-                $maybeAlias = $this->resolveCode($name . '::class');
-                if ($maybeAlias !== $name) {
-                    return $maybeAlias;
-                }
-            } catch (RuntimeException $e) {
-                // /shrug
-            }
+        $maybeAlias = $this->resolveCode($name . '::class');
+        if ($maybeAlias !== $name) {
+            return $maybeAlias;
         }
 
         if ($namespace = $shell->getNamespace()) {
@@ -138,15 +129,6 @@ abstract class ReflectingCommand extends Command implements ContextAware
         }
 
         return $name;
-    }
-
-    /**
-     * Check whether a given name could be a class name.
-     */
-    protected function couldBeClassName($name)
-    {
-        // Regex based on https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class
-        return \preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*(\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)*$/', $name);
     }
 
     /**
@@ -190,7 +172,7 @@ abstract class ReflectingCommand extends Command implements ContextAware
     /**
      * Resolve code to an object in the current scope.
      *
-     * @throws UnexpectedTargetException when the code resolves to a non-object value
+     * @throws RuntimeException when the code resolves to a non-object value
      *
      * @param string $code
      *
@@ -201,7 +183,7 @@ abstract class ReflectingCommand extends Command implements ContextAware
         $value = $this->resolveCode($code);
 
         if (!\is_object($value)) {
-            throw new UnexpectedTargetException($value, 'Unable to inspect a non-object');
+            throw new RuntimeException('Unable to inspect a non-object');
         }
 
         return $value;
@@ -255,15 +237,15 @@ abstract class ReflectingCommand extends Command implements ContextAware
         $vars = [];
 
         switch (\get_class($reflector)) {
-            case \ReflectionClass::class:
-            case \ReflectionObject::class:
+            case 'ReflectionClass':
+            case 'ReflectionObject':
                 $vars['__class'] = $reflector->name;
                 if ($reflector->inNamespace()) {
                     $vars['__namespace'] = $reflector->getNamespaceName();
                 }
                 break;
 
-            case \ReflectionMethod::class:
+            case 'ReflectionMethod':
                 $vars['__method'] = \sprintf('%s::%s', $reflector->class, $reflector->name);
                 $vars['__class'] = $reflector->class;
                 $classReflector = $reflector->getDeclaringClass();
@@ -272,14 +254,14 @@ abstract class ReflectingCommand extends Command implements ContextAware
                 }
                 break;
 
-            case \ReflectionFunction::class:
+            case 'ReflectionFunction':
                 $vars['__function'] = $reflector->name;
                 if ($reflector->inNamespace()) {
                     $vars['__namespace'] = $reflector->getNamespaceName();
                 }
                 break;
 
-            case \ReflectionGenerator::class:
+            case 'ReflectionGenerator':
                 $funcReflector = $reflector->getFunction();
                 $vars['__function'] = $funcReflector->name;
                 if ($funcReflector->inNamespace()) {
@@ -292,9 +274,9 @@ abstract class ReflectingCommand extends Command implements ContextAware
                 }
                 break;
 
-            case \ReflectionProperty::class:
-            case \ReflectionClassConstant::class:
-            case ReflectionClassConstant::class:
+            case 'ReflectionProperty':
+            case 'ReflectionClassConstant':
+            case 'Psy\Reflection\ReflectionClassConstant':
                 $classReflector = $reflector->getDeclaringClass();
                 $vars['__class'] = $classReflector->name;
                 if ($classReflector->inNamespace()) {
@@ -307,7 +289,7 @@ abstract class ReflectingCommand extends Command implements ContextAware
                 }
                 break;
 
-            case ReflectionConstant_::class:
+            case 'Psy\Reflection\ReflectionConstant_':
                 if ($reflector->inNamespace()) {
                     $vars['__namespace'] = $reflector->getNamespaceName();
                 }

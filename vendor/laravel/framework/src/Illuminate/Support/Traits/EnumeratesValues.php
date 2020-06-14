@@ -3,7 +3,6 @@
 namespace Illuminate\Support\Traits;
 
 use CachingIterator;
-use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
@@ -37,7 +36,6 @@ use Traversable;
  * @property-read HigherOrderCollectionProxy $sortByDesc
  * @property-read HigherOrderCollectionProxy $sum
  * @property-read HigherOrderCollectionProxy $unique
- * @property-read HigherOrderCollectionProxy $until
  */
 trait EnumeratesValues
 {
@@ -47,31 +45,9 @@ trait EnumeratesValues
      * @var array
      */
     protected static $proxies = [
-        'average',
-        'avg',
-        'contains',
-        'each',
-        'every',
-        'filter',
-        'first',
-        'flatMap',
-        'groupBy',
-        'keyBy',
-        'map',
-        'max',
-        'min',
-        'partition',
-        'reject',
-        'skipUntil',
-        'skipWhile',
-        'some',
-        'sortBy',
-        'sortByDesc',
-        'sum',
-        'takeUntil',
-        'takeWhile',
-        'unique',
-        'until',
+        'average', 'avg', 'contains', 'each', 'every', 'filter', 'first',
+        'flatMap', 'groupBy', 'keyBy', 'map', 'max', 'min', 'partition',
+        'reject', 'some', 'sortBy', 'sortByDesc', 'sum', 'unique',
     ];
 
     /**
@@ -728,21 +704,6 @@ trait EnumeratesValues
     }
 
     /**
-     * Take items in the collection until the given condition is met.
-     *
-     * This is an alias to the "takeUntil" method.
-     *
-     * @param  mixed  $key
-     * @return static
-     *
-     * @deprecated Use the "takeUntil" method directly.
-     */
-    public function until($value)
-    {
-        return $this->takeUntil($value);
-    }
-
-    /**
      * Collect the values into a collection.
      *
      * @return \Illuminate\Support\Collection
@@ -962,32 +923,6 @@ trait EnumeratesValues
 
         return function ($item) use ($value) {
             return data_get($item, $value);
-        };
-    }
-
-    /**
-     * Make a function to check an item's equality.
-     *
-     * @param  mixed  $value
-     * @return \Closure
-     */
-    protected function equality($value)
-    {
-        return function ($item) use ($value) {
-            return $item === $value;
-        };
-    }
-
-    /**
-     * Make a function using another function, by negating its result.
-     *
-     * @param  \Closure  $callback
-     * @return \Closure
-     */
-    protected function negate(Closure $callback)
-    {
-        return function (...$params) use ($callback) {
-            return ! $callback(...$params);
         };
     }
 }

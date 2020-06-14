@@ -210,7 +210,7 @@ class CompiledRouteCollection extends AbstractRouteCollection
     {
         $attributes = collect($this->attributes)->first(function (array $attributes) use ($action) {
             if (isset($attributes['action']['controller'])) {
-                return trim($attributes['action']['controller'], '\\') === $action;
+                return $attributes['action']['controller'] === $action;
             }
 
             return $attributes['action']['uses'] === $action;
@@ -293,12 +293,13 @@ class CompiledRouteCollection extends AbstractRouteCollection
             ), '/');
         }
 
-        return $this->router->newRoute($attributes['methods'], $baseUri == '' ? '/' : $baseUri, $attributes['action'])
+        return (new Route($attributes['methods'], $baseUri == '' ? '/' : $baseUri, $attributes['action']))
             ->setFallback($attributes['fallback'])
             ->setDefaults($attributes['defaults'])
             ->setWheres($attributes['wheres'])
             ->setBindingFields($attributes['bindingFields'])
-            ->block($attributes['lockSeconds'] ?? null, $attributes['waitSeconds'] ?? null);
+            ->setRouter($this->router)
+            ->setContainer($this->container);
     }
 
     /**

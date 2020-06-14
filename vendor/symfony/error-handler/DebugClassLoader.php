@@ -185,7 +185,7 @@ class DebugClassLoader
         ];
 
         if (!isset(self::$caseCheck)) {
-            $file = is_file(__FILE__) ? __FILE__ : rtrim(realpath('.'), \DIRECTORY_SEPARATOR);
+            $file = file_exists(__FILE__) ? __FILE__ : rtrim(realpath('.'), \DIRECTORY_SEPARATOR);
             $i = strrpos($file, \DIRECTORY_SEPARATOR);
             $dir = substr($file, 0, 1 + $i);
             $file = substr($file, 1 + $i);
@@ -406,7 +406,7 @@ class DebugClassLoader
         }
         $deprecations = [];
 
-        $className = false !== strpos($class, "@anonymous\0") ? (get_parent_class($class) ?: key(class_implements($class)) ?: 'class').'@anonymous' : $class;
+        $className = isset($class[15]) && "\0" === $class[15] && 0 === strpos($class, "class@anonymous\x00") ? get_parent_class($class).'@anonymous' : $class;
 
         // Don't trigger deprecations for classes in the same vendor
         if ($class !== $className) {
@@ -904,7 +904,7 @@ class DebugClassLoader
         static $patchedMethods = [];
         static $useStatements = [];
 
-        if (!is_file($file = $method->getFileName()) || isset($patchedMethods[$file][$startLine = $method->getStartLine()])) {
+        if (!file_exists($file = $method->getFileName()) || isset($patchedMethods[$file][$startLine = $method->getStartLine()])) {
             return;
         }
 
@@ -1002,7 +1002,7 @@ EOTXT;
         $useMap = [];
         $useOffset = 0;
 
-        if (!is_file($file)) {
+        if (!file_exists($file)) {
             return [$namespace, $useOffset, $useMap];
         }
 
@@ -1045,7 +1045,7 @@ EOTXT;
             return;
         }
 
-        if (!is_file($file = $method->getFileName())) {
+        if (!file_exists($file = $method->getFileName())) {
             return;
         }
 
