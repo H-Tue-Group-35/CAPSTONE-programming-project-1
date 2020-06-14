@@ -93,18 +93,7 @@ ob_start();
 
 		if ($snapshot->exists())
 		{
-			// printf("User exists");
-			// // $pass = $snapshot->get('password');
-			
-			// // if (strcmp($pass,$_POST['password']) === 0)
-			// // {
-				// // $userToken = $_POST['username'];
-				// // $_SESSION["userToken"] = $_POST['username'];
-			// // }
-			// // else
-			// // {
-				// // printf("Password does not match");
-			// // }
+
 		}
 		else
 		{	
