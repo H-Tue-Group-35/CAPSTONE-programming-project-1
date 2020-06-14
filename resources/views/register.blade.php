@@ -51,7 +51,6 @@ ob_start();
 		{
 			text-align: center;
 		}
-
 		body
 		{
 			background: #8e9eab;
@@ -64,10 +63,8 @@ ob_start();
 			#eef2f3,
 			#8e9eab);
 			/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 			color: black;
 		}
-
 		h2
 		{
 			margin: 45px;
