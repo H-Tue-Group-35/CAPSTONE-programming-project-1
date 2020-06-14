@@ -94,7 +94,15 @@ ob_start();
 			
 			$pass = $snapshot->get('password');
 			
-			printf($pass);
+			if (strcmp($pass,$_POST['password']) === 0)
+			{
+				printf("Password matches");
+			}
+			else
+			{
+				printf("Password does not match");
+			}
+
 		}
 		else
 		{	
