@@ -98,8 +98,10 @@ ob_start();
 			
 			if (strcmp($pass,$_POST['oldpassword']) === 0)
 			{
-				$docRef2 = $db->collection('user')->document($_POST['userid']);
-				$docRef2->update([['password' => 'ayy']]);
+				$docRef->set
+				([
+					'password' => $_POST['newpassword']
+				]);
 
 
 				printf("Password updated. <a href='account'>User page</a>. <a href=''>Back to index</a>.");
