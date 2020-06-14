@@ -98,6 +98,8 @@ ob_start();
 			{
 				$userToken = $_POST['username'];
 				$_SESSION["userToken"] = $_POST['username'];
+				Session::put('userToken', $_POST['username']);
+
 			}
 			else
 			{
