@@ -56,4 +56,11 @@ class HomeController extends Controller
         $password = $_POST["password"];
         return view('register_check', ['username' => $username],['password' => $password]);
     }
+	 
+    public function passwordChange()
+    {
+        $oldpassword = $_POST["oldpassword"];
+        $newpassword = $_POST["newpassword"];
+        return view('password_change', ['oldpassword' => $oldpassword],['newpassword' => $newpassword]);
+    }
 }
