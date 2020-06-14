@@ -91,6 +91,10 @@ ob_start();
 		if ($snapshot->exists())
 		{
 			printf("Username matches.");
+			
+			$pass = $snapshot->get('password');
+			
+			printf($pass);
 		}
 		else
 		{	
