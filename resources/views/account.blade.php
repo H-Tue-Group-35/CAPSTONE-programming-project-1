@@ -96,7 +96,7 @@ ob_start();
 	<!--Password: <input type="password" name="password" id="password">-->
 	New password: <input type="text" name="newpassword" id="newpassword" maxlength="20" required>
 	
-	<input type="hidden" name="userid" value="userid" value="" >
+	<input type="hidden" name="userid" id="userid" value="" >
 	<br/><br/>
 	<button type="submit" style="color: #000000;">Change password</button>
 	</form>
