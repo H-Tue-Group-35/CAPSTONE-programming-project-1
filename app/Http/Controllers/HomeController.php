@@ -61,6 +61,7 @@ class HomeController extends Controller
     {
         $oldpassword = $_POST["oldpassword"];
         $newpassword = $_POST["newpassword"];
-        return view('password_change', ['oldpassword' => $oldpassword],['newpassword' => $newpassword]);
+        $userToken = $_SESSION["userToken"];
+        return view('password_change', ['oldpassword' => $oldpassword],['newpassword' => $newpassword],['userToken' => $userToken]);
     }
 }
