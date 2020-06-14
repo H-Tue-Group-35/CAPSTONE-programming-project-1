@@ -85,14 +85,25 @@ ob_start();
 		// Create the Cloud Firestore client
 		$db = new FirestoreClient();
 
-		$docRef = $db->collection('user')->document("A");
+		$docRef = $db->collection('user')->document($_SESSION['userToken']);
 		$snapshot = $docRef->snapshot();
 		
+		//$userToken = "";
 
 		if ($snapshot->exists())
 		{
 			printf("User exists");
-
+			// $pass = $snapshot->get('password');
+			
+			// if (strcmp($pass,$_POST['password']) === 0)
+			// {
+				// $userToken = $_POST['username'];
+				// $_SESSION["userToken"] = $_POST['username'];
+			// }
+			// else
+			// {
+				// printf("Password does not match");
+			// }
 		}
 		else
 		{	
