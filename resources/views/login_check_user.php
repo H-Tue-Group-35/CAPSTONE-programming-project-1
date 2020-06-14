@@ -92,20 +92,17 @@ ob_start();
 
 		if ($snapshot->exists())
 		{
-			printf("Username matches.");
-			
 			$pass = $snapshot->get('password');
 			
 			if (strcmp($pass,$_POST['password']) === 0)
 			{
-				printf("Password matches");
 				$userToken = $_POST['username'];
+				$_SESSION["userToken"] = $_POST['username'];
 			}
 			else
 			{
 				printf("Password does not match");
 			}
-
 		}
 		else
 		{	
@@ -115,8 +112,7 @@ ob_start();
 
 	<script>
 		sessionStorage.loginid = "<?php echo $userToken ?>";
-
-		//console.log("SESSION: "+sessionStorage.loginid);
+		
 		if ( "<?php echo $userToken ?>" != "" )
 		{
 			window.location.replace("https://car-for-all-273711.appspot.com/");
