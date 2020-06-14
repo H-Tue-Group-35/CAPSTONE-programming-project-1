@@ -87,6 +87,8 @@ ob_start();
 
 		$docRef = $db->collection('user')->document($_POST['username']);
 		$snapshot = $docRef->snapshot();
+		
+		$userToken = "";
 
 		if ($snapshot->exists())
 		{
@@ -97,6 +99,7 @@ ob_start();
 			if (strcmp($pass,$_POST['password']) === 0)
 			{
 				printf("Password matches");
+				$userToken = $_POST['username'];
 			}
 			else
 			{
@@ -111,10 +114,14 @@ ob_start();
 	?>
 
 	<script>
-		sessionStorage.loginid = "<?php echo $username ?>";
+		sessionStorage.loginid = "<?php echo $userToken ?>";
 
-		console.log("SESSION: "+sessionStorage.loginid);
-		//window.location.replace("https://car-for-all-273711.appspot.com/");
+		//console.log("SESSION: "+sessionStorage.loginid);
+		if ( "<?php echo $userToken ?>" != "" )
+		{
+			window.location.replace("https://car-for-all-273711.appspot.com/");
+		}
+		
 	</script>
 
 </body>
