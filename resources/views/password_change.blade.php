@@ -98,7 +98,7 @@ ob_start();
 			
 			if (strcmp($pass,$_POST['oldpassword']) === 0)
 			{
-				$docRef->update
+				$docRef->set
 				([
 					'password' => $_POST['newpassword']
 				]);
