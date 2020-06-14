@@ -98,22 +98,22 @@ ob_start();
 			
 			if (strcmp($pass,$_POST['oldpassword']) === 0)
 			{
-				$docRef->set
+				$docRef->update
 				([
 					'password' => $_POST['newpassword']
 				]);
 
 
-				printf("Password updated. <a href='account'>User page</a>. <a href=''>Back to index</a>.");
+				printf("Password updated. <a href='account'>User page</a>. <a href='/'>Back to index</a>.");
 			}
 			else
 			{
-				printf("Error: Old password is incorrect. <a href='account'>Try again</a>. <a href=''>Back to index</a>.");
+				printf("Error: Old password is incorrect. <a href='account'>Try again</a>. <a href='/'>Back to index</a>.");
 			}
 		}
 		else
 		{	
-			printf("Error: Something broke. <a href='account'>Try again</a>. <a href=''>Back to index</a>.");
+			printf("Error: Something broke. <a href='account'>Try again</a>. <a href='/'>Back to index</a>.");
 		}
 	?>
 
