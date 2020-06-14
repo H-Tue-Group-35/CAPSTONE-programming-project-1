@@ -79,25 +79,35 @@ ob_start();
 </head>
 <body>
 
-<script>
-	//sessionStorage.loginid = "AYAYA";
-	console.log("LOGIN SESSION: "+sessionStorage.getItem("loginid"));
-
-
-	function checkLogin(login)
-	{
-	}
-
-	</script>
 
 	<h1>User Account</h1>
 	<p>Here you may see your bookings</p>
 
 	<p>List bookings here</p>
+
+	<h2>Account management</h2>
+
+	<p>Change password:</p>
+
+	<form action="password_change" method="post">
+	@csrf <!-- {{ csrf_field() }} -->
+	Old password: <input type="text" name="oldpassword" id="oldpassword" maxlength="20" required>
+	<br/><br/>
+	<!--Password: <input type="password" name="password" id="password">-->
+	New password: <input type="text" name="newpassword" id="newpassword" maxlength="20" required>
 	
+	<input type="hidden" name="userid" id="userid" value="" >
+	<br/><br/>
+	<button type="submit" style="color: #000000;">Change password</button>
+	</form>
+
 	<br/><br/>
 	<a href="/">Back to home</a>
 	
+	<script>
+		document.getElementById("userid").value = sessionStorage.getItem("loginid");
+	</script>
+
 
 </body>
-</html>
+</html> 

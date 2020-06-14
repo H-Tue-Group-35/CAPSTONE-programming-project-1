@@ -10,7 +10,7 @@ ob_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/style.css" rel="stylesheet" type="text/css" >
 
-	<title>Registration check</title>
+	<title>Change password</title>
 
 	<!-- Connect to Firebase so we can get stats on all Vehicles -->
 	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
@@ -78,28 +78,44 @@ ob_start();
 	</style>
 </head>
 <body>
+
 	<?php
 		use Google\Cloud\Firestore\FirestoreClient;
+		
+		$userToken = Session::get('variableName');
 
-		// Create the Cloud Firestore client
+		//Create the Cloud Firestore client
 		$db = new FirestoreClient();
+		
 
-		$docRef = $db->collection('user')->document($_POST['username']);
+		$docRef = $db->collection('user')->document($_POST['userid']);
 		$snapshot = $docRef->snapshot();
+
 
 		if ($snapshot->exists())
 		{
-			printf("Error: This user already exists. <a href='register'>Try again</a>. <a href='/'>Back to index</a>.");
+			$pass = $snapshot->get('password');
+			
+			if (strcmp($pass,$_POST['oldpassword']) === 0)
+			{
+				$docRef->set
+				([
+					'password' => $_POST['newpassword']
+				]);
+
+
+				printf("Password updated. <a href='account'>User page</a>. <a href='/'>Back to index</a>.");
+			}
+			else
+			{
+				printf("Error: Old password is incorrect. <a href='account'>Try again</a>. <a href='/'>Back to index</a>.");
+			}
 		}
 		else
 		{	
-			$docRef->set
-			([
-				'username' => $_POST['username'],
-				'password' => $_POST['password']
-			]);
-			printf("Account created successfully. You may now <a href='login'>login</a>.");	
+			printf("Error: Something broke. <a href='account'>Try again</a>. <a href='/'>Back to index</a>.");
 		}
 	?>
+
 </body>
 </html>
