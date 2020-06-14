@@ -87,10 +87,6 @@ ob_start();
 		//Create the Cloud Firestore client
 		$db = new FirestoreClient();
 		
-		printf("USERID:");
-		
-		printf($_POST['userid']);
-		printf(".");
 
 		$docRef = $db->collection('user')->document($_POST['userid']);
 		$snapshot = $docRef->snapshot();
@@ -102,11 +98,16 @@ ob_start();
 			
 			if (strcmp($pass,$_POST['oldpassword']) === 0)
 			{
-				printf("CHANGE PASSWORD");
+				$docRef->update([
+					 ['password' => $_POST['newpassword']]
+				]);
+
+
+				printf("Password updated. <a href='account'>User page</a>. <a href=''>Back to index</a>.");
 			}
 			else
 			{
-				printf("Password does not match");
+				printf("Error: Old password is incorrect. <a href='account'>Try again</a>. <a href=''>Back to index</a>.");
 			}
 		}
 		else
