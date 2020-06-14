@@ -95,12 +95,18 @@ ob_start();
 	<br/><br/>
 	<!--Password: <input type="password" name="password" id="password">-->
 	New password: <input type="text" name="newpassword" id="newpassword" maxlength="20" required>
+	
+	<input type="hidden" name="userid" value="userid" value="" >
 	<br/><br/>
 	<button type="submit" style="color: #000000;">Change password</button>
 	</form>
 
 	<br/><br/>
 	<a href="/">Back to home</a>
+	
+	<script>
+		document.getElementById("userid").value = sessionStorage.getItem("loginid");
+	</script>
 
 
 </body>

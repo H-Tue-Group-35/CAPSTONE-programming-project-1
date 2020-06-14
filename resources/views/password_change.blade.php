@@ -87,7 +87,7 @@ ob_start();
 		//Create the Cloud Firestore client
 		$db = new FirestoreClient();
 
-		$docRef = $db->collection('user')->document($userToken);
+		$docRef = $db->collection('user')->document($_POST['userid']);
 		$snapshot = $docRef->snapshot();
 
 
