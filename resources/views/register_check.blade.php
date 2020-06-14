@@ -89,7 +89,7 @@ ob_start();
 
 		if ($snapshot->exists())
 		{
-			printf("Error: This user already exists. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
+			printf("Error: This user already exists. <a href='register'>Try again</a>. <a href=''>Back to index</a>.");
 		}
 		else
 		{	

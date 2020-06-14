@@ -79,13 +79,31 @@ ob_start();
 </head>
 <body>
 
+	<?php
+		use Google\Cloud\Firestore\FirestoreClient;
 
-<script>
-sessionStorage.loginid = "<?php echo $username ?>";
+		// Create the Cloud Firestore client
+		$db = new FirestoreClient();
 
-console.log("SESSION: "+sessionStorage.loginid);
-window.location.replace("https://car-for-all-273711.appspot.com/");
-</script>
+		$docRef = $db->collection('user')->document($_POST['username']);
+		$snapshot = $docRef->snapshot();
+
+		if ($snapshot->exists())
+		{
+			printf("Error: This user already exists. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
+		}
+		else
+		{	
+			printf("Error: Invalid username or password. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
+		}
+	?>
+
+	<script>
+		sessionStorage.loginid = "<?php echo $username ?>";
+
+		console.log("SESSION: "+sessionStorage.loginid);
+		//window.location.replace("https://car-for-all-273711.appspot.com/");
+	</script>
 
 </body>
 </html>
