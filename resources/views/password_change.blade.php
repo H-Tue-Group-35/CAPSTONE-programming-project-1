@@ -98,11 +98,20 @@ ob_start();
 
 		if ($snapshot->exists())
 		{
-
+			$pass = $snapshot->get('password');
+			
+			if (strcmp($pass,$_POST['oldpassword']) === 0)
+			{
+				printf("CHANGE PASSWORD");
+			}
+			else
+			{
+				printf("Password does not match");
+			}
 		}
 		else
 		{	
-			printf("Error: Invalid username or password. <a href='account'>Try again</a>. <a href=''>Back to index</a>.");
+			printf("Error: Something broke. <a href='account'>Try again</a>. <a href=''>Back to index</a>.");
 		}
 	?>
 
