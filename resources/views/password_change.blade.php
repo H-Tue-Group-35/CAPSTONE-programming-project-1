@@ -104,7 +104,7 @@ ob_start();
 			// {
 				// printf("Password does not match");
 			// }
-		// }
+		}
 		else
 		{	
 			printf("Error: Invalid username or password. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
