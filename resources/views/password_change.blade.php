@@ -10,7 +10,7 @@ ob_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/style.css" rel="stylesheet" type="text/css" >
 
-	<title>Checking login</title>
+	<title>Change password</title>
 
 	<!-- Connect to Firebase so we can get stats on all Vehicles -->
 	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
@@ -99,7 +99,7 @@ ob_start();
 			if (strcmp($pass,$_POST['oldpassword']) === 0)
 			{
 				$docRef->update([
-					 ['password' => $_POST['newpassword']]
+					 ['password' => 'ayy']
 				]);
 
 
