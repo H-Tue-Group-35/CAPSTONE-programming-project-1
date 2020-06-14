@@ -84,7 +84,7 @@ ob_start();
 		
 		$userToken = Session::get('variableName');
 
-		Create the Cloud Firestore client
+		//Create the Cloud Firestore client
 		$db = new FirestoreClient();
 
 		$docRef = $db->collection('user')->document($userToken);
