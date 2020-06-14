@@ -88,35 +88,35 @@ ob_start();
 		$docRef = $db->collection('user')->document($_POST['username']);
 		$snapshot = $docRef->snapshot();
 		
-		$userToken = "";
+		// $userToken = "";
 
-		if ($snapshot->exists())
-		{
-			$pass = $snapshot->get('password');
+		// if ($snapshot->exists())
+		// {
+			// $pass = $snapshot->get('password');
 			
-			if (strcmp($pass,$_POST['password']) === 0)
-			{
-				$userToken = $_POST['username'];
-				$_SESSION["userToken"] = $_POST['username'];
-			}
-			else
-			{
-				printf("Password does not match");
-			}
-		}
-		else
-		{	
-			printf("Error: Invalid username or password. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
-		}
+			// if (strcmp($pass,$_POST['password']) === 0)
+			// {
+				// $userToken = $_POST['username'];
+				// $_SESSION["userToken"] = $_POST['username'];
+			// }
+			// else
+			// {
+				// printf("Password does not match");
+			// }
+		// }
+		// else
+		// {	
+			// printf("Error: Invalid username or password. <a href='login'>Try again</a>. <a href=''>Back to index</a>.");
+		// }
 	?>
 
 	<script>
-		sessionStorage.loginid = "<?php echo $userToken ?>";
+		// sessionStorage.loginid = "<?php echo $userToken ?>";
 		
-		if ( "<?php echo $userToken ?>" != "" )
-		{
-			window.location.replace("https://car-for-all-273711.appspot.com/");
-		}
+		// if ( "<?php echo $userToken ?>" != "" )
+		// {
+			// window.location.replace("https://car-for-all-273711.appspot.com/");
+		// }
 		
 	</script>
 
