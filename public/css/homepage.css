@@ -1,3 +1,39 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    background-color: #2f2f2f;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 99.2%;
+}
+
+.box .row {
+    border: 0px dotted grey;
+}
+
+.box .row.header {
+    flex: 0 1 auto;
+    /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+}
+
+.box .row.content {
+    flex: 1 1 auto;
+}
+
+.box .row.footer {
+    flex: 0 1 58px;
+}
+
 .cardetails {
     font: 16px Montserrat, sans-serif;
     color: #666;
@@ -71,14 +107,14 @@ span.psw {
 
 .map {
     background: white;
-    width: 90%;
-    min-height: 33em;
+    height: 85%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 50px;
 }
 
 .mapcontainer {
-    min-height: 39em;
+    height: 100%;
     background: #1565c0;
     text-align: center;
     padding-top: 10px;
@@ -97,6 +133,7 @@ body {
 
 p {
     font-size: 16px;
+    color: #666;
 }
 
 .margin {
