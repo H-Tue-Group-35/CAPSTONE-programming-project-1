@@ -105,7 +105,7 @@ ob_start();
                             '<form method="post" action="booking">' +
                             '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                             doc.id +
-                            '" ><button type="submit" class="button"><span>Checkout</span></button></form>';
+                            '" ><button type="submit" class="button"><span>Book</span></button></form>';
 
                         var carInfo = new google.maps.InfoWindow({
                             content: contentString

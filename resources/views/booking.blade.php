@@ -24,6 +24,18 @@ session_start();
     <!-- Used by local testing -->
     <link rel="stylesheet" href="/css/booking.css">
 
+    <script>
+        var userid = sessionStorage.getItem("loginid");
+
+        if (userid && userid != '') {
+            
+        } else {
+            sessionStorage.loginid = '';
+            alert('Please login before making a booking');
+            window.location.href='login';
+        }
+    </script>
+
 </head>
 
 <body>
@@ -93,7 +105,7 @@ session_start();
 
                 if (userid && userid != '') {
                     document.getElementById("fHeader").innerHTML =
-                    '<li style="letter-spacing: 1px;float: right;padding-right: 20px;padding-top: 10px;">Logged in as ' + userid + '</li><hr><li><a href="account ">ACCOUNT</a></li><li><a href="logout ">LOGOUT</a></li>';
+                        '<li style="letter-spacing: 1px;float: right;padding-right: 20px;padding-top: 10px;">Logged in as ' + userid + '</li><hr><li><a href="account ">ACCOUNT</a></li><li><a href="logout ">LOGOUT</a></li>';
                 } else {
                     sessionStorage.loginid = '';
                     document.getElementById("fHeader").innerHTML =
