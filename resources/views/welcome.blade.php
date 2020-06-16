@@ -23,7 +23,7 @@ ob_start();
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
 
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/homepage.css') }}">
+  <link rel="stylesheet" href="assets/css/homepage.css">
 
   <script>
     //sessionStorage.loginid = "none";
