@@ -23,7 +23,7 @@ ob_start();
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
 
-  <link rel="stylesheet" href="/homepage.css">
+  <link rel="stylesheet" href="/public/css/homepage.css">
 
   <script>
     //sessionStorage.loginid = "none";
