@@ -135,7 +135,7 @@ ob_start();
                     <div class="main-block">
                         <div class="texty">
                             <hr>
-                            <p>We currently charge 0.01AUD regardless of duration booking or type of vehicle.</p>
+                            <p>We currently charge 0.01AUD regardless of duration of booking or type of vehicle.</p>
                             <p>Pricing will need to further dicussed with the financial department of the company to implement vehicle and duration based charges.</p>
                             <hr>
                             <div id="paypal-button-container"></div>
