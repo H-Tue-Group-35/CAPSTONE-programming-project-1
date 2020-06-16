@@ -153,6 +153,16 @@ ob_start();
                 'Error: Your browser doesn\'t support geolocation.');
             infoWindow.open(map);
         }
+
+        function initHeader() {
+
+            var userid = sessionStorage.getItem("loginid");
+
+            if (userid && userid != '') {
+                document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
+            } 
+
+        }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-dbFSEA8jv-SxqQqhXELgftWtmIN7D4&callback=initMap">
     </script>
@@ -178,7 +188,7 @@ ob_start();
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="links nav navbar-nav navbar-right">
+                        <ul class="links nav navbar-nav navbar-right" id="fHeader">
                             <li><a href="login">LOGIN</a></li>
                             <li><a href="register">REGISTER</a></li>
                         </ul>

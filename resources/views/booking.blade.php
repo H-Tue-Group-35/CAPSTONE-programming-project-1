@@ -44,8 +44,8 @@ session_start();
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="links nav navbar-nav navbar-right">
-                            <li><a href="#">LOGIN</a></li>
-                            <li><a href="#">REGISTER</a></li>
+                            <li><a href="login">LOGIN</a></li>
+                            <li><a href="register">REGISTER</a></li>
                         </ul>
                     </div>
                 </div>
