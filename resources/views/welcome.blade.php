@@ -108,14 +108,14 @@ ob_start();
                         '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
                         doc.data().image +
                         '" alt="" width="246" height="138" /></span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Brand: ' +
+                        '<hr><p style="text-align: center;"><span class="cardetails">Brand: ' +
                         doc.data().brand + '</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Model: ' +
+                        '<p style="text-align: center;"><span class="cardetails"">Model: ' +
                         doc.data().model + '</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Seats: ' +
+                        '<p style="text-align: center;"><span class="cardetails"">Seats: ' +
                         doc.data().seats + '</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Available!</b></span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;">&nbsp;</span></p>' +
+                        '<p style="text-align: center;"><span class="cardetails""><b>Available!</span></p>' +
+                        '<p style="text-align: center;"><span class="cardetails"">&nbsp;</span></p>' +
                         '<form method="post" action="booking">' +
                         '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                         doc.id +
