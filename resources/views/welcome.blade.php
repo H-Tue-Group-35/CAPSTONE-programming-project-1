@@ -14,7 +14,6 @@ ob_start();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -109,18 +108,18 @@ ob_start();
                         '<p><span style="color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="' +
                         doc.data().image +
                         '" alt="" width="246" height="138" /></span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000;">Brand: ' +
+                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Brand: ' +
                         doc.data().brand + '</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000;">Model: ' +
+                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Model: ' +
                         doc.data().model + '</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000;">Seats: ' +
+                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Seats: ' +
                         doc.data().seats + '</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000;">Available!</span></p>' +
-                        '<p style="text-align: center;"><span style="color: #000000;">&nbsp;</span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;"><b>Available!</b></span></p>' +
+                        '<p style="text-align: center;"><span style="color: #000000; font: 20px Montserrat, sans-serif;">&nbsp;</span></p>' +
                         '<form method="post" action="booking">' +
                         '<p style="text-align: center;"><input type="hidden" name="carID" value="' +
                         doc.id +
-                        '" ><input type="submit" value="Book Now" style="background-color: #DE6247;" /></p></form>';
+                        '" ><button type="submit" class="button"><span>Checkout</span></button></form>';
 
                     var carInfo = new google.maps.InfoWindow({
                         content: contentString
@@ -174,10 +173,12 @@ ob_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a href="/">
         <img class="logo" id="logopic" src="https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Flogo.png?alt=media&token=49b7996f-637c-460d-844e-22633123798d">
+        </a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="links nav navbar-nav navbar-right">
           <li><a href="#">LOGIN</a></li>
           <li><a href="#">REGISTER</a></li>
         </ul>
@@ -194,7 +195,7 @@ ob_start();
 
   <!-- Footer -->
   <footer class="container-fluid bg-4 text-center" style="padding:10px">
-    <p>Bootstrap Theme</p>
+    <p>© 2020 Copyright: H-Tue-Group-35</p>
   </footer>
 
 </body>
