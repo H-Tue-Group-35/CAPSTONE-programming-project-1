@@ -22,8 +22,11 @@ ob_start();
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
 
-
+  <!-- Used by CircleCI deplyed project -->
   <link rel="stylesheet" href="/public/css/homepage.css">
+
+  <!-- Used by local testing -->
+  <link rel="stylesheet" href="/css/homepage.css">
 
   <script>
     //sessionStorage.loginid = "none";
