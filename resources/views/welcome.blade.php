@@ -192,9 +192,8 @@ ob_start();
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <header id="fHeader" class="links nav navbar-nav navbar-right">
-                            
-                        </header>
+                        <ul class="links nav navbar-nav navbar-right" id="fHeader">
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -213,6 +212,9 @@ ob_start();
             </footer>
         </div>
     </div>
+    <script>
+        initHeader();
+    </script>
 </body>
 
 </html>
