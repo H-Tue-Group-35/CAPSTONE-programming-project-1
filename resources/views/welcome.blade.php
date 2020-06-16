@@ -160,7 +160,11 @@ ob_start();
 
             if (userid && userid != '') {
                 document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
-            } 
+            } else {
+                sessionStorage.loginid = '';
+                document.getElementById("fHeader").innerHTML =
+                    '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li>';
+            }
 
         }
     </script>
