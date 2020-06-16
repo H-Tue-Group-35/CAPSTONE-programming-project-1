@@ -72,7 +72,7 @@ session_start();
                             <hr>
                             <div class="btn-block">
                                 <input type="hidden" name="carID" value="<?php echo  $carid; ?>">
-                                <p>By clicking Register, you agree on our <a>Privacy Policy</a>.</p>
+                                <p>By clicking Checkout, you agree on our <a>Privacy Policy</a>.</p>
                                 <button type="submit" class="button"><span>Checkout</span></button>
                             </div>
                         </form>

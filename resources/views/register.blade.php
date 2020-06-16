@@ -3,97 +3,92 @@ session_start();
 ob_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/style.css" rel="stylesheet" type="text/css" >
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Car4All</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-	<title>User register</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
-	<!-- Connect to Firebase so we can get stats on all Vehicles -->
+    <!-- Used by CircleCI deplyed project -->
+    <link rel="stylesheet" href="/public/css/register.css">
+
+    <!-- Used by local testing -->
+	<link rel="stylesheet" href="/css/register.css">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<!-- Jquery -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-
-	<style>
-		#title
-		{
-			font-size: 30px;
-		}
-		.mySlides
-		{
-			display: none;
-		}
-		#message
-		{
-			color: red;
-			font-size: 2em;
-			font-weight: 2em;
-		}
-		input
-		{
-			color: black;
-			background: #292929;
-			text-align: center;
-		}
-		ul
-		{
-			text-align: center;
-		}
-		body
-		{
-			background: #8e9eab;
-			/* fallback for old browsers */
-			background: -webkit-linear-gradient(to right,
-			#eef2f3,
-			#8e9eab);
-			/* Chrome 10-25, Safari 5.1-6 */
-			background: linear-gradient(to right,
-			#eef2f3,
-			#8e9eab);
-			/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-			color: black;
-		}
-		h2
-		{
-			margin: 45px;
-			font-family: "Roboto", sans-serif;
-			font-weight: 2.5em;
-			padding: 5px;
-			font-size: 2.5em;
-		}
-	</style>
 </head>
+
 <body>
-    
-	<h1>User register</h1>
+    <div class="box">
+        <div class="row header">
+            <!-- Navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/">
+                            <img class="logo" id="logopic" src="https://firebasestorage.googleapis.com/v0/b/car-for-all-273711.appspot.com/o/Car%20Pictures%2Flogo.png?alt=media&token=49b7996f-637c-460d-844e-22633123798d">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="links nav navbar-nav navbar-right">
+                            <li><a href="#">LOGIN</a></li>
+                            <li><a href="#">REGISTER</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row content">
+            <div class="mapcontainer">
+                <div class="map" id="map">
+                    <div class="main-block">
+                        <h1>Register</h1>
+						<form method="post" action="register_check" name="form" id="form" autocomplete="off">
+							@csrf <!-- {{ csrf_field() }} -->
+                            <hr>
+                            <label id="icon" for="name"><i class="fas fa-user"></i></label>
+                            <input type="text" name="username" id="username" placeholder="Username" required />
+                            <label id="icon" for="name"><i class="fas fa-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password" required />
 
-	<p>Please enter your details to create an account</p>
 
-	<form action="register_check" method="post">
-	@csrf <!-- {{ csrf_field() }} -->
-	Username: <input type="text" name="username" id="username" maxlength="20" required>
-	<br/><br/>
-	<!--Password: <input type="password" name="password" id="password">-->
-	Password: <input type="text" name="password" id="password" maxlength="20" required>
-	<br/><br/>
-	<button type="submit" style="color: #000000;">Register</button>
-	</form>
+                            <hr>
+                            <div class="btn-block">
+								<p>Already a User? <a href="login">Login</a></p>
+								<hr>
+                                <button type="submit" class="button"><span>Register</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row footer">
+                <!-- Footer -->
+                <footer class="container-fluid bg-4 text-center" style="padding:10px">
+                    <p>© 2020 Copyright: H-Tue-Group-35</p>
+                </footer>
+        </div>
 
-	Already have an account? <a href="login">Login</a>
-	<br/>
-	<a href="/">Back to home</a>
 
 </body>
+
 </html>
