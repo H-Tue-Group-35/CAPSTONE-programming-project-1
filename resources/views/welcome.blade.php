@@ -145,7 +145,8 @@ ob_start();
             var userid = sessionStorage.getItem("loginid");
 
             if (userid && userid != '') {
-                document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
+                document.getElementById("fHeader").innerHTML =
+                    '<li>Logged in as ' + userid + '</li><li><a href="account">ACCOUNT</a></li><li><a href="logout">LOGOUT</a></li>';
             } else {
                 sessionStorage.loginid = '';
                 document.getElementById("fHeader").innerHTML =
