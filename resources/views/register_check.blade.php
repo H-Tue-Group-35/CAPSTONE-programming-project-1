@@ -5,10 +5,11 @@ ob_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/style.css" rel="stylesheet" type="text/css" >
+	<link href="/style.css" rel="stylesheet" type="text/css">
 
 	<title>Registration check</title>
 
@@ -26,49 +27,46 @@ ob_start();
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
 	<style>
-		#title
-		{
+		#title {
 			font-size: 30px;
 		}
-		.mySlides
-		{
+
+		.mySlides {
 			display: none;
 		}
-		#message
-		{
+
+		#message {
 			color: red;
 			font-size: 2em;
 			font-weight: 2em;
 		}
-		input
-		{
+
+		input {
 			color: black;
 			background: #292929;
 			text-align: center;
 		}
-		ul
-		{
+
+		ul {
 			text-align: center;
 		}
 
-		body
-		{
+		body {
 			background: #8e9eab;
 			/* fallback for old browsers */
 			background: -webkit-linear-gradient(to right,
-			#eef2f3,
-			#8e9eab);
+					#eef2f3,
+					#8e9eab);
 			/* Chrome 10-25, Safari 5.1-6 */
 			background: linear-gradient(to right,
-			#eef2f3,
-			#8e9eab);
+					#eef2f3,
+					#8e9eab);
 			/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 			color: black;
 		}
 
-		h2
-		{
+		h2 {
 			margin: 45px;
 			font-family: "Roboto", sans-serif;
 			font-weight: 2.5em;
@@ -77,29 +75,28 @@ ob_start();
 		}
 	</style>
 </head>
+
 <body>
 	<?php
-		use Google\Cloud\Firestore\FirestoreClient;
 
-		// Create the Cloud Firestore client
-		$db = new FirestoreClient();
+	use Google\Cloud\Firestore\FirestoreClient;
 
-		$docRef = $db->collection('user')->document($_POST['username']);
-		$snapshot = $docRef->snapshot();
+	// Create the Cloud Firestore client
+	$db = new FirestoreClient();
 
-		if ($snapshot->exists())
-		{
-			printf("Error: This user already exists. <a href='register'>Try again</a>. <a href='/'>Back to index</a>.");
-		}
-		else
-		{	
-			$docRef->set
-			([
-				'username' => $_POST['username'],
-				'password' => $_POST['password']
-			]);
-			printf("Account created successfully. You may now <a href='login'>login</a>.");	
-		}
+	$docRef = $db->collection('user')->document($_POST['username']);
+	$snapshot = $docRef->snapshot();
+
+	if ($snapshot->exists()) {
+		echo "<script>alert('Username already taken');window.location.href='register';</script>";
+	} else {
+		$docRef->set([
+			'username' => $_POST['username'],
+			'password' => $_POST['password']
+		]);
+		echo "<script>alert('Account created successfully');window.location.href='login';</script>";
+	}
 	?>
 </body>
+
 </html>
