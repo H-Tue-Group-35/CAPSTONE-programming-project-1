@@ -159,7 +159,7 @@ ob_start();
             var userid = sessionStorage.getItem("loginid");
 
             if (userid && userid != '') {
-                document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
+                document.getElementById("fHeader").innerHTML = '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li>';
             } else {
                 sessionStorage.loginid = '';
                 document.getElementById("fHeader").innerHTML =
@@ -192,9 +192,9 @@ ob_start();
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="links nav navbar-nav navbar-right" id="fHeader">
+                        <header id="fHeader" class="links nav navbar-nav navbar-right">
                             
-                        </ul>
+                        </header>
                     </div>
                 </div>
             </nav>
