@@ -36,7 +36,7 @@ ob_start();
 
             if (userid && userid != '') {
                 document.getElementById("fHeader").innerHTML =
-                    '<li>Logged in as ' + userid + '</li><li><a href="account">ACCOUNT</a></li><li><a href="logout">LOGOUT</a></li>';
+                '<li style="letter-spacing: 1px;float: right;padding - right: 20 px;padding - top: 10 px;">Logged in as ' + userid + '</li><hr><li><a href="account ">ACCOUNT</a></li><li><a href="logout ">LOGOUT</a></li>';
             } else {
                 sessionStorage.loginid = '';
                 document.getElementById("fHeader").innerHTML =
