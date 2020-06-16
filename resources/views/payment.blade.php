@@ -99,6 +99,20 @@ ob_start();
                 });
             }
         }).render('#paypal-button-container');
+
+        function initHeader() {
+
+            var userid = sessionStorage.getItem("loginid");
+
+            if (userid && userid != '') {
+                document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
+            } else {
+                sessionStorage.loginid = '';
+                document.getElementById("fHeader").innerHTML =
+                    '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li>';
+            }
+
+        }
     </script>
 
 
@@ -121,9 +135,7 @@ ob_start();
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="links nav navbar-nav navbar-right">
-                            <li><a href="login">LOGIN</a></li>
-                            <li><a href="register">REGISTER</a></li>
+                        <ul class="links nav navbar-nav navbar-right" id="fHeader">
                         </ul>
                     </div>
                 </div>
@@ -151,6 +163,9 @@ ob_start();
             </footer>
         </div>
     </div>
+    <script>
+        initHeader();
+    </script>
 </body>
 
 </html>

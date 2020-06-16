@@ -44,20 +44,6 @@ ob_start();
         var db = firebase.firestore();
         var map, infoWindow;
 
-        function initHeader() {
-
-            var userid = sessionStorage.getItem("loginid");
-
-            if (userid && userid != '') {
-                document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
-            } else {
-                sessionStorage.loginid = '';
-                document.getElementById("fHeader").innerHTML =
-                    '<a href="login">[Login]</a> <a href="register">[Register]</a>';
-            }
-
-        }
-
         function initMap() {
 
             map = new google.maps.Map(document.getElementById('map'), {

@@ -43,9 +43,7 @@ session_start();
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="links nav navbar-nav navbar-right">
-                            <li><a href="login">LOGIN</a></li>
-                            <li><a href="register">REGISTER</a></li>
+                        <ul class="links nav navbar-nav navbar-right" id="fHeader">
                         </ul>
                     </div>
                 </div>
@@ -81,14 +79,28 @@ session_start();
             </div>
         </div>
         <div class="row footer">
-                <!-- Footer -->
-                <footer class="container-fluid bg-4 text-center" style="padding:10px">
-                    <p>© 2020 Copyright: H-Tue-Group-35</p>
-                </footer>
+            <!-- Footer -->
+            <footer class="container-fluid bg-4 text-center" style="padding:10px">
+                <p>© 2020 Copyright: H-Tue-Group-35</p>
+            </footer>
         </div>
 
 
         <script>
+            function initHeader() {
+
+                var userid = sessionStorage.getItem("loginid");
+
+                if (userid && userid != '') {
+                    document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
+                } else {
+                    sessionStorage.loginid = '';
+                    document.getElementById("fHeader").innerHTML =
+                        '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li>';
+                }
+
+            }
+
             let message = document.getElementById("message");
             document.getElementById("date-from").setAttribute("min", currentDate());
             document.getElementById("date-to").setAttribute("min", currentDate());
@@ -148,6 +160,9 @@ session_start();
                 today = yyyy + '-' + mm + '-' + dd;
                 return today;
             }
+        </script>
+        <script>
+            initHeader();
         </script>
 
 </body>

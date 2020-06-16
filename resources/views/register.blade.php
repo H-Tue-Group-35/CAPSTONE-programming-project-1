@@ -23,11 +23,27 @@ ob_start();
     <link rel="stylesheet" href="/public/css/register.css">
 
     <!-- Used by local testing -->
-	<link rel="stylesheet" href="/css/register.css">
-	
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="/css/register.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+
+    <script>
+        function initHeader() {
+
+            var userid = sessionStorage.getItem("loginid");
+
+            if (userid && userid != '') {
+                document.getElementById("fHeader").innerHTML = 'Logged in as ' + userid + ' <a href="account">[Account]</a> <a href="logout">[Logout]</a>';
+            } else {
+                sessionStorage.loginid = '';
+                document.getElementById("fHeader").innerHTML =
+                    '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li>';
+            }
+
+        }
+    </script>
 
 </head>
 
@@ -48,9 +64,7 @@ ob_start();
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="links nav navbar-nav navbar-right">
-                            <li><a href="login">LOGIN</a></li>
-                            <li><a href="register">REGISTER</a></li>
+                        <ul class="links nav navbar-nav navbar-right" id="fHeader">
                         </ul>
                     </div>
                 </div>
@@ -61,8 +75,9 @@ ob_start();
                 <div class="map" id="map">
                     <div class="main-block">
                         <h1>Register</h1>
-						<form method="post" action="register_check" name="form" id="form" autocomplete="off">
-							@csrf <!-- {{ csrf_field() }} -->
+                        <form method="post" action="register_check" name="form" id="form" autocomplete="off">
+                            @csrf
+                            <!-- {{ csrf_field() }} -->
                             <hr>
                             <label id="icon" for="name"><i class="fas fa-user"></i></label>
                             <input type="text" name="username" id="username" placeholder="Username" required />
@@ -72,8 +87,8 @@ ob_start();
 
                             <hr>
                             <div class="btn-block">
-								<p>Already a User? <a href="login">Login</a></p>
-								<hr>
+                                <p>Already a User? <a href="login">Login</a></p>
+                                <hr>
                                 <button type="submit" class="button"><span>Register</span></button>
                             </div>
                         </form>
@@ -82,13 +97,15 @@ ob_start();
             </div>
         </div>
         <div class="row footer">
-                <!-- Footer -->
-                <footer class="container-fluid bg-4 text-center" style="padding:10px">
-                    <p>© 2020 Copyright: H-Tue-Group-35</p>
-                </footer>
+            <!-- Footer -->
+            <footer class="container-fluid bg-4 text-center" style="padding:10px">
+                <p>© 2020 Copyright: H-Tue-Group-35</p>
+            </footer>
         </div>
-
-
+        <script>
+            initHeader();
+        </script>
+    </div>
 </body>
 
 </html>
