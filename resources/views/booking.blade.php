@@ -76,7 +76,7 @@ session_start();
                             <input type="tel" name="phone" id="phone" placeholder="10 digit mobile number" pattern="[0-9]{10}" required />
                             <label id="icon" for="name"><i class="fas fa-calendar"></i></label>
                             <input type="text" name="dateto" id="date-to" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Book Until When" onchange="changeMaxDate(this.value)" required />
-                            <input class="hide" type="date" name="datefrom" id="date-from" onchange="changeMinDate(this.value)" hidden />
+                            <input class="hide" type="date" name="datefrom" id="date-from" hidden />
 
 
                             <hr>
@@ -115,20 +115,8 @@ session_start();
             }
 
             let message = document.getElementById("message");
-            document.getElementById("date-from").setAttribute("min", currentDate());
+            document.getElementById("date-from").setAttribute("value", currentDate());
             document.getElementById("date-to").setAttribute("min", currentDate());
-
-
-            function changeMinDate(date) {
-                if (date == "") {
-                    document.getElementById("date-to").setAttribute("min", currentDate());
-                }
-                document.getElementById("date-to").setAttribute("min", date);
-            }
-
-            function changeMaxDate(date) {
-                document.getElementById("date-from").setAttribute("max", date);
-            }
 
 
             function validateForm() {
