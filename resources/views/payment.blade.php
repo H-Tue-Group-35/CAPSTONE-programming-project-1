@@ -40,14 +40,15 @@ ob_start();
         var db = firebase.firestore();
 
         function book() {
-
+            var userid = sessionStorage.getItem("loginid");
             db.collection("Bookings").add({
                     carID: "<?php echo $carID ?>",
                     datefrom: "<?php echo $datefrom ?>",
                     dateto: "<?php echo $dateto ?>",
                     name: "<?php echo $name ?>",
                     email: "<?php echo $email ?>",
-                    phone: "<?php echo $phone ?>"
+                    phone: "<?php echo $phone ?>",
+                    user: userid
                 })
                 .then(function(docRef) {
                     console.log("Document written with ID: ", docRef.id);
