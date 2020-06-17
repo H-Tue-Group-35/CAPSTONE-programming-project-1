@@ -31,8 +31,8 @@ session_start();
             
         } else {
             sessionStorage.loginid = '';
-            alert('Please login before making a booking');
             window.location.href='login';
+            alert('Please login before making a booking');
         }
     </script>
 
