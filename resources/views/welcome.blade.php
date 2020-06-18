@@ -193,7 +193,7 @@ ob_start();
             </div>
         </div>
         <div class="row footer">
-            <!-- Footer -->
+            <!-- Foot -->
             <footer class="container-fluid bg-4 text-center" style="padding:10px">
                 <p>© 2020 Copyright: H-Tue-Group-35</p>
             </footer>
