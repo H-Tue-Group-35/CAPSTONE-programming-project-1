@@ -447,7 +447,7 @@ ob_start();
 
 		// Main interval function to keep track of application state
 		// interval shouldn't be too often to allow time for database updates and whatnot.
-		var interval = setInterval(updateLoop, 10000);
+		var interval = setInterval(updateLoop, 5000);
 
 		// Get distance between two geopoints
 		function getDistance (lat1, lng1, lat2, lng2 ) 
