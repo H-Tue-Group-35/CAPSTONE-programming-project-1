@@ -89,7 +89,7 @@ ob_start();
 </head>
 <body>
 
-<script>alert('Invalid Username/Password');window.location.href='login';</script>
+<script>alert('Invalid Username/Password');window.location.href='admin';</script>
 
 </body>
 </html>
