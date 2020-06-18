@@ -146,11 +146,11 @@ ob_start();
 
             if (userid && userid != '') {
                 document.getElementById("fHeader").innerHTML =
-                '<li style="letter-spacing: 1px;float: right;padding-right: 20px;padding-top: 10px;">Logged in as ' + userid + '</li><hr><li><a href="account ">ACCOUNT</a></li><li><a href="logout ">LOGOUT</a></li>';
+                '<li style="letter-spacing: 1px;float: right;padding-right: 20px;padding-top: 10px;">Logged in as ' + userid + '</li><hr><li><a href="account ">ACCOUNT</a></li><li><a href="logout ">LOGOUT</a></li><li><a href="admin">ADMIN</a></li>';
             } else {
                 sessionStorage.loginid = '';
                 document.getElementById("fHeader").innerHTML =
-                    '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li>';
+                    '<li><a href="login">LOGIN</a></li><li><a href="register">REGISTER</a></li><li><a href="admin">ADMIN</a></li>';
             }
 
         }
